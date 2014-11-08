@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="edit_card_form" action="{{ request.get_full_path }}" method="post" >
+                <h2>{% trans 'Edit Hero' %}</h2>
+                {% csrf_token %}
+                {% include "partials/form_fields.html" %}
+                <button name="edit_submit" type="submit" value="edit_hero" class="btn btn-large btn-primary" >{% trans 'Edit Hero' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

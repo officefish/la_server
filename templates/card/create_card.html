@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-10 pull-right">
+            <form id="create_card_form" action="{{ request.get_full_path }}" method="post" >
+            <h2>{% trans 'Create Card' %}</h2>
+            {% csrf_token %}
+            {% include "partials/form_fields.html" %}
+            <button name="create_eptitude" type="submit" value="create_eptitude" class="btn btn-group-sm btn-primary" >{% trans 'Create Eptitude' %}</button>
+            <button name="create_race" type="submit" value="create_race" class="btn btn-group-sm btn-primary" >{% trans 'Create Race' %}</button>
+            <button name="create_subrace" type="submit" value="create_subrace" class="btn btn-group-sm btn-primary" >{% trans 'Create Subrace' %}</button>
+            <button name="create_submit" type="submit" value="create_card" class="btn btn-large btn-primary" >{% trans 'Create Card' %}</button>
+       </form>
+        <a href="{% url "cards_list" %}">отмена</a>
+        </div>
+    </div>
+
+{% endblock %}

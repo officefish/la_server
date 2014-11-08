@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link type="text/css"  rel="stylesheet" href="{% static 'css/styles.css'%}" media="screen" charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="row">
+        <div class="header col col-md-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-2">
+            {% block navigation %}{% endblock %}
+        </div>
+        <div class="content col col-md-10">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery-1.9.1.min.js" %}"><\/script>')</script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+</body>
+
+</html>

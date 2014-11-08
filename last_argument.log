@@ -1,0 +1,992 @@
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG []
+DEBUG []
+DEBUG []
+DEBUG []
+DEBUG []
+DEBUG []
+DEBUG []
+DEBUG [<Deck: adventurer1>]
+DEBUG UserHero object
+DEBUG [<Deck: adventurer1>]
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG UserHero object
+DEBUG adventurer1
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:33118
+DEBUG player2_id:61926
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40681
+DEBUG player2_id:27485
+DEBUG 0
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:57943
+DEBUG player2_id:39452
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40094
+DEBUG player2_id:69299
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:55137
+DEBUG player2_id:69901
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:9930
+DEBUG player2_id:47149
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:37989
+DEBUG player2_id:19609
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:9672
+DEBUG player2_id:65699
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:67048
+DEBUG player2_id:90598
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:79036
+DEBUG player2_id:3484
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:42825
+DEBUG player2_id:72696
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:428249
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Open match_id:428249
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:25914
+DEBUG player2_id:43294
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:299268
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:299268
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:69616
+DEBUG player2_id:87340
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:29536
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:29536
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:38895
+DEBUG player2_id:4457
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:474675
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:474675
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:83933
+DEBUG player2_id:53971
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:80300
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:80300
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:42457
+DEBUG player2_id:54051
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:476909
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:476909
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:18460
+DEBUG player2_id:533
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:484349
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:484349
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:31267
+DEBUG player2_id:93300
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:16007
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:16007
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:23021
+DEBUG player2_id:37992
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:356781
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:356781
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:65560
+DEBUG player2_id:10448
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:22358
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:22358
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:80855
+DEBUG player2_id:11871
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:30790
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:30790
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:61556
+DEBUG player2_id:53688
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:295258
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:295258
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [<DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, <DeckItem: DeckItem object>, '...(remaining elements truncated)...']
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:70272
+DEBUG player2_id:76724
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:242332
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:242332
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:67711
+DEBUG player2_id:48716
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:254281
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:254281
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:14117
+DEBUG player2_id:75996
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:150201
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:150201
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:37594
+DEBUG player2_id:99495
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:206700
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:206700
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:80499
+DEBUG player2_id:11362
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:441970
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:441970
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:35138
+DEBUG player2_id:22847
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:344205
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:344205
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:46177
+DEBUG player2_id:62715
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:150512
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:150512
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 271110}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 337126}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 101046}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 319778}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 65251}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 476986}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 378177}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 257451}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 59859}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 139672}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 381558}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 211056}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 107234}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 457478}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 333610}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 351030}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 447460}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 317574}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 372013}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 406905}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 78413}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 322807}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 2268}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 19462}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 204034}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 173285}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 116991}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 154701}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 135054}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 278938}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:71372
+DEBUG player2_id:44073
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:305007
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:305007
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 263563}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 113432}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 139434}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 173728}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 122867}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 459022}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 70342}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 67276}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 235041}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 158299}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 176098}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 14167}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 126855}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 304}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 60223}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 20655}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 149430}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 97368}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 280156}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 190916}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 260414}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 117029}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 15714}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 321276}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 473308}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 291636}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 60561}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 74742}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 205082}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 388456}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close

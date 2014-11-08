@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+
+{% block navigation %}
+    <nav>
+
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="cards_list">
+        <ul >
+            {% for hero in heroes %}
+                <li>
+                    <div class="card">
+                        <div class="card_title">{{ hero.title }}</div>
+                        <div class="hero_vocation">{{ hero.vocation }}</div>
+                        <div class="card_description">{{ hero.short_description }}</div>
+                        <a style="position:absolute; margin-top:240px" href="{%  url "edit_hero" hero.id %}">редактировать</a>
+                        <a style="position:absolute; margin-top:255px" href="{%  url "delete_hero" hero.id %}">удалить</a>
+                    </div>
+                </li>
+            {% endfor %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url "create_hero" %}">
+                        <div class="create_card">
+                            Создать героя
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+
+{% endblock %}

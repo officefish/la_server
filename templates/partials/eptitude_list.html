@@ -1,0 +1,30 @@
+{% load card_tags %}
+<h4>Способности персонажа ({{ eptitudes.count }})</h4>
+<div class="row">
+    <ul class="eptitude_list">
+         {% for eptitude in eptitudes %}
+            <li>
+                <div>вид: <strong>{{ parse_type|eptitude_type:eptitude.eptitude_type }}</strong></div>
+                <div>момент использования:<strong> {{ parse_period|period:eptitude.period }}</strong></div>
+                <div>уровень использования:<strong> {{ parse_level|level:eptitude.level }}</strong></div>
+                {% if eptitude.unit %}
+                    <div>существо:<strong> {{ eptitude.unit.title }}</strong></div>
+                {% else %}
+                    {% if eptitude.subrace %}
+                        <div>подраса:<strong> {{ eptitude.subrace.title }}</strong></div>
+                    {% else %}
+                        {% if eptitude.race %}
+                            <div>раса:<strong> {{ eptitude.race.title }}</strong></div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if eptitude.dependency %}
+                    <div>условие:<strong> {{ parse_type|eptitude_type:eptitude.dependency.eptitude_type }}</strong> </div>
+                {% endif %}
+                <div>сила использования: <strong>{{ eptitude.power }}</strong></div>
+                <a href="{% url "edit_eptitude" card.id eptitude.id %}">редактировать</a>
+            </li>
+
+         {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,87 @@
+
+/* colors / цвета */
+/*специфический голубой фон данного дизайна*/
+@brand-primary: #29c5e6;
+@gray-dark: lighten(#000, 20%);
+
+
+/* scaffolding / глобальные настройки страницы */
+/*серый фон страницы*/
+@body-bg: #f8f8f8;;
+/*основной цвет текста на странице*/
+@text-color: #8f8f8f;
+
+
+/* typography / типография */
+/* Фирменный шифт */
+@brand-font: 'Oswald',sans-serif;
+/*основным шрифтом будет Tahoma*/
+@font-family-base: Tahoma, sans-serif;
+/*задаем базовый размер*/
+@font-size-base: 12px;
+
+
+/* components / компоненты */
+/*убираем скругление у блоков*/
+@border-radius-base: 0;
+
+/* buttons / кнопки */
+/*первичные кнопки имеют голубой фон*/
+@btn-primary-bg: @brand-primary;
+
+@grid-columns: 12;
+
+
+/* forms / формы */
+/*серый фон текстовых полей*/
+@input-bg: @panel-bg;
+/*серая рамка текстовых полей*/
+@input-border: darken(@panel-bg, 15%);
+/*серый цвет текста в полях*/
+@input-color: #b2b2b2;
+
+
+/* container sizes / контейнеры */
+/*если ширина экрана больше 992px, то ширина контейнера 960px*/
+@container-md: 960px;
+/*если ширина экрана больше 1200px, то ширина контейнера так же 960px*/
+@container-lg: @container-md;
+
+
+/* navbar / навигационное меню */
+/*высота навигационного меню*/
+@navbar-height: 37px;
+@navbar-default-border: darken(@body-bg, 15%);
+/*задаем  побольше горизонтальный отступ*/
+@nav-link-padding: 10px 30px;
+/*фон для пунктов меню*/
+@navbar-default-bg: @panel-bg;
+/*цвет текста в пунктах меню*/
+@navbar-default-link-color: #b2b2b2;
+/*и при наведении мышки – такой же*/
+@navbar-default-link-hover-color: @navbar-default-link-color;
+/*фон активного пункта меню – наш специфический голубой цвет*/
+@navbar-default-link-active-bg: @brand-primary;
+/*цвет текста активного пункта меню*/
+@navbar-default-link-active-color: #fff;
+
+
+/* panels / панели (разделы) */
+/*фон панелей*/
+@panel-bg: @body-bg;
+/*цвет рамки панелей*/
+@panel-primary-border: darken(@panel-bg, 10%);
+@panel-primary-heading-bg: @brand-primary;
+
+/* list groups / списки */
+@list-group-bg: @panel-bg;
+@list-group-border: darken(@panel-bg, 15%);
+@list-group-active-bg: @panel-bg;
+@list-group-active-border: darken(@panel-bg, 15%);
+
+@jumbotron-bg: @brand-primary;
+@jumbotron-color: #fff;
+
+@thumbnail-padding: 1px;
+@thumbnail-border: #c9c9c9;
+

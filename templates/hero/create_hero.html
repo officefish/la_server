@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="create_card_form" action="{{ request.get_full_path }}" method="post" >
+                <h2>{% trans 'Create Hero' %}</h2>
+                {% csrf_token %}
+                {% include "partials/form_fields.html" %}
+                <button name="create_submit" type="submit" value="create_hero" class="btn btn-large btn-primary" >{% trans 'Create Hero' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
