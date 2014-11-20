@@ -87,25 +87,63 @@ class MatchHandler(websocket.WebSocketHandler):
 
             #self.match.launchTimers()
 
+
             if bool(random.getrandbits(1)):
                 self.match.setWhite(self.match.getPlayer1())
                 self.match.setBlack(self.match.getPlayer2())
-                self.white_opponent_id = self.player2_id
-                self.black_opponent_id = self.player1_id
+                self.match.setWhiteDeck (self.match.getPlayer1_deck())
+                self.match.setBlackDeck (self.match.getPlayer2_deck())
+
+                self.match.setWhiteId(self.player1_id)
+                self.match.setBlackId(self.player2_id)
+
+                self.match.setWhiteHero (self.match.getPlayer1_hero())
+                self.match.setBlackHero (self.match.getPlayer2_hero())
+
+                self.match.setWhiteHeroLevel (self.match.getPlayer1_level())
+                self.match.setBlackHeroLevel (self.match.getPlayer2_level())
 
             else:
                 self.match.setBlack(self.match.getPlayer1())
                 self.match.setWhite(self.match.getPlayer2())
-                self.white_opponent_id = self.player1_id
-                self.black_opponent_id = self.player2_id
+                self.match.setWhiteDeck (self.match.getPlayer2_deck())
+                self.match.setBlackDeck (self.match.getPlayer1_deck())
+
+                self.match.setWhiteId(self.player2_id)
+                self.match.setBlackId(self.player1_id)
+
+                self.match.setWhiteHero (self.match.getPlayer2_hero())
+                self.match.setBlackHero (self.match.getPlayer1_hero())
+
+                self.match.setWhiteHeroLevel (self.match.getPlayer2_level())
+                self.match.setBlackHeroLevel (self.match.getPlayer1_level())
+
+
 
             self.match.generateMatchDecks()
+
+            self.match.runPreflopTimer()
+
+            self.match.generateHand (3, True)
+            self.match.generateHand (4, False)
+
+            self.match.generateHeroesHealth()
 
             self.response = {}
             self.response['status'] = 'success'
             self.response['type'] = 'preflop'
             self.data = {}
-            self.data['preflop'] = self.match.getPreflop (3, 1)
+            self.data['preflop'] = self.match.getWhiteHand()
+            self.data['opponent_preflop'] = self.match.getBlackHand()
+
+            self.data['hero'] = self.match.getWhiteHero().hero.uid
+            self.data['opponent_hero'] = self.match.getBlackHero().hero.uid
+            self.data['level'] = self.match.getWhiteHeroLevel()
+            self.data['opponent_level'] = self.match.getBlackHeroLevel()
+            self.data['health'] = self.match.getWhiteHeroHealth()
+            self.data['opponent_health'] = self.match.getBlackHeroHealth()
+
+            self.data['mode'] = self.match.getMode()
             self.response['data'] = self.data
             self.dump = json.dumps(self.response)
             self.match.getWhite().write_message (self.dump)
@@ -114,10 +152,136 @@ class MatchHandler(websocket.WebSocketHandler):
             self.response['status'] = 'success'
             self.response['type'] = 'preflop'
             self.data = {}
-            self.data['preflop'] = self.match.getPreflop (4, 2)
+            self.data['preflop'] = self.match.getBlackHand()
+            self.data['opponent_preflop'] = self.match.getWhiteHand()
+
+            self.data['hero'] = self.match.getBlackHero().hero.uid
+            self.data['opponent_hero'] = self.match.getWhiteHero().hero.uid
+            self.data['level'] = self.match.getBlackHeroLevel()
+            self.data['opponent_level'] = self.match.getWhiteHeroLevel()
+            self.data['health'] = self.match.getBlackHeroHealth()
+            self.data['opponent_health'] = self.match.getWhiteHeroHealth()
+
+            self.data['mode'] = self.match.getMode()
             self.response['data'] = self.data
             self.dump = json.dumps(self.response)
             self.match.getBlack().write_message(self.dump)
+
+        if type == 'change_preflop':
+            logger.debug('change_preflop')
+
+            self.response = {}
+            self.response['status'] = 'success'
+            self.response['type'] = 'change_preflop'
+            self.data = {}
+
+            if self.id == self.match.getWhiteId():
+                self.preflop = self.match.changePreflop (event['data']['preflop'], True)
+                self.data['preflop'] = self.preflop
+                self.opponent = self.match.getBlack()
+
+            if self.id == self.match.getBlackId():
+                self.preflop =  self.match.changePreflop (event['data']['preflop'], False)
+                self.data['preflop'] = self.preflop
+                self.opponent = self.match.getWhite()
+
+            self.response['data'] = self.data
+            self.dump = json.dumps(self.response)
+            self.write_message(self.dump)
+
+            self.response['type'] = 'change_opponent_preflop'
+            self.data['opponent_preflop'] = event['data']['preflop']
+            self.response['data'] = self.data
+            self.dump = json.dumps(self.response)
+            self.opponent.write_message (self.dump)
+
+
+
+        if type == 'end_change_preflop':
+            if self.match.isAllPlayersChangePreflop():
+
+                logger.debug('end_change_preflop')
+                if self.match.blockEndPreflop:
+                    return
+
+                self.match.blockEndPreflop = True
+                
+                self.match.stopPreflopTimer()
+
+                response = {}
+                response['status'] = 'success'
+                response['type'] = 'end_preflop'
+
+                data = {}
+                data['preflop'] = self.match.getWhiteHand()
+                response['data'] = data
+                dump = json.dumps(response)
+                self.match.getWhite().write_message(dump)
+
+                data = {}
+                data['preflop'] = self.match.getBlackHand()
+                response['data'] = data
+                dump = json.dumps(response)
+                self.match.getBlack().write_message(dump)
+
+        if type == 'preflop_click':
+
+                response = {}
+                response['status'] = 'success'
+                response['type'] = 'opponent_preflop_click'
+                response['data'] = event['data']
+                dump = json.dumps(response)
+
+                if self.id == self.match.getWhiteId():
+                    self.match.getBlack().write_message(dump)
+                else:
+                    self.match.getWhite().write_message(dump)
+
+        if type == 'ready':
+
+                if self.id == self.match.getWhiteId():
+                    self.match.whiteReady()
+                else:
+                    self.match.blackReady()
+
+                if self.match.isReady():
+
+                    self.match.incrementWhitePrice()
+
+                    self.step_card = self.match.getWhiteCard()
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'ready'
+                    data = {}
+                    data['price'] = self.match.getWhitePrice()
+                    data['card'] = self.step_card
+                    response['data'] = data
+                    dump = json.dumps(response)
+                    self.match.getWhite().write_message(dump)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'opponent_step'
+                    data = {}
+                    data['opponent_price'] = self.match.getWhitePrice()
+                    data['opponent_card'] = self.step_card
+                    response['data'] = data
+                    dump = json.dumps(response)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'play_card':
+                    logger.debug('index: %s' % event['data']['index'])
+                    logger.debug('position: %s' % event['data']['position'])
+
+                    if self.id == self.match.getWhiteId():
+                         logger.debug('white')
+                    else:
+                         logger.debug('black')
+
+
+
+
 
 
 

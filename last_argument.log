@@ -990,3 +990,5115 @@ DEBUG connect_to_match
 DEBUG [{'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 263563}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 113432}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 139434}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 173728}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 122867}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 459022}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 70342}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 67276}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 235041}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 158299}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 176098}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 14167}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 126855}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 304}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 60223}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 20655}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 149430}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 97368}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 280156}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 190916}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 260414}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 117029}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 15714}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 321276}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 473308}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 291636}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 60561}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 74742}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 205082}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 388456}]
 DEBUG MatchHandler::Close
 DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:90851
+DEBUG player2_id:26205
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:468949
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:468949
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 204247}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 264494}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 434359}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 9401}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 291884}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 81146}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 228682}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 145092}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 60280}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 356694}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 317824}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 58022}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 152056}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 215909}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 280156}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 440713}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 45809}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 375049}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 226704}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 368120}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 82131}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 14323}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 104648}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 278021}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 40273}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 110107}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 323332}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 450557}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 329286}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 421771}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:42338
+DEBUG player2_id:24188
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:289652
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:289652
+DEBUG connect_to_match
+DEBUG [{'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 324716}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 420375}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 65966}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 112732}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 318805}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 213506}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 167387}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 64918}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 394302}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 181961}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 266931}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 38772}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 490116}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 236487}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 273836}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 360229}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 127180}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 16025}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 294964}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 195859}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 115452}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 30919}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 216389}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 35628}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 107343}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 142127}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 370874}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 307549}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 132841}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 143369}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:41935
+DEBUG player2_id:81684
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:351492
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:351492
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 271468}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 91369}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 242733}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 42360}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 165425}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 405965}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 302798}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 172603}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 471506}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 336678}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 20454}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 343240}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 416215}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 49889}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 131910}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 374942}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 404232}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 242667}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 61440}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 193550}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 382991}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 499585}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 202148}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 440627}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 189542}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 113655}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 393398}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 7017}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 200944}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 374322}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:7820
+DEBUG player2_id:40015
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:442312
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:442312
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 487147}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 239631}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 237456}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 294785}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 446926}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 496922}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 419595}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 254107}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 349846}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 407719}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 370495}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 299010}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 356197}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 278925}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 370143}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 113783}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 456337}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 385756}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 229181}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 180176}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 20816}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 481011}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 266939}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 369266}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 299180}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 36156}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 462021}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 357321}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 476866}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 421101}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:67742
+DEBUG player2_id:20387
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:209463
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:209463
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 467230}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 304866}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 304391}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 9347}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 316650}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 79721}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 212227}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 283140}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 498626}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 396388}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 256294}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 464879}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 409789}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 220110}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 342059}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 377272}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 273313}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 232789}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 248522}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 194145}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 271909}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 58711}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 227338}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 64736}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 446908}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 420852}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 66970}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 275621}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 147110}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 318331}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:99051
+DEBUG player2_id:60829
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:21697
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:21697
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG [{'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 94233}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 445482}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 259198}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 187389}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 411023}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 55444}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 453997}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 5499}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 138927}, {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 135409}, {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 55124}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 431829}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 68908}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 490217}, {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 418064}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 364174}, {'description': 'Боевой клич. Восстанавливает 2 единицы урона всем вашим персонажам\r\n', 'title': 'Нага целительница', 'price': 5, 'attack': 4, 'health': 5, 'id': 76221}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 422456}, {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 194804}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 289962}, {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 37203}, {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 488705}, {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 351219}, {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 367005}, {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 267148}, {'description': 'Боевой клич. Наносит 3 единицы урона герою противника\r\n', 'title': 'Ночной клинок', 'price': 5, 'attack': 4, 'health': 4, 'id': 199429}, {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 220052}, {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 297448}, {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 80339}, {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 380973}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:91572
+DEBUG player2_id:29636
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:388078
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:388078
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:34491
+DEBUG player2_id:76472
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:336924
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:336924
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG player2 change preflop
+DEBUG [18, 58]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:63008
+DEBUG player2_id:13127
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:75077
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:75077
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG player2 change preflop
+DEBUG [102, 97, 113]
+DEBUG change_preflop
+DEBUG player1 change preflop
+DEBUG [42, 29]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:53647
+DEBUG player2_id:39019
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:491973
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:491973
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG player2 change preflop
+DEBUG [50]
+DEBUG change_preflop
+DEBUG player1 change preflop
+DEBUG [91]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:28940
+DEBUG player2_id:5705
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:435212
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:435212
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:71185
+DEBUG player2_id:56065
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:172514
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:172514
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:19056
+DEBUG player2_id:15815
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:90233
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:90233
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:64670
+DEBUG player2_id:8879
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:139127
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:139127
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2078
+DEBUG player2_id:24916
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:366932
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:366932
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:13624
+DEBUG player2_id:92538
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:95263
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:95263
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:68550
+DEBUG player2_id:16812
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:385055
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:385055
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:82900
+DEBUG player2_id:54180
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:86002
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:86002
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:47064
+DEBUG player2_id:32061
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:85429
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:85429
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:28367
+DEBUG player2_id:88077
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:82778
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:82778
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:66820
+DEBUG player2_id:88634
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:370996
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:370996
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:28078
+DEBUG player2_id:18627
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:22344
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:22344
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40090
+DEBUG player2_id:88299
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:230210
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:230210
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:55516
+DEBUG player2_id:73006
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:268034
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:268034
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:4121
+DEBUG player2_id:27325
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:451928
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:451928
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:35793
+DEBUG player2_id:35375
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:21824
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:21824
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:5469
+DEBUG player2_id:78438
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:381605
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:381605
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:62499
+DEBUG player2_id:26753
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:207816
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:207816
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:92491
+DEBUG player2_id:99582
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:153288
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:153288
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:43577
+DEBUG player2_id:92524
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:91828
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:91828
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:92633
+DEBUG player2_id:31064
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:31750
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:31750
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:77185
+DEBUG player2_id:80778
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:290798
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:290798
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:74201
+DEBUG player2_id:63980
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:270492
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:270492
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2321
+DEBUG player2_id:14849
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:364253
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:364253
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:458
+DEBUG player2_id:89543
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:373059
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:373059
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:79680
+DEBUG player2_id:66757
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:43416
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:43416
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:98917
+DEBUG player2_id:37069
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:332504
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:332504
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:28177
+DEBUG player2_id:34184
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:256769
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:256769
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:91792
+DEBUG player2_id:67590
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:189914
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:189914
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:87104
+DEBUG player2_id:7546
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:417999
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:417999
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40199
+DEBUG player2_id:41271
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:426590
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:426590
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:1975
+DEBUG player2_id:21892
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:178138
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:178138
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:22319
+DEBUG player2_id:34066
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:302743
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:302743
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2358
+DEBUG player2_id:98891
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:350607
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:350607
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:90011
+DEBUG player2_id:61902
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:166776
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:166776
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:6620
+DEBUG player2_id:32388
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:470779
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:470779
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:20194
+DEBUG player2_id:42446
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:186124
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:186124
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:3455
+DEBUG player2_id:35033
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:265707
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:265707
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:25167
+DEBUG player2_id:18567
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:223086
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:223086
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 3, 'id': 100}, {'index': 2, 'id': 105}, {'index': 1, 'id': 102}]
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:25384
+DEBUG player2_id:93799
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:44520
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:44520
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 3, 'id': 100}, {'index': 2, 'id': 100}, {'index': 1, 'id': 102}]
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:19633
+DEBUG player2_id:49944
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:334340
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:334340
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 1, 'id': 105}, {'index': 0, 'id': 102}]
+DEBUG 1
+DEBUG 0
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:7652
+DEBUG player2_id:67889
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:15586
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:15586
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 2, 'id': 42}, {'index': 0, 'id': 91}]
+DEBUG index:2
+DEBUG index:0
+DEBUG Лидер рейда
+DEBUG Щитоносец Сен'джин
+DEBUG Ночной клинок
+DEBUG Знахарь вуду
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:12307
+DEBUG player2_id:11745
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:218687
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:218687
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 3, 'id': 52}, {'index': 1, 'id': 102}]
+DEBUG index:3
+DEBUG index:1
+DEBUG [3, 5, 3]
+DEBUG change_preflop
+DEBUG [{'index': 2, 'id': 52}, {'index': 1, 'id': 100}]
+DEBUG index:2
+DEBUG index:1
+DEBUG [3, 2, 1]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:18339
+DEBUG player2_id:70010
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:343326
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:343326
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [{'index': 2, 'id': 97}, {'index': 1, 'id': 52}]
+DEBUG index:2
+DEBUG index:1
+DEBUG [2, 3, 1, 2]
+DEBUG change_preflop
+DEBUG [{'index': 1, 'id': 91}, {'index': 0, 'id': 100}]
+DEBUG index:1
+DEBUG index:0
+DEBUG [1, 2, 3]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:36826
+DEBUG player2_id:37930
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:470167
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:470167
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [4, 1, 3]
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:63907
+DEBUG player2_id:13687
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:104809
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:104809
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG change_preflop
+DEBUG [1, 3, 1]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:65236
+DEBUG player2_id:77782
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:348987
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:348987
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:10046
+DEBUG player2_id:5679
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:150320
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:150320
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 3, 3]
+DEBUG change_preflop
+DEBUG [3, 4, 2, 3]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:30984
+DEBUG player2_id:18295
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:305199
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:305199
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 2, 2]
+DEBUG change_preflop
+DEBUG [3, 3, 4, 2]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:98356
+DEBUG player2_id:56122
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:148415
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:148415
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 2, 2]
+DEBUG change_preflop
+DEBUG [1, 2, 1, 3]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40548
+DEBUG player2_id:62323
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:182387
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:182387
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 3, 1, 5]
+DEBUG change_preflop
+DEBUG [1, 1, 3]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:36806
+DEBUG player2_id:39569
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:396105
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:396105
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 3, 5]
+DEBUG change_preflop
+DEBUG [2, 3, 2]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:85284
+DEBUG player2_id:19079
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:364935
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:364935
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:748
+DEBUG player2_id:47679
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:417408
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:417408
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:37243
+DEBUG player2_id:19514
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:291953
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:291953
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:87472
+DEBUG player2_id:91815
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:223974
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:223974
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:23759
+DEBUG player2_id:61634
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:195531
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:195531
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40433
+DEBUG player2_id:4372
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:405339
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:405339
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:88227
+DEBUG player2_id:15639
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:200511
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:200511
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:87818
+DEBUG player2_id:59005
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:90164
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:90164
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:6904
+DEBUG player2_id:82798
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:10720
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:10720
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:31075
+DEBUG player2_id:30534
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:218385
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:218385
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:58851
+DEBUG player2_id:91318
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:422120
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:422120
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:37113
+DEBUG player2_id:82904
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:86585
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:86585
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:47468
+DEBUG player2_id:5556
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:298224
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:298224
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 1]
+DEBUG change_preflop
+DEBUG [2, 2, 3, 3]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:77404
+DEBUG player2_id:34152
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:396595
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:396595
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 3]
+DEBUG change_preflop
+DEBUG [5, 2, 1, 6]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:29945
+DEBUG player2_id:93393
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:404044
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:404044
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 2]
+DEBUG change_preflop
+DEBUG [1, 5, 3, 2]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:84261
+DEBUG player2_id:32016
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:1402
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:1402
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [4, 6, 2]
+DEBUG change_preflop
+DEBUG [5, 4, 3, 5]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:46234
+DEBUG player2_id:85821
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:476807
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:476807
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 5, 4]
+DEBUG change_preflop
+DEBUG [2, 3, 1, 4]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:93564
+DEBUG player2_id:79425
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:491619
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:491619
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 2, 5]
+DEBUG change_preflop
+DEBUG [1, 6, 3, 5]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:84123
+DEBUG player2_id:96914
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:314153
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:314153
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 2, 2]
+DEBUG change_preflop
+DEBUG [4, 1, 3, 2]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:11437
+DEBUG player2_id:10554
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:242361
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:242361
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [6, 5, 2]
+DEBUG change_preflop
+DEBUG [1, 5, 2, 6]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:10573
+DEBUG player2_id:71386
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:17896
+DEBUG player2_id:89493
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:401429
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:401429
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 1, 1]
+DEBUG change_preflop
+DEBUG [5, 1, 2, 6]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:65698
+DEBUG player2_id:44412
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:409407
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:409407
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 3, 1]
+DEBUG change_preflop
+DEBUG [3, 2, 3, 1]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:65743
+DEBUG player2_id:51074
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:105893
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:105893
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 3, 2]
+DEBUG change_preflop
+DEBUG [2, 5, 5, 5]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:15883
+DEBUG player2_id:13317
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:115289
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:115289
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 3]
+DEBUG change_preflop
+DEBUG [2, 4, 5, 3]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:12676
+DEBUG player2_id:74000
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:304340
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:304340
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:16319
+DEBUG player2_id:70199
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:187856
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:187856
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 5, 1]
+DEBUG change_preflop
+DEBUG [1, 5, 5, 5]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:69053
+DEBUG player2_id:66684
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:281069
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:281069
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:23511
+DEBUG player2_id:38536
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:183000
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:183000
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 2, 3]
+DEBUG change_preflop
+DEBUG [1, 4, 3, 5]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:66747
+DEBUG player2_id:47211
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:26723
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:26723
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 2, 1]
+DEBUG change_preflop
+DEBUG [3, 4, 2, 6]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:90453
+DEBUG player2_id:8803
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:86299
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:86299
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 1, 2]
+DEBUG change_preflop
+DEBUG [6, 5, 2]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:10642
+DEBUG player2_id:80969
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:289422
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:289422
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 5, 6]
+DEBUG change_preflop
+DEBUG [5, 3, 1, 4]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:48588
+DEBUG player2_id:19607
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:91541
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:91541
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 3, 5]
+DEBUG change_preflop
+DEBUG [3, 2, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:24391
+DEBUG player2_id:50126
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:331754
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:331754
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 5, 2]
+DEBUG change_preflop
+DEBUG [6, 2, 1, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:9846
+DEBUG player2_id:48638
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:373267
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:373267
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 2]
+DEBUG change_preflop
+DEBUG [5, 6, 6, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:78593
+DEBUG player2_id:70927
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:499100
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:499100
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 3, 5]
+DEBUG change_preflop
+DEBUG [2, 2, 3, 6]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:85773
+DEBUG player2_id:35813
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:315144
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:315144
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 2, 3, 1]
+DEBUG change_preflop
+DEBUG [6, 3, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:49331
+DEBUG player2_id:33192
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:370516
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:370516
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 1]
+DEBUG change_preflop
+DEBUG [1, 1, 5, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:696
+DEBUG player2_id:92121
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:45799
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:45799
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [6, 2, 5, 3]
+DEBUG change_preflop
+DEBUG [3, 2, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:68035
+DEBUG player2_id:24240
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:453967
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:453967
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 6, 1, 5]
+DEBUG change_preflop
+DEBUG [6, 5, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:53053
+DEBUG player2_id:18563
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:232084
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:232084
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:21768
+DEBUG player2_id:83755
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:461576
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:461576
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:95991
+DEBUG player2_id:56692
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:158305
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:158305
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG change_preflop
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:9211
+DEBUG player2_id:29794
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:369452
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:369452
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 6, 1, 2]
+DEBUG change_preflop
+DEBUG [6, 3, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:66644
+DEBUG player2_id:84700
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:54218
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:54218
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 5, 6]
+DEBUG change_preflop
+DEBUG [5, 1, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:33890
+DEBUG player2_id:93122
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:174950
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:174950
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 1, 3]
+DEBUG change_preflop
+DEBUG [3, 5, 4, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:85730
+DEBUG player2_id:34678
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:276517
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:276517
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:54520
+DEBUG player2_id:68066
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:159592
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:159592
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [4, 5, 1]
+DEBUG change_preflop
+DEBUG [1, 5, 5, 3]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:26763
+DEBUG player2_id:16539
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:490349
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:490349
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:92668
+DEBUG player2_id:58516
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:226935
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:226935
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 6, 2]
+DEBUG change_preflop
+DEBUG [2, 1, 3, 5]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:40801
+DEBUG player2_id:34841
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:406502
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:406502
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 2, 2]
+DEBUG change_preflop
+DEBUG [5, 5, 1, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:69627
+DEBUG player2_id:27985
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:326801
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:326801
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 1, 2]
+DEBUG change_preflop
+DEBUG [2, 6, 1, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:27619
+DEBUG player2_id:72363
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:234624
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:234624
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:30354
+DEBUG player2_id:97950
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:380826
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:380826
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:7510
+DEBUG player2_id:77780
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:184189
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:184189
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2921
+DEBUG player2_id:75654
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:420907
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:420907
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 3, 5, 1]
+DEBUG change_preflop
+DEBUG [6, 5, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:54323
+DEBUG player2_id:92438
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:63845
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:63845
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:73676
+DEBUG player2_id:22811
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:372026
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:372026
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 5, 3]
+DEBUG change_preflop
+DEBUG [5, 6, 5, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:24903
+DEBUG player2_id:65563
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:342649
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:342649
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:99471
+DEBUG player2_id:17749
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:427137
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:427137
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 4, 1, 4]
+DEBUG change_preflop
+DEBUG [4, 4, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:51588
+DEBUG player2_id:53176
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:425313
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:425313
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 5, 3]
+DEBUG change_preflop
+DEBUG [5, 6, 3, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:97852
+DEBUG player2_id:23007
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:17074
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:17074
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 1, 6, 5]
+DEBUG change_preflop
+DEBUG [3, 3, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:22530
+DEBUG player2_id:88100
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:430365
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:430365
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:41050
+DEBUG player2_id:14140
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:355467
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:355467
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 2]
+DEBUG change_preflop
+DEBUG [1, 3, 1, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:17318
+DEBUG player2_id:65736
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:149681
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:149681
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:52425
+DEBUG player2_id:87663
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:121780
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:121780
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 2, 4, 2]
+DEBUG change_preflop
+DEBUG [1, 5, 4]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:68720
+DEBUG player2_id:6920
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:355328
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:355328
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:79765
+DEBUG player2_id:88654
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:108441
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:108441
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:284
+DEBUG player2_id:3188
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:422565
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:422565
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 5, 2, 4]
+DEBUG change_preflop
+DEBUG [2, 6, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:31734
+DEBUG player2_id:36568
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:344690
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:344690
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:76101
+DEBUG player2_id:42980
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:194545
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:194545
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 2, 5, 5]
+DEBUG change_preflop
+DEBUG [2, 1, 2]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:72658
+DEBUG player2_id:14709
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:327145
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:327145
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:93666
+DEBUG player2_id:43554
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:266327
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:266327
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 5, 5]
+DEBUG change_preflop
+DEBUG [5, 1, 3, 1]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:16935
+DEBUG player2_id:9037
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:334392
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:334392
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [6, 5, 2, 2]
+DEBUG change_preflop
+DEBUG [5, 5, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:55035
+DEBUG player2_id:94039
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:333531
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:333531
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 3, 6, 3]
+DEBUG change_preflop
+DEBUG [6, 4, 3]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:41424
+DEBUG player2_id:78373
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:339936
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:339936
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:45071
+DEBUG player2_id:68711
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:40618
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:40618
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:86133
+DEBUG player2_id:21872
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:262482
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:262482
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:43477
+DEBUG player2_id:91271
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:382710
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:382710
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [6, 1, 2]
+DEBUG change_preflop
+DEBUG [6, 5, 2, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:92934
+DEBUG player2_id:51690
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:39250
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:39250
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 3, 3]
+DEBUG change_preflop
+DEBUG [2, 3, 5, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:62794
+DEBUG player2_id:14799
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:158830
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:158830
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:14097
+DEBUG player2_id:59024
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:436625
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:436625
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:52846
+DEBUG player2_id:16687
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:72922
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:72922
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:97951
+DEBUG player2_id:54471
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:242725
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:242725
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:97471
+DEBUG player2_id:99975
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:328373
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:328373
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 5, 1, 5]
+DEBUG change_preflop
+DEBUG [2, 2, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:71114
+DEBUG player2_id:29302
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:150302
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:150302
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:86625
+DEBUG player2_id:66294
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:418894
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:418894
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:43855
+DEBUG player2_id:45603
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:410444
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:410444
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 2, 3]
+DEBUG change_preflop
+DEBUG [5, 1, 2, 6]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:68421
+DEBUG player2_id:35387
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:266303
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:266303
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 1, 3]
+DEBUG change_preflop
+DEBUG [3, 3, 2, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:95887
+DEBUG player2_id:72613
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:278408
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:278408
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 1, 3, 3]
+DEBUG change_preflop
+DEBUG [1, 6, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:20167
+DEBUG player2_id:88828
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:369113
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:369113
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [6, 2, 1, 2]
+DEBUG change_preflop
+DEBUG [3, 1, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:93429
+DEBUG player2_id:20228
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:397226
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:397226
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 2, 2]
+DEBUG change_preflop
+DEBUG [5, 3, 2, 3]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:51275
+DEBUG player2_id:95145
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:258656
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:258656
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 2]
+DEBUG change_preflop
+DEBUG [1, 1, 2, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:97391
+DEBUG player2_id:14166
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:198980
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:198980
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 2, 3]
+DEBUG change_preflop
+DEBUG [1, 1, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:80168
+DEBUG player2_id:20694
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:315645
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:315645
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 2, 5]
+DEBUG change_preflop
+DEBUG [2, 2, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:83273
+DEBUG player2_id:20072
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:335044
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:335044
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2368
+DEBUG player2_id:48569
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:91358
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:91358
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 4, 5, 5]
+DEBUG change_preflop
+DEBUG [5, 3, 3]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:5441
+DEBUG player2_id:90498
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:76044
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:76044
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:31322
+DEBUG player2_id:61276
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:199100
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:199100
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:43061
+DEBUG player2_id:39011
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:68644
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:68644
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 4, 4]
+DEBUG change_preflop
+DEBUG [3, 1, 3, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:23308
+DEBUG player2_id:79562
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:140863
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:140863
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 3, 3]
+DEBUG change_preflop
+DEBUG [1, 1, 3, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:82249
+DEBUG player2_id:24208
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:416881
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:416881
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 2, 3]
+DEBUG change_preflop
+DEBUG [1, 5, 1, 3]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:72503
+DEBUG player2_id:40544
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:119841
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:119841
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:30561
+DEBUG player2_id:25498
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:270568
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:270568
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 2, 6]
+DEBUG change_preflop
+DEBUG [3, 3, 1, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:7247
+DEBUG player2_id:12331
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:10838
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:10838
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:70863
+DEBUG player2_id:16717
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:359678
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:359678
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [1, 1, 1]
+DEBUG change_preflop
+DEBUG [6, 1, 5, 6]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:2271
+DEBUG player2_id:26797
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:440782
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:440782
+DEBUG connect_to_match
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [2, 5, 1, 2]
+DEBUG change_preflop
+DEBUG [2, 5, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:35757
+DEBUG player2_id:51091
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:41048
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:41048
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [4, 1, 3]
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [3, 1, 2, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:99573
+DEBUG player2_id:62205
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:224192
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:224192
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 3, 5]
+DEBUG change_preflop
+DEBUG [3, 2, 5, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:10745
+DEBUG player2_id:45024
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:360799
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:360799
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 4]
+DEBUG change_preflop
+DEBUG [1, 1, 2, 6]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:80927
+DEBUG player2_id:86160
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:447515
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:447515
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 2, 1, 2]
+DEBUG change_preflop
+DEBUG [6, 5, 2]
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:6769
+DEBUG player2_id:12717
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:390114
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:390114
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 1, 1]
+DEBUG change_preflop
+DEBUG [3, 1, 5]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:55745
+DEBUG player2_id:42090
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:121178
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:121178
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:62623
+DEBUG player2_id:55088
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:398340
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:398340
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:65347
+DEBUG player2_id:64211
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:464043
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:464043
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:83304
+DEBUG player2_id:29092
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:240384
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:240384
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG UserHero object
+DEBUG UserHero object
+DEBUG end_preflop_timer
+DEBUG change_preflop
+DEBUG [5, 2, 2, 6]
+DEBUG change_preflop
+DEBUG [5, 3, 5]
+DEBUG end_change_preflop
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:86954
+DEBUG player2_id:74333
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:16072
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:16072
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG 0
+DEBUG 0
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:66946
+DEBUG player2_id:36205
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:371867
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:371867
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG end_preflop_timer
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:84116
+DEBUG player2_id:11587
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:156277
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:156277
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 5, 1]
+DEBUG change_preflop
+DEBUG [3, 1, 3, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:34634
+DEBUG player2_id:79547
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:245403
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:245403
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 5]
+DEBUG change_preflop
+DEBUG [2, 4, 3, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:19522
+DEBUG player2_id:47442
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:301734
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:301734
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 2, 4]
+DEBUG change_preflop
+DEBUG [3, 5, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:19991
+DEBUG player2_id:36127
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:295286
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:295286
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 2]
+DEBUG change_preflop
+DEBUG [3, 3, 4, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:56799
+DEBUG player2_id:67950
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:257486
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:257486
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 3, 2]
+DEBUG change_preflop
+DEBUG [3, 2, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:93118
+DEBUG player2_id:10441
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:381956
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:381956
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 1]
+DEBUG change_preflop
+DEBUG [1, 3, 5, 4]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:74536
+DEBUG player2_id:28509
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:431115
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:431115
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 6, 2, 3]
+DEBUG change_preflop
+DEBUG [1, 2, 3]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:57813
+DEBUG player2_id:82970
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:132129
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:132129
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 1, 3]
+DEBUG change_preflop
+DEBUG [2, 1, 3, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:77151
+DEBUG player2_id:90068
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:246431
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:246431
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 2, 5]
+DEBUG change_preflop
+DEBUG [2, 3, 5]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:8113
+DEBUG player2_id:9153
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:308662
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:308662
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 6, 2, 3]
+DEBUG change_preflop
+DEBUG [2, 2, 1]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:21134
+DEBUG player2_id:29894
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:60920
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:60920
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 2]
+DEBUG change_preflop
+DEBUG [5, 3, 2, 3]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:31913
+DEBUG player2_id:79146
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:441765
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:441765
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 2, 2, 2]
+DEBUG change_preflop
+DEBUG [2, 3, 2]
+DEBUG end_change_preflop
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:61445
+DEBUG player2_id:76213
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:4295
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:4295
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 2, 1, 3]
+DEBUG change_preflop
+DEBUG [2, 3, 3]
+DEBUG end_change_preflop
+DEBUG [{'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 18}]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:53434
+DEBUG player2_id:61490
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:494809
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:494809
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 1, 5]
+DEBUG change_preflop
+DEBUG [3, 5, 4, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 58}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:29761
+DEBUG player2_id:5640
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:255544
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:255544
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 2, 4]
+DEBUG change_preflop
+DEBUG [2, 5, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 20}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:4390
+DEBUG player2_id:82026
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:469108
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:469108
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 3]
+DEBUG change_preflop
+DEBUG [3, 3, 5, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 20}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:47842
+DEBUG player2_id:3810
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:439704
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:439704
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [4, 3, 1]
+DEBUG change_preflop
+DEBUG [5, 1, 2, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 20}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:11515
+DEBUG player2_id:20913
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:461724
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:461724
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 3, 4]
+DEBUG change_preflop
+DEBUG [3, 3, 2, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 18}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:87802
+DEBUG player2_id:36861
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:269363
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:269363
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 3, 2, 1]
+DEBUG change_preflop
+DEBUG [2, 1, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 18}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:93958
+DEBUG player2_id:58380
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:368596
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:368596
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 5]
+DEBUG change_preflop
+DEBUG [5, 3, 3, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:33501
+DEBUG player2_id:96417
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:266178
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:266178
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 2, 2, 3]
+DEBUG change_preflop
+DEBUG [2, 5, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 113}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:76210
+DEBUG player2_id:60207
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:301751
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:301751
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 1, 1, 2]
+DEBUG change_preflop
+DEBUG [1, 2, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:55138
+DEBUG player2_id:81369
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:119273
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:119273
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 2, 5, 4]
+DEBUG change_preflop
+DEBUG [2, 2, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 97}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:25598
+DEBUG player2_id:76429
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:259844
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:259844
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 3, 1]
+DEBUG change_preflop
+DEBUG [2, 1, 2, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Повелитель арены', 'price': 6, 'attack': 6, 'health': 5, 'id': 113}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:18441
+DEBUG player2_id:86719
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:303737
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:303737
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 1, 2]
+DEBUG change_preflop
+DEBUG [1, 1, 1, 6]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:87508
+DEBUG player2_id:57781
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:15601
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:15601
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 5, 5]
+DEBUG change_preflop
+DEBUG [3, 5, 1, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Иступление. +3 к аттаке', 'title': 'Амарийский берсек', 'price': 2, 'attack': 2, 'health': 3, 'id': 20}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:46790
+DEBUG player2_id:79658
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:402764
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:402764
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 1, 1]
+DEBUG change_preflop
+DEBUG [2, 2, 5, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 8}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:41446
+DEBUG player2_id:50172
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:196117
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:196117
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 4, 3, 5]
+DEBUG change_preflop
+DEBUG [3, 2, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 50}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:68541
+DEBUG player2_id:2433
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:376957
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:376957
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 1, 3]
+DEBUG change_preflop
+DEBUG [4, 2, 5, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 58}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:24946
+DEBUG player2_id:88970
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:102177
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:102177
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 1]
+DEBUG change_preflop
+DEBUG [5, 2, 6, 6]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. восстанавливает две единицы здоровья', 'title': 'Знахарь вуду', 'price': 1, 'attack': 2, 'health': 1, 'id': 8}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:34462
+DEBUG player2_id:61506
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:286384
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:286384
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 1, 6]
+DEBUG change_preflop
+DEBUG [3, 2, 4, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:84252
+DEBUG player2_id:62958
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:385016
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:385016
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 1, 1]
+DEBUG change_preflop
+DEBUG [2, 5, 5, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 16}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:28071
+DEBUG player2_id:71572
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:66916
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:66916
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 6, 4, 5]
+DEBUG change_preflop
+DEBUG [1, 3, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 50}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:18319
+DEBUG player2_id:80211
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:21636
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:21636
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 5, 5]
+DEBUG change_preflop
+DEBUG [5, 5, 1, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Гоблин телохранитель', 'price': 5, 'attack': 4, 'health': 5, 'id': 97}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:63971
+DEBUG player2_id:33197
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:174969
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:174969
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 1, 6]
+DEBUG change_preflop
+DEBUG [3, 1, 2, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Солдат златоземья', 'price': 1, 'attack': 1, 'health': 2, 'id': 16}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:3313
+DEBUG player2_id:82418
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:158162
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:158162
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 3, 5, 5]
+DEBUG change_preflop
+DEBUG [1, 2, 3]
+DEBUG end_change_preflop
+DEBUG {'description': '', 'title': 'Ящер кровавой топи', 'price': 2, 'attack': 3, 'health': 2, 'id': 42}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:13867
+DEBUG player2_id:48527
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:426933
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:426933
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 2, 1]
+DEBUG change_preflop
+DEBUG [6, 3, 5, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 29}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:36243
+DEBUG player2_id:68535
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:464824
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:464824
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 1, 5]
+DEBUG change_preflop
+DEBUG [4, 5, 1, 1]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:46897
+DEBUG player2_id:87458
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:334556
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:334556
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [3, 1, 5]
+DEBUG change_preflop
+DEBUG [5, 3, 5, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Щитоносец', 'price': 1, 'attack': 0, 'health': 4, 'id': 18}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:50793
+DEBUG player2_id:22052
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:372473
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:372473
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 6, 3, 5]
+DEBUG change_preflop
+DEBUG [1, 1, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 91}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:79261
+DEBUG player2_id:46330
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:360618
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:360618
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 1, 1, 6]
+DEBUG change_preflop
+DEBUG [5, 5, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': "Щитоносец Сен'джин", 'price': 4, 'attack': 4, 'health': 5, 'id': 91}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:33958
+DEBUG player2_id:21041
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:476358
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:476358
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 6, 1]
+DEBUG change_preflop
+DEBUG [5, 2, 2, 3]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Призывает на поле боя оруженосца +2/+2\r\n', 'title': 'Рыцарь длани', 'price': 5, 'attack': 4, 'health': 4, 'id': 105}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG Tornado Launcher. IOLoop.instance stop
+DEBUG Tornado Launcher. IOLoop.instance start
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:36975
+DEBUG player2_id:30141
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:52503
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:52503
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 5, 4, 1]
+DEBUG change_preflop
+DEBUG [1, 6, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Другие ваши существа получают +1 к аттаке\r\n', 'title': 'Лидер рейда', 'price': 3, 'attack': 2, 'health': 2, 'id': 52}
+DEBUG index: 0
+DEBUG position: 0
+DEBUG white
+DEBUG index: 0
+DEBUG position: 0
+DEBUG white
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:30461
+DEBUG player2_id:3746
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:99482
+DEBUG init Game
+DEBUG connect_to_match
+DEBUG MatchHandler::Open match_id:99482
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [2, 3, 1]
+DEBUG change_preflop
+DEBUG [2, 5, 3, 5]
+DEBUG end_change_preflop
+DEBUG {'description': 'Провокация', 'title': 'Гризли сталемех', 'price': 3, 'attack': 3, 'health': 3, 'id': 50}
+DEBUG index: 2
+DEBUG position: 0
+DEBUG white
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:8072
+DEBUG player2_id:52129
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:263108
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:263108
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [5, 6, 1]
+DEBUG change_preflop
+DEBUG [3, 3, 6, 2]
+DEBUG end_change_preflop
+DEBUG {'description': 'Боевой клич. Вы берете карту', 'title': 'Инженер новичек', 'price': 2, 'attack': 1, 'health': 1, 'id': 29}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:16050
+DEBUG player2_id:42270
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:221209
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:221209
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [4, 3, 2]
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG end_preflop_timer
+DEBUG SocketHandler::Open
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG SocketHandler::onmessage
+DEBUG player1_id:36183
+DEBUG player2_id:59857
+DEBUG 1
+DEBUG SocketHandler::Close
+DEBUG SocketHandler::Close
+DEBUG MatchHandler::Open match_id:294042
+DEBUG init Game
+DEBUG MatchHandler::Open match_id:294042
+DEBUG connect_to_match
+DEBUG connect_to_match
+DEBUG change_preflop
+DEBUG [1, 5, 6]
+DEBUG change_preflop
+DEBUG [1, 3, 6, 4]
+DEBUG end_change_preflop
+DEBUG {'description': 'Призывает на поле боя вепря +1/+1\r\n', 'title': 'Охотница на иглошкурых', 'price': 3, 'attack': 2, 'health': 3, 'id': 58}
+DEBUG MatchHandler::Close
+DEBUG MatchHandler::Close
