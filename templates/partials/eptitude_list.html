@@ -4,9 +4,16 @@
     <ul class="eptitude_list">
          {% for eptitude in eptitudes %}
             <li>
-                <div>вид: <strong>{{ parse_type|eptitude_type:eptitude.eptitude_type }}</strong></div>
+                <div>вид: <strong>{{ parse_type|type:eptitude.type }}</strong></div>
                 <div>момент использования:<strong> {{ parse_period|period:eptitude.period }}</strong></div>
                 <div>уровень использования:<strong> {{ parse_level|level:eptitude.level }}</strong></div>
+                <div>объем использования:<strong> {{ parse_attachment|attachment:eptitude.attachment }}</strong></div>
+                <div>в том числе героя:<strong> {{ attach_hero|bool:eptitude.attach_hero }}</strong></div>
+                <div>в том числе инициатора:<strong> {{ attach_initiator|bool:eptitude.attach_initiator }}</strong></div>
+                {% if eptitude.condition %}
+                <div>дополнительное условие:<strong> {{ parse_condition|condition:eptitude.condition }}</strong></div>
+                {% endif %}
+
                 {% if eptitude.unit %}
                     <div>существо:<strong> {{ eptitude.unit.title }}</strong></div>
                 {% else %}
@@ -19,10 +26,21 @@
                     {% endif %}
                 {% endif %}
                 {% if eptitude.dependency %}
-                    <div>условие:<strong> {{ parse_type|eptitude_type:eptitude.dependency.eptitude_type }}</strong> </div>
+                    <div>условие:<strong> {{ parse_type|type:eptitude.dependency.type }}</strong></div>
                 {% endif %}
-                <div>сила использования: <strong>{{ eptitude.power }}</strong></div>
+                {% if eptitude.lifecycle %}
+                    <div>время действия способности: <strong>{{ eptitude.lifecycle }} ход(а)</strong></div>
+                {% endif %}
+                {% if eptitude.power %}
+                    <div>сила использования: <strong>{{ eptitude.power }}</strong></div>
+                {% endif %}
+                {% if eptitude.dynamic %}
+                    <div><strong>динамическая способность</strong></div>
+                {% endif %}
+
                 <a href="{% url "edit_eptitude" card.id eptitude.id %}">редактировать</a>
+                <a href="{% url "delete_eptitude" card.id eptitude.id %}">удалить</a>
+
             </li>
 
          {% endfor %}

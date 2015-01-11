@@ -3,7 +3,14 @@
 {% load card_tags %}
 
 {% block navigation %}
-
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li class="active">карты</li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
 {% endblock %}
 
 {% block content %}
@@ -12,6 +19,9 @@
             {% for card in cards %}
                 <li>
                     <div class="card">
+                        {% if card.book %}
+                        <div class="card_book">{{ card.book.title }}</div>
+                        {% endif %}
                         <div class="card_price">{{ card.price }}</div>
                         <div class="card_title">{{ card.title }}</div>
                         <div class="card_attack">{{ card.attack }}</div>
@@ -34,6 +44,16 @@
                             {% else %}
                                 {% trans "eptitude" %}
                             {% endif %}</div>
+                         {% if card.eptitudes %}
+                        <div class="btn-group-sm card_eptitude">
+                          <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Способности ({{ card.eptitudes.count }})</button>
+                            <ul class="dropdown-menu">
+                              {% for eptitude in card.eptitudes %}
+                                 <li >{{ parse_type|type:eptitude.type }}</li>
+                              {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
                         <a style="position:absolute; margin-top:240px" href="{%  url "edit_card" card.id %}">редактировать</a>
                         <a style="position:absolute; margin-top:255px" href="{%  url "delete_card" card.id %}">удалить</a>
                     </div>

@@ -2,9 +2,15 @@
 {% load i18n %}
 {% load card_tags %}
 
+
 {% block navigation %}
     <nav>
-
+        <ul>
+            <li class="active">герои</li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
     </nav>
 {% endblock %}
 

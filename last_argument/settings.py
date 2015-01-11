@@ -16,10 +16,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# 'NAME': '/www/db/la.db',                      # Or path to database file if using sqlite3.
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/www/db/la.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'D:/practice/last_argument/la.db',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -64,6 +66,8 @@ MEDIA_ROOT = ''
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
+PROJECT_DIR = os.path.dirname(__file__)
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
@@ -75,8 +79,15 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 # Additional locations of static files
+
+
 STATICFILES_DIRS = (
-    "/www/django/last_argument/static",
+    os.path.join(PROJECT_DIR,'static'),
+    os.path.join(
+        os.path.dirname(__file__),
+        'static',
+    ),
+    'D:/practice/last_argument/server/la_server/static'
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -117,7 +128,7 @@ ROOT_URLCONF = 'last_argument.urls'
 WSGI_APPLICATION = 'last_argument.wsgi.application'
 
 TEMPLATE_DIRS = (
-    "/www/django/last_argument/templates",
+    'D:/practice/last_argument/server/la_server/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -135,6 +146,8 @@ INSTALLED_APPS = (
     'game',
     'card',
     'hero',
+    'book',
+    'bookMask',
     'api',
     'userprofile',
     'django.contrib.admin',
@@ -165,7 +178,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/www/django/last_argument/last_argument.log',
+            'filename': 'D:/practice/last_argument/la.log',
             'formatter': 'simple'
         },
          # Send all messages to console

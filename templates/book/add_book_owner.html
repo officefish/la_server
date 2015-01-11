@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li class="active">книги</li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="add_owner_book_form" action="{{ request.get_full_path }}" method="post" >
+            <h2>{% trans 'Add Book Owner' %}</h2>
+            {% csrf_token %}
+            {% include "partials/form_fields.html" %}
+            <button name="add_book_owner" type="submit" value="add_book_owner" class="btn btn-group-sm btn-primary" >{% trans 'Add Book Owner' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

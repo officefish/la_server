@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li class="active">расы</li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="create_race_form" action="{{ request.get_full_path }}" method="post" >
+            {% csrf_token %}
+             <h2>{% trans 'Create Race' %}</h2>
+            {% include "partials/form_fields.html" %}
+            <button name="create_race_submit" type="submit" value="Create Race" class="btn btn-large btn-primary" >{% trans 'Create Race' %}</button>
+       </form>
+        </div>
+    </div>
+
+{% endblock %}

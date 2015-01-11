@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li class="active">книги</li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="book_title">книга: <strong>{{ book.title }}</strong></div>
+    <div class="cards_list">
+        <ul >
+            {% for card in cards %}
+                <li>
+                    <div class="card">
+                        {% if card.book %}
+                        <div class="card_book">{{ card.book.title }}</div>
+                        {% endif %}
+                        <div class="card_price">{{ card.price }}</div>
+                        <div class="card_title">{{ card.title }}</div>
+                        <div class="card_attack">{{ card.attack }}</div>
+                        <div class="card_health">{{ card.health }}</div>
+                        <div class="card_description">{{ card.description }}</div>
+                        {% if card.auxiliary %}
+                            <div class='card_auxiliary'>техническая</div>
+                        {% endif %}
+                        <div class="card_type">
+                            {% if card.type %}
+                                {% if card.subrace %}
+                                    {% trans card.subrace.title %}
+                                {% else %}
+                                    {% if card.race %}
+                                        {% trans card.race.title %}
+                                    {% else %}
+                                        {% trans "unit" %}
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% trans "eptitude" %}
+                            {% endif %}</div>
+                        {% if card.eptitudes %}
+                        <div class="btn-group-sm card_eptitude">
+                          <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Способности ({{ card.eptitudes.count }})</button>
+                            <ul class="dropdown-menu">
+                              {% for eptitude in card.eptitudes %}
+                                 <li >{{ parse_type|type:eptitude.type }}</li>
+                              {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        <a style="position:absolute; margin-top:240px" href="{%  url "edit_card_for_book" card.id book.id %}">редактировать</a>
+                        <a style="position:absolute; margin-top:255px" href="{%  url "delete_card_for_book" card.id book.id %}">удалить</a>
+                    </div>
+                </li>
+            {% endfor %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url "create_card_for_book" book.id %}">
+                        <div class="create_card">
+                            Создать карту
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a style="text-decoration: none;" href="{% url "book_mask" book.id %}">
+                        <div class="mask">
+                            Маска
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li class="active">книги</li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="cards_list">
+        <ul >
+            {% for book in books %}
+                <li>
+                    <a href="{% url "book" book.id %}">
+                    <div class="card">
+                        <div class="card_title">{{ book.title }}</div>
+                        <div class="card_description">{{ book.description }}</div>
+                    </div>
+                    </a>
+                    <a style="position:absolute; margin-top:-60px" href="{%  url "edit_book" book.id %}">редактировать</a>
+                    <a style="position:absolute; margin-top:-45px" href="{%  url "delete_book" book.id %}">удалить</a>
+                </li>
+            {% endfor %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url "create_book" %}">
+                        <div class="create_card">
+                            Создать книгу
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+
+{% endblock %}

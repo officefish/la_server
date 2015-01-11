@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li class="active">карты</li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -9,10 +18,13 @@
             <h2>{% trans 'Edit Card' %}</h2>
             {% csrf_token %}
             {% include "partials/form_fields.html" %}
+            {% if eptitudes %}
+            {% include "partials/eptitude_list.html" %}
+            {% endif %}
             <button name="create_eptitude" type="submit" value="create_eptitude" class="btn btn-group-sm btn-primary" >{% trans 'Create Eptitude' %}</button>
             <button name="create_race" type="submit" value="create_race" class="btn btn-group-sm btn-primary" >{% trans 'Create Race' %}</button>
             <button name="create_subrace" type="submit" value="create_subrace" class="btn btn-group-sm btn-primary" >{% trans 'Create Subrace' %}</button>
-            <button name="edit_submit" type="submit" value="Edit Card" class="btn btn-large btn-primary" >{% trans 'Edit Card' %}</button>
+            <button name="edit_submit" type="submit" value="Edit Card" class="btn btn-large btn-primary" >{% trans 'Save' %}</button>
             <a href="{% url "cards_list" %}">отмена</a>
         </form>
         <br/>

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+{% load mask_tags %}
+
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li class="active">книги</li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="book_title">маска для книги: <strong>{{ book.title }}</strong></div>
+    <div>
+        <ul >
+            {% for slot in slots %}
+                <li>
+                    <div class="maskSlot">
+                        <div class="card">
+                            {% if slot.card.book %}
+                            <div class="card_book">{{ slot.card.book.title }}</div>
+                            {% endif %}
+                            <div class="card_price">{{ slot.card.price }}</div>
+                            <div class="card_title">{{ slot.card.title }}</div>
+                            <div class="card_attack">{{ slot.card.attack }}</div>
+                            <div class="card_health">{{ slot.card.health }}</div>
+                            <div class="card_description">{{ slot.card.description }}</div>
+                            {% if slot.card.auxiliary %}
+                                <div class='card_auxiliary'>техническая</div>
+                            {% endif %}
+                            <div class="card_type">
+                                {% if slot.card.type %}
+                                    {% if slot.card.subrace %}
+                                        {% trans slot.card.subrace.title %}
+                                    {% else %}
+                                        {% if slot.card.race %}
+                                            {% trans slot.card.race.title %}
+                                        {% else %}
+                                            {% trans "unit" %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% else %}
+                                    {% trans "eptitude" %}
+                                {% endif %}</div>
+                            {% if slot.card.eptitudes %}
+                            <div class="btn-group-sm card_eptitude">
+                              <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Способности ({{ slot.card.eptitudes.count }})</button>
+                                <ul class="dropdown-menu">
+                                  {% for eptitude in slot.card.eptitudes %}
+                                     <li >{{ parse_type|type:eptitude.type }}</li>
+                                  {% endfor %}
+                                </ul>
+                            </div>
+                         {% endif %}
+                         <div class="maskItem">
+                            <div class="maskItemBlock">редкость: <strong>{{ parse_rarity|rarity:slot.item.rarity }}</strong></div>
+                            <div class="maskItemBlock">цена покупки: <strong>{{ slot.item.buy_cost}}</strong></div>
+                            <div class="maskItemBlock">цена продажи: <strong>{{ slot.item.sale_cost}}</strong></div>
+                            <div class="maskItemBlock">доступно простых: <strong>{{ slot.item.access_simple}}</strong></div>
+                            <div class="maskItemBlock">максимально простых: <strong>{{ slot.item.max_simple}}</strong></div>
+                            <div class="maskItemBlock">доступно золотых: <strong>{{slot.item.access_golden}}</strong></div>
+                            <div class="maskItemBlock">максимально золотых: <strong>{{slot.item.max_golden}}</strong></div>
+                            <div class="maskItemBlock">максимально золотых: <strong>{{slot.item.max_golden}}</strong></div>
+                            <div class="maskItemBlock">можно распылять: <strong>{{ parse_craft|bool:slot.item.craft_available }}</strong></div>
+                            <a class="btn btn-large btn-primary" href="{%  url "edit_book_mask_item" book.id slot.item.id %}">редактировать</a>
+                            {% if slot.item.access_simple %}
+                                <div class="access_card"><strong>доступна</strong></div>
+                            {% endif %}
+                        </div>
+                        </div>
+
+                    </div>
+                </li>
+        {% endfor %}
+{% endblock %}

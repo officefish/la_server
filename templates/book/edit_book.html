@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li class="active">книги</li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="create_book_form" action="{{ request.get_full_path }}" method="post" >
+            <h2>{% trans 'Edit Book' %}</h2>
+            {% csrf_token %}
+            {% include "partials/form_fields.html" %}
+                {% if book.heroes.count %}
+                <h6>Heroes, who has this book: </h6>
+                <ul class="hero_list">
+                    {% for hero in book.heroes.all %}
+                        <li>{{ hero.title }} <a href="{% url "remove_book_owner" book.id hero.id %}">удалить</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+            <button name="add_book_owner" type="submit" value="add_book_owner" class="btn btn-sm btn-primary" >{% trans 'Add Book Owner' %}</button>
+            <br/>
+            <br/>
+            <button name="create_submit" type="submit" value="edit_book" class="btn btn-large btn-primary" >{% trans 'Edit Book' %}</button>
+
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

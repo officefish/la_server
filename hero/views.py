@@ -102,3 +102,5 @@ def delete_hero (request,hero_id):
 
     return HttpResponseRedirect(redirect_to)
 
+
+

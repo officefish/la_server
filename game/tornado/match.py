@@ -20,7 +20,7 @@ class MatchHandler(websocket.WebSocketHandler):
     def open(self, match_id):
         logger.debug('MatchHandler::Open match_id:%s' % match_id)
 
-        redis_client = redis.StrictRedis ();
+        redis_client = redis.StrictRedis()
         match = 'la_game_match:%s' % match_id
 
         cached_game_id =(redis_client.hget(match, 'id'))
@@ -58,6 +58,9 @@ class MatchHandler(websocket.WebSocketHandler):
 
     def handle_request(self, response):
         logger.debug('MatchHandler::handle_request')
+
+    def isWhite(self):
+        return self.id == self.match.getWhiteId()
 
 
     def on_message(self, message):
@@ -118,8 +121,6 @@ class MatchHandler(websocket.WebSocketHandler):
                 self.match.setWhiteHeroLevel (self.match.getPlayer2_level())
                 self.match.setBlackHeroLevel (self.match.getPlayer1_level())
 
-
-
             self.match.generateMatchDecks()
 
             self.match.runPreflopTimer()
@@ -128,6 +129,7 @@ class MatchHandler(websocket.WebSocketHandler):
             self.match.generateHand (4, False)
 
             self.match.generateHeroesHealth()
+            self.match.generateHeroesUnits()
 
             self.response = {}
             self.response['status'] = 'success'
@@ -144,6 +146,7 @@ class MatchHandler(websocket.WebSocketHandler):
             self.data['opponent_health'] = self.match.getBlackHeroHealth()
 
             self.data['mode'] = self.match.getMode()
+            self.data['white'] = True
             self.response['data'] = self.data
             self.dump = json.dumps(self.response)
             self.match.getWhite().write_message (self.dump)
@@ -163,6 +166,7 @@ class MatchHandler(websocket.WebSocketHandler):
             self.data['opponent_health'] = self.match.getWhiteHeroHealth()
 
             self.data['mode'] = self.match.getMode()
+            self.data['white'] = False
             self.response['data'] = self.data
             self.dump = json.dumps(self.response)
             self.match.getBlack().write_message(self.dump)
@@ -246,38 +250,140 @@ class MatchHandler(websocket.WebSocketHandler):
 
                 if self.match.isReady():
 
-                    self.match.incrementWhitePrice()
-
-                    self.step_card = self.match.getWhiteCard()
+                    scenario = self.match.start()
 
                     response = {}
                     response['status'] = 'success'
-                    response['type'] = 'ready'
+                    response['type'] = 'scenario'
                     data = {}
-                    data['price'] = self.match.getWhitePrice()
-                    data['card'] = self.step_card
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+
+        if type == 'play_card':
+                    logger.debug ('play_card')
+
+                    index =  event['data']['index']
+                    position = event['data']['position']
+                    whiteFlag = self.isWhite()
+                    self.match.addUnit(index, position, whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'end_step':
+                    logger.debug ('end_step')
+
+                    scenario = self.match.endStep()
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
                     response['data'] = data
                     dump = json.dumps(response)
                     self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+
+        if type == 'classic_attack':
+                    logger.debug ('classic_attack')
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    initiatorIndex =  event['data']['initiatorIndex']
+                    logger.debug ('initiatorIndex:%s' % initiatorIndex)
+
+                    targetIndex =  event['data']['targetIndex']
+                    logger.debug ('targetIndex:%s' % targetIndex)
+
+                    scenario = self.match.classicAttack (initiatorIndex, targetIndex, self.whiteFlag)
 
                     response = {}
                     response['status'] = 'success'
-                    response['type'] = 'opponent_step'
+                    response['type'] = 'scenario'
                     data = {}
-                    data['opponent_price'] = self.match.getWhitePrice()
-                    data['opponent_card'] = self.step_card
+                    data['scenario'] = scenario
                     response['data'] = data
                     dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
 
-        if type == 'play_card':
-                    logger.debug('index: %s' % event['data']['index'])
-                    logger.debug('position: %s' % event['data']['position'])
+        if type == 'init_select':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    selectData = event['data']['serviceData']
+
+                    scenario = self.match.continueAddUnit (selectData, self.whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'cancel_select':
 
                     if self.id == self.match.getWhiteId():
-                         logger.debug('white')
+                         self.whiteFlag = True
                     else:
-                         logger.debug('black')
+                         self.whiteFlag = False
+
+                    scenario = self.match.cancelSelect (self.whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+                    self.write_message (dump)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li class="active">расы</li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <h2>{% trans 'Races' %}</h2>
+            <ul>
+                {% for race in races %}
+                <li>
+                    {{ race.title }} <br/>
+                    <a href="{%  url "edit_race" race.id %}">редактировать</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
