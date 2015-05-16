@@ -15,6 +15,10 @@ class UserProfile(models.Model):
     actual_deck = models.ForeignKey(Deck, blank=True, null=True)
     actual_hero = models.ForeignKey(UserHero, blank=True, null=True)
 
+    #
+    dust = models.IntegerField (default=15000)
+    money = models.IntegerField(default=300)
+
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)

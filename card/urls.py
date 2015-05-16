@@ -19,5 +19,10 @@ urlpatterns = patterns('',
     url(r'^create_eptitude_for_book_card/(?P<card_id>\d+)/(?P<book_id>\d+)$', 'card.views.create_eptitude_for_book_card', name='create_eptitude_for_book_card'),
     url(r'^edit_eptitude_for_book_card/(?P<card_id>\d+)/(?P<eptitude_id>\d+)/(?P<book_id>\d+)$', 'card.views.edit_eptitude_for_book_card', name='edit_eptitude_for_book_card'),
     url(r'^delete_eptitude_for_book_card/(?P<card_id>\d+)/(?P<eptitude_id>\d+)/(?P<book_id>\d+)$', 'card.views.delete_eptitude_for_book_card', name='delete_eptitude_for_book_card'),
-
+    url(r'^create_eptitude_for_achieve/(?P<achieve_id>\d+)$', 'card.views.create_eptitude_for_achieve',
+        name='create_eptitude_for_achieve'),
+    url(r'^edit_eptitude_for_achieve/(?P<achieve_id>\d+)/(?P<eptitude_id>\d+)/$', 'card.views.edit_eptitude_for_achieve',
+        name='edit_eptitude_for_achieve'),
+    url(r'^delete_eptitude_for_achieve/(?P<achieve_id>\d+)/(?P<eptitude_id>\d+)/$', 'card.views.delete_eptitude_for_achieve',
+        name='delete_eptitude_for_achieve'),
     )

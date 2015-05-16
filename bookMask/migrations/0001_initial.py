@@ -7,15 +7,15 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('card', '0001_initial'),
         ('book', '__first__'),
-        ('card', '0021_auto_20141225_0152'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='BookMask',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('book', models.OneToOneField(to='book.Book')),
             ],
             options={
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MaskCollector',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
             ],
             options={
             },
@@ -34,14 +34,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MaskItem',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('rarity', models.IntegerField(default=0)),
-                ('buy_cost', models.IntegerField(default=0)),
-                ('sale_cost', models.IntegerField(default=0)),
+                ('buy_cost', models.IntegerField(default=40)),
+                ('sale_cost', models.IntegerField(default=10)),
                 ('access_simple', models.IntegerField(default=0)),
-                ('max_simple', models.IntegerField(default=0)),
+                ('max_simple', models.IntegerField(default=2)),
                 ('access_golden', models.IntegerField(default=0)),
-                ('max_golden', models.IntegerField(default=0)),
+                ('max_golden', models.IntegerField(default=2)),
+                ('craft_available', models.BooleanField(default=True)),
                 ('card', models.OneToOneField(to='card.Card')),
             ],
             options={
@@ -51,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='maskcollector',
             name='item',
-            field=models.ForeignKey(to='bookMask.MaskItem', related_name='mask_item'),
+            field=models.ForeignKey(related_name='mask_item', to='bookMask.MaskItem'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -63,7 +64,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bookmask',
             name='items',
-            field=models.ManyToManyField(through='bookMask.MaskCollector', to='bookMask.MaskItem'),
+            field=models.ManyToManyField(to='bookMask.MaskItem', through='bookMask.MaskCollector'),
             preserve_default=True,
         ),
     ]

@@ -148,7 +148,9 @@ INSTALLED_APPS = (
     'hero',
     'book',
     'bookMask',
+    'group',
     'api',
+    'achieve',
     'userprofile',
     'django.contrib.admin',
     # Uncomment the next line to enable the admin:

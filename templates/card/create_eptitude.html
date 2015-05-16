@@ -7,6 +7,7 @@
             <li><a href="{% url 'books_list' %}">книги</a></li>
             <li class="active">карты</li>
             <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -16,8 +17,14 @@
         <div class="col col-md-8 pull-right">
             <form id="create_eptitude_form" action="{{ request.get_full_path }}" method="post" >
             <h2>{% trans 'Create Eptitude' %}</h2>
+            {% if card %}
             <div>карта: {{ card.title }}</div>
             <div>описание: {{ card.description }}</div>
+            {% endif %}
+            {% if achieve %}
+            <div>способность: {{ achieve.title }}</div>
+            <div>описание: {{ achieve.description }}</div>
+            {% endif %}
             {% csrf_token %}
             {% include "partials/form_fields.html" %}
             <button name="create_eptitude_submit" type="submit" value="Create Card" class="btn btn-large btn-primary" >{% trans 'Create Eptitude' %}</button>

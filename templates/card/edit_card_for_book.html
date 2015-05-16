@@ -7,6 +7,7 @@
             <li class="active">книги</li>
             <li><a href="{% url 'cards_list' %}">карты</a></li>
             <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -24,6 +25,7 @@
             <button name="create_eptitude" type="submit" value="create_eptitude" class="btn btn-group-sm btn-primary" >{% trans 'Create Eptitude' %}</button>
             <button name="create_race" type="submit" value="create_race" class="btn btn-group-sm btn-primary" >{% trans 'Create Race' %}</button>
             <button name="create_subrace" type="submit" value="create_subrace" class="btn btn-group-sm btn-primary" >{% trans 'Create Subrace' %}</button>
+            <button name="create_group" type="submit" value="create_group" class="btn btn-group-sm btn-primary" >{% trans 'Create Group' %}</button>
             <button name="edit_submit" type="submit" value="Edit Card" class="btn btn-large btn-primary" >{% trans 'Save' %}</button>
             <a href="{% url "cards_list" %}">отмена</a>
         </form>

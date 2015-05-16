@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+{% load mask_tags %}
+
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li class="active">способности</li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <ul >
+            {% for slot in slots %}
+                <li>
+                    <div class="maskSlot">
+                        <div class="card">
+                            <div class="card_book">
+                                {% if slot.achieve.autonomic %}{% trans "autonomic" %}
+                                {% else %}{% trans "common" %}
+                            {% endif %}
+                            </div>
+                            <div class="card_price">{{ slot.achieve.price }}</div>
+                            <div class="card_title">{{ slot.achieve.title }}</div>
+                            <div class="owners">{% trans "owners" %}:{{ slot.achieve.owners.count }}</div>
+                            <div class="card_description">{{ slot.achieve.description }}</div>
+                            <div class="card_type">
+                                 {% if slot.achieve.type %}
+                                    {% trans "spell to target" %}
+                                 {% else %}
+                                    {% trans "spell" %}
+                                 {% endif %}
+                             </div>
+                            {% if slot.achieve.eptitudes %}
+                            <div class="btn-group-sm card_eptitude">
+                              <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Способности ({{ slot.achieve.eptitudes.count }})</button>
+                                <ul class="dropdown-menu">
+                                  {% for eptitude in slot.achieve.eptitudes %}
+                                     <li >{{ parse_type|type:eptitude.type }}</li>
+                                  {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                            <div class="maskItem">
+                            <div class="maskItemBlock">редкость: <strong>{{ parse_rarity|rarity:slot.rarity }}</strong></div>
+                            <div class="maskItemBlock">цена покупки: <strong>{{ slot.buy_cost}}</strong></div>
+                            <div class="maskItemBlock">цена продажи: <strong>{{ slot.sale_cost}}</strong></div>
+                            <div class="maskItemBlock">доступно: <strong>{{ slot.access}}</strong></div>
+                            <div class="maskItemBlock">можно распылять: <strong>{{ parse_craft|bool:slot.craft_available }}</strong></div>
+                             <a class="btn btn-large btn-primary" href="{%  url "edit_achieve_mask" slot.id %}">редактировать</a>
+                            {% if slot.item.access_simple %}
+                                <div class="access_card"><strong>доступна</strong></div>
+                            {% endif %}
+                        </div>
+                        </div>
+
+                    </div>
+                </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

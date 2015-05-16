@@ -9,6 +9,8 @@ from hero import  urls as hero_urls
 from api import urls as api_urls
 from book import urls as book_urls
 from bookMask import urls as book_mask_urls
+from group import  urls as group_urls
+from achieve import urls as achieve_urls
 
 urlpatterns = patterns('',
 
@@ -17,7 +19,8 @@ urlpatterns = patterns('',
     url(r'^books/', include(book_urls), name='books'),
     url(r'^mask/', include(book_mask_urls), name='mask'),
     url(r'^api/', include(api_urls), name='api'),
-
+    url(r'^groups/', include(group_urls), name='group'),
+    url(r'^achieves/',include(achieve_urls),name='achieve'),
     # Examples:
     # url(r'^$', 'last_argument.views.home', name='home'),
     # url(r'^last_argument/', include('last_argument.foo.urls')),

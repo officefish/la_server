@@ -14,12 +14,15 @@ logger =  logging.getLogger('game_handler')
 from hero.models import UserHero, Hero
 from card.models import Deck, DeckCollector, DeckItem
 from card.models import Collection, CollectionItem, CollectionCollector
+from card.models import AchieveCollection, AchieveCollectionItem, AchieveCollector
+from achieve.models import Achieve, AchieveMask
 
 from card.models import Card
 
 from userprofile.models import UserProfile
 
-from bookMask.models import BookMask
+from bookMask.models import BookMask, MaskItem
+from book.models import Book
 
 def selectDeck (request):
     id = request.GET['user_id']
@@ -43,6 +46,78 @@ def selectDeck (request):
     response_data['level'] = profile.actual_hero.level
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def getAchievesList (request):
+    id = request.GET['user_id']
+    hero_id = request.GET['hero_id']
+
+    success = False
+    response_data = {}
+
+    '''
+    if int(id) == request.user.id:
+         success = True
+         response_data['status'] = 'success'
+    else:
+         response_data['status'] = 'error'
+         response_data['text'] = 'The request user id and authontificated user id is not the same. (auth.id:%s)' % request.user.id
+    '''
+
+    success = True
+
+
+    if (success):
+        user = User.objects.get(id=id)
+        hero = Hero.objects.get(id=hero_id)
+        userHero = UserHero.objects.get(owner=user, hero=hero)
+
+        try:
+            collection = AchieveCollection.objects.get (owner=user)
+            checkNewAvailableAchieves(user, collection)
+        except AchieveCollection.DoesNotExist:
+            collection = AchieveCollection.objects.create (owner=user)
+            generateDefaultAchieveCollection (user, collection)
+
+        achieves = collection.items.filter(owner=hero)
+
+    response_data['collection_count'] = collection.items.count()
+    response_data['status'] = 'success'
+    response_data['achieves'] = getAchievesData(achieves)
+    response_data['hero_id'] = hero_id
+    response_data['hero_vocation'] = hero.vocation
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def checkNewAvailableAchieves(user, collection):
+    achieveMasks = AchieveMask.objects.filter(access=1)
+    for mask in achieveMasks:
+        try:
+            item = AchieveCollectionItem.objects.get(achieve=mask.achieve, owner=user)
+        except AchieveCollectionItem.DoesNotExist:
+            item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user)
+            AchieveCollector.objects.create(item=item, collection=collection)
+
+def generateDefaultAchieveCollection (user, collection):
+    achieveMasks = AchieveMask.objects.filter(access=1)
+    for mask in achieveMasks:
+        item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user)
+        AchieveCollector.objects.create(item=item, collection=collection)
+
+
+def getAchievesData(achieves):
+    data = []
+
+    for item in achieves:
+        achieveData = {}
+        achieveData['title'] = item.achieve.title
+        achieveData['description'] = item.achieve.description
+        achieveData['price'] = item.achieve.price
+        achieveData['autonomic'] = item.achieve.autonomic
+        achieveData['type'] = item.achieve.type
+        achieveData['id'] = item.id
+        data.append(achieveData)
+    return data
+
 
 def getDeckList (request):
     id = request.GET['user_id']
@@ -340,7 +415,7 @@ def initBooks (user, userHero, response_data):
     hero = userHero.hero
     heroBooks = hero.book_set.all()
 
-    items = collection.items.all()
+    items = collection.items.all().order_by('card__price')
     for item in items:
         itemData = {}
         itemData['count'] = item.count
@@ -467,6 +542,108 @@ def heroCollectionContainsBook (bookData, heroBooks):
 
     return response
 
+def destroyCard (request):
+    id = request.GET['user_id']
+    user = User.objects.get(id=id)
+
+    cardId = request.GET['card_id']
+    card = Card.objects.get (id=cardId)
+
+    golden = request.GET['golden']
+    golden = bool(int(golden))
+
+    response_data = {}
+
+    profile = UserProfile.objects.get (user=user)
+
+    maskItem = MaskItem.objects.get (card=card)
+
+    if golden:
+        totalCost = maskItem.sale_cost * 2
+    else:
+        totalCost = maskItem.sale_cost
+
+    try:
+        collection = Collection.objects.get (owner=user)
+        collectionItem = CollectionItem.objects.get (card=card, owner=collection.owner, golden=golden)
+
+        count = collectionItem.count - 1
+
+        collectionItem.count = count
+        collectionItem.save()
+
+        profile.dust = profile.dust + totalCost
+        profile.save()
+
+        if count == 0:
+            collectionItem.delete()
+
+        response_data['success'] = True
+        response_data['count'] = count
+        response_data['golden'] = golden
+        response_data['dust'] = profile.dust
+
+
+    except CollectionItem.DoesNotExist:
+         response_data['success'] = False
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+
+def craftCard (request):
+    id = request.GET['user_id']
+    user = User.objects.get(id=id)
+
+    cardId = request.GET['card_id']
+    card = Card.objects.get (id=cardId)
+
+    golden = request.GET['golden']
+    golden = bool(int(golden))
+
+    response_data = {}
+
+    profile = UserProfile.objects.get (user=user)
+
+    maskItem = MaskItem.objects.get (card=card)
+
+    if golden:
+        totalCost = maskItem.buy_cost * 2
+    else:
+        totalCost = maskItem.buy_cost
+
+    if totalCost <= profile.dust:
+        collection = Collection.objects.get (owner=user)
+        try:
+            collectionItem = CollectionItem.objects.get (card=card, owner=collection.owner, golden=golden)
+            collectionItem.count = collectionItem.count + 1
+            collectionItem.save()
+
+        except CollectionItem.DoesNotExist:
+             collectionItem = CollectionItem.objects.create(
+                card = card,
+                owner = collection.owner,
+                count = 1,
+                golden = golden,
+                level = 1
+             )
+             CollectionCollector.objects.create(collection=collection, item=collectionItem)
+
+        profile.dust = profile.dust - totalCost
+        profile.save()
+
+        response_data['success'] = True
+        response_data['count'] = collectionItem.count
+        response_data['golden'] = golden
+        response_data['dust'] = profile.dust
+
+    else:
+        response_data['success'] = False
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+
 
 def getCollection (request):
     id = request.GET['user_id']
@@ -487,17 +664,37 @@ def getCollection (request):
 
     if (success):
         user = User.objects.get(id=id)
+
+        heroes = UserHero.objects.filter(owner=user)
+        if len(heroes) == 0:
+            hero = Hero.objects.get(vocation='adventurer')
+            UserHero.objects.create(owner=user, hero=hero)
+
         try:
             collection = Collection.objects.get (owner=user)
         except Collection.DoesNotExist:
             collection = Collection.objects.create (owner=user)
             generateDefaultCollection (user, collection)
 
-        response_data['books'] = []
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except UserProfile.DoesNotExist:
+            profile = UserProfile.objects.create(user=user)
 
+        if user.decks.count() == 0:
+            userHero = heroes[0]
+            create_default_deck(user, userHero)
+
+        actual_deck = profile.actual_deck
+
+        if actual_deck == None:
+            profile.actual_deck = user.decks.all()[0]
+            profile.save()
+
+        response_data['books'] = []
         books = {}
 
-        items = collection.items.all()
+        items = collection.items.all().order_by('card__price')
         response_data['count'] = collection.items.count()
 
 
@@ -523,6 +720,17 @@ def getCollection (request):
                 books[book_id]['description'] = item.card.book.description
                 books[book_id]['cards'] = []
 
+            maskItem = MaskItem.objects.get (card=item.card)
+            itemData['buy_cost'] = maskItem.buy_cost
+            itemData['sale_cost'] = maskItem.sale_cost
+            itemData['rarity'] = maskItem.rarity
+            itemData['access_simple'] = maskItem.access_simple
+            itemData['max_simple'] = maskItem.max_simple
+            itemData['access_golden'] = maskItem.access_golden
+            itemData['max_golden'] = maskItem.max_golden
+            itemData['craft_available'] = maskItem.craft_available
+
+
             books[book_id]['cards'].append (itemData)
 
         for book in books:
@@ -532,6 +740,67 @@ def getCollection (request):
         initDecks (user, response_data)
         response_data['status'] = 'success'
         return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def getFullCollection (request):
+    id = request.GET['user_id']
+    user = User.objects.get(id=id)
+
+    books = Book.objects.all()
+    response_data = {}
+    response_data['books'] = []
+
+    profile = UserProfile.objects.get (user=user)
+    response_data['dust'] = profile.dust
+
+    for book in books:
+         try:
+              mask = BookMask.objects.get(book=book)
+              bookData = {}
+              bookData['id'] = book.id
+              bookData['title'] = book.title
+              bookData['description'] = book.description
+              cards = []
+              bookData['cards'] = cards
+              for item in mask.items.all().order_by('card__price'):
+                  card = item.card
+                  cardData = {}
+                  cardData['id'] =  card.id
+                  cardData['price'] = card.price
+                  cardData['title'] = card.title
+                  cardData['description'] = card.description
+                  cardData['attack'] = card.attack
+                  cardData['health'] = card.health
+                  cardData['type'] = card.type
+                  cardData['buy_cost'] = item.buy_cost
+                  cardData['sale_cost'] = item.sale_cost
+                  cardData['rarity'] = item.rarity
+                  cardData['access_simple'] = item.access_simple
+                  cardData['max_simple'] = item.max_simple
+                  cardData['access_golden'] = item.access_golden
+                  cardData['max_golden'] = item.max_golden
+                  cardData['craft_available'] = item.craft_available
+                  try:
+                      collectionItem = CollectionItem.objects.get (card=card, owner=user, golden=False)
+                      cardData['simple_count'] = collectionItem.count
+                  except CollectionItem.DoesNotExist:
+                      cardData['simple_count'] = 0
+                  try:
+                      collectionItem = CollectionItem.objects.get (card=card, owner=user, golden=True)
+                      cardData['golden_count'] = collectionItem.count
+                  except CollectionItem.DoesNotExist:
+                      cardData['golden_count'] = 0
+
+
+                  cards.append(cardData)
+              response_data['books'].append(bookData)
+         except BookMask.DoesNotExist:
+            pass
+
+    response_data['status'] = 'success'
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
 
 def hasAttr (obj, attr):
     try:
@@ -593,40 +862,40 @@ def create_default_deck (user, userHero):
     card = Card.objects.get(id=77)
     create_deck_item(user, card, deck, 2)
 
-    #2 Содлат златоземья (id:16)
-    card = Card.objects.get(id=16)
+    #2 Содлат златоземья (id:166)
+    card = Card.objects.get(id=166)
     create_deck_item(user, card, deck, 2)
 
-    #3 Знахарь вуду (id:8)
-    card = Card.objects.get(id=8)
+    #3 Знахарь вуду (id:157)
+    card = Card.objects.get(id=157)
     create_deck_item(user, card, deck, 2)
 
-    #4 Ящер кровавой топи (id:42)
-    card = Card.objects.get(id=42)
+    #4 Ящер кровавой топи (id:204)
+    card = Card.objects.get(id=204)
     create_deck_item(user, card, deck, 2)
 
-    #5 Инженер новичек (id:29)
-    card = Card.objects.get(id=29)
+    #5 Инженер новичек (id:184)
+    card = Card.objects.get(id=184)
     create_deck_item(user, card, deck, 2)
 
-    #6 Дворф диверсант (id:98)
-    card = Card.objects.get(id=98)
+    #6 Дворф диверсант (id:152)
+    card = Card.objects.get(id=152)
     create_deck_item(user, card, deck, 2)
 
-    #7 Охотница на иглошкурых (id:58)
-    card = Card.objects.get(id=58)
+    #7 Охотница на иглошкурых (id:225)
+    card = Card.objects.get(id=225)
     create_deck_item(user, card, deck, 2)
 
-    #8 Лидер рейда (id:52)
-    card = Card.objects.get(id=52)
+    #8 Лидер рейда (id:220)
+    card = Card.objects.get(id=220)
     create_deck_item(user, card, deck, 2)
 
-    #9 Гризли сталемех (id:50)
-    card = Card.objects.get(id=50)
+    #9 Гризли сталемех (id:218)
+    card = Card.objects.get(id=218)
     create_deck_item(user, card, deck, 2)
 
-    #10 Щитоносец Сен'джин (id:91)
-    card = Card.objects.get(id=91)
+    #10 Щитоносец Сен'джин (id:246)
+    card = Card.objects.get(id=246)
     create_deck_item(user, card, deck, 2)
 
     #11 Ночной клинок (id:102)

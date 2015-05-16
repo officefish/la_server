@@ -1,0 +1,76 @@
+{% load card_tags %}
+<h4>Способности персонажа ({{ eptitudes.count }})</h4>
+<div class="row">
+    <ul class="eptitude_list">
+         {% for eptitude in eptitudes %}
+            <li>
+                <div>вид: <strong>{{ parse_type|type:eptitude.type }}</strong></div>
+                <div>момент использования:<strong> {{ parse_period|period:eptitude.period }}</strong></div>
+                <div>уровень использования:<strong> {{ parse_level|level:eptitude.level }}</strong></div>
+                <div>объем использования:<strong> {{ parse_attachment|attachment:eptitude.attachment }}</strong></div>
+                <div>в том числе героя:<strong> {{ attach_hero|bool:eptitude.attach_hero }}</strong></div>
+                <div>в том числе инициатора:<strong> {{ attach_initiator|bool:eptitude.attach_initiator }}</strong></div>
+
+                {% if eptitude.condition %}
+                <div>дополнительное условие:<strong> {{ parse_condition|condition:eptitude.condition }}</strong></div>
+                {% endif %}
+                {% if eptitude.spellCondition %}
+                <div>дополнительное условие для магии:<strong> {{ parse_condition|condition:eptitude.spellCondition }}</strong></div>
+                {% endif %}
+
+                {% if eptitude.unit %}
+                    <div>существо:<strong> {{ eptitude.unit.title }}</strong></div>
+                {% else %}
+                    {% if eptitude.subrace %}
+                        <div>подраса:<strong> {{ eptitude.subrace.title }}</strong></div>
+                    {% else %}
+                        {% if eptitude.race %}
+                            <div>раса:<strong> {{ eptitude.race.title }}</strong></div>
+                        {% elif eptitude.price > -1 %}
+                             <div>цена:<strong> {{ eptitude.price }}</strong></div>
+                        {% endif %}
+
+                    {% endif %}
+                {% endif %}
+                {% if eptitude.group %}
+                    <div>группа:<strong> {{ eptitude.group.title }}</strong></div>
+                {% endif %}
+                {% if eptitude.dependency %}
+                    <div>условие:<strong> {{ parse_type|type:eptitude.dependency.type }}</strong></div>
+                {% endif %}
+                {% if eptitude.attach_eptitude %}
+                    <div>подцепить способность:<strong> {{ parse_type|type:eptitude.attach_eptitude.type }}</strong></div>
+                {% endif %}
+                {% if eptitude.lifecycle %}
+                    <div>время действия способности: <strong>{{ eptitude.lifecycle }} ход(а)</strong></div>
+                {% endif %}
+                {% if eptitude.power %}
+                    <div>сила использования: <strong>{{ eptitude.power }}</strong></div>
+                {% endif %}
+                {% if eptitude.max_power %}
+                    <div>максимальная сила использования: <strong>{{ eptitude.max_power }}</strong></div>
+                {% endif %}
+                {% if eptitude.count %}
+                    <div>условное количество: <strong>{{ eptitude.count }}</strong></div>
+                {% endif %}
+                {% if eptitude.dynamic %}
+                    <div><strong>динамическая способность</strong></div>
+                {% endif %}
+                {% if eptitude.battlecry %}
+                    <div><strong>боевой клич</strong></div>
+                {% endif %}
+                {% if eptitude.spellSensibility %}
+                    <div><strong>чувствительность к силе магии</strong></div>
+                {% endif %}
+                {% if eptitude.probability < 100 %}
+                   <div>вероятность: <strong>{{ eptitude.probability }}%</strong></div>
+                {% endif %}
+
+                <a href="{% url "edit_eptitude_for_achieve" achieve.id eptitude.id %}">редактировать</a>
+                <a href="{% url "delete_eptitude_for_achieve" achieve.id eptitude.id %}">удалить</a>
+
+            </li>
+
+         {% endfor %}
+    </ul>
+</div>

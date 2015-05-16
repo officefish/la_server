@@ -7,6 +7,7 @@
             <li class="active">книги</li>
             <li><a href="{% url 'cards_list' %}">карты</a></li>
             <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -22,8 +23,6 @@
             <br/>
             <br/>
             <button name="create_submit" type="submit" value="create_book" class="btn btn-large btn-primary" >{% trans 'Create Book' %}</button>
-
-
             </form>
 
         </div>

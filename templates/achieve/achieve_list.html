@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li class="active">способности</li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="cards_list">
+        <ul >
+            {% for achieve in achieves %}
+                <li>
+                    <div class="card">
+                        <div class="card_book">
+                            {% if achieve.autonomic %}{% trans "autonomic" %}
+                            {% else %}{% trans "common" %}
+                        {% endif %}
+                        </div>
+                        <div class="card_price">{{ achieve.price }}</div>
+                        <div class="card_title">{{ achieve.title }}</div>
+                        <div class="owners">{% trans "owners" %}:{{ achieve.owners.count }}</div>
+                        <div class="card_description">{{ achieve.description }}</div>
+                        <div class="card_type">
+                             {% if achieve.type %}
+                                {% trans "spell to target" %}
+                             {% else %}
+                                {% trans "spell" %}
+                             {% endif %}
+                         </div>
+                        {% if achieve.eptitudes %}
+                        <div class="btn-group-sm card_eptitude">
+                          <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Способности ({{ achieve.eptitudes.count }})</button>
+                            <ul class="dropdown-menu">
+                              {% for eptitude in achieve.eptitudes %}
+                                 <li >{{ parse_type|type:eptitude.type }}</li>
+                              {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    <a style="position:absolute; margin-top:240px" href="{%  url "edit_achieve" achieve.id %}">редактировать</a>
+                    <a style="position:absolute; margin-top:255px" href="{%  url "delete_achieve" achieve.id %}">удалить</a>
+                    </div>
+
+                </li>
+            {% endfor %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url "create_achieve" %}">
+                        <div class="create_card">
+                            Создать способность
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a style="text-decoration: none;" href="{% url "achieve_masks" %}">
+                        <div class="mask">
+                            Маска
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+
+
+{% endblock %}
+

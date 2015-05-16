@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li class="active">способности</li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-10 pull-right">
+            <form id="create_achieve_form" action="{{ request.get_full_path }}" method="post" >
+            <h2>{% trans 'Create Achieve' %}</h2>
+            {% csrf_token %}
+            {% include "partials/form_fields.html" %}
+            <button name="add_achieve_owner" type="submit" value="add_achieve_owner" class="btn btn-sm btn-primary" >{% trans 'Add Achieve Owner' %}</button>
+            <br/>
+            <br/>
+            <button name="create_eptitude" type="submit" value="create_eptitude" class="btn btn-group-sm btn-primary" >{% trans 'Create Eptitude' %}</button>
+            <button name="create_achieve" type="submit" value="create_achieve" class="btn btn-large btn-primary" >{% trans 'Save' %}</button>
+            </form>
+        <a href="{% url "achieves_list" %}">отмена</a>
+        </div>
+    </div>
+
+{% endblock %}

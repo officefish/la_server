@@ -54,7 +54,9 @@ class MatchHandler(websocket.WebSocketHandler):
         self.match = MatchHandler.matches[match_id]
 
     def on_close(self):
-        logger.debug('MatchHandler::Close')
+        logger.debug('MatchHandler::Close id:%s' % self.id)
+
+        # если оба игрока отсоединились удалить матч
 
     def handle_request(self, response):
         logger.debug('MatchHandler::handle_request')
@@ -212,6 +214,8 @@ class MatchHandler(websocket.WebSocketHandler):
                 
                 self.match.stopPreflopTimer()
 
+                logger.debug('end_preflop response')
+
                 response = {}
                 response['status'] = 'success'
                 response['type'] = 'end_preflop'
@@ -270,7 +274,15 @@ class MatchHandler(websocket.WebSocketHandler):
                     index =  event['data']['index']
                     position = event['data']['position']
                     whiteFlag = self.isWhite()
-                    self.match.addUnit(index, position, whiteFlag)
+
+                    cardType = int(event['data']['cardType'])
+
+                    # если карта юнит
+                    if cardType == 0:
+                        self.match.playSpell(index, whiteFlag)
+
+                    if cardType == 2:
+                       self.match.addUnit(index, position, whiteFlag)
 
                     response = {}
                     response['status'] = 'success'
@@ -282,6 +294,60 @@ class MatchHandler(websocket.WebSocketHandler):
 
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
+
+        if type == 'play_card_spell_to_target':
+                    logger.debug ('play_card_spell_to_target')
+
+                    cardIndex =  event['data']['cardIndex']
+                    logger.debug('cardIndex:%s' % cardIndex)
+
+                    targetAttachment = event['data']['attachment']
+                    logger.debug('targetAttachment:%s' % targetAttachment)
+
+                    targetIndex = event['data']['targetIndex']
+                    logger.debug('targetIndex:%s' % targetIndex)
+
+                    whiteFlag = self.isWhite()
+
+
+                    self.match.spellToTarget(cardIndex, targetIndex, targetAttachment, whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'spell_to_target_for_effect':
+                    logger.debug ('spell_to_target_for_effect')
+
+                    targetAttachment = event['data']['attachment']
+                    logger.debug('targetAttachment:%s' % targetAttachment)
+
+                    targetIndex = event['data']['targetIndex']
+                    logger.debug('targetIndex:%s' % targetIndex)
+
+                    whiteFlag = self.isWhite()
+
+                    self.match.spellToTargetForEffect(targetIndex, targetAttachment, whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+
 
         if type == 'end_step':
                     logger.debug ('end_step')
@@ -362,6 +428,69 @@ class MatchHandler(websocket.WebSocketHandler):
                     response['data'] = data
                     dump = json.dumps(response)
                     self.write_message (dump)
+
+        if type == 'effect_selected':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index = int(event['data']['index'])
+                    scenario = self.match.effect_selected (self.whiteFlag, index)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'guise_selected':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index = int(event['data']['index'])
+                    scenario = self.match.guise_selected (self.whiteFlag, index)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'end_match':
+            logger.debug('MatchHandler::end_match')
+            '''
+            if self.id == self.match.getWhiteId():
+                self.client = self.match.getWhite()
+            else:
+                self.client = self.match.getBlack()
+            '''
+
+            response = {}
+            response['status'] = 'success'
+            response['type'] = 'end_match'
+            response['data'] = {}
+            dump = json.dumps(response)
+            self.write_message(dump)
+            #self.close()
+
+
+
+
+
+
 
 
 

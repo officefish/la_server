@@ -9,6 +9,7 @@
             <li class="active">книги</li>
             <li><a href="{% url 'cards_list' %}">карты</a></li>
             <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -33,13 +34,17 @@
                         {% endif %}
                         <div class="card_type">
                             {% if card.type %}
-                                {% if card.subrace %}
-                                    {% trans card.subrace.title %}
+                                {% if card.type == 3 %}
+                                    {% trans "spell to target" %}
                                 {% else %}
-                                    {% if card.race %}
-                                        {% trans card.race.title %}
+                                    {% if card.subrace %}
+                                        {% trans card.subrace.title %}
                                     {% else %}
-                                        {% trans "unit" %}
+                                        {% if card.race %}
+                                            {% trans card.race.title %}
+                                        {% else %}
+                                            {% trans "unit" %}
+                                        {% endif %}
                                     {% endif %}
                                 {% endif %}
                             {% else %}
