@@ -29,6 +29,14 @@ class HeroUnit ():
      def destroyEptitudes(self):
          self.eptitudes = []
 
+     def hasSelfDieEptitude (self):
+        flag = False
+        for eptitude in self.eptitudes:
+           if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
+                flag = True
+        return flag
+
+
      def configureEptitudes (self, cardData):
          logger.debug('HeroUnit::configureEptitudes : %s' % len(cardData['eptitudes']))
          for eptitudeData in cardData['eptitudes']:
@@ -53,6 +61,7 @@ class HeroUnit ():
                eptitude.price = eptitudeData['price']
                eptitude.probability = eptitudeData['probability']
                eptitude.spellSensibility = eptitudeData['spellSensibility']
+               eptitude.activate_widget = eptitudeData['activate_widget']
                try:
                    eptitude.setRace(eptitudeData['race'])
                except: pass
@@ -220,6 +229,7 @@ class Unit ():
         eptitude.price = eptitudeData['price']
         eptitude.probability = eptitudeData['probability']
         eptitude.spellSensibility = eptitudeData['spellSensibility']
+        eptitude.activate_widget = eptitudeData['activate_widget']
         try:
             eptitude.setRace(eptitudeData['race'])
         except: pass
@@ -322,6 +332,13 @@ class Unit ():
                 flag = True
         return flag
 
+    def hasSelfDieEptitude (self):
+        flag = False
+        for eptitude in self.eptitudes:
+           if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
+                flag = True
+        return flag
+
     def getEptitudeById (self, id):
         resultEptitude = False
         for eptitude in self.eptitudes:
@@ -349,6 +366,7 @@ class UnitEptitude ():
         self.attached = False
         self.max_power = 0
         self.target = None
+        self.activate_widget = False
 
 
     def clone(self):
@@ -363,6 +381,7 @@ class UnitEptitude ():
         eptitude.probability = self.probability
         eptitude.spellSensibility = self.spellSensibility
         eptitude.attached = self.attached
+        eptitude.activate_widget = self.activate_widget
         try:
             eptitude.target = self.target
         except:

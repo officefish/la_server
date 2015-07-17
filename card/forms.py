@@ -73,6 +73,7 @@ EPTITUDE_PERIOD_CHOICES=[
     ('51','OPPONENT_PRE_ATTACK'),
     ('52','ACTIVATE_SPELL_TO_TARGET'),
     ('53','ACTIVATE_SPELL'),
+    ('54','ACTIVATE_ACHIEVE')
 
 
 ]
@@ -434,6 +435,11 @@ class EptitudeForm (forms.Form):
                 )
 
     attach_initiator = forms.TypedChoiceField(required=False, coerce=lambda x: bool(int(x)),
+                   choices=((0, 'False'), (1, 'True')),
+                   widget=forms.RadioSelect
+                )
+
+    activate_widget = forms.TypedChoiceField(required=False, coerce=lambda x: bool(int(x)),
                    choices=((0, 'False'), (1, 'True')),
                    widget=forms.RadioSelect
                 )

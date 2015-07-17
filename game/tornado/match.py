@@ -49,7 +49,7 @@ class MatchHandler(websocket.WebSocketHandler):
             game.setPlayer2_hero(redis_client.hget(match, 'player2_heroId'))
 
             game.setMode (redis_client.hget(match, 'match_type'))
-            logger.debug('init Game')
+            logger.debug('match type: %s' % game.getMode())
 
         self.match = MatchHandler.matches[match_id]
 
@@ -124,6 +124,7 @@ class MatchHandler(websocket.WebSocketHandler):
                 self.match.setBlackHeroLevel (self.match.getPlayer1_level())
 
             self.match.generateMatchDecks()
+            self.match.initializeAchieves()
 
             self.match.runPreflopTimer()
 
@@ -140,6 +141,9 @@ class MatchHandler(websocket.WebSocketHandler):
             self.data['preflop'] = self.match.getWhiteHand()
             self.data['opponent_preflop'] = self.match.getBlackHand()
 
+            self.data['achieves'] = self.match.getWhiteAchieves()
+            self.data['opponent_achieves'] = self.match.getBlackAchieves()
+
             self.data['hero'] = self.match.getWhiteHero().hero.uid
             self.data['opponent_hero'] = self.match.getBlackHero().hero.uid
             self.data['level'] = self.match.getWhiteHeroLevel()
@@ -148,6 +152,9 @@ class MatchHandler(websocket.WebSocketHandler):
             self.data['opponent_health'] = self.match.getBlackHeroHealth()
 
             self.data['mode'] = self.match.getMode()
+
+
+
             self.data['white'] = True
             self.response['data'] = self.data
             self.dump = json.dumps(self.response)
@@ -159,6 +166,9 @@ class MatchHandler(websocket.WebSocketHandler):
             self.data = {}
             self.data['preflop'] = self.match.getBlackHand()
             self.data['opponent_preflop'] = self.match.getWhiteHand()
+
+            self.data['achieves'] = self.match.getBlackAchieves()
+            self.data['opponent_achieves'] = self.match.getWhiteAchieves()
 
             self.data['hero'] = self.match.getBlackHero().hero.uid
             self.data['opponent_hero'] = self.match.getWhiteHero().hero.uid
@@ -214,20 +224,24 @@ class MatchHandler(websocket.WebSocketHandler):
                 
                 self.match.stopPreflopTimer()
 
-                logger.debug('end_preflop response')
-
                 response = {}
                 response['status'] = 'success'
                 response['type'] = 'end_preflop'
 
                 data = {}
                 data['preflop'] = self.match.getWhiteHand()
+                data['mode'] = self.match.getMode()
+                if self.match.getMode() == 2:
+                    data['deck'] = self.match.getDeckData(True)
                 response['data'] = data
                 dump = json.dumps(response)
                 self.match.getWhite().write_message(dump)
 
                 data = {}
                 data['preflop'] = self.match.getBlackHand()
+                data['mode'] = self.match.getMode()
+                if self.match.getMode() == 2:
+                    data['deck'] = self.match.getDeckData(False)
                 response['data'] = data
                 dump = json.dumps(response)
                 self.match.getBlack().write_message(dump)
@@ -261,6 +275,44 @@ class MatchHandler(websocket.WebSocketHandler):
                     response['type'] = 'scenario'
                     data = {}
                     data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'activate_achieve':
+                    logger.debug ('activate_achieve')
+                    position =  event['data']['position']
+                    whiteFlag = self.isWhite()
+
+                    self.match.activateAchieve(position, whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'activate_achieve_to_target':
+                    logger.debug ('activate_achieve_to_target')
+                    position =  event['data']['position']
+                    whiteFlag = self.isWhite()
+                    targetAttachment = event['data']['attachment']
+                    targetIndex = event['data']['targetIndex']
+
+                    self.match.activateAchieveToTarget(targetIndex, targetAttachment, position, whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
                     response['data'] = data
                     dump = json.dumps(response)
 
@@ -428,6 +480,28 @@ class MatchHandler(websocket.WebSocketHandler):
                     response['data'] = data
                     dump = json.dumps(response)
                     self.write_message (dump)
+
+        if type == 'replace_deck_items':
+                    if self.id == self.match.getWhiteId():
+                         whiteFlag = True
+                    else:
+                         whiteFlag = False
+                    logger.debug('replace_deck_items')
+                    initiator = event['data']['initiator']
+                    target = event['data']['target']
+                    self.match.replaceDeckItems(initiator, target, whiteFlag)
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'replace_deck_items'
+                    data = {}
+                    data['initiator'] = initiator
+                    data['target'] = target
+                    response['data'] = data
+                    dump = json.dumps(response)
+                    self.write_message (dump)
+
+
+
 
         if type == 'effect_selected':
                     if self.id == self.match.getWhiteId():

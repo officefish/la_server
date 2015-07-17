@@ -44,6 +44,11 @@ class Controller ():
         self.eptitudes = unit.eptitudes[:]
         self.activate(EptitudePeriod.ACTIVATE_SPELL)
 
+    def activateAchieve(self, unit):
+        self.unit = unit
+        self.eptitudes = unit.eptitudes[:]
+        self.activate(EptitudePeriod.ACTIVATE_ACHIEVE)
+
     def preAttack(self, unit):
         self.unit = unit
         self.eptitudes = unit.eptitudes[:]
@@ -272,7 +277,6 @@ class Controller ():
         for eptitude in self.eptitudes:
             logger.debug('type:%s , period:%s' % (eptitude.type, eptitude.period))
         self.activate(EptitudePeriod.SELF_DIE)
-
 
         if self.containsDynamicEptitudes (unit):
             self.deactivateDynamic (unit)
@@ -547,15 +551,17 @@ class Controller ():
             if period == eptitude.period:
                 #logger.debug ('Eptitude period inited %s' % eptitude.period)
 
-                if eptitude.dependency > 0:
-                    logger.debug ('Init eptitude which has dependency from another eptitude: %s' % eptitude.dependency)
-                    dependencyEptitude = self.unit.getEptitudeById(eptitude.dependency)
-                    logger.debug ('dependency.activated: %s' % dependencyEptitude.activated)
-                    if dependencyEptitude.activated == False:
-                        self.activate(period)
-                        return
-                    else:
-                        dependencyEptitude.activated = False
+                if isinstance(eptitude.dependency, int):
+                    if eptitude.dependency > 0:
+                        logger.debug ('Init eptitude which has dependency from another eptitude: %s' % eptitude.dependency)
+                        dependencyEptitude = self.unit.getEptitudeById(eptitude.dependency)
+                        logger.debug ('dependency.activated: %s' % dependencyEptitude.activated)
+                        if dependencyEptitude.activated == False:
+                            self.activate(period)
+                            return
+                        else:
+                            dependencyEptitude.activated = False
+
 
                 # уточняем вероятность срабатывания способности
                 if eptitude.probability < 100:
@@ -603,6 +609,18 @@ class Controller ():
                     except:
                         self.activate(period)
                         return
+
+                if len(targets) and eptitude.activate_widget == True:
+                     if not self.unit.hasSelfDieEptitude():
+                         logger.debug('Activate Widget for %s' % self.unit.cardData['title'])
+                         targetAttachment = self.match.initAttachment (self.unit, self.whiteFlag)
+                         targetIndex = self.match.initIndex (self.unit, targetAttachment, self.whiteFlag)
+                         action = {}
+                         action['type'] = Action.ACTIVATE_WIDGET
+                         action['client'] = self.client
+                         action['targetIndex'] = targetIndex
+                         action['targetAttachment'] = targetAttachment
+                         self.scenario.append(action)
 
                 if eptitude.type == EptitudeType.JERK:
                      logger.debug ('eptitude.type: JERK')
@@ -987,15 +1005,16 @@ class Controller ():
                         index = random.randint (0, len(list)-1)
                         self.match.targetUnit = list[index]
 
-                    #TODO and here we should add activate animation action with self.unit to scenario
-                    targetAttachment = self.match.initAttachment (self.unit, self.whiteFlag)
-                    targetIndex = self.match.initIndex (self.unit, targetAttachment, self.whiteFlag)
-                    action = {}
-                    action['type'] = Action.ACTIVATE_WIDGET
-                    action['client'] = self.client
-                    action['targetIndex'] = targetIndex
-                    action['targetAttachment'] = targetAttachment
-                    self.scenario.append(action)
+                    if len(list) > 1:
+                        #TODO and here we should add activate animation action with self.unit to scenario
+                        targetAttachment = self.match.initAttachment (self.unit, self.whiteFlag)
+                        targetIndex = self.match.initIndex (self.unit, targetAttachment, self.whiteFlag)
+                        action = {}
+                        action['type'] = Action.ACTIVATE_WIDGET
+                        action['client'] = self.client
+                        action['targetIndex'] = targetIndex
+                        action['targetAttachment'] = targetAttachment
+                        self.scenario.append(action)
 
                 if eptitude.type == EptitudeType.PRIMARY_TARGET:
                     logger.debug('eptitude.type: PRIMARY_TARGET')
@@ -1796,6 +1815,8 @@ class Controller ():
             targetUnit.shield = target.shield
             targetUnit.spellInvisible = target.spellInvisible
             targetUnit.spellUp = target.spellUp
+
+            targetUnit.destroyBattlecryEptitudes()
 
             action = {}
             action['type'] = Action.CHANGE_UNIT
@@ -3132,6 +3153,14 @@ class Controller ():
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
 
+                    if targetUnit.hasSelfDieEptitude():
+                             action = {}
+                             action['type'] = Action.ACTIVATE_WIDGET
+                             action['client'] = self.client
+                             action['targetIndex'] = targetIndex
+                             action['targetAttachment'] = targetAttachment
+                             self.scenario.append(action)
+
                     self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
                     action = {}
                     action['type'] = Action.TOKEN_DEATH
@@ -3294,6 +3323,14 @@ class Controller ():
 
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
+
+                    if targetUnit.hasSelfDieEptitude():
+                             action = {}
+                             action['type'] = Action.ACTIVATE_WIDGET
+                             action['client'] = self.client
+                             action['targetIndex'] = targetIndex
+                             action['targetAttachment'] = targetAttachment
+                             self.scenario.append(action)
 
                     self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
                     action = {}
@@ -3464,6 +3501,14 @@ class Controller ():
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
 
+                    if targetUnit.hasSelfDieEptitude():
+                         action = {}
+                         action['type'] = Action.ACTIVATE_WIDGET
+                         action['client'] = self.client
+                         action['targetIndex'] = targetIndex
+                         action['targetAttachment'] = targetAttachment
+                         self.scenario.append(action)
+
                     self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
                     action = {}
                     action['type'] = Action.TOKEN_DEATH
@@ -3624,6 +3669,14 @@ class Controller ():
 
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
+
+                    if targetUnit.hasSelfDieEptitude():
+                         action = {}
+                         action['type'] = Action.ACTIVATE_WIDGET
+                         action['client'] = self.client
+                         action['targetIndex'] = targetIndex
+                         action['targetAttachment'] = targetAttachment
+                         self.scenario.append(action)
 
                     self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
                     action = {}
@@ -4026,6 +4079,15 @@ class Controller ():
                             action['endAnimationFlag'] = True
                             self.scenario.append(action)
                             pickFlag = True
+                            if self.match.getMode() == 2:
+                                action = {}
+                                action['type'] = Action.SHIFT_DECK_SLOT
+                                action['client'] = self.client
+                                if self.whiteFlag == unitFlag:
+                                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                                else:
+                                    action['attachment'] = EptitudeAttachment.OPPONENT
+                                self.scenario.append(action)
                         else:
                             if self.match.burnExtraCardsFlag:
                                 card = self.match.getCard(unitFlag, False)
@@ -4044,7 +4106,7 @@ class Controller ():
 
                 else:
                     if self.match.attritionFlag:
-                         self.match.attrition(self.client, unitFlag)
+                         self.match.attrition(self.client, unitFlag, False)
 
                 if pickFlag:
 
@@ -4107,6 +4169,15 @@ class Controller ():
                             action['endAnimationFlag'] = True
                             self.scenario.append(action)
                             pickFlag = True
+                            if self.match.getMode() == 2:
+                                action = {}
+                                action['type'] = Action.SHIFT_DECK_SLOT
+                                action['client'] = self.client
+                                if self.whiteFlag == unitFlag:
+                                    action['attachment'] = EptitudeAttachment.OPPONENT
+                                else:
+                                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                                self.scenario.append(action)
                         else:
                             if self.match.burnExtraCardsFlag:
                                 card = self.match.getCard(not unitFlag, False)
@@ -4125,7 +4196,7 @@ class Controller ():
 
                 else:
                     if self.match.attritionFlag:
-                         self.match.attrition(self.client,not unitFlag)
+                         self.match.attrition(self.client,not unitFlag, True)
 
                 if pickFlag:
                     self.match.lastCardinHand = card
@@ -4166,6 +4237,7 @@ class Controller ():
 
             elif attachment == EptitudeAttachment.ALL:
 
+                pickFlag = False
                 if self.match.deckLength(unitFlag):
                         if len(hand) < 10:
                             card = self.match.getCard(unitFlag, True)
@@ -4181,6 +4253,15 @@ class Controller ():
                             action['endAnimationFlag'] = True
                             self.scenario.append(action)
                             pickFlag = True
+                            if self.match.getMode() == 2:
+                                action = {}
+                                action['type'] = Action.SHIFT_DECK_SLOT
+                                action['client'] = self.client
+                                if self.whiteFlag == unitFlag:
+                                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                                else:
+                                    action['attachment'] = EptitudeAttachment.OPPONENT
+                                self.scenario.append(action)
                         else:
                             if self.match.burnExtraCardsFlag:
                                 card = self.match.getCard(unitFlag, False)
@@ -4199,7 +4280,7 @@ class Controller ():
 
                 else:
                     if self.match.attritionFlag:
-                         self.match.attrition(self.client, unitFlag)
+                         self.match.attrition(self.client, unitFlag, False)
 
                 if pickFlag:
 
@@ -4246,6 +4327,7 @@ class Controller ():
                     controller.new_card()
 
 
+                pickFlag = False
                 if self.match.deckLength(not unitFlag):
                         if len(opponentHand) < 10:
                             card2 = self.match.getCard(not unitFlag, True)
@@ -4261,6 +4343,15 @@ class Controller ():
                             action['endAnimationFlag'] = True
                             self.scenario.append(action)
                             pickFlag = True
+                            if self.match.getMode() == 2:
+                                action = {}
+                                action['type'] = Action.SHIFT_DECK_SLOT
+                                action['client'] = self.client
+                                if self.whiteFlag == unitFlag:
+                                    action['attachment'] = EptitudeAttachment.OPPONENT
+                                else:
+                                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                                self.scenario.append(action)
                         else:
                             if self.match.burnExtraCardsFlag:
                                 card = self.match.getCard(not unitFlag, False)
@@ -4279,7 +4370,7 @@ class Controller ():
 
                 else:
                     if self.match.attritionFlag:
-                         self.match.attrition(self.client,not unitFlag)
+                         self.match.attrition(self.client,not unitFlag, True)
 
                 if pickFlag:
                     self.match.lastCardinHand = card2
@@ -4294,7 +4385,7 @@ class Controller ():
                         controller.setClient(self.client)
                         controller.setWhiteFlag(self.whiteFlag)
                         controller.newCard(unit)
-                        if card['whiteFlag'] == unit.whiteFlag:
+                        if card2['whiteFlag'] == unit.whiteFlag:
                             controller.newPlayerCard(unit)
                         else:
                             controller.newOpponentCard(unit)
@@ -4306,7 +4397,7 @@ class Controller ():
                         controller.setClient(self.client)
                         controller.setWhiteFlag(self.whiteFlag)
                         controller.newCard(unit)
-                        if card['whiteFlag'] == unit.whiteFlag:
+                        if card2['whiteFlag'] == unit.whiteFlag:
                             controller.newPlayerCard(unit)
                         else:
                             controller.newOpponentCard(unit)
@@ -4353,6 +4444,15 @@ class Controller ():
                             action['endAnimationFlag'] = True
                             self.scenario.append(action)
                             pickFlag = True
+                            if self.match.getMode() == 2:
+                                action = {}
+                                action['type'] = Action.SHIFT_DECK_SLOT
+                                action['client'] = self.client
+                                if self.whiteFlag == target.whiteFlag:
+                                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                                else:
+                                    action['attachment'] = EptitudeAttachment.OPPONENT
+                                self.scenario.append(action)
                         else:
                             if self.match.burnExtraCardsFlag:
                                 card = self.match.getCard(target.whiteFlag, False)
@@ -4371,7 +4471,7 @@ class Controller ():
 
                     else:
                         if self.match.attritionFlag:
-                             self.match.attrition(self.client, target.whiteFlag)
+                             self.match.attrition(self.client, target.whiteFlag, False)
 
 
                     if pickFlag:
@@ -4467,6 +4567,15 @@ class Controller ():
                     action['endAnimationFlag'] = True
                     self.scenario.append(action)
                     pickFlag = True
+                    if self.match.getMode() == 2:
+                        action = {}
+                        action['type'] = Action.SHIFT_DECK_SLOT
+                        action['client'] = self.client
+                        if self.whiteFlag == target.whiteFlag:
+                            action['attachment'] = EptitudeAttachment.ASSOCIATE
+                        else:
+                            action['attachment'] = EptitudeAttachment.OPPONENT
+                        self.scenario.append(action)
                 else:
                     if self.match.burnExtraCardsFlag:
                         card = self.match.getCard(target.whiteFlag, False)
@@ -4485,7 +4594,7 @@ class Controller ():
 
             else:
                 if self.match.attritionFlag:
-                     self.match.attrition(self.client, target.whiteFlag)
+                     self.match.attrition(self.client, target.whiteFlag, False)
 
             if pickFlag:
 
@@ -4567,6 +4676,15 @@ class Controller ():
                         action['endAnimationFlag'] = True
                         self.scenario.append(action)
                         pickFlag = True
+                        if self.match.getMode() == 2:
+                            action = {}
+                            action['type'] = Action.SHIFT_DECK_SLOT
+                            action['client'] = self.client
+                            if self.whiteFlag == target.whiteFlag:
+                                action['attachment'] = EptitudeAttachment.ASSOCIATE
+                            else:
+                                action['attachment'] = EptitudeAttachment.OPPONENT
+                            self.scenario.append(action)
                 else:
                         if self.match.burnExtraCardsFlag:
                             card = self.match.getCard(target.whiteFlag, False)
@@ -4585,7 +4703,7 @@ class Controller ():
 
             else:
                  if self.match.attritionFlag:
-                     self.match.attrition(self.client, target.whiteFlag)
+                     self.match.attrition(self.client, target.whiteFlag, False)
 
 
             if pickFlag:
@@ -4778,10 +4896,9 @@ class Controller ():
                 unitCard = Card.objects.get(id=cardId)
             except: pass
 
-            logger.debug('eptitude.price:%s' % eptitude.price)
             if eptitude.price > - 1:
                 try:
-                    unitCard = random.choice(Card.objects.filter(price=eptitude.price))
+                    unitCard = random.choice(Card.objects.filter(price=eptitude.price, type=CardType.UNIT))
                     logger.debug(unitCard)
                 except: pass
 
@@ -4837,6 +4954,7 @@ class Controller ():
             for row in targetRows:
                 targetUnit = Unit(cardData)
                 targetUnit.setRow(row)
+                targetUnit.destroyBattlecryEptitudes()
                 if row == playerRow:
                     row.insert (playerIndex, targetUnit)
                     if row == self.match.whiteUnitRow:
@@ -5154,6 +5272,8 @@ class Controller ():
 
             for row in targetRows:
                 targetUnit = Unit(cardData)
+                targetUnit.destroyBattlecryEptitudes()
+
                 if row == playerRow:
                     row.insert (playerIndex, targetUnit)
                     if row == self.match.whiteUnitRow:

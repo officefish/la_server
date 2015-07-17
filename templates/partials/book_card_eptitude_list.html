@@ -63,6 +63,9 @@
                 {% if eptitude.probability < 100 %}
                    <div>вероятность: <strong>{{ eptitude.probability }}%</strong></div>
                 {% endif %}
+                {% if eptitude.activate_widget %}
+                   <div><strong>активировать виджет</strong></div>
+                {% endif %}
                 <a href="{% url "edit_eptitude_for_book_card" card.id eptitude.id book.id %}">редактировать</a>
                 <a href="{% url "delete_eptitude_for_book_card" card.id eptitude.id book.id %}">удалить</a>
 

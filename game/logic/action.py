@@ -82,6 +82,11 @@ class Action ():
     BURN_CARD = 'burn_card'
     CALCULATE_CARDS = 'calculate_cards'
     END_MATCH = 'end_match'
+    INCREMENT_ACHIEVE = 'increment_achieve'
+    DISABLE_ACHIEVE = 'disable_achieve'
+    ENABLE_ACHIEVE = 'enable_achieve'
+    SHIFT_DECK_SLOT = 'shift_deck_slot'
+    ACHIEVE_TARGET_WARNING = 'achieve_target_warning'
 
 
 

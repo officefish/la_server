@@ -227,3 +227,5 @@ class EptitudePeriod ():
     ACTIVATE_SPELL_TO_TARGET = 52
     ACTIVATE_SPELL = 53
 
+    ACTIVATE_ACHIEVE = 54
+

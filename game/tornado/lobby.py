@@ -27,6 +27,17 @@ class MainHandler (web.RequestHandler):
      def options(self, *args, **kwargs):
         pass
 
+class GrahhApiHandler (web.RequestHandler):
+    def get(self):
+        self.set_header("Content-Type", "text/xml")
+        return self.render('D:\\practice\\last_argument\\server\\la_server\\templates\\web\\crossdomain.xml')
+
+
+class GrahhHandler (web.RequestHandler):
+    def get(self):
+        self.set_header("Content-Type", "text/xml")
+        return self.render('D:\\practice\\last_argument\\server\\la_server\\templates\\crossdomain.xml')
+
 class LobbyHandler(websocket.WebSocketHandler):
     handlers = set ()
     players = {}
@@ -53,8 +64,6 @@ class LobbyHandler(websocket.WebSocketHandler):
         response['data'] = data
         dump = json.dumps(response)
         LobbyHandler.send_updates(dump)
-
-
 
 
     def handle_request(self, response):

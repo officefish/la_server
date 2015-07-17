@@ -54,6 +54,7 @@
                             <div class="maskItemBlock">цена покупки: <strong>{{ slot.buy_cost}}</strong></div>
                             <div class="maskItemBlock">цена продажи: <strong>{{ slot.sale_cost}}</strong></div>
                             <div class="maskItemBlock">доступно: <strong>{{ slot.access}}</strong></div>
+                            <div class="maskItemBlock">максимально доступно: <strong>{{ slot.max_access}}</strong></div>
                             <div class="maskItemBlock">можно распылять: <strong>{{ parse_craft|bool:slot.craft_available }}</strong></div>
                              <a class="btn btn-large btn-primary" href="{%  url "edit_achieve_mask" slot.id %}">редактировать</a>
                             {% if slot.item.access_simple %}

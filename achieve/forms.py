@@ -39,6 +39,7 @@ class AchieveMaskForm (forms.Form):
     buy_cost = forms.IntegerField(widget=forms.TextInput(attrs={'maxlength':4}))
     sale_cost = forms.IntegerField(widget=forms.TextInput(attrs={'maxlength':4}))
     access = forms.IntegerField(widget=forms.TextInput(attrs={'maxlength':4}))
+    max_access = forms.IntegerField(widget=forms.TextInput(attrs={'maxlength':4}))
     craft_available = forms.TypedChoiceField(required=False, coerce=lambda x: bool(int(x)),
                    choices=((0, 'False'), (1, 'True')),
                    widget=forms.RadioSelect

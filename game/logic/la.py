@@ -12,6 +12,7 @@ from game.logic.controller import Controller
 from game.logic.cardController import CardController
 from game.logic.action import Action
 from game.logic.unit import Unit, HeroUnit, UnitEptitude
+from game.logic.achieve import UAchieve
 
 from card.models import Race, SubRace
 from group.models import Group
@@ -291,6 +292,218 @@ class Game ():
 
         shuffle(self.black_match_deck)
 
+    def replaceDeckItems(self, initiator, target, whiteFlag):
+        if whiteFlag:
+            deck = self.white_match_deck
+        else:
+            deck = self.black_match_deck
+        card = deck[initiator]
+        del deck[initiator]
+        deck.insert(target, card)
+        logger.debug (self.getDeckData(whiteFlag))
+        logger.debug(len(deck))
+
+    def initializeAchieves(self):
+        self.whiteAchieves = []
+        self.blackAchieves = []
+        for achieveData in self.white_hero.achieves.all().order_by('position'):
+            achieve = UAchieve(achieveData, True)
+            self.whiteAchieves.append(achieve)
+
+        for achieveData in self.black_hero.achieves.all().order_by('position'):
+            achieve = UAchieve(achieveData, False)
+            self.blackAchieves.append(achieve)
+
+    def validateMode(self, position):
+        valid = False
+        if self.getMode() == 2:
+            valid = True
+        elif self.getMode() == 1:
+            if position == 1 or position == 0:
+                valid = True
+        else:
+            if position == 0:
+                valid = True
+        return valid
+
+    def getWhiteAchieves(self):
+        response = []
+        destroyAchieves = []
+        for  i in range(len(self.whiteAchieves)):
+            position = self.whiteAchieves[i].position
+            valid = self.validateMode(position)
+            if valid:
+                response.append ({'position':position, 'data':self.whiteAchieves[i].getData()})
+            else:
+                destroyAchieves.append(self.whiteAchieves[i])
+
+        for achieve in destroyAchieves:
+            index = self.whiteAchieves.index(achieve)
+            del self.whiteAchieves[index]
+
+        logger.debug(self.whiteAchieves)
+        return response
+
+    def getBlackAchieves(self):
+        response = []
+        destroyAchieves = []
+        for  i in range(len(self.blackAchieves)):
+            position = self.blackAchieves[i].position
+            valid = self.validateMode(position)
+            if valid:
+                response.append ({'position':position, 'data':self.blackAchieves[i].getData()})
+            else:
+                destroyAchieves.append(self.blackAchieves[i])
+
+        for achieve in destroyAchieves:
+            index =self.blackAchieves.index(achieve)
+            del self.blackAchieves[index]
+
+        logger.debug(self.blackAchieves)
+        return response
+
+    def incrementAchieves(self, client, price, whiteFlag):
+        if whiteFlag:
+            achieves = self.whiteAchieves
+        else:
+            achieves = self.blackAchieves
+        for achieve in achieves:
+            if achieve.autonomic:
+                action = {}
+                action['type'] = Action.INCREMENT_ACHIEVE
+                action['client'] = client
+                action['position'] = achieve.position
+                action['increment'] = achieve.increment()
+                action['enable'] = achieve.maxIncrement()
+                self.scenario.append(action)
+            else:
+                if achieve.price <= price:
+                    action = {}
+                    action['type'] = Action.ENABLE_ACHIEVE
+                    action['client'] = client
+                    action['position'] = achieve.position
+                    self.scenario.append(action)
+
+    def checkCommonAchieves (self, price, client, whiteFlag):
+        if whiteFlag:
+            achieves = self.whiteAchieves
+        else:
+            achieves = self.blackAchieves
+        for achieve in achieves:
+            if not achieve.autonomic:
+                if achieve.price > price:
+                    action = {}
+                    action['type'] = Action.DISABLE_ACHIEVE
+                    action['client'] = client
+                    action['position'] = achieve.position
+                    self.scenario.append(action)
+
+
+
+    def disableAchieves(self, client, whiteFlag):
+        if whiteFlag:
+            achieves = self.whiteAchieves
+        else:
+            achieves = self.blackAchieves
+        for achieve in achieves:
+            action = {}
+            action['type'] = Action.DISABLE_ACHIEVE
+            action['client'] = client
+            action['position'] = achieve.position
+            self.scenario.append(action)
+
+    def getAchieve(self, position, whiteFlag):
+        targetAchieve = None
+        if whiteFlag:
+            achieves = self.whiteAchieves
+        else:
+            achieves = self.blackAchieves
+        for achieve in achieves:
+            if achieve.position == position:
+                targetAchieve = achieve
+        return targetAchieve
+
+    def activateAchieveToTarget(self, targetIndex, targetAttachment, position, whiteFlag):
+        self.scenario = []
+        if whiteFlag:
+            client = self.getWhiteId()
+        else:
+            client = self.getBlackId()
+
+        achieve = self.getAchieve(position, whiteFlag)
+
+        self.spellTarget = self.getUnitByIndexAndAttachment(targetIndex, targetAttachment, whiteFlag)
+        valid = self.validateSpellTarget (achieve, whiteFlag)
+        if valid:
+            if self.spellTarget.spellInvisible:
+                valid = False
+        if valid:
+            self.activateAchieve(position, whiteFlag)
+        else:
+            action = {}
+            action['type'] = Action.ACHIEVE_TARGET_WARNING
+            action['client'] = client
+            action['effect'] = True
+            action['endAnimationFlag'] = False
+            self.scenario.append(action)
+
+
+    def activateAchieve(self, position, whiteFlag):
+        achieve = self.getAchieve(position, whiteFlag)
+        self.scenario = []
+
+        if whiteFlag:
+            client = self.getWhiteId()
+            price = self.white_step_price - achieve.price
+        else:
+            client = self.getBlackId()
+            price = self.black_step_price - achieve.price
+
+        action = {}
+        action['type'] = Action.DISABLE_ACHIEVE
+        action['client'] = client
+        action['position'] = achieve.position
+        self.scenario.append(action)
+
+        self.controller = Controller()
+        self.controller.setMatch(self)
+        self.controller.setScenario(self.scenario)
+        self.controller.setClient(client)
+        self.controller.setWhiteFlag(whiteFlag)
+        self.controller.activateAchieve(achieve)
+
+        if achieve.autonomic:
+            achieve.incrementIndex = 0
+        else:
+            if whiteFlag:
+                self.white_step_price = price
+            else:
+                self.black_step_price = price
+
+            action = {}
+            action['type'] = Action.STEP_PRICE
+            action['client'] = client
+            action['price'] = price
+            action['overload'] = self.stepOverload
+            action['endAnimationFlag'] = False
+            self.scenario.append (action)
+
+            action = {}
+            action['type'] = Action.GLOW_CARDS
+            action['client'] = client
+            action['endAnimationFlag'] = False
+            self.scenario.append(action)
+
+
+
+
+
+
+
+
+
+
+
     def generateHand (self, index, whiteFlag):
         if whiteFlag:
             self.white_hand = self.white_match_deck[:index]
@@ -311,7 +524,6 @@ class Game ():
 
 
     def changePreflop (self, cards, whiteFlag):
-        response = []
         if whiteFlag:
             for item in cards:
                 card = Card.objects.get (id=int(item['id']))
@@ -408,20 +620,21 @@ class Game ():
         eptitudeData['power'] = eptitude.power
         eptitudeData['max_power'] = eptitude.max_power
         eptitudeData['count'] = eptitude.count
+
         eptitudeData['lifecycle'] = eptitude.lifecycle
         eptitudeData['attachment'] = eptitude.attachment
         eptitudeData['attach_hero'] = eptitude.attach_hero
         eptitudeData['attach_initiator'] = eptitude.attach_initiator
+
         eptitudeData['dynamic'] = eptitude.dynamic
         eptitudeData['condition'] = eptitude.condition
-        if eptitude.spellCondition:
-            logger.debug('init eptitude.spellCondition:%s' % eptitude.spellCondition)
         eptitudeData['spellCondition'] = eptitude.spellCondition
         eptitudeData['id'] = eptitude.id
         eptitudeData['battlecry'] = eptitude.battlecry
         eptitudeData['price'] = eptitude.price
         eptitudeData['probability'] = eptitude.probability
         eptitudeData['spellSensibility'] = eptitude.spellSensibility
+        eptitudeData['activate_widget'] = eptitude.activate_widget
         try:
             eptitudeData['dependency'] = eptitude.dependency.id
         except:
@@ -602,8 +815,24 @@ class Game ():
                  self.black_hand.append(self.play_card)
                  self.play_card['whiteFlag'] = False
 
-        logger.debug(play_card)
         return play_card
+
+    def getDeckData(self, whiteFlag):
+        if whiteFlag:
+            deck = self.white_match_deck
+        else:
+            deck = self.black_match_deck
+
+        deckData = []
+        for card in deck:
+            cardData = {}
+            cardData['title'] = card['title']
+            cardData['price'] = card['price']
+            cardData['index'] = deck.index(card)
+            deckData.append(cardData)
+
+        return deckData
+
 
     def getCardByIndex (self, index, whiteFlag):
         if whiteFlag:
@@ -769,6 +998,14 @@ class Game ():
         action['endAnimationFlag'] = True
         self.scenario.append(action)
 
+        if self.getMode() == 2:
+            action = {}
+            action['type'] = Action.SHIFT_DECK_SLOT
+            action['client'] = client
+            action['attachment'] = EptitudeAttachment.ASSOCIATE
+            self.scenario.append(action)
+
+
         self.calculateCards(client, self.scenario, True)
 
         action = {}
@@ -781,6 +1018,8 @@ class Game ():
         action['client'] = client
         action['endAnimationFlag'] = False
         self.scenario.append(action)
+
+        self.incrementAchieves(client, price, True)
 
         action = {}
         action['type'] = Action.GLOW_CARDS
@@ -797,6 +1036,8 @@ class Game ():
 
         #self.runStepTimer()
         return self.scenario
+
+
 
     def endStep (self):
 
@@ -852,6 +1093,8 @@ class Game ():
 
         if self.blackHeroUnit.containsTempEptitudes():
             self.controller.deactivateTempEptitudes(self.blackHeroUnit)
+
+        self.disableAchieves(client, whiteFlag)
 
         self.transitionProgress ()
 
@@ -944,64 +1187,74 @@ class Game ():
             self.controller.setWhiteFlag(whiteFlag)
             self.controller.opponentStartStep(unit)
 
-        if self.deckLength(whiteFlag):
+        pickIndex = 1
+        if self.getMode() == 0:
+            pickIndex = 2
 
-            if len(hand) < 10:
-                card = self.getCard(whiteFlag, True)
-                cardCopy = self.copyCard(card)
-                action = {}
-                action['type'] = Action.PICK_CARD
-                action['client'] = client
-                action['attachment'] = EptitudeAttachment.ASSOCIATE
-                action['card'] = cardCopy
-                action['endAnimationFlag'] = True
-                self.scenario.append(action)
+        for i in range(pickIndex):
 
-                logger.debug('attachment:%s' % action['attachment'])
+            if self.deckLength(whiteFlag):
 
-                self.lastCardinHand = card
-                if whiteFlag:
-                    self.lastWhiteCard = card
-                else:
-                    self.lastBlackCard = card
-
-                for unit in row:
-                    self.controller = Controller()
-                    self.controller.setMatch(self)
-                    self.controller.setScenario(self.scenario)
-                    self.controller.setClient(client)
-                    self.controller.setWhiteFlag(whiteFlag)
-                    self.controller.newCard(unit)
-                    self.controller.newPlayerCard(unit)
-
-                for unit in opponentRow:
-                    self.controller = Controller()
-                    self.controller.setMatch(self)
-                    self.controller.setScenario(self.scenario)
-                    self.controller.setClient(client)
-                    self.controller.setWhiteFlag(whiteFlag)
-                    self.controller.newCard(unit)
-                    self.controller.newOpponentCard(unit)
-
-
-            else:
-                if self.burnExtraCardsFlag:
-                    logger.debug('BURN_CARD')
-                    card = self.getCard(whiteFlag, False)
+                if len(hand) < 10:
+                    card = self.getCard(whiteFlag, True)
                     cardCopy = self.copyCard(card)
                     action = {}
-                    action['type'] = Action.BURN_CARD
-                    action['attachment'] = EptitudeAttachment.ASSOCIATE
+                    action['type'] = Action.PICK_CARD
                     action['client'] = client
+                    action['attachment'] = EptitudeAttachment.ASSOCIATE
                     action['card'] = cardCopy
                     action['endAnimationFlag'] = True
                     self.scenario.append(action)
 
-        else:
-            if self.attritionFlag:
-                self.attrition(client, whiteFlag)
+                    if self.getMode() == 2:
+                        action = {}
+                        action['type'] = Action.SHIFT_DECK_SLOT
+                        action['client'] = client
+                        action['attachment'] = EptitudeAttachment.ASSOCIATE
+                        self.scenario.append(action)
 
-        self.calculateCards(client, self.scenario, whiteFlag)
+                    self.lastCardinHand = card
+                    if whiteFlag:
+                        self.lastWhiteCard = card
+                    else:
+                        self.lastBlackCard = card
+
+                    for unit in row:
+                        self.controller = Controller()
+                        self.controller.setMatch(self)
+                        self.controller.setScenario(self.scenario)
+                        self.controller.setClient(client)
+                        self.controller.setWhiteFlag(whiteFlag)
+                        self.controller.newCard(unit)
+                        self.controller.newPlayerCard(unit)
+
+                    for unit in opponentRow:
+                        self.controller = Controller()
+                        self.controller.setMatch(self)
+                        self.controller.setScenario(self.scenario)
+                        self.controller.setClient(client)
+                        self.controller.setWhiteFlag(whiteFlag)
+                        self.controller.newCard(unit)
+                        self.controller.newOpponentCard(unit)
+
+                else:
+                    if self.burnExtraCardsFlag:
+                        logger.debug('BURN_CARD')
+                        card = self.getCard(whiteFlag, False)
+                        cardCopy = self.copyCard(card)
+                        action = {}
+                        action['type'] = Action.BURN_CARD
+                        action['attachment'] = EptitudeAttachment.ASSOCIATE
+                        action['client'] = client
+                        action['card'] = cardCopy
+                        action['endAnimationFlag'] = True
+                        self.scenario.append(action)
+
+            else:
+                if self.attritionFlag:
+                    self.attrition(client, whiteFlag, False)
+
+            self.calculateCards(client, self.scenario, whiteFlag)
 
         action = {}
         action['type'] = Action.STEP
@@ -1048,6 +1301,8 @@ class Game ():
         action['endAnimationFlag'] = False
         self.scenario.append(action)
 
+        self.incrementAchieves(client, price, whiteFlag)
+
         if len(row) < 7:
             action = {}
             action['type'] = Action.GLOW_CARDS
@@ -1072,7 +1327,8 @@ class Game ():
         else:
             return len(self.black_match_deck)
 
-    def attrition (self, client, whiteFlag):
+    def attrition (self, client, whiteFlag, inverseFlag):
+
         if whiteFlag:
             hero = self.whiteHeroUnit
             self.whiteAttritionIndex += 1
@@ -1082,8 +1338,13 @@ class Game ():
             self.blackAttritionIndex += 1
             damage = self.blackAttritionIndex
 
-        targetAttachment = self.initAttachment (hero, whiteFlag)
-        targetIndex = self.initIndex (hero, targetAttachment, whiteFlag)
+        if inverseFlag:
+            attachmentFlag = not whiteFlag
+        else:
+            attachmentFlag = whiteFlag
+
+        targetAttachment = self.initAttachment (hero, attachmentFlag)
+        targetIndex = self.initIndex (hero, targetAttachment, attachmentFlag)
 
         action = {}
         action['type'] = Action.ATTRITION
@@ -1095,6 +1356,10 @@ class Game ():
         action['targets'] = [{'index':targetIndex, 'attachment':targetAttachment, 'damage':damage }]
         action['client'] = client
         self.scenario.append(action)
+
+        logger.debug ('whiteFlag:%s' % whiteFlag)
+        logger.debug ('index:%s' % targetIndex)
+        logger.debug ('attachment:%s' % targetAttachment)
 
         targetNewHealthValue = hero.getHealth() - damage
         hero.setHealth(targetNewHealthValue)
@@ -1272,6 +1537,8 @@ class Game ():
             action['client'] = client
             self.scenario.append(action)
 
+        self.checkCommonAchieves(price, client, whiteFlag)
+
         action = {}
         action['type'] = Action.GLOW_CARDS
         action['client'] = client
@@ -1401,6 +1668,8 @@ class Game ():
                 action['client'] = client
                 self.scenario.append(action)
 
+            self.checkCommonAchieves(price, client, whiteFlag)
+
             action = {}
             action['type'] = Action.GLOW_CARDS
             action['client'] = client
@@ -1524,6 +1793,8 @@ class Game ():
                 action['client'] = client
                 self.scenario.append(action)
 
+            self.checkCommonAchieves(price, client, whiteFlag)
+
             action = {}
             action['type'] = Action.GLOW_CARDS
             action['client'] = client
@@ -1645,6 +1916,8 @@ class Game ():
                 action['type'] = Action.ACTIVATE_DRAWING_SERIES
                 action['client'] = client
                 self.scenario.append(action)
+
+            self.checkCommonAchieves(price, client, whiteFlag)
 
             action = {}
             action['type'] = Action.GLOW_CARDS
@@ -1960,6 +2233,8 @@ class Game ():
             action['client'] = client
             self.scenario.append(action)
 
+        self.checkCommonAchieves(price, client, whiteFlag)
+
         action = {}
         action['type'] = Action.GLOW_CARDS
         action['client'] = client
@@ -2085,7 +2360,7 @@ class Game ():
             self.controller.newCard(unit)
             self.controller.newPlayerCard(unit)
 
-
+        self.checkCommonAchieves(price, client, whiteFlag)
 
         action = {}
         action['type'] = Action.GLOW_CARDS
@@ -2344,6 +2619,15 @@ class Game ():
 
                 if actionFlag:
 
+                    if attackUnit.hasSelfDieEptitude():
+                         action = {}
+                         action['type'] = Action.ACTIVATE_WIDGET
+                         action['client'] = client
+                         action['targetIndex'] = initiatorIndex
+                         action['targetAttachment'] = initiatorAttachment
+                         self.scenario.append(action)
+
+
                     #logger.debug ('addAction::attack_token_death')
                     action = {}
                     action['type'] = Action.ATTACK_TOKEN_DEATH
@@ -2393,6 +2677,15 @@ class Game ():
                     # уточняем живо ли существо или умерло еще до завершения классической аттаки в резултате срабатывания способности
                     if aliveFlag:
                         #logger.debug ('addAction::target_token_death')
+                        if targetUnit.hasSelfDieEptitude():
+                             action = {}
+                             action['type'] = Action.ACTIVATE_WIDGET
+                             action['client'] = client
+                             action['targetIndex'] = targetIndex
+                             action['targetAttachment'] = targetAttachment
+                             self.scenario.append(action)
+
+
                         action = {}
                         action['type'] = Action.TARGET_TOKEN_DEATH
                         action['client'] = client
@@ -3609,6 +3902,18 @@ class Game ():
                 attachment = 0
             else:
                 attachment = 1
+
+        if isinstance(unit, UAchieve):
+            if unit.whiteFlag:
+                if whiteFlag:
+                    attachment = 1
+                else:
+                    attachment = 0
+            else:
+                if whiteFlag:
+                    attachment = 0
+                else:
+                    attachment = 1
 
         try:
             self.whiteUnitRow.index(unit)

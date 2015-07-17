@@ -23,6 +23,10 @@ class FormFieldNode(template.Node):
         self.field = template.Variable(field_str)
 
     def render(self, context):
+        """
+
+        :rtype : object
+        """
         field = self.field.resolve(context)
         if hasattr(field, 'field'):
             field.widget_type = field.field.widget.__class__.__name__

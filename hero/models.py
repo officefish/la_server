@@ -12,8 +12,8 @@ class Hero (models.Model):
     def short_description (self):
         return str(self.description) [:90] + '...'
 
-
 class UserHero (models.Model):
     owner = models.ForeignKey(User)
     hero = models.ForeignKey(Hero)
     level = models.IntegerField(max_length=2, default=1)
+

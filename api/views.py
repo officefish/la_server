@@ -6,6 +6,7 @@ __author__ = 'inozemcev'
 
 from django.template.response import TemplateResponse, HttpResponse
 from django.contrib.auth.models import User
+from django.shortcuts import render
 
 import logging
 import json
@@ -15,7 +16,7 @@ from hero.models import UserHero, Hero
 from card.models import Deck, DeckCollector, DeckItem
 from card.models import Collection, CollectionItem, CollectionCollector
 from card.models import AchieveCollection, AchieveCollectionItem, AchieveCollector
-from achieve.models import Achieve, AchieveMask
+from achieve.models import Achieve, AchieveMask, UserAchieveItem
 
 from card.models import Card
 
@@ -23,6 +24,21 @@ from userprofile.models import UserProfile
 
 from bookMask.models import BookMask, MaskItem
 from book.models import Book
+
+def crossdomain(
+        request,
+        template_name = 'web/crossdomain.xml'):
+
+    return render(request, template_name, content_type='text/xml; charset=utf-8')
+    #return HttpResponse(template_name, content_type='text/xml; charset=utf-8' )
+
+def maincrossdomain(
+        request,
+        template_name = 'crossdomain.xml'):
+
+    return render(request, template_name, content_type='text/xml; charset=utf-8')
+    #return HttpResponse(template_name, content_type='text/xml; charset=utf-8' )
+
 
 def selectDeck (request):
     id = request.GET['user_id']
@@ -47,12 +63,242 @@ def selectDeck (request):
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+def destroyAchieve (request):
+    id = request.GET['user_id']
+    hero_id = request.GET['hero_id']
+    achieve_id = request.GET['achieve_id']
+
+    success = True
+    response_data = {}
+
+    if success:
+         user = User.objects.get(id=id)
+         hero = Hero.objects.get(id=hero_id)
+         profile = UserProfile.objects.get (user=user)
+         achieveFlag = False
+         maskFlag = False
+
+
+
+
+         try:
+             achieveFlag = True
+             achieve = Achieve.objects.get(id=achieve_id)
+         except Achieve.DoesNotExist:
+             success = False
+             error_message = 'AchieveDoesNotExist'
+             error_status = 501
+
+         if achieveFlag:
+             try:
+                 mask = AchieveMask.objects.get(achieve=achieve)
+                 maskFlag = True
+             except AchieveMask.DoesNotExist:
+                 success = False
+                 error_message = 'MaskDoesNotExist'
+                 error_status = 505
+
+         if maskFlag:
+             try:
+                 item = AchieveCollectionItem.objects.get(achieve=achieve, owner=user)
+                 if item.count == 1:
+                     item.delete()
+                     response_data['count'] = 0
+                 else:
+                     item.count = item.count - 1
+                     item.save()
+                     response_data['count'] = item.count
+                 profile.dust += mask.sale_cost
+                 profile.save()
+
+             except AchieveCollectionItem.DoesNotExist:
+                 success = False
+                 error_status = 503
+                 error_message = 'NoItemsToDelete'
+
+
+
+
+    if success:
+        response_data['status'] =  'success'
+        response_data['achieve_id'] = achieve_id
+        response_data['dust'] = profile.dust
+
+    else:
+        response_data['status'] =  'error'
+        response_data['message'] = error_message
+        response_data['error_type'] = error_status
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def craftAchieve (request):
+    id = request.GET['user_id']
+    hero_id = request.GET['hero_id']
+    achieve_id = request.GET['achieve_id']
+
+    success = True
+    response_data = {}
+
+    if success:
+         user = User.objects.get(id=id)
+         hero = Hero.objects.get(id=hero_id)
+         profile = UserProfile.objects.get (user=user)
+
+         try:
+             achieve = Achieve.objects.get(id=achieve_id)
+         except Achieve.DoesNotExist:
+             success = False
+             error_message = 'AchieveDoesNotExist'
+             error_status = 501
+
+         try:
+            mask = AchieveMask.objects.get(achieve=achieve)
+            maskFlag = True
+         except AchieveMask.DoesNotExist:
+             success = False
+             error_message = 'MaskDoesNotExist'
+             error_status = 504
+             maskFlag = False
+
+         if maskFlag:
+
+             if profile.dust > mask.buy_cost:
+                 profile.dust -= mask.buy_cost
+                 profile.save()
+                 try:
+                     item = AchieveCollectionItem.objects.get(achieve=achieve, owner=user)
+                     if item.count >= mask.max_access:
+                         success = False
+                         error_status = 502
+                         error_message = 'AchiveWasAlreadyCraftedMaxTimes'
+                     else:
+                         item.count = item.count + 1
+                         item.save()
+                 except AchieveCollectionItem.DoesNotExist:
+                     item = AchieveCollectionItem.objects.create(achieve=achieve, owner=user, count=1)
+                     collection = AchieveCollection.objects.get (owner=user)
+                     AchieveCollector.objects.create(item=item, collection=collection)
+
+             else:
+                 success = False
+                 error_message = 'NotEnoughDust'
+                 error_status = 505
+
+    if success:
+        response_data['status'] =  'success'
+        response_data['achieve_id'] = achieve_id
+        response_data['dust'] = profile.dust
+        response_data['count'] = item.count
+    else:
+        response_data['status'] =  'error'
+        response_data['message'] = error_message
+        response_data['error_type'] = error_status
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+
+def craftAchievesList (request):
+    id = request.GET['user_id']
+    hero_id = request.GET['hero_id']
+
+    success = True
+
+    response_data = {}
+
+    if success:
+         user = User.objects.get(id=id)
+         hero = Hero.objects.get(id=hero_id)
+         profile = UserProfile.objects.get (user=user)
+
+
+         achieves = []
+
+         achieveMasks = AchieveMask.objects.filter( craft_available=True, achieve__owners=hero)
+         for mask in achieveMasks:
+            achieveData = getAchieveData(mask.achieve)
+            try:
+                item = AchieveCollectionItem.objects.get(achieve=mask.achieve, owner=user)
+                achieveData['count'] = item.count
+            except AchieveCollectionItem.DoesNotExist:
+                achieveData['count'] = 0
+
+                achieveData['max_access'] = mask.max_access
+            achieveData['buyCost'] = mask.buy_cost
+            achieveData['saleCost'] = mask.sale_cost
+            achieveData['max_access'] = mask.max_access
+            achieveData['access'] = mask.access
+
+
+            achieves.append(achieveData)
+
+    response_data['achieves'] = achieves
+    response_data['status'] = 'success'
+    response_data['dust'] = profile.dust
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def getAchieveData(achieve):
+    achieveData = {}
+    achieveData['title'] = achieve.title
+    achieveData['description'] = achieve.description
+    achieveData['price'] = achieve.price
+    achieveData['autonomic'] = achieve.autonomic
+    achieveData['type'] = achieve.type
+    achieveData['id'] = achieve.id
+    return achieveData
+
+
+def setupAchieves (request):
+    id = request.GET['user_id']
+    hero_id = request.GET['hero_id']
+    request_data = request.GET['data']
+    request_data = json.loads (request_data)
+
+    success = False
+    response_data = {}
+
+    '''
+    if int(id) == request.user.id:
+         success = True
+         response_data['status'] = 'success'
+    else:
+         response_data['status'] = 'error'
+         response_data['text'] = 'The request user id and authontificated user id is not the same. (auth.id:%s)' % request.user.id
+    '''
+
+    success = True
+
+    if success:
+         user = User.objects.get(id=id)
+         hero = Hero.objects.get(id=hero_id)
+         userHero = UserHero.objects.get(owner=user, hero=hero)
+
+         for achieve in userHero.achieves.all():
+             achieve.delete()
+
+         for i in range(len(request_data['setup'])):
+            setupData = request_data['setup'][i]
+            achieve = Achieve.objects.get(id=setupData["achieve"])
+            UserAchieveItem.objects.create(owner=userHero, achieve=achieve, position=setupData["position"])
+
+
+
+    response_data['success'] = success
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+
+
+
+
 def getAchievesList (request):
     id = request.GET['user_id']
     hero_id = request.GET['hero_id']
 
     success = False
     response_data = {}
+
 
     '''
     if int(id) == request.user.id:
@@ -80,27 +326,32 @@ def getAchievesList (request):
 
         achieves = collection.items.filter(owner=hero)
 
+        achievesData = []
+        for achieve in userHero.achieves.all():
+            achievesData.append({"achieve":achieve.achieve.id, "position":achieve.position})
+
     response_data['collection_count'] = collection.items.count()
     response_data['status'] = 'success'
     response_data['achieves'] = getAchievesData(achieves)
     response_data['hero_id'] = hero_id
     response_data['hero_vocation'] = hero.vocation
+    response_data['setup'] = achievesData
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def checkNewAvailableAchieves(user, collection):
-    achieveMasks = AchieveMask.objects.filter(access=1)
+    achieveMasks = AchieveMask.objects.filter(access=1, craft_available=False)
     for mask in achieveMasks:
         try:
             item = AchieveCollectionItem.objects.get(achieve=mask.achieve, owner=user)
         except AchieveCollectionItem.DoesNotExist:
-            item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user)
+            item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user, count=1)
             AchieveCollector.objects.create(item=item, collection=collection)
 
 def generateDefaultAchieveCollection (user, collection):
-    achieveMasks = AchieveMask.objects.filter(access=1)
+    achieveMasks = AchieveMask.objects.filter(access=1, craft_available=False)
     for mask in achieveMasks:
-        item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user)
+        item = AchieveCollectionItem.objects.create(achieve=mask.achieve, owner=user, count=1)
         AchieveCollector.objects.create(item=item, collection=collection)
 
 
@@ -114,7 +365,8 @@ def getAchievesData(achieves):
         achieveData['price'] = item.achieve.price
         achieveData['autonomic'] = item.achieve.autonomic
         achieveData['type'] = item.achieve.type
-        achieveData['id'] = item.id
+        achieveData['id'] = item.achieve.id
+        achieveData['count'] = item.count
         data.append(achieveData)
     return data
 

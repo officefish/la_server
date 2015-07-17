@@ -12,7 +12,7 @@ from django.core.management.base import BaseCommand, CommandError
 import logging
 logger = logging.getLogger('tornado_commander')
 
-from game.tornado.lobby import MainHandler, LobbyHandler
+from game.tornado.lobby import MainHandler, LobbyHandler, GrahhHandler, GrahhApiHandler
 from game.tornado.match import MatchHandler
 
 class Command(BaseCommand):
@@ -39,7 +39,9 @@ class Command(BaseCommand):
         urls = [
             (r'/(?P<apikey>.+)/', MainHandler),
             (r'/lobby', LobbyHandler),
-            (r'/match/([0-9]+)', MatchHandler)
+            (r'/match/([0-9]+)', MatchHandler),
+            (r'/crossdomain.xml', GrahhHandler),
+             (r'/api/crossdomain.xml', GrahhApiHandler)
         ]
 
         app = tornado.web.Application(urls)
@@ -48,8 +50,6 @@ class Command(BaseCommand):
         address =  "127.0.0.1"
 
         self.http_server = tornado.httpserver.HTTPServer(app)
-
-
         self.http_server.listen(port, address=address)
 
 

@@ -736,6 +736,7 @@ def createEptitudeByRequest (request):
     attachment = request.POST['attachment']
     price = request.POST['price']
     probability = request.POST['probability']
+    activate_widget = request.POST['activate_widget']
 
     try:
         battlecry = bool(int(request.POST["battlecry"]))
@@ -822,7 +823,8 @@ def createEptitudeByRequest (request):
         battlecry = battlecry,
         price = price,
         probability = probability,
-        spellSensibility = spellSensibility
+        spellSensibility = spellSensibility,
+        activate_widget = activate_widget
     )
 
     return eptitude
@@ -841,6 +843,7 @@ def editEptitudeByRequest(request, eptitude):
         lifecycle = request.POST['lifecycle']
         price = request.POST['price']
         probability = request.POST['probability']
+        activate_widget = request.POST['activate_widget']
 
         try:
             dynamic = bool(int(request.POST["dynamic"]))
@@ -928,6 +931,7 @@ def editEptitudeByRequest(request, eptitude):
         eptitude.price = price
         eptitude.probability = probability
         eptitude.spellSensibility = spellSensibility
+        eptitude.activate_widget = activate_widget
         eptitude.save()
 
 def getEptitudeData(eptitude, card):
@@ -1001,7 +1005,8 @@ def getEptitudeData(eptitude, card):
         'battlecry':int(eptitude.battlecry),
         'price':int(eptitude.price),
         'probability':int(eptitude.probability),
-        'spellSensibility':int(eptitude.spellSensibility)
+        'spellSensibility':int(eptitude.spellSensibility),
+        'activate_widget':int(eptitude.activate_widget)
     }
     return data
 

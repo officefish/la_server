@@ -12,8 +12,14 @@ from bookMask import urls as book_mask_urls
 from group import  urls as group_urls
 from achieve import urls as achieve_urls
 
+from webapp import views as app_views
+
+
 urlpatterns = patterns('',
 
+    url(r'^$', app_views.LoginFormView.as_view(), name='home'),
+    url(r'^register/$', app_views.RegisterFormView.as_view(), name='register'),
+    url(r'^client/', app_views.client, name='client'),
     url(r'^cards/', include(card_urls), name='cards'),
     url(r'^heroes/', include(hero_urls), name='heroes'),
     url(r'^books/', include(book_urls), name='books'),
@@ -21,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^api/', include(api_urls), name='api'),
     url(r'^groups/', include(group_urls), name='group'),
     url(r'^achieves/',include(achieve_urls),name='achieve'),
+    url(r'crossdomain.xml$', 'api.views.maincrossdomain', name='maincrossdomain'),
     # Examples:
     # url(r'^$', 'last_argument.views.home', name='home'),
     # url(r'^last_argument/', include('last_argument.foo.urls')),

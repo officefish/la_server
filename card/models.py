@@ -141,9 +141,12 @@ class CardEptitude (models.Model):
 
     probability = models.IntegerField(default=100)
 
+    activate_widget = models.BooleanField (default=False)
+
 class AchieveCollectionItem (models.Model):
     achieve = models.ForeignKey(Achieve)
     owner = models.ForeignKey(User, related_name='collectionAchieves')
+    count = models.IntegerField(default = 1)
 
     @property
     def price(self):
@@ -153,11 +156,11 @@ class AchieveCollection(models.Model):
     owner = models.ForeignKey(User, related_name='achieve_collections')
     items = models.ManyToManyField(AchieveCollectionItem, through='AchieveCollector')
 
-
-
 class AchieveCollector (models.Model):
     item = models.ForeignKey(AchieveCollectionItem, related_name='achieve_collection_item')
     collection = models.ForeignKey(AchieveCollection)
+
+
 
 
 

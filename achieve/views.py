@@ -211,6 +211,7 @@ def edit_achieve_mask (request, mask_id,
             buy_cost = request.POST['buy_cost']
             sale_cost = request.POST['sale_cost']
             access = request.POST['access']
+            max_access = request.POST['max_access']
             craft_available = bool(int(request.POST["craft_available"]))
 
             mask.rarity = rarity
@@ -218,6 +219,7 @@ def edit_achieve_mask (request, mask_id,
             mask.sale_cost = sale_cost
             mask.access = access
             mask.craft_available =  craft_available
+            mask.max_access = max_access
             mask.save ()
 
             return HttpResponseRedirect(redirect_to)
@@ -228,6 +230,7 @@ def edit_achieve_mask (request, mask_id,
             "buy_cost":mask.buy_cost,
             "sale_cost":mask.sale_cost,
             "access":mask.access,
+            "max_access":mask.max_access,
             "craft_available":int(mask.craft_available)
 
         }
