@@ -87,6 +87,24 @@ class Action ():
     ENABLE_ACHIEVE = 'enable_achieve'
     SHIFT_DECK_SLOT = 'shift_deck_slot'
     ACHIEVE_TARGET_WARNING = 'achieve_target_warning'
+    BLOCK_ACTIVE = 'block_active'
+    GLOW_UNIT = 'glow_unit'
+    DESTOY_DOUBLE_ATTACK = 'destroy_double_attack'
+    FLY = 'fly'
+    DESTROY_FLY = 'destroy_fly'
+    ATTACH_WIDGET = 'attach_widget'
+    DESTROY_PROVOCATION = 'destroy_provocation'
+    DECREASE_HEALTH = 'decrease_health'
+    SELECT_ACTIVE_TARGET = 'select_active_target'
+    SELECT_FOR_SPELL = 'select_for_spell'
+    TAKE_UP_WEAPON = 'take_up_weapon'
+    GLOW_HERO = 'glow_hero'
+    GLOW_WEAPON = 'glow_weapon'
+    STOP_GLOW_WEAPON = 'stop_glow_weapon'
+    WEAPON_STRENGTH = 'weapon_strength'
+    DESTROY_WEAPON = 'destroy_weapon'
+
+
 
 
 

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block navigation %}
+    <nav>
+         <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
+            <li class="active"><a href="{% url 'weapons_list' %}">оружие</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col col-md-8 pull-right">
+            <form id="edit_card_form" action="{{ request.get_full_path }}" method="post" >
+                <h2>{% trans 'Edit Weapon' %}</h2>
+                {% csrf_token %}
+                {% include "partials/form_fields.html" %}
+                <button name="edit_submit" type="submit" value="edit_weapon" class="btn btn-large btn-primary" >{% trans 'Edit Weapon' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

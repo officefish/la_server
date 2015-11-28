@@ -153,6 +153,7 @@ INSTALLED_APPS = (
     'achieve',
     'userprofile',
     'webapp',
+    'weapon',
     'django.contrib.admin',
 
     # Uncomment the next line to enable the admin:

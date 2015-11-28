@@ -13,6 +13,7 @@ class UAchieve ():
         self.incrementIndex = 0
         self.whiteFlag = whiteFlag
 
+
         self.eptitudes = []
 
         for eptitudeModel in achieveModel.achieve.eptitudes:
@@ -29,6 +30,8 @@ class UAchieve ():
              eptitude.setAttachHero (eptitudeModel.attach_hero)
              eptitude.setAttachInitiator(eptitudeModel.attach_initiator)
              eptitude.setAttachment(eptitudeModel.attachment)
+             self.attachment = eptitudeModel.attachment
+             self.attach_hero = eptitudeModel.attach_hero
 
              eptitude.setDynamic(eptitudeModel.dynamic)
              eptitude.setCondition(eptitudeModel.condition)
@@ -63,6 +66,8 @@ class UAchieve ():
         data['price'] = self.price
         data['autonomic'] = self.autonomic
         data['type'] = self.type
+        data['attachment'] = self.attachment
+        data['attach_hero'] = self.attach_hero
         return data
 
     def getWhiteFlag(self):

@@ -60,7 +60,8 @@ EPTITUDE_PERIOD = {
     '51':'OPPONENT_PRE_ATTACK',
     '52':"ACTIVATE_SPELL_TO_TARGET",
     '53':'ACTIVATE_SPELL',
-    '54':'ACTIVATE_ACHIEVE'
+    '54':'ACTIVATE_ACHIEVE',
+    '55':'ACTIVATE_ACTIVE'
 
     }
 
@@ -93,7 +94,8 @@ EPTITUDE_LEVEL = {
    '25':'SPELL_TARGET_ALLIES',
    '26':'SPELL_TARGET_NEIGHBORS',
    '27':'ALL_EXCEPT_ONE',
-   '28':'UNIT_HERO'
+   '28':'UNIT_HERO',
+   '29':'ACTIVE_TARGET'
 }
 
 
@@ -194,7 +196,10 @@ EPTITUDE_TYPE = {
     '91':'SHUFFLE_UNIT_TO_DECK',
     '92':'SHUFFLE_UNIT_CARD_TO_DECK',
     '93':'BACK_SEVERAL_TOKENS_TO_HAND',
-    '94':'COPY_UNIT_CARDS_TO_HAND'
+    '94':'COPY_UNIT_CARDS_TO_HAND',
+    '95':'FLY',
+    '96':"DESTROY_PROVOCATION",
+    '97':"TAKE_UP_WEAPON"
 }
 
 
@@ -234,7 +239,22 @@ EPTITUDE_CONDITION={
     '25':'NOT_DEMON_UNIT',
     '26':'ATTACK_MORE_THAN_4'
 }
+EPTITUDE_ANIMATION= {
+   '-1':'NO_ANIMATION',
+   '0':'NO_ANIMATION',
+   '1':'FROSTBOLT'
+}
 
+@register.filter
+def animation(value, arg):
+    response = arg
+
+    try:
+        response = EPTITUDE_ANIMATION[str(arg)]
+    except:
+        pass
+
+    return response
 
 @register.filter
 def period(value, arg):

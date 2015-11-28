@@ -66,6 +66,16 @@
                 {% if eptitude.activate_widget %}
                    <div><strong>активировать виджет</strong></div>
                 {% endif %}
+                 <div><strong>анимация:</strong> {{ parse_type|animation:eptitude.animation}}</div>
+                {% if eptitude.manacost %}
+                      <div><strong>мана:</strong>{{ eptitude.manacost }}</div>
+                {% endif %}
+                {% if eptitude.destroy %}
+                     <div><strong>Уничтожить после активации</strong></div>
+                {% endif %}
+                {% if eptitude.widget %}
+                     <div><strong>прикрепить виджет</strong></div>
+                {% endif %}
                 <a href="{% url "edit_eptitude_for_book_card" card.id eptitude.id book.id %}">редактировать</a>
                 <a href="{% url "delete_eptitude_for_book_card" card.id eptitude.id book.id %}">удалить</a>
 

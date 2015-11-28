@@ -5,6 +5,12 @@ logger =  logging.getLogger('game_handler')
 from card.models import Race, SubRace
 from game.logic.constants import EptitudePeriod
 
+class Weapon ():
+      def __init__(self):
+          self.power = 0
+          self.strength = 0
+          self.id = 0
+
 class HeroUnit ():
 
      def __init__(self, health):
@@ -23,6 +29,42 @@ class HeroUnit ():
         self.eptitudes = []
         self.spellInvisible = False
         self.spellUp = False
+        self.stepAttackCount = 0
+        self.fly = False
+        self.rightHand = None
+        self.leftHand = None
+
+
+     def takeUpWeapon(self, weaponData):
+        weapon = Weapon ()
+        weapon.id =weaponData.id
+        weapon.power = weaponData.power
+        weapon.strength = weaponData.strength
+
+        weaponIndex = 1
+
+        if isinstance(self.rightHand, Weapon):
+            logger.debug ('rightHand is Weapon')
+            logger.debug ('weaponIndex: %s' % weaponIndex)
+            self.leftHand = weapon
+        else:
+            if isinstance(self.leftHand, Weapon):
+                weaponIndex = 2
+                self.rightHand = weapon
+                logger.debug ('leftHand is Weapon')
+                logger.debug ('weaponIndex: %s' % weaponIndex)
+            else:
+                self.leftHand = weapon
+                logger.debug ('leftHand is not Weapon')
+                logger.debug ('weaponIndex: %s' % weaponIndex)
+
+        return weaponIndex
+
+     def hasWeapon (self):
+         bool = False
+         if isinstance(self.leftHand, Weapon) or isinstance(self.rightHand, Weapon):
+             bool = True
+         return bool
 
 
 
@@ -62,6 +104,13 @@ class HeroUnit ():
                eptitude.probability = eptitudeData['probability']
                eptitude.spellSensibility = eptitudeData['spellSensibility']
                eptitude.activate_widget = eptitudeData['activate_widget']
+               eptitude.animation = eptitudeData['animation']
+               eptitude.manacost = eptitudeData['manacost']
+               eptitude.widget = eptitudeData['widget']
+               eptitude.destroy = eptitudeData['destroy']
+               try:
+                   eptitude.weapon(eptitudeData['weapon'])
+               except: pass
                try:
                    eptitude.setRace(eptitudeData['race'])
                except: pass
@@ -161,9 +210,12 @@ class Unit ():
         self.provocation = False
         self.shield = False
         self.shadow = False
-        self.doubleAttack = False
-        self.stepAttack = 0
+
+        self.totalStepAttack = 1
+        self.stepAttack = 1
+        self.stepAttackCount = 0
         self.stepCount = 0
+
         self.freeze = False
         self.freezeIndex = 0
         self.replaceFlag = False
@@ -171,6 +223,7 @@ class Unit ():
         self.dumbness = False
         self.spellInvisible = False
         self.spellUp = False
+        self.fly = False
 
         try:
             race = Race.objects.get(title=cardData['race'])
@@ -207,6 +260,10 @@ class Unit ():
             index = self.eptitudes.index(target)
             del self.eptitudes[index]
 
+    def destroyEptitude(self, eptitude):
+        index = self.eptitudes.index(eptitude)
+        del self.eptitudes[index]
+
     def getEpritudeByData (self ,eptitudeData):
         eptitude = UnitEptitude ()
         eptitude.setType(eptitudeData['type'])
@@ -230,6 +287,13 @@ class Unit ():
         eptitude.probability = eptitudeData['probability']
         eptitude.spellSensibility = eptitudeData['spellSensibility']
         eptitude.activate_widget = eptitudeData['activate_widget']
+        eptitude.animation = eptitudeData['animation']
+        eptitude.manacost = eptitudeData['manacost']
+        eptitude.widget = eptitudeData['widget']
+        eptitude.destroy = eptitudeData['destroy']
+        try:
+            eptitude.weapon = eptitudeData['weapon']
+        except: pass
         try:
             eptitude.setRace(eptitudeData['race'])
         except: pass
@@ -332,6 +396,14 @@ class Unit ():
                 flag = True
         return flag
 
+    def hasActiveEptitude(self):
+        flag = False
+        for eptitude in self.eptitudes:
+            if eptitude.getPeriod() == EptitudePeriod.ACTIVATE_ACTIVE:
+                flag = True
+        return flag
+
+
     def hasSelfDieEptitude (self):
         flag = False
         for eptitude in self.eptitudes:
@@ -367,6 +439,11 @@ class UnitEptitude ():
         self.max_power = 0
         self.target = None
         self.activate_widget = False
+        self.animation = -1
+        self.manacost = 0
+        self.widget = 0
+        self.destroy = False
+
 
 
     def clone(self):
@@ -382,6 +459,10 @@ class UnitEptitude ():
         eptitude.spellSensibility = self.spellSensibility
         eptitude.attached = self.attached
         eptitude.activate_widget = self.activate_widget
+        eptitude.animation = self.animation
+        eptitude.manacost = self.manacost
+        eptitude.widget = self.widget
+        eptitude.destroy = self.destroy
         try:
             eptitude.target = self.target
         except:
@@ -401,6 +482,10 @@ class UnitEptitude ():
             pass
         try:
             eptitude.race = self.race
+        except:
+            pass
+        try:
+            eptitude.weapon = self.weapon
         except:
             pass
         try:
@@ -532,12 +617,10 @@ class UnitEptitude ():
         try:
             self.data['lifecycle'] = self.lifecycle
         except: pass
-        try:
-            self.data['attachment'] = self.attachment
-        except: pass
-        try:
-            self.data['attachHero'] = self.attachHero
-        except: pass
+
+        self.data['attachment'] = self.attachment
+        self.data['attachHero'] = self.attachHero
+
         try:
             self.data['attachInitiator'] = self.attachInitiator
         except: pass
@@ -556,7 +639,11 @@ class UnitEptitude ():
         try:
             self.data['condition'] = self.condition
         except: pass
-
+        self.data['animation'] = self.animation
+        try:
+            self.data['manacost'] = self.manacost
+        except: pass
+        self.data['widget'] = self.widget
 
         return self.data
 

@@ -11,6 +11,7 @@ from book import urls as book_urls
 from bookMask import urls as book_mask_urls
 from group import  urls as group_urls
 from achieve import urls as achieve_urls
+from weapon import urls as weapon_urls
 
 from webapp import views as app_views
 
@@ -27,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^api/', include(api_urls), name='api'),
     url(r'^groups/', include(group_urls), name='group'),
     url(r'^achieves/',include(achieve_urls),name='achieve'),
+    url(r'^weapons/',include(weapon_urls),name='weapons'),
     url(r'crossdomain.xml$', 'api.views.maincrossdomain', name='maincrossdomain'),
     # Examples:
     # url(r'^$', 'last_argument.views.home', name='home'),

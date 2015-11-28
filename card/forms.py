@@ -8,6 +8,7 @@ from django import forms
 from card.models import Card, Race, SubRace
 from book.models import Book
 from group.models import Group
+from weapon.models import Weapon
 
 CARD_TYPE_CHOISES=[
     ('0','магия'),
@@ -73,7 +74,8 @@ EPTITUDE_PERIOD_CHOICES=[
     ('51','OPPONENT_PRE_ATTACK'),
     ('52','ACTIVATE_SPELL_TO_TARGET'),
     ('53','ACTIVATE_SPELL'),
-    ('54','ACTIVATE_ACHIEVE')
+    ('54','ACTIVATE_ACHIEVE'),
+    ('55','ACTIVATE_ACTIVE')
 
 
 ]
@@ -109,7 +111,8 @@ EPTITUDE_LEVEL_CHOICES=[
    ('25','SPELL_TARGET_ALLIES'),
    ('26','SPELL_TARGET_NEIGHBORS'),
    ('27','ALL_EXCEPT_ONE'),
-   ('28','UNIT_HERO')
+   ('28','UNIT_HERO'),
+   ('29','ACTIVE_TARGET')
 ]
 
 
@@ -209,7 +212,10 @@ EPTITUDE_TYPE_CHOICES=[
     ('91','SHUFFLE_UNIT_TO_DECK'),
     ('92','SHUFFLE_UNIT_CARD_TO_DECK'),
     ('93','BACK_SEVERAL_TOKENS_TO_HAND'),
-    ('94','COPY_UNIT_CARDS_TO_HAND')
+    ('94','COPY_UNIT_CARDS_TO_HAND'),
+    ('95','FLY'),
+    ('96','DESTROY_PROVOCATION'),
+    ('97','TAKE_UP_WEAPON')
 ]
 
 etc = [
@@ -307,7 +313,10 @@ etc = [
     'SHUFFLE_UNIT_TO_DECK',
     'SHUFFLE_UNIT_CARD_TO_DECK',
     'BACK_SEVERAL_TOKENS_TO_HAND',
-    'COPY_UNIT_CARDS_TO_HAND'
+    'COPY_UNIT_CARDS_TO_HAND',
+    'FLY (полет)',
+    'DESTROY_PROVOCATION',
+    'TAKE_UP_WEAPON'
 ]
 
 # Вид уникальной способности
@@ -353,6 +362,11 @@ EPTITUDE_WIDGET=[
    ('2','WOUND_WIDGET'),
    ('3','SPELL_WIDGET'),
    ('4','ATTACK_WIDGET')
+   ]
+
+EPTITUDE_ANIMATION_CHOICES=[
+   ('-1','NO_ANIMATION'),
+   ('1','FROSTBOLT')
    ]
 
 
@@ -414,6 +428,7 @@ class EptitudeForm (forms.Form):
     condition = forms.ChoiceField(choices=EPTITUDE_CONDITION_CHOICES)
     spellCondition = forms.ChoiceField(choices=EPTITUDE_CONDITION_CHOICES)
 
+
     battlecry = forms.TypedChoiceField(required=False, coerce=lambda x: bool(int(x)),
                    choices=((0, 'False'), (1, 'True')),
                    widget=forms.RadioSelect
@@ -444,6 +459,15 @@ class EptitudeForm (forms.Form):
                    widget=forms.RadioSelect
                 )
 
+    widget = forms.ChoiceField(choices=EPTITUDE_WIDGET)
+    destroy = forms.TypedChoiceField(required=False, coerce=lambda x: bool(int(x)),
+                   choices=((0, 'False'), (1, 'True')),
+                   widget=forms.RadioSelect
+                )
+
+    manacost = forms.IntegerField(min_value=0, max_value=10, initial=0, widget=forms.TextInput(attrs={'maxlength':2}))
+    animation = forms.ChoiceField(choices=EPTITUDE_ANIMATION_CHOICES)
+
 
 
     def __init__(self, card, *args, **kwargs):
@@ -473,6 +497,10 @@ class EptitudeForm (forms.Form):
         attach_eptitude_choises = [(-1, '----')]
         attach_eptitude_choises += [ (o.id, etc[o.type]) for o in card.eptitudes]
         self.fields['attach_eptitude'] = forms.ChoiceField(required=False, choices=attach_eptitude_choises)
+
+        weapon_choises = [(-1, '----')]
+        weapon_choises += [ (o.id, str(o.title)) for o in Weapon.objects.all()]
+        self.fields['weapon'] = forms.ChoiceField(required=False, choices=weapon_choises)
 
 
 class RaceForm (forms.Form):

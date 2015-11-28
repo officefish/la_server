@@ -71,6 +71,7 @@ class EptitudeLevel():
     SPELL_TARGET_NEIGHBORS = 26
     ALL_EXCEPT_ONE = 27
     UNIT_HERO = 28
+    ACTIVE_TARGET = 29
 
 class EptitudeType():
     JERK = 1
@@ -167,6 +168,9 @@ class EptitudeType():
     SHUFFLE_UNIT_CARD_TO_DECK = 92
     BACK_SEVERAL_TOKENS_TO_HAND = 93
     COPY_UNIT_CARDS_TO_HAND = 94
+    FLY = 95
+    DESTROY_PROVOCATION = 96
+    TAKE_UP_WEAPON = 97
 
 
 class EptitudePeriod ():
@@ -228,4 +232,5 @@ class EptitudePeriod ():
     ACTIVATE_SPELL = 53
 
     ACTIVATE_ACHIEVE = 54
+    ACTIVATE_ACTIVE = 55
 

@@ -425,6 +425,25 @@ def getDeckList (request):
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+def updateHeroes (request):
+    id = request.GET['user_id']
+
+    user = User.objects.get(id=id)
+    heroes = UserHero.objects.filter(owner=user)
+
+    if len(heroes) == 1:
+            hero = Hero.objects.get(vocation='shaman')
+            UserHero.objects.create(owner=user, hero=hero)
+
+            hero = Hero.objects.get(vocation='rainger')
+            UserHero.objects.create(owner=user, hero=hero)
+
+    heroes = UserHero.objects.filter(owner=user)
+    response_data = {}
+    response_data['totalHeroes'] = len(heroes)
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
 
 def getHeroes (request):
     id = request.GET['user_id']
@@ -997,6 +1016,9 @@ def getCollection (request):
 def getFullCollection (request):
     id = request.GET['user_id']
     user = User.objects.get(id=id)
+    collection = Collection.objects.get (owner=user)
+
+    updateCollection(user, collection)
 
     books = Book.objects.all()
     response_data = {}
@@ -1062,6 +1084,57 @@ def hasAttr (obj, attr):
         return False
     except KeyError:
         return False
+
+def updateCollection(user, collection):
+    userHeroes = UserHero.objects.filter(owner=user)
+
+    for userHero in userHeroes:
+        hero = userHero.hero
+        books = hero.book_set.all()
+
+        for book in books:
+            try:
+                mask = BookMask.objects.get(book=book)
+                updateByMask (mask, collection)
+            except BookMask.DoesNotExist:
+                pass
+
+def updateByMask (mask, collection):
+     for item in mask.items.all():
+          if item.access_simple:
+              try:
+                  CollectionItem.objects.get(
+                       card = item.card,
+                       owner = collection.owner,
+                       count = item.access_simple,
+                       golden = False,
+                       level = 1)
+              except CollectionItem.DoesNotExist:
+                  collectionItem = CollectionItem.objects.create(
+                     card = item.card,
+                     owner = collection.owner,
+                     count = item.access_simple,
+                     golden = False,
+                     level = 1
+                  )
+                  CollectionCollector.objects.create(collection=collection, item=collectionItem)
+          if item.access_golden:
+               try:
+                  CollectionItem.objects.get(
+                       card = item.card,
+                       owner = collection.owner,
+                       count = item.access_golden,
+                       golden = True,
+                       level = 1)
+               except CollectionItem.DoesNotExist:
+                  collectionItem = CollectionItem.objects.create(
+                     card = item.card,
+                     owner = collection.owner,
+                     count = item.access_golden,
+                     golden = True,
+                     level = 1
+                  )
+                  CollectionCollector.objects.create(collection=collection, item=collectionItem)
 
 def generateDefaultCollection (user, collection):
     userHeroes = UserHero.objects.filter(owner=user)

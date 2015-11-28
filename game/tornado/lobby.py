@@ -30,13 +30,13 @@ class MainHandler (web.RequestHandler):
 class GrahhApiHandler (web.RequestHandler):
     def get(self):
         self.set_header("Content-Type", "text/xml")
-        return self.render('D:\\practice\\last_argument\\server\\la_server\\templates\\web\\crossdomain.xml')
+        return self.render('/var/www/inozemcev/data/www/lastargument.ru/last_argument/templates/web/crossdomain.xml')
 
 
 class GrahhHandler (web.RequestHandler):
     def get(self):
         self.set_header("Content-Type", "text/xml")
-        return self.render('D:\\practice\\last_argument\\server\\la_server\\templates\\crossdomain.xml')
+        return self.render('/var/www/inozemcev/data/www/lastargument.ru/last_argument/templates/web/crossdomain.xml')
 
 class LobbyHandler(websocket.WebSocketHandler):
     handlers = set ()
@@ -84,8 +84,9 @@ class LobbyHandler(websocket.WebSocketHandler):
             self.level = event['level']
             self.deck_id = event['deck_id']
             self.hero_id = event['hero_id']
+            self.nickname = event['nickname']
 
-            LobbyHandler.init_player(self.id, self.level, self.deck_id, self.hero_id)
+            LobbyHandler.init_player(self.id, self.level, self.deck_id, self.hero_id, self.hero_uid, self.nickname)
 
             #loadStack
             response = {}
@@ -94,7 +95,7 @@ class LobbyHandler(websocket.WebSocketHandler):
             data = {}
             players = list()
             for player in LobbyHandler.handlers:
-                players.append({'id':player.id, 'hero_uid':player.hero_uid, 'level':player.level})
+                players.append({'id':player.id, 'uid':player.hero_uid, 'level':player.level, 'nickname':player.nickname})
 
             data['players'] = players
             response['data'] = data
@@ -110,6 +111,7 @@ class LobbyHandler(websocket.WebSocketHandler):
             data['id'] = self.id
             data['hero_uid'] = self.hero_uid
             data['level'] = self.level
+            data['nickname'] = self.nickname
             response['data'] = data
             dump = json.dumps(response)
             LobbyHandler.send_updates(dump)
@@ -125,8 +127,9 @@ class LobbyHandler(websocket.WebSocketHandler):
             response['type'] = 'invite'
             data = {}
             data['initiator'] = self.id
+            data['nickname'] = self.nickname
             data['level'] = event['data']['level']
-            data['hero_uid'] = event['data']['hero_uid']
+            data['uid'] = event['data']['hero_uid']
             data['mode'] = event['data']['mode']
             response['data'] = data
             dump = json.dumps(response)
@@ -137,10 +140,11 @@ class LobbyHandler(websocket.WebSocketHandler):
             response['status'] = 'success'
             response['type'] = 'confirm_invite'
             data = {}
-            data['level'] = event['data']['level']
-            data['hero_uid'] = event['data']['hero_uid']
+            data['level'] = unit.level
+            data['uid'] = unit.hero_uid
             data['mode'] = event['data']['mode']
             data['unit'] = unitId
+            data['nickname'] = unit.nickname
             response['data'] = data
             dump = json.dumps(response)
             self.write_message(dump)
@@ -255,8 +259,8 @@ class LobbyHandler(websocket.WebSocketHandler):
         return cls.players[id]
 
     @classmethod
-    def init_player (cls, id, level, deckId, heroId):
-        cls.players[id] = {'level': level, 'deckId':deckId, 'heroId':heroId}
+    def init_player (cls, id, level, deckId, heroId, hero_uid, nickname):
+        cls.players[id] = {'level': level, 'deckId':deckId, 'heroId':heroId, 'hero_uid':hero_uid, 'nickname':nickname}
 
     @classmethod
     def get_unit_by_id (cls, id):

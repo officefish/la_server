@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load card_tags %}
+
+
+{% block navigation %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'heroes_list' %}">герои</a></li>
+            <li><a href="{% url 'books_list' %}">книги</a></li>
+            <li><a href="{% url 'cards_list' %}">карты</a></li>
+            <li><a href="{% url 'races_list' %}">расы</a></li>
+            <li><a href="{% url 'achieves_list' %}">способности</a></li>
+            <li class="active"><a href="{% url 'weapons_list' %}">оружие</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="cards_list">
+        <ul >
+            {% for weapon in weapons %}
+                <li>
+                    <div class="card">
+                        <div class="card_title">{{ weapon.title }}</div>
+                        <div class="card_description">{{ weapon.description }}</div>
+                        <div class="card_attack">{{ weapon.power }}</div>
+                        <div class="card_health">{{ weapon.strength }}</div>
+                        <a style="position:absolute; margin-top:240px" href="{%  url "edit_weapon" weapon.id %}">редактировать</a>
+                        <a style="position:absolute; margin-top:255px" href="{%  url "delete_weapon" weapon.id %}">удалить</a>
+                    </div>
+                </li>
+            {% endfor %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url "create_weapon" %}">
+                        <div class="create_card">
+                            Создать оружие
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+
+{% endblock %}

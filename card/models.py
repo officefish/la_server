@@ -6,6 +6,7 @@ from django.contrib import admin
 from book.models import Book
 from group.models import Group
 from achieve.models import Achieve
+from weapon.models import Weapon
 
 class Race (models.Model):
     title = models.CharField (max_length=70)
@@ -124,11 +125,15 @@ class CardEptitude (models.Model):
     battlecry = models.BooleanField (default=False)
     spellSensibility = models.BooleanField(default=False)
 
+    widget = models.IntegerField(default = 0)
+    destroy = models.BooleanField(default = False)
+
     unit = models.ForeignKey(Card, blank=True, null=True, related_name='unit')
     race = models.ForeignKey(Race, blank= True, null=True)
     subrace = models.ForeignKey (SubRace, blank=True, null=True)
     group = models.ForeignKey(Group, blank=True, null=True)
     price = models.IntegerField(default=-1)
+    weapon = models.ForeignKey(Weapon, blank=True, null=True)
 
     lifecycle =  models.IntegerField(default=0)
 
@@ -142,6 +147,8 @@ class CardEptitude (models.Model):
     probability = models.IntegerField(default=100)
 
     activate_widget = models.BooleanField (default=False)
+    animation = models.IntegerField(default=-1)
+    manacost = models.IntegerField(default=0)
 
 class AchieveCollectionItem (models.Model):
     achieve = models.ForeignKey(Achieve)

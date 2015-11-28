@@ -13,6 +13,7 @@ from game.logic.unit import Unit, HeroUnit
 from card.models import SubRace, Race
 from game.logic.constants import EptitudePeriod, EptitudeCondition, EptitudeLevel, EptitudeAttachment, EptitudeType, CardType
 from group.models import Group
+from  weapon.models import Weapon
 
 class Controller ():
 
@@ -48,6 +49,11 @@ class Controller ():
         self.unit = unit
         self.eptitudes = unit.eptitudes[:]
         self.activate(EptitudePeriod.ACTIVATE_ACHIEVE)
+
+    def activateActive(self, unit):
+        self.unit = unit
+        self.eptitudes = unit.eptitudes[:]
+        self.activate(EptitudePeriod.ACTIVATE_ACTIVE)
 
     def preAttack(self, unit):
         self.unit = unit
@@ -336,6 +342,11 @@ class Controller ():
                       logger.debug ('decrease_attack_mixin::targets.length: %s' % (len(targets)))
                       self.decrease_attack_mixin(targets, eptitude)
 
+                if eptitude.type == EptitudeType.DECREASE_ATTACK_MIXIN:
+                      logger.debug ('increase_attack_mixin::targets.length: %s' % (len(targets)))
+                      self.increase_attack_mixin(targets, eptitude)
+
+
                 if eptitude.type == EptitudeType.INCREASE_HEALTH_MIXIN:
                       logger.debug ('decrease_health_mixin::targets.length: %s' % (len(targets)))
                       self.decrease_health_mixin(targets, eptitude)
@@ -505,6 +516,8 @@ class Controller ():
                 if eptitude.type == EptitudeType.DECREASE_MANA:
                     logger.debug ('deactivateTempEptitudes: DECREASE_MANA')
                     self.icreaseMana(targets, eptitude)
+                if eptitude.type == EptitudeType.DOUBLE_ATTACK:
+                    self.deactivateDoubleAttack(targets, eptitude)
             if eptitude.lifecycle < 0:
                 # такая ситуация может возникнуть если привязать одну и ту же способность к нескольким юнитам
                 # в этом случае мы игнорируем деактивацию, поскольку ранее она уже была деактивирована
@@ -581,6 +594,7 @@ class Controller ():
 
 
 
+
                 # race
                 if eptitude.period == EptitudePeriod.ALL_RACE_PLACED:
                     try:
@@ -624,23 +638,28 @@ class Controller ():
 
                 if eptitude.type == EptitudeType.JERK:
                      logger.debug ('eptitude.type: JERK')
+                     jerkTargets = []
                      for target in targets:
                          target.jerk = True
-
+                         if target.canAttack and target.attack > 0 and target.freeze == False and target.replaceFlag == False:
+                             if target.stepAttack > 0:
+                                jerkTargets.append(target)
                      action = {}
                      action['type'] = Action.JERK
                      action['client'] = self.client
                      action['endAnimationFlag'] = False
-                     clientTargets = self.match.getTargetsIndexes(targets, self.whiteFlag)
+                     clientTargets = self.match.getTargetsCoord(jerkTargets, self.whiteFlag)
                      action["targets"] = clientTargets
                      self.scenario.append (action)
 
 
-
+                if eptitude.type == EptitudeType.FLY:
+                    logger.debug ('eptitude.type: FLY')
+                    self.fly(targets, eptitude)
 
                 if eptitude.type == EptitudeType.DOUBLE_ATTACK:
                      logger.debug ('eptitude.type: DOUBLE_ATTACK')
-                     self.double_attack(targets)
+                     self.double_attack(targets, eptitude)
 
 
                 if eptitude.type == EptitudeType.PASSIVE_ATTACK:
@@ -695,6 +714,7 @@ class Controller ():
 
                 if eptitude.type == EptitudeType.DECREASE_HEALTH:
                     logger.debug ('eptitude.type: DECREASE_HEALTH')
+                    self.decreaseHealth(targets, eptitude)
 
                 if eptitude.type == EptitudeType.CHANGE_ATTACK_TILL:
                     logger.debug ('eptitude.type: CHANGE_ATTACK_TILL')
@@ -814,7 +834,7 @@ class Controller ():
 
                 if eptitude.type == EptitudeType.DECREASE_ATTACK_MIXIN:
                     logger.debug ('eptitude.type: DECREASE_ATTACK_MIXIN')
-                    self.increase_health_mixin(targets, eptitude)
+                    self.decrease_attack_mixin(targets, eptitude)
 
                 if eptitude.type == EptitudeType.CAN_NOT_ATTACK:
                     logger.debug ('eptitude.type: CAN_NOT_ATTACK')
@@ -1092,13 +1112,162 @@ class Controller ():
                     logger.debug ('eptitude.type: COPY_UNIT_CARDS_TO_HAND')
                     self.copyUnitCardsToHand (targets, eptitude)
 
+                if eptitude.type == EptitudeType.DESTROY_PROVOCATION:
+                    logger.debug ('eptitude.type: DESTOY_PROVOCATION')
+                    self.destroyProvocation (targets, eptitude)
+
+                if eptitude.type == EptitudeType.TAKE_UP_WEAPON:
+                    logger.debug ('eptitude.type: TAKE_UP_WEAPON')
+                    self.takeUpWeapon(targets, eptitude)
+
+
+
+
+                if eptitude.manacost > 0:
+                     logger.debug('Eptitude manacost: %s' % eptitude.manacost)
+                     self.decreaseManacost (eptitude.manacost)
 
                 if eptitude.lifecycle > 0:
                     logger.debug ('eptitude.lifecycle > 0')
                     for target in targets:
                         target.tempEptitudes.append (eptitude.clone())
 
+                if eptitude.period == EptitudePeriod.ACTIVATE_ACTIVE:
+                    self.blockActive()
+
+                if eptitude.widget > 0:
+                    self.attachWidget(targets, eptitude.widget)
+
+                if eptitude.activated and eptitude.destroy:
+                    self.unit.destroyEptitude(eptitude)
+
             self.activate(period)
+
+    def takeUpWeapon (self, targets, eptitude):
+        if self.whiteFlag:
+            playerHero = self.match.whiteHeroUnit
+            opponentHero = self.match.blackHeroUnit
+        else:
+            playerHero = self.match.blackHeroUnit
+            opponentHero =  self.match.whiteHeroUnit
+
+        #try:
+        weaponId = eptitude.weapon
+        weapon = Weapon.objects.get(id=weaponId)
+
+        playerWeaponIndex = 0
+        opponentWeaponIndex = 0
+
+        if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
+            logger.debug ('associate')
+            playerWeaponIndex =  playerHero.takeUpWeapon(weapon)
+        elif eptitude.attachment == EptitudeAttachment.OPPONENT:
+            logger.debug ('opponent')
+            opponentWeaponIndex = opponentHero.takeUpWeapon(weapon)
+        else:
+            logger.debug ('all')
+            playerWeaponIndex = playerHero.takeUpWeapon(weapon)
+            opponentWeaponIndex = opponentHero.takeUpWeapon(weapon)
+
+        action = {}
+        action['type'] = Action.TAKE_UP_WEAPON
+        action['client'] = self.client
+        action['playerWeaponIndex'] = playerWeaponIndex
+        action['opponentWeaponIndex'] = opponentWeaponIndex
+        action['weaponId'] = weaponId
+        action['power'] = weapon.power
+        action['strength'] = weapon.strength
+        self.scenario.append (action)
+
+
+        #except:
+        #    logger.debug('no_weapon_init')
+        #    pass
+
+
+
+    def decreaseHealth (self, targets, eptitude):
+        if len(targets):
+            eptitude.activated = True
+        else:
+             return
+
+        power = eptitude.power
+
+        for target in targets:
+
+            target.maxHealth = target.maxHealth - power
+            if target.health > target.maxHealth:
+                target.health = target.maxHealth
+
+            action = {}
+            action['type'] = Action.DECREASE_HEALTH
+            action['client'] = self.client
+            targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+            targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+            action['index'] = targetIndex
+            action['attachment'] = targetAttachment
+            action['health'] = target.health
+            action['maxHealth'] = target.maxHealth
+            self.scenario.append (action)
+
+            if target.maxHealth == 0:
+                action = {}
+                action['type'] = Action.DAMAGE
+                action['client'] = self.client
+                action['targets'] = [{'index':targetIndex, 'attachment':targetAttachment, 'damage':power}]
+                self.scenario.append(action)
+
+                self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
+                action = {}
+                action['type'] = Action.TOKEN_DEATH
+                action['client'] = self.client
+                action['targetIndex'] = targetIndex
+                action['targetAttachment'] = targetAttachment
+                self.scenario.append(action)
+
+
+
+    def destroyProvocation (self, targets, eptitude):
+        if len(targets):
+            eptitude.activated = True
+        else:
+             return
+
+        for target in targets:
+             target.provocation = False
+             action = {}
+             action['type'] = Action.DESTROY_PROVOCATION
+             action['client'] = self.client
+             targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+             targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+             action['index'] = targetIndex
+             action['attachment'] = targetAttachment
+             self.scenario.append (action)
+
+
+    def attachWidget(self, targets, widget):
+         if not len(targets):
+             return
+
+         for target in targets:
+             action = {}
+             action['type'] = Action.ATTACH_WIDGET
+             action['client'] = self.client
+             targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+             targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+             action['index'] = targetIndex
+             action['attachment'] = targetAttachment
+             action['widget'] = widget
+             self.scenario.append (action)
+
+
+
+    def blockActive(self):
+        self.match.blockActive(self.unit, self.whiteFlag)
+
+    def decreaseManacost (self, manacost):
+        self.match.decreaseManacost(manacost, self.whiteFlag)
 
     def shuffleUnitToDeck(self, targets, eptitude):
 
@@ -1144,6 +1313,22 @@ class Controller ():
                 self.deactivateDynamic (target)
 
 
+    def fly(self, targets, eptitude):
+        if len(targets):
+            eptitude.activated = True
+        else:
+             return
+
+        for target in targets:
+            target.fly = True
+            action = {}
+            action['type'] = Action.FLY
+            action['client'] = self.client
+            targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+            targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+            action['index'] = targetIndex
+            action['attachment'] = targetAttachment
+            self.scenario.append (action)
 
 
     def multiplyAttack(self, targets, eptitude):
@@ -2064,37 +2249,51 @@ class Controller ():
         self.double_attack(doubleAttackTargets)
 
 
-
-    def double_attack(self, targets):
+    def deactivateDoubleAttack(self, targets, eptitude):
         for target in targets:
-             if target.doubleAttack == False:
-                 target.stepAttack = target.stepAttack + 1
-                 target.doubleAttack = True
+             target.totalStepAttack = 1
+             target.stepAttack = target.totalStepAttack - target.stepAttackCount
+             if target.stepAttack < 0:
+                 target.stepAttack = 0
+             action = {}
+             action['type'] = Action.DESTOY_DOUBLE_ATTACK
+             action['client'] = self.client
+             targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+             targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+             action['index'] = targetIndex
+             action['attachment'] = targetAttachment
+             action['endAnimationFlag'] = False
+             self.scenario.append (action)
+
+    def double_attack(self, targets, eptitude):
+        for target in targets:
+             target.totalStepAttack = eptitude.power
+             target.stepAttack = target.totalStepAttack - target.stepAttackCount
+             action = {}
+             action['type'] = Action.DOUBLE_ATTACK
+             action['client'] = self.client
+             targetAttachment = self.match.initAttachment (target, self.whiteFlag)
+             targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
+             action['index'] = targetIndex
+             action['attachment'] = targetAttachment
+             action['endAnimationFlag'] = False
+             self.scenario.append (action)
+
+             if target.whiteFlag == self.whiteFlag and target.stepAttack > 0 and target.stepCount > 0:
                  action = {}
-                 action['type'] = Action.DOUBLE_ATTACK
+                 action['type'] = Action.ATTACK_AVAILABLE
                  action['client'] = self.client
-                 targetAttachment = self.match.initAttachment (target, self.whiteFlag)
-                 targetIndex = self.match.initIndex (target, targetAttachment, self.whiteFlag)
-                 action['index'] = targetIndex
-                 action['attachment'] = targetAttachment
                  action['endAnimationFlag'] = False
-                 self.scenario.append (action)
+                 da_units = []
+                 da_units.append (target.row.index(target))
+                 action['unitList'] = da_units
+                 self.scenario.append(action)
 
-                 if target.whiteFlag == self.whiteFlag and target.stepCount > 0:
-                     action = {}
-                     action['type'] = Action.ATTACK_AVAILABLE
-                     action['client'] = self.client
-                     action['endAnimationFlag'] = False
-                     da_units = []
-                     da_units.append (target.row.index(target))
-                     action['unitList'] = da_units
-                     self.scenario.append(action)
-
-                     action = {}
-                     action['type'] = Action.GLOW_UNITS
-                     action['client'] = self.client
-                     action['endAnimationFlag'] = False
-                     self.scenario.append(action)
+                 action = {}
+                 action['type'] = Action.GLOW_UNITS
+                 action['client'] = self.client
+                 action['endAnimationFlag'] = False
+                 self.scenario.append(action)
 
 
     def shield (self, targets):
@@ -2114,13 +2313,13 @@ class Controller ():
         for target in targets:
              target.provocation = True
 
-             action = {}
-             action['type'] = Action.PROVOCATION
-             action['client'] = self.client
-             action['endAnimationFlag'] = False
-             clientTargets = self.match.getTargetsIndexes(targets, self.whiteFlag)
-             action["targets"] = clientTargets
-             self.scenario.append (action)
+        action = {}
+        action['type'] = Action.PROVOCATION
+        action['client'] = self.client
+        action['endAnimationFlag'] = False
+        clientTargets = self.match.getTargetsCoord(targets, self.whiteFlag)
+        action["targets"] = clientTargets
+        self.scenario.append (action)
 
     def replace_card_and_token(self, targets, eptitude):
 
@@ -3629,6 +3828,9 @@ class Controller ():
             action['initiatorIndex'] = initiatorIndex
             action['targetIndex'] = targetIndex
             action['targetAttachment'] = targetAttachment
+            action['animation'] = eptitude.animation
+            logger.debug ('animation: %s' % (action['animation']))
+
             self.scenario.append(action)
 
             if not shieldActionFlag:
@@ -5075,10 +5277,6 @@ class Controller ():
             action['attack'] = target.getAttack()
             action['index'] = index
             self.scenario.append(action)
-
-
-
-
 
 
     def increase_attack_mixin (self, targets, eptitude):

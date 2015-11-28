@@ -2,7 +2,7 @@ __author__ = 'inozemcev'
 
 import tornado.web as web
 import tornado.websocket as websocket
-import json;
+import json
 import redis
 import random
 
@@ -77,6 +77,12 @@ class MatchHandler(websocket.WebSocketHandler):
 
         if type == 'connect_to_match':
             logger.debug ('connect_to_match')
+
+            try:
+                self.match.getPlayer1_id()
+            except:
+                logger.debug ('self.match not init!')
+                return
 
             self.player1_id = self.match.getPlayer1_id()
             self.player2_id = self.match.getPlayer2_id()
@@ -169,6 +175,8 @@ class MatchHandler(websocket.WebSocketHandler):
 
             self.data['achieves'] = self.match.getBlackAchieves()
             self.data['opponent_achieves'] = self.match.getWhiteAchieves()
+
+            logger.debug(self.match.getBlackAchieves())
 
             self.data['hero'] = self.match.getBlackHero().hero.uid
             self.data['opponent_hero'] = self.match.getWhiteHero().hero.uid
@@ -333,6 +341,9 @@ class MatchHandler(websocket.WebSocketHandler):
                     if cardType == 0:
                         self.match.playSpell(index, whiteFlag)
 
+                    if cardType == 3:
+                        self.match.playSpellToTarget(index, whiteFlag)
+
                     if cardType == 2:
                        self.match.addUnit(index, position, whiteFlag)
 
@@ -347,22 +358,13 @@ class MatchHandler(websocket.WebSocketHandler):
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
 
-        if type == 'play_card_spell_to_target':
-                    logger.debug ('play_card_spell_to_target')
-
-                    cardIndex =  event['data']['cardIndex']
-                    logger.debug('cardIndex:%s' % cardIndex)
-
-                    targetAttachment = event['data']['attachment']
-                    logger.debug('targetAttachment:%s' % targetAttachment)
-
-                    targetIndex = event['data']['targetIndex']
-                    logger.debug('targetIndex:%s' % targetIndex)
-
+        if type == 'spell_to_target_init':
+                    logger.debug ('spell_to_target_init')
                     whiteFlag = self.isWhite()
+                    index = int(event['data']['index'])
+                    attachment = int(event['data']['attachment'])
 
-
-                    self.match.spellToTarget(cardIndex, targetIndex, targetAttachment, whiteFlag)
+                    self.match.spellToTargetInit(index, attachment, whiteFlag)
 
                     response = {}
                     response['status'] = 'success'
@@ -374,6 +376,7 @@ class MatchHandler(websocket.WebSocketHandler):
 
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
+
 
         if type == 'spell_to_target_for_effect':
                     logger.debug ('spell_to_target_for_effect')
@@ -441,6 +444,34 @@ class MatchHandler(websocket.WebSocketHandler):
 
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
+
+
+
+        if type == 'hero_attack':
+                    logger.debug ('hero_attack')
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    targetIndex = event['data']['targetIndex']
+                    weaponIndex = event['data']['weaponIndex']
+
+                    scenario = self.match.heroAttack (weaponIndex, targetIndex, self.whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+
+
 
         if type == 'init_select':
                     if self.id == self.match.getWhiteId():
@@ -523,6 +554,27 @@ class MatchHandler(websocket.WebSocketHandler):
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
 
+        if type == 'active_selected':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index = int(event['data']['index'])
+                    attachment = int(event['data']['attachment'])
+                    scenario = self.match.active_selected (self.whiteFlag, index, attachment)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = scenario
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
         if type == 'guise_selected':
                     if self.id == self.match.getWhiteId():
                          self.whiteFlag = True
@@ -542,6 +594,74 @@ class MatchHandler(websocket.WebSocketHandler):
 
                     self.match.getWhite().write_message(dump)
                     self.match.getBlack().write_message(dump)
+
+        if type == 'activate_active':
+                    logger.debug ('activate_active')
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index =  event['data']['index']
+
+                    self.match.activateActive(index, self.whiteFlag)
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'scenario'
+                    data = {}
+                    data['scenario'] = self.match.getScenario()
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    self.match.getWhite().write_message(dump)
+                    self.match.getBlack().write_message(dump)
+
+        if type == 'cursor_over':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index =  event['data']['index']
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'cursor_over'
+                    data = {}
+                    data['index'] = index
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    if self.whiteFlag:
+                           self.match.getBlack().write_message(dump)
+                    else:
+                           self.match.getWhite().write_message(dump)
+
+        if type == 'cursor_out':
+                    if self.id == self.match.getWhiteId():
+                         self.whiteFlag = True
+                    else:
+                         self.whiteFlag = False
+
+                    index =  event['data']['index']
+
+                    response = {}
+                    response['status'] = 'success'
+                    response['type'] = 'cursor_out'
+                    data = {}
+                    data['index'] = index
+                    response['data'] = data
+                    dump = json.dumps(response)
+
+                    if self.whiteFlag:
+                           self.match.getBlack().write_message(dump)
+                    else:
+                           self.match.getWhite().write_message(dump)
+
+
+
+
 
         if type == 'end_match':
             logger.debug('MatchHandler::end_match')

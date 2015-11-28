@@ -32,13 +32,15 @@ def create_hero (request,
             title = request.POST['title']
             vocation = request.POST["vocation"]
             description = request.POST['description']
+            health = request.POST['health']
             uid = request.POST['uid']
 
             hero = Hero.objects.create (
                 title=title,
                 vocation=vocation,
                 description = description,
-                uid = uid
+                uid = uid,
+                health = health
             )
 
             return HttpResponseRedirect(redirect_to)
@@ -66,6 +68,7 @@ def edit_hero (request,hero_id,
         "title":hero.title,
         "vocation":hero.vocation,
         "description":hero.description,
+        "health":hero.health,
         "uid":hero.uid
     }
 
@@ -75,12 +78,14 @@ def edit_hero (request,hero_id,
             title = request.POST['title']
             vocation = request.POST["vocation"]
             description = request.POST['description']
+            health = request.POST['health']
             uid = request.POST['uid']
 
             hero.title=title
             hero.uid=uid
             hero.vocation = vocation
             hero.description = description
+            hero.health = health
             hero.save()
 
             return HttpResponseRedirect(redirect_to)

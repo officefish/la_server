@@ -8,6 +8,7 @@ from django.contrib.sites.models import get_current_site
 from book.models import Book
 from group.models import Group
 from achieve.models import Achieve
+from weapon.models import Weapon
 
 
 def cards_list (
@@ -705,6 +706,8 @@ def getCardData(card):
     except AttributeError:
         group_id = -1
 
+
+
     data = {
         "title":card.title,
         "attack":card.attack,
@@ -718,7 +721,8 @@ def getCardData(card):
         "group":group_id,
         "subrace":subrace_id,
         "has_weapon":int(card.has_weapon),
-        "widget":int(card.widget)
+        "widget":int(card.widget),
+
     }
     return data
 
@@ -736,32 +740,44 @@ def createEptitudeByRequest (request):
     attachment = request.POST['attachment']
     price = request.POST['price']
     probability = request.POST['probability']
-    activate_widget = request.POST['activate_widget']
+    animation = request.POST['animation']
+    manacost = request.POST['manacost']
+    widget = request.POST['widget']
+
+    try:
+        destroy = bool(int(request.POST["destroy"]))
+    except:
+        destroy = False
 
     try:
         battlecry = bool(int(request.POST["battlecry"]))
     except:
-        battlecry = 0
+        battlecry = False
 
     try:
         spellSensibility = bool(int(request.POST["spellSensibility"]))
     except:
-        spellSensibility = 0
+        spellSensibility = False
 
     try:
         dynamic = bool(int(request.POST["dynamic"]))
     except:
-        dynamic = 0
+        dynamic = False
 
     try:
         attach_hero = bool(int(request.POST["attach_hero"]))
     except:
-        attach_hero = 0
+        attach_hero = False
 
     try:
         attach_initiator = bool(int(request.POST["attach_initiator"]))
     except:
-        attach_initiator = 0
+        attach_initiator = False
+
+    try:
+        activate_widget =  bool(int(request.POST['activate_widget']))
+    except:
+        activate_widget = False
 
     race_id = request.POST['race']
     try :
@@ -800,6 +816,12 @@ def createEptitudeByRequest (request):
     except CardEptitude.DoesNotExist:
         attach_eptitude = None
 
+    weapon_id = request.POST['weapon']
+    try :
+        weapon = Weapon.objects.get(pk=weapon_id)
+    except Weapon.DoesNotExist:
+        weapon = None
+
     eptitude = CardEptitude.objects.create(
         period = period,
         level = level,
@@ -809,6 +831,7 @@ def createEptitudeByRequest (request):
         count = count,
         lifecycle = lifecycle,
         race = race,
+        weapon = weapon,
         subrace = subrace,
         unit = unit,
         group = group,
@@ -824,7 +847,11 @@ def createEptitudeByRequest (request):
         price = price,
         probability = probability,
         spellSensibility = spellSensibility,
-        activate_widget = activate_widget
+        activate_widget = activate_widget,
+        animation = animation,
+        manacost = manacost,
+        widget = widget,
+        destroy = destroy
     )
 
     return eptitude
@@ -843,7 +870,14 @@ def editEptitudeByRequest(request, eptitude):
         lifecycle = request.POST['lifecycle']
         price = request.POST['price']
         probability = request.POST['probability']
-        activate_widget = request.POST['activate_widget']
+        animation = request.POST['animation']
+        manacost = request.POST['manacost']
+        widget = request.POST['widget']
+
+        try:
+            destroy = bool(int(request.POST["destroy"]))
+        except:
+            destroy = False
 
         try:
             dynamic = bool(int(request.POST["dynamic"]))
@@ -870,6 +904,11 @@ def editEptitudeByRequest(request, eptitude):
             attach_initiator = bool(int(request.POST["attach_initiator"]))
         except:
             attach_initiator = 0
+
+        try:
+            activate_widget =  bool(int(request.POST['activate_widget']))
+        except:
+            activate_widget = 0
 
         race_id = request.POST['race']
         try :
@@ -907,6 +946,12 @@ def editEptitudeByRequest(request, eptitude):
         except Group.DoesNotExist:
             group = None
 
+        weapon_id = request.POST['weapon']
+        try :
+            weapon = Weapon.objects.get(pk=weapon_id)
+        except Weapon.DoesNotExist:
+            weapon = None
+
 
         eptitude.period = period
         eptitude.level = level
@@ -932,6 +977,11 @@ def editEptitudeByRequest(request, eptitude):
         eptitude.probability = probability
         eptitude.spellSensibility = spellSensibility
         eptitude.activate_widget = activate_widget
+        eptitude.animation = animation
+        eptitude.manacost = manacost
+        eptitude.widget = widget
+        eptitude.destroy = destroy
+        eptitude.weapon = weapon
         eptitude.save()
 
 def getEptitudeData(eptitude, card):
@@ -942,6 +992,13 @@ def getEptitudeData(eptitude, card):
             race_id = -1
     except AttributeError:
             race_id = -1
+
+    try:
+            weapon_id =Weapon.objects.get (pk=eptitude.weapon.id).id
+    except ValueError:
+            weapon_id = -1
+    except AttributeError:
+            weapon_id = -1
 
     try:
           subrace_id =SubRace.objects.get (pk=eptitude.subrace.id).id
@@ -1006,7 +1063,13 @@ def getEptitudeData(eptitude, card):
         'price':int(eptitude.price),
         'probability':int(eptitude.probability),
         'spellSensibility':int(eptitude.spellSensibility),
-        'activate_widget':int(eptitude.activate_widget)
+        'activate_widget':int(eptitude.activate_widget),
+        'animation':int(eptitude.animation),
+        'manacost':int(eptitude.manacost),
+        'widget':int(eptitude.widget),
+        'destroy':int(eptitude.destroy),
+        "weapon":weapon_id
+
     }
     return data
 

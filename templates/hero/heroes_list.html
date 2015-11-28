@@ -6,11 +6,12 @@
 {% block navigation %}
     <nav>
         <ul>
-            <li class="active">герои</li>
+            <li class="active"><a href="{% url 'heroes_list' %}">герои</a></li>
             <li><a href="{% url 'books_list' %}">книги</a></li>
             <li><a href="{% url 'cards_list' %}">карты</a></li>
             <li><a href="{% url 'races_list' %}">расы</a></li>
             <li><a href="{% url 'achieves_list' %}">способности</a></li>
+            <li><a href="{% url 'weapons_list' %}">оружие</a></li>
         </ul>
     </nav>
 {% endblock %}

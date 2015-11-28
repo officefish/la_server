@@ -7,6 +7,7 @@ class Hero (models.Model):
     description = models.CharField(max_length=200, blank=True)
     vocation = models.CharField (max_length=70, blank=True)
     uid = models.IntegerField(max_length=2)
+    health = models.IntegerField(max_length=2, default=50)
 
     @property
     def short_description (self):

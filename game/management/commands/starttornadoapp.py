@@ -47,7 +47,7 @@ class Command(BaseCommand):
         app = tornado.web.Application(urls)
 
         port = 8003
-        address =  "127.0.0.1"
+        address =  "5.101.123.195"
 
         self.http_server = tornado.httpserver.HTTPServer(app)
         self.http_server.listen(port, address=address)

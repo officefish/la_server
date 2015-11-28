@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^craft_achieves_list/$', 'api.views.craftAchievesList'),
     url(r'^craft_achieve/$', 'api.views.craftAchieve'),
     url(r'^destroy_achieve/$', 'api.views.destroyAchieve'),
+    url(r'^update_heroes/$', 'api.views.updateHeroes'),
     )
