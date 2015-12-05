@@ -1120,7 +1120,9 @@ class Controller ():
                     logger.debug ('eptitude.type: TAKE_UP_WEAPON')
                     self.takeUpWeapon(targets, eptitude)
 
-
+                if eptitude.type == EptitudeType.CARD_FROM_GRAVEYARD:
+                    logger.debug ('eptitude.type: CARD_FROM_GRAVEYARD')
+                    self.cardFromGraveYard(targets, eptitude)
 
 
                 if eptitude.manacost > 0:
@@ -1712,18 +1714,6 @@ class Controller ():
             controller.setScenario(self.scenario)
             controller.setClient(self.client)
             controller.new_card()
-
-
-
-
-
-
-
-
-
-
-
-
 
     def overload (self, targets, eptitude):
         if len(targets):
@@ -2580,6 +2570,98 @@ class Controller ():
                         controller.setClient(self.client)
                         controller.new_unit()
 
+    def cardFromGraveYard (self, targets, eptitude):
+
+        if len(targets):
+            eptitude.activated = True
+        else:
+            return
+
+        if self.whiteFlag:
+            hand = self.match.white_hand
+            opponentHand = self.match.black_hand
+            row = self.match.whiteUnitRow
+            opponentRow = self.match.blackUnitRow
+            graveyard = self.match.white_graveyard
+            opponentGraveYard = self.match.black_graveyard
+
+        else:
+            hand = self.match.black_hand
+            opponentHand = self.match.white_hand
+            row = self.match.blackUnitRow
+            opponentRow = self.match.whiteUnitRow
+            graveyard = self.match.white_graveyard
+            opponentGraveYard = self.match.black_graveyard
+
+        if not len(graveyard):
+            return
+
+
+
+        graveCards = []
+
+        for i in range(eptitude.count):
+
+            if len(hand) > 9:
+                return
+
+            index = random.randint(0, len(graveyard) - 1)
+            cardData = graveyard[index]
+            copy = self.match.copyCard(cardData)
+            copy['whiteFlag'] = self.whiteFlag
+            hand.append(copy)
+            graveCards.append(copy)
+            self.match.lastCardinHand = copy
+            self.match.configureLastCard (copy)
+
+            for unit in row:
+                controller = Controller()
+                controller.setMatch(self.match)
+                controller.setScenario(self.scenario)
+                controller.setClient(self.client)
+                controller.setWhiteFlag(self.whiteFlag)
+                controller.newCard(unit)
+                if copy['whiteFlag'] == unit.whiteFlag:
+                    controller.newPlayerCard(unit)
+                else:
+                    controller.newOpponentCard(unit)
+
+            for unit in opponentRow:
+                controller = Controller()
+                controller.setMatch(self.match)
+                controller.setScenario(self.scenario)
+                controller.setClient(self.client)
+                controller.setWhiteFlag(self.whiteFlag)
+                controller.newCard(unit)
+                if copy['whiteFlag'] == unit.whiteFlag:
+                    controller.newPlayerCard(unit)
+                else:
+                    controller.newOpponentCard(unit)
+
+            controller = CardController()
+            controller.setWhiteFlag(self.whiteFlag)
+            controller.setMatch(self.match)
+            controller.setScenario(self.scenario)
+            controller.setClient(self.client)
+            controller.new_card()
+
+        if len(graveCards):
+            action = {}
+            action['type'] = Action.CARDS_FROM_GRAVEYARD
+            action['client'] = self.client
+            action['cards'] = graveCards
+            self.scenario.append (action)
+
+        logger.debug('len graveCards: %s' % len(graveCards))
+
+        if targets[0].whiteFlag == self.whiteFlag:
+            action = {}
+            action['type'] = Action.GLOW_CARDS
+            action['client'] = self.client
+            action['endAnimationFlag'] = False
+            self.scenario.append(action)
+
+
 
     def beckCardToHand (self, targets, eptitude):
 
@@ -3137,6 +3219,8 @@ class Controller ():
                 action['targets'] = [{'index':targetIndex, 'attachment':targetAttachment, 'damage':targetUnit.getHealth()}]
                 self.scenario.append(action)
 
+                self.match.buryMinion(targetUnit)
+
                 self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
                 action = {}
                 action['type'] = Action.TOKEN_DEATH
@@ -3227,6 +3311,9 @@ class Controller ():
         # уничтожаем все фишки на сервере и прогоняем их по событиям смерти
         for targetUnit in targets:
             if targetIndex >= 0:
+
+                self.match.buryMinion(targetUnit)
+
                 targetAttachment = self.match.initAttachment (targetUnit, self.whiteFlag)
                 targetIndex = self.match.initIndex (targetUnit, targetAttachment, self.whiteFlag)
                 self.match.deleteUnit (targetIndex, targetAttachment, self.whiteFlag)
@@ -3351,6 +3438,8 @@ class Controller ():
 
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
+
+                    self.match.buryMinion(targetUnit)
 
                     if targetUnit.hasSelfDieEptitude():
                              action = {}
@@ -3522,6 +3611,8 @@ class Controller ():
 
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
+
+                    self.match.buryMinion(targetUnit)
 
                     if targetUnit.hasSelfDieEptitude():
                              action = {}
@@ -3700,6 +3791,8 @@ class Controller ():
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
 
+                    self.match.buryMinion(targetUnit)
+
                     if targetUnit.hasSelfDieEptitude():
                          action = {}
                          action['type'] = Action.ACTIVATE_WIDGET
@@ -3871,6 +3964,8 @@ class Controller ():
 
             if targetUnit.getHealth() <=0:
                 if targetIndex >= 0:
+
+                    self.match.buryMinion(targetUnit)
 
                     if targetUnit.hasSelfDieEptitude():
                          action = {}
@@ -4071,6 +4166,7 @@ class Controller ():
         logger.debug(scenarioTargets)
 
         for targetUnit in deathUnits:
+            self.match.buryMinion(targetUnit)
             attachment = self.match.initAttachment (targetUnit, self.whiteFlag)
             index = self.match.initIndex (targetUnit, attachment, self.whiteFlag)
             self.match.deleteUnit (index, attachment, self.whiteFlag)
@@ -4215,6 +4311,7 @@ class Controller ():
             self.match.dieUnitsIndex += 1
 
         for targetUnit in deathUnits:
+            self.match.buryMinion(targetUnit)
             controller = Controller()
             controller.setMatch(self.match)
             controller.setScenario(self.scenario)
@@ -5913,7 +6010,6 @@ class Controller ():
                 if blackHeroFlag:
                     self.match.blackHeroUnit.appendTempEptitude (eptitude)
             '''
-
 
         action = {}
         action['type'] = Action.GLOW_CARDS

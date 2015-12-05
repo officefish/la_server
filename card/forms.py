@@ -215,7 +215,9 @@ EPTITUDE_TYPE_CHOICES=[
     ('94','COPY_UNIT_CARDS_TO_HAND'),
     ('95','FLY'),
     ('96','DESTROY_PROVOCATION'),
-    ('97','TAKE_UP_WEAPON')
+    ('97','TAKE_UP_WEAPON'),
+    ('98','CARD_FROM_GRAVEYARD')
+
 ]
 
 etc = [
@@ -316,7 +318,9 @@ etc = [
     'COPY_UNIT_CARDS_TO_HAND',
     'FLY (полет)',
     'DESTROY_PROVOCATION',
-    'TAKE_UP_WEAPON'
+    'TAKE_UP_WEAPON',
+    'CARD_FROM_GRAVEYARD'
+
 ]
 
 # Вид уникальной способности

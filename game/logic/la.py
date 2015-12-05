@@ -68,6 +68,22 @@ class Game ():
         self.whiteAttritionIndex = 0
         self.blackAttritionIndex = 0
 
+        self.white_graveyard = []
+        self.black_graveyard = []
+
+    def buryMinion(self, minion):
+
+        # берем метаданные карты
+        cardData = minion.cardData
+
+        # и добавляем их в соответсвующие массивы
+        if minion.whiteFlag:
+            self.white_graveyard.append(cardData)
+        else:
+            self.black_graveyard.append(cardData)
+
+
+
 
     def transitionProgress (self):
         if self.stepFlag:
@@ -1327,8 +1343,6 @@ class Game ():
             action['type'] = Action.GLOW_HERO
             action['client'] = client
             self.scenario.append(action)
-
-
 
         return self.scenario
 
@@ -2808,6 +2822,10 @@ class Game ():
 
 
         if attackUnit.getHealth() <= 0:
+
+                # кешируем существо в массив кладбища существ
+                self.buryMinion(attackUnit)
+
                 attackUnitDieFlag = True
                 actionFlag = False
 
@@ -2870,6 +2888,9 @@ class Game ():
             attackUnitDieFlag = False
 
         if targetUnit.getHealth() <=0:
+
+                 # кешируем существо в массив кладбища существ
+                self.buryMinion(targetUnit)
 
                 if targetIndex >= 0:
 
@@ -3213,6 +3234,9 @@ class Game ():
             attackUnitDieFlag = False
 
         if targetUnit.getHealth() <=0:
+
+                 # кешируем существо в массив кладбища существ
+                self.buryMinion(targetUnit)
 
                 if targetIndex >= 0:
 

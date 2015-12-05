@@ -41,13 +41,13 @@ class Command(BaseCommand):
             (r'/lobby', LobbyHandler),
             (r'/match/([0-9]+)', MatchHandler),
             (r'/crossdomain.xml', GrahhHandler),
-             (r'/api/crossdomain.xml', GrahhApiHandler)
+            (r'/api/crossdomain.xml', GrahhApiHandler)
         ]
 
         app = tornado.web.Application(urls)
 
         port = 8003
-        address =  "5.101.123.195"
+        address =  "127.0.0.1"
 
         self.http_server = tornado.httpserver.HTTPServer(app)
         self.http_server.listen(port, address=address)

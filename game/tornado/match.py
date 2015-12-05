@@ -284,6 +284,9 @@ class MatchHandler(websocket.WebSocketHandler):
                     data = {}
                     data['scenario'] = scenario
                     response['data'] = data
+
+
+
                     dump = json.dumps(response)
 
                     self.match.getWhite().write_message(dump)

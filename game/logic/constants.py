@@ -171,6 +171,7 @@ class EptitudeType():
     FLY = 95
     DESTROY_PROVOCATION = 96
     TAKE_UP_WEAPON = 97
+    CARD_FROM_GRAVEYARD = 98
 
 
 class EptitudePeriod ():
