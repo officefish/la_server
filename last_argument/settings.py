@@ -21,7 +21,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'D:/practice/last_argument/la.db',
+        'NAME': './la.db',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -87,7 +87,7 @@ STATICFILES_DIRS = (
         os.path.dirname(__file__),
         'static',
     ),
-    'D:/practice/last_argument/server/la_server/static'
+    './static'
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -128,7 +128,7 @@ ROOT_URLCONF = 'last_argument.urls'
 WSGI_APPLICATION = 'last_argument.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'D:/practice/last_argument/server/la_server/templates',
+    './templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -183,7 +183,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'D:/practice/last_argument/la.log',
+            'filename': './la.log',
             'formatter': 'simple'
         },
          # Send all messages to console
