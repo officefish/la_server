@@ -73,6 +73,9 @@ class Game ():
 
     def buryMinion(self, minion):
 
+        if isinstance(minion, HeroUnit):
+            return
+
         # берем метаданные карты
         cardData = minion.cardData
 
