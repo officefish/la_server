@@ -2583,7 +2583,7 @@ class Controller ():
             row = self.match.whiteUnitRow
             opponentRow = self.match.blackUnitRow
             graveyard = self.match.white_graveyard
-            opponentGraveYard = self.match.black_graveyard
+            opponentGraveyard = self.match.black_graveyard
 
         else:
             hand = self.match.black_hand
@@ -2591,22 +2591,36 @@ class Controller ():
             row = self.match.blackUnitRow
             opponentRow = self.match.whiteUnitRow
             graveyard = self.match.white_graveyard
-            opponentGraveYard = self.match.black_graveyard
-
-        if not len(graveyard):
-            return
-
-
+            opponentGraveyard = self.match.black_graveyard
 
         graveCards = []
 
         for i in range(eptitude.count):
 
             if len(hand) > 9:
-                return
+                break
 
-            index = random.randint(0, len(graveyard) - 1)
-            cardData = graveyard[index]
+            # Выбираем карту cardData из нужного кладбища
+            if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
+                if not len(graveyard):
+                    break
+                index = random.randint(0, len(graveyard) - 1)
+                cardData = graveyard[index]
+            elif eptitude.attachment == EptitudeAttachment.OPPONENT:
+                if not len(graveyard):
+                    break
+                index = random.randint(0, len(opponentGraveyard) - 1)
+                cardData = opponentGraveyard[index]
+            elif eptitude.attachment == EptitudeAttachment.ALL:
+                if not len(graveyard) and not len(opponentGraveyard):
+                    break
+                index = random.randint(0, len(graveyard) + len(opponentGraveyard) - 1)
+                if index <= len(graveyard) - 1:
+                    cardData = graveyard[index]
+                else:
+                    index -= len(graveyard)
+                    cardData = opponentGraveyard[index]
+
             copy = self.match.copyCard(cardData)
             copy['whiteFlag'] = self.whiteFlag
             hand.append(copy)
