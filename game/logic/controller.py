@@ -1124,6 +1124,9 @@ class Controller ():
                     logger.debug ('eptitude.type: CARD_FROM_GRAVEYARD')
                     self.cardFromGraveYard(targets, eptitude)
 
+                if eptitude.type == EptitudeType.MINION_FROM_GRAVEYARD:
+                    logger.debug ('eptitude.type: MINION_FROM_GRAVEYARD')
+                    self.minionFromGraveYard(targets, eptitude)
 
                 if eptitude.manacost > 0:
                      logger.debug('Eptitude manacost: %s' % eptitude.manacost)
@@ -2607,7 +2610,7 @@ class Controller ():
                 index = random.randint(0, len(graveyard) - 1)
                 cardData = graveyard[index]
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
-                if not len(graveyard):
+                if not len(opponentGraveyard):
                     break
                 index = random.randint(0, len(opponentGraveyard) - 1)
                 cardData = opponentGraveyard[index]
@@ -2674,6 +2677,103 @@ class Controller ():
             action['client'] = self.client
             action['endAnimationFlag'] = False
             self.scenario.append(action)
+
+    def minionFromGraveYard (self, targets, eptitude):
+        if len(targets):
+            eptitude.activated = True
+        else:
+            return
+
+        if self.whiteFlag:
+            hand = self.match.white_hand
+            opponentHand = self.match.black_hand
+            row = self.match.whiteUnitRow
+            opponentRow = self.match.blackUnitRow
+            graveyard = self.match.white_graveyard
+            opponentGraveyard = self.match.black_graveyard
+
+        else:
+            hand = self.match.black_hand
+            opponentHand = self.match.white_hand
+            row = self.match.blackUnitRow
+            opponentRow = self.match.whiteUnitRow
+            graveyard = self.match.white_graveyard
+            opponentGraveyard = self.match.black_graveyard
+
+        graveCards = []
+
+        for i in range(eptitude.count):
+            if len(row) >= 7:
+                    break
+
+            # Выбираем карту cardData из нужного кладбища
+            if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
+                if not len(graveyard):
+                    break
+                index = random.randint(0, len(graveyard) - 1)
+                cardData = graveyard[index]
+            elif eptitude.attachment == EptitudeAttachment.OPPONENT:
+                if not len(opponentGraveyard):
+                    break
+                index = random.randint(0, len(opponentGraveyard) - 1)
+                cardData = opponentGraveyard[index]
+            elif eptitude.attachment == EptitudeAttachment.ALL:
+                if not len(graveyard) and not len(opponentGraveyard):
+                    break
+                index = random.randint(0, len(graveyard) + len(opponentGraveyard) - 1)
+                if index <= len(graveyard) - 1:
+                    cardData = graveyard[index]
+                else:
+                    index -= len(graveyard)
+                    cardData = opponentGraveyard[index]
+
+            copy = self.match.copyCard(cardData)
+            targetUnit = Unit(copy)
+            targetUnit.whiteFlag = self.whiteFlag
+            targetUnit.setRow(row)
+            targetIndex = len(row)
+            row.insert(targetIndex, targetUnit)
+
+            action = {}
+            action['type'] = Action.MINION_FROM_GRAVEYEARD
+            action['card'] = copy
+            action['client'] = self.client
+            action['initiatorIndex'] = targetIndex
+            action['endAnimationFlag'] = True
+            #Все поля заполнены правильно?????
+
+            controller = Controller()
+            controller.setMatch(self.match)
+            controller.setScenario(self.scenario)
+            controller.setClient(self.client)
+            controller.setWhiteFlag(self.whiteFlag)
+            controller.addUnit(targetUnit)
+
+            controller = Controller()
+            controller.setMatch(self.match)
+            controller.setScenario(self.scenario)
+            controller.setClient(self.client)
+            controller.setWhiteFlag(self.whiteFlag)
+            controller.unitPlaced (targetUnit)
+
+            controller = CardController()
+            controller.setWhiteFlag(self.whiteFlag)
+            controller.setMatch(self.match)
+            controller.setScenario(self.scenario)
+            controller.setClient(self.client)
+            controller.new_unit()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -104,6 +104,7 @@ class Action ():
     WEAPON_STRENGTH = 'weapon_strength'
     DESTROY_WEAPON = 'destroy_weapon'
     CARDS_FROM_GRAVEYARD = 'cards_from_graveyard'
+    MINION_FROM_GRAVEYEARD = 'minion_from_graveyard'
 
 
 

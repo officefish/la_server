@@ -216,8 +216,8 @@ EPTITUDE_TYPE_CHOICES=[
     ('95','FLY'),
     ('96','DESTROY_PROVOCATION'),
     ('97','TAKE_UP_WEAPON'),
-    ('98','CARD_FROM_GRAVEYARD')
-
+    ('98','CARD_FROM_GRAVEYARD'),
+    ('99','MINION_FROM_GRAVEYEARD'),
 ]
 
 etc = [
@@ -319,8 +319,8 @@ etc = [
     'FLY (полет)',
     'DESTROY_PROVOCATION',
     'TAKE_UP_WEAPON',
-    'CARD_FROM_GRAVEYARD'
-
+    'CARD_FROM_GRAVEYARD',
+    'MINION_FROM_GRAVEYEARD(призыв на стол существ ранее погибших в этом бою)',
 ]
 
 # Вид уникальной способности
