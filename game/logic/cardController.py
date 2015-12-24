@@ -9,6 +9,9 @@ from game.logic.action import Action
 
 class CardController ():
 
+    def __init__(self):
+        self.id = random.randint(0, 10000)
+
     def setScenario(self, scenario):
         self.scenario = scenario
 
