@@ -15,23 +15,34 @@ from game.logic.constants import EptitudePeriod, EptitudeCondition, EptitudeLeve
 from group.models import Group
 from weapon.models import Weapon
 
-
 class Controller ():
 
     def __init__(self):
         self.id = random.randint(0, 10000)
 
+    def clone(self):
+        controller = Controller()
+        controller.setMatch(self.match)
+        controller.setScenario(self.scenario)
+        controller.setClient(self.client)
+        controller.setWhiteFlag(self.whiteFlag)
+        return controller
+
     def setScenario(self, scenario):
         self.scenario = scenario
+        return self
 
     def setMatch(self, match):
         self.match = match
+        return self
 
     def setClient(self, client):
         self.client = client
+        return self
 
     def setWhiteFlag(self, flag):
         self.whiteFlag = flag
+        return self
 
     def spellToTarget(self, unit):
         logger.debug('Controller::spellToTarget')
@@ -1552,28 +1563,18 @@ class Controller ():
         self.scenario.append(action)
 
         for unit in row:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.newCard(unit)
+            self.clone().newCard(unit)
             if cardData['whiteFlag'] == unit.whiteFlag:
-                controller.newPlayerCard(unit)
+                self.clone().newPlayerCard(unit)
             else:
-                controller.newOpponentCard(unit)
+                self.clone().newOpponentCard(unit)
 
         for unit in opponentRow:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.newCard(unit)
+            self.clone().newCard(unit)
             if cardData['whiteFlag'] == unit.whiteFlag:
-                controller.newPlayerCard(unit)
+                self.clone().newPlayerCard(unit)
             else:
-                controller.newOpponentCard(unit)
+                self.clone().newOpponentCard(unit)
 
         controller = CardController()
         controller.setWhiteFlag(self.whiteFlag)
@@ -1635,28 +1636,18 @@ class Controller ():
             self.scenario.append(action)
 
         for unit in row:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.newCard(unit)
+            self.clone().newCard(unit)
             if card['whiteFlag'] == unit.whiteFlag:
-                controller.newPlayerCard(unit)
+                self.clone().newPlayerCard(unit)
             else:
-                controller.newOpponentCard(unit)
+                self.clone().newOpponentCard(unit)
 
         for unit in opponentRow:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.newCard(unit)
+            self.clone().newCard(unit)
             if card['whiteFlag'] == unit.whiteFlag:
-                controller.newPlayerCard(unit)
+                self.clone().newPlayerCard(unit)
             else:
-                controller.newOpponentCard(unit)
+                self.clone().newOpponentCard(unit)
 
         controller = CardController()
         controller.setWhiteFlag(self.whiteFlag)
@@ -1721,28 +1712,18 @@ class Controller ():
             self.scenario.append(action)
 
             for unit in row:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if copy['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             for unit in opponentRow:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if copy['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -1829,12 +1810,7 @@ class Controller ():
             cloneEptitude = attachedEptitude.clone()
             cloneEptitude.attached = True
             target.attachEptitude(cloneEptitude)
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.activateEptitude(target)
+            self.clone().activateEptitude(target)
 
     def destroy_shadow(self, targets):
         for target in targets:
@@ -2060,19 +2036,9 @@ class Controller ():
             if self.containsDynamicEptitudes(targetUnit):
                 self.activateDynamic(targetUnit)
 
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.addUnit(targetUnit)
+            self.clone().addUnit(targetUnit)
 
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.unitPlaced(targetUnit)
+            self.clone().unitPlaced(targetUnit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -2105,12 +2071,7 @@ class Controller ():
             cardData = self.match.getUnitCardData(card)
             convertionUnit = Unit(cardData)
 
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(target.whiteFlag)
-            controller.configureUnit(convertionUnit)
+            self.clone().setWhiteFlag(target.whiteFlag).configureUnit(convertionUnit)
 
             if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
                 row.insert(targetIndex, convertionUnit)
@@ -2188,20 +2149,10 @@ class Controller ():
                 self.scenario.append(action)
 
                 for unit in row:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.enticeAssociate(unit)
+                    self.clone().enticeAssociate(unit)
 
                 for unit in opponentRow:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.enticeOpponent(unit)
+                    self.clone().enticeOpponent(unit)
 
                 if self.containsDynamicEptitudes(target):
                     self.activateDynamic(target)
@@ -2459,19 +2410,9 @@ class Controller ():
                         action['endAnimationFlag'] = True
                         self.scenario.append(action)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.addUnit(targetUnit)
+                        self.clone().addUnit(targetUnit)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.unitPlaced(targetUnit)
+                        self.clone().unitPlaced(targetUnit)
 
                         controller = CardController()
                         controller.setWhiteFlag(self.whiteFlag)
@@ -2507,19 +2448,9 @@ class Controller ():
                         action['endAnimationFlag'] = True
                         self.scenario.append(action)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.addUnit(targetUnit)
+                        self.clone().addUnit(targetUnit)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.unitPlaced(targetUnit)
+                        self.clone().unitPlaced(targetUnit)
 
                         controller = CardController()
                         controller.setWhiteFlag(self.whiteFlag)
@@ -2557,19 +2488,9 @@ class Controller ():
 
                         targetUnit.destroyBattlecryEptitudes()
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.addUnit(targetUnit)
+                        self.clone().addUnit(targetUnit)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.unitPlaced(targetUnit)
+                        self.clone().unitPlaced(targetUnit)
 
                         controller = CardController()
                         controller.setWhiteFlag(self.whiteFlag)
@@ -2604,19 +2525,9 @@ class Controller ():
                         action['endAnimationFlag'] = True
                         self.scenario.append(action)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.addUnit(targetUnit)
+                        self.clone().addUnit(targetUnit)
 
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.unitPlaced(targetUnit)
+                        self.clone().unitPlaced(targetUnit)
 
                         controller = CardController()
                         controller.setWhiteFlag(self.whiteFlag)
@@ -2685,28 +2596,18 @@ class Controller ():
             self.match.configureLastCard(copy)
 
             for unit in row:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if copy['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             for unit in opponentRow:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if copy['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -2796,19 +2697,9 @@ class Controller ():
             action['endAnimationFlag'] = True
             # Все поля заполнены правильно?????
 
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.addUnit(targetUnit)
+            self.clone().addUnit(targetUnit)
 
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.unitPlaced(targetUnit)
+            self.clone().unitPlaced(targetUnit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -2863,28 +2754,18 @@ class Controller ():
             self.match.configureLastCard(cardData)
 
             for unit in row:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if cardData['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             for unit in opponentRow:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if cardData['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -3000,28 +2881,18 @@ class Controller ():
         # события вернувшихся юнитов
         for i in range(len(associateBackCards) + len(opponentBackCards)):
             for unit in row:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if cardData['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             for unit in opponentRow:
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.newCard(unit)
+                self.clone().newCard(unit)
                 if cardData['whiteFlag'] == unit.whiteFlag:
-                    controller.newPlayerCard(unit)
+                    self.clone().newPlayerCard(unit)
                 else:
-                    controller.newOpponentCard(unit)
+                    self.clone().newOpponentCard(unit)
 
             controller = CardController()
             controller.setWhiteFlag(self.whiteFlag)
@@ -3032,12 +2903,7 @@ class Controller ():
 
         # события уничтоженных юнитов
         for targetUnit in destroyCards:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.removeUnit(targetUnit)
+            self.clone().removeUnit(targetUnit)
 
             controller = CardController()
             controller.setMatch(self.match)
@@ -3276,34 +3142,23 @@ class Controller ():
                     playerHero = self.match.getBlackHero()
                     opponentHero = self.match.getWhiteHero()
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-
                 if isinstance(targetUnit, HeroUnit):
                     if targetUnit == playerHero:
-                        controller.treatHero(playerRow, True)
-                        controller.treatHero(opponentRow, False)
+                        self.clone().treatHero(playerRow, True)
+                        self.clone().treatHero(opponentRow, False)
                     else:
-                        controller.treatHero(playerRow, False)
-                        controller.treatHero(opponentRow, True)
+                        self.clone().treatHero(playerRow, False)
+                        self.clone().treatHero(opponentRow, True)
 
-                    controller.treatHeroes(playerRow, opponentRow)
+                    self.clone().treatHeroes(playerRow, opponentRow)
                 else:
-                    controller.treatAssociate(playerRow)
-                    controller.treatOpponent(opponentRow)
-                    controller.treatAll(playerRow, opponentRow)
+                    self.clone().treatAssociate(playerRow)
+                    self.clone().treatOpponent(opponentRow)
+                    self.clone().treatAll(playerRow, opponentRow)
 
                 if isinstance(targetUnit, Unit):
                     if targetUnit.getHealth() == targetUnit.getMaxHealth():
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.fullHealthUnit(targetUnit)
+                        self.clone().fullHealthUnit(targetUnit)
 
     def treatHero(self, row, playerFlag):
         for item in row:
@@ -3360,12 +3215,7 @@ class Controller ():
 
             if targetIndex >= 0:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
                 action = {}
                 action['type'] = Action.DAMAGE
@@ -3388,12 +3238,7 @@ class Controller ():
 
                 self.match.dieUnitsIndex += 1
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.removeUnit(targetUnit)
+                self.clone().removeUnit(targetUnit)
 
                 controller = CardController()
                 controller.setMatch(self.match)
@@ -3452,12 +3297,7 @@ class Controller ():
         for targetUnit in targets:
             if targetIndex >= 0:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
         # уничтожаем все фишки на клиенте
         action = {}
@@ -3481,12 +3321,7 @@ class Controller ():
 
                 self.match.dieUnitsIndex += 1
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.removeUnit(targetUnit)
+                self.clone().removeUnit(targetUnit)
 
                 controller = CardController()
                 controller.setMatch(self.match)
@@ -3588,12 +3423,7 @@ class Controller ():
 
             if targetNewHealthValue < targetHealthValue:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
                     controller = CardController()
@@ -3628,12 +3458,7 @@ class Controller ():
 
                     self.match.dieUnitsIndex += 1
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.removeUnit(targetUnit)
+                    self.clone().removeUnit(targetUnit)
 
                     controller = CardController()
                     controller.setMatch(self.match)
@@ -3763,12 +3588,7 @@ class Controller ():
 
             if targetNewHealthValue < targetHealthValue:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
                     controller = CardController()
@@ -3803,12 +3623,7 @@ class Controller ():
 
                     self.match.dieUnitsIndex += 1
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.removeUnit(targetUnit)
+                    self.clone().removeUnit(targetUnit)
 
                     controller = CardController()
                     controller.setMatch(self.match)
@@ -3949,12 +3764,7 @@ class Controller ():
 
             if targetNewHealthValue < targetHealthValue:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
                     controller = CardController()
@@ -3989,12 +3799,7 @@ class Controller ():
 
                     self.match.dieUnitsIndex += 1
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.removeUnit(targetUnit)
+                    self.clone().removeUnit(targetUnit)
 
                     controller = CardController()
                     controller.setMatch(self.match)
@@ -4124,12 +3929,7 @@ class Controller ():
 
             if targetNewHealthValue < targetHealthValue:
                 if isinstance(targetUnit, Unit):
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.woundUnit(targetUnit)
+                    self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
                     controller = CardController()
@@ -4164,12 +3964,7 @@ class Controller ():
 
                     self.match.dieUnitsIndex += 1
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.removeUnit(targetUnit)
+                    self.clone().removeUnit(targetUnit)
 
                     controller = CardController()
                     controller.setMatch(self.match)
@@ -4312,12 +4107,7 @@ class Controller ():
 
         for targetUnit in woundTargets:
             if isinstance(targetUnit, Unit):
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.woundUnit(targetUnit)
+                self.clone().woundUnit(targetUnit)
 
             if isinstance(targetUnit, HeroUnit):
                 controller = CardController()
@@ -4358,12 +4148,7 @@ class Controller ():
             self.match.dieUnitsIndex += 1
 
         for targetUnit in deathUnits:
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.removeUnit(targetUnit)
+            self.clone().removeUnit(targetUnit)
 
             controller = CardController()
             controller.setMatch(self.match)
@@ -4454,12 +4239,7 @@ class Controller ():
 
         for targetUnit in woundTargets:
             if isinstance(targetUnit, Unit):
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.woundUnit(targetUnit)
+                self.clone().woundUnit(targetUnit)
 
             if isinstance(targetUnit, HeroUnit):
                 controller = CardController()
@@ -4505,12 +4285,7 @@ class Controller ():
 
         for targetUnit in deathUnits:
             self.match.buryMinion(targetUnit)
-            controller = Controller()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.removeUnit(targetUnit)
+            self.clone().removeUnit(targetUnit)
 
             controller = CardController()
             controller.setMatch(self.match)
@@ -4616,28 +4391,18 @@ class Controller ():
                     self.match.configureLastCard(card)
 
                     for unit in row:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     for unit in opponentRow:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -4701,28 +4466,18 @@ class Controller ():
                         self.client, self.scenario, self.whiteFlag)
 
                     for unit in row:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     for unit in opponentRow:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -4795,28 +4550,18 @@ class Controller ():
                     self.match.configureLastCard(card)
 
                     for unit in row:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     for unit in opponentRow:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -4880,28 +4625,18 @@ class Controller ():
                         self.client, self.scenario, self.whiteFlag)
 
                     for unit in row:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card2['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     for unit in opponentRow:
-                        controller = Controller()
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.newCard(unit)
+                        self.clone().newCard(unit)
                         if card2['whiteFlag'] == unit.whiteFlag:
-                            controller.newPlayerCard(unit)
+                            self.clone().newPlayerCard(unit)
                         else:
-                            controller.newOpponentCard(unit)
+                            self.clone().newOpponentCard(unit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -4985,28 +4720,18 @@ class Controller ():
                             self.client, self.scenario, self.whiteFlag)
 
                         for unit in row:
-                            controller = Controller()
-                            controller.setMatch(self.match)
-                            controller.setScenario(self.scenario)
-                            controller.setClient(self.client)
-                            controller.setWhiteFlag(self.whiteFlag)
-                            controller.newCard(unit)
+                            self.clone().newCard(unit)
                             if card['whiteFlag'] == unit.whiteFlag:
-                                controller.newPlayerCard(unit)
+                                self.clone().newPlayerCard(unit)
                             else:
-                                controller.newOpponentCard(unit)
+                                self.clone().newOpponentCard(unit)
 
                         for unit in opponentRow:
-                            controller = Controller()
-                            controller.setMatch(self.match)
-                            controller.setScenario(self.scenario)
-                            controller.setClient(self.client)
-                            controller.setWhiteFlag(self.whiteFlag)
-                            controller.newCard(unit)
+                            self.clone().newCard(unit)
                             if card['whiteFlag'] == unit.whiteFlag:
-                                controller.newPlayerCard(unit)
+                                self.clone().newPlayerCard(unit)
                             else:
-                                controller.newOpponentCard(unit)
+                                self.clone().newOpponentCard(unit)
 
                         controller = CardController()
                         controller.setWhiteFlag(self.whiteFlag)
@@ -5109,28 +4834,18 @@ class Controller ():
                     self.client, self.scenario, self.whiteFlag)
 
                 for unit in row:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.newCard(unit)
+                    self.clone().newCard(unit)
                     if card['whiteFlag'] == unit.whiteFlag:
-                        controller.newPlayerCard(unit)
+                        self.clone().newPlayerCard(unit)
                     else:
-                        controller.newOpponentCard(unit)
+                        self.clone().newOpponentCard(unit)
 
                 for unit in opponentRow:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.newCard(unit)
+                    self.clone().newCard(unit)
                     if card['whiteFlag'] == unit.whiteFlag:
-                        controller.newPlayerCard(unit)
+                        self.clone().newPlayerCard(unit)
                     else:
-                        controller.newOpponentCard(unit)
+                        self.clone().newOpponentCard(unit)
 
                 controller = CardController()
                 controller.setWhiteFlag(self.whiteFlag)
@@ -5218,28 +4933,18 @@ class Controller ():
                     self.client, self.scenario, self.whiteFlag)
 
                 for unit in row:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.newCard(unit)
+                    self.clone().newCard(unit)
                     if card['whiteFlag'] == unit.whiteFlag:
-                        controller.newPlayerCard(unit)
+                        self.clone().newPlayerCard(unit)
                     else:
-                        controller.newOpponentCard(unit)
+                        self.clone().newOpponentCard(unit)
 
                 for unit in opponentRow:
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.newCard(unit)
+                    self.clone().newCard(unit)
                     if card['whiteFlag'] == unit.whiteFlag:
-                        controller.newPlayerCard(unit)
+                        self.clone().newPlayerCard(unit)
                     else:
-                        controller.newOpponentCard(unit)
+                        self.clone().newOpponentCard(unit)
 
                 controller = CardController()
                 controller.setWhiteFlag(self.whiteFlag)
@@ -5289,19 +4994,9 @@ class Controller ():
                     action['cardData'] = cardData
                     self.scenario.append(action)
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.addUnit(targetUnit)
+                    self.clone().addUnit(targetUnit)
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unitPlaced(targetUnit)
+                    self.clone().unitPlaced(targetUnit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -5329,19 +5024,9 @@ class Controller ():
                     action['cardData'] = cardData
                     self.scenario.append(action)
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.addUnit(targetUnit)
+                    self.clone().addUnit(targetUnit)
 
-                    controller = Controller()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unitPlaced(targetUnit)
+                    self.clone().unitPlaced(targetUnit)
 
                     controller = CardController()
                     controller.setWhiteFlag(self.whiteFlag)
@@ -5503,19 +5188,9 @@ class Controller ():
                     action['cardData'] = cardData
                     self.scenario.append(action)
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.addUnit(targetUnit)
+                self.clone().addUnit(targetUnit)
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.unitPlaced(targetUnit)
+                self.clone().unitPlaced(targetUnit)
 
                 controller = CardController()
                 controller.setWhiteFlag(self.whiteFlag)
@@ -5865,19 +5540,9 @@ class Controller ():
                 action['cardData'] = copy
                 self.scenario.append(action)
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.addUnit(targetUnit)
+                self.clone().addUnit(targetUnit)
 
-                controller = Controller()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.unitPlaced(targetUnit)
+                self.clone().unitPlaced(targetUnit)
 
                 controller = CardController()
                 controller.setWhiteFlag(self.whiteFlag)
