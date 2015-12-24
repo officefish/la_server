@@ -176,7 +176,7 @@ class EptitudeType():
     DESTROY_PROVOCATION = 96
     TAKE_UP_WEAPON = 97
     CARD_FROM_GRAVEYARD = 98
-    MINION_FROM_GRAVEYEARD = 99
+    MINION_FROM_GRAVEYARD = 99
 
 
 class EptitudePeriod ():
