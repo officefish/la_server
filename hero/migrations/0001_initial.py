@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Hero',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True,
+                                        verbose_name='ID', auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=70)),
                 ('description', models.CharField(max_length=200, blank=True)),
                 ('vocation', models.CharField(max_length=70, blank=True)),
@@ -29,7 +30,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserHero',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True,
+                                        verbose_name='ID', auto_created=True, serialize=False)),
                 ('level', models.IntegerField(default=1, max_length=2)),
                 ('hero', models.ForeignKey(to='hero.Hero')),
                 ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL)),

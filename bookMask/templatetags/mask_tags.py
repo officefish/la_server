@@ -3,11 +3,11 @@ from django import template
 register = template.Library()
 
 
-RARITY= {
-   '0':'обычная',
-   '1':'редкая',
-   '2':'эпическая',
-   '3':'легендарная'
+RARITY = {
+    '0': 'обычная',
+    '1': 'редкая',
+    '2': 'эпическая',
+    '3': 'легендарная'
 }
 
 
@@ -21,9 +21,3 @@ def rarity(value, arg):
         pass
 
     return response
-
-
-
-
-
-

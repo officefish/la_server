@@ -21,7 +21,7 @@ from utils.timer_util import RenewableTimer
 
 
 import logging
-logger =  logging.getLogger('game_handler')
+logger = logging.getLogger('game_handler')
 
 
 class Game ():
@@ -85,34 +85,29 @@ class Game ():
         else:
             self.black_graveyard.append(cardData)
 
-
-
-
-    def transitionProgress (self):
+    def transitionProgress(self):
         if self.stepFlag:
             self.stepFlag = False
         else:
             self.stepFlag = True
-        logger.debug ('stepFlag: %s' % self.stepFlag)
+        logger.debug('stepFlag: %s' % self.stepFlag)
 
-
-
-    def getStepFlag (self):
+    def getStepFlag(self):
         return self.stepFlag
 
     def setPlayer1_id(self, id):
         self.p1_id = int(id)
 
     def getPlayer1_id(self):
-        return  self.p1_id
+        return self.p1_id
 
     def setPlayer2_id(self, id):
         self.p2_id = int(id)
 
     def getPlayer2_id(self):
-        return  self.p2_id
+        return self.p2_id
 
-    def setPlayer1_level (self, lvl):
+    def setPlayer1_level(self, lvl):
         self.player1_level = int(lvl)
 
     def setPlayer2_level(self, lvl):
@@ -124,41 +119,41 @@ class Game ():
     def getPlayer2_level(self):
         return self.player2_level
 
-    def setWhiteHeroLevel (self, lvl):
+    def setWhiteHeroLevel(self, lvl):
         self.whiteHero_lvl = lvl
 
-    def getWhiteHeroLevel (self):
+    def getWhiteHeroLevel(self):
         return self.whiteHero_lvl
 
-    def setBlackHeroLevel (self, lvl):
+    def setBlackHeroLevel(self, lvl):
         self.blackHero_lvl = lvl
 
-    def getBlackHeroLevel (self):
+    def getBlackHeroLevel(self):
         return self.blackHero_lvl
 
     def setPlayer1_deck(self, deckId):
-        self.player1_deck = Deck.objects.get (id=deckId)
+        self.player1_deck = Deck.objects.get(id=deckId)
 
-    def getPlayer1_deck (self):
+    def getPlayer1_deck(self):
         return self.player1_deck
 
-    def setWhiteDeck (self, deck):
+    def setWhiteDeck(self, deck):
         self.white_deck = deck
 
     def setPlayer2_deck(self, deckId):
-        self.player2_deck = Deck.objects.get (id=deckId)
+        self.player2_deck = Deck.objects.get(id=deckId)
 
-    def getPlayer2_deck (self):
+    def getPlayer2_deck(self):
         return self.player2_deck
 
-    def setBlackDeck (self, deck):
+    def setBlackDeck(self, deck):
         self.black_deck = deck
 
     def setPlayer1_hero(self, heroId):
-        self.player1_hero = UserHero.objects.get (id=heroId)
+        self.player1_hero = UserHero.objects.get(id=heroId)
 
     def setPlayer2_hero(self, heroId):
-        self.player2_hero = UserHero.objects.get (id=heroId)
+        self.player2_hero = UserHero.objects.get(id=heroId)
 
     def getPlayer1_hero(self):
         return self.player1_hero
@@ -166,69 +161,69 @@ class Game ():
     def getPlayer2_hero(self):
         return self.player2_hero
 
-    def setWhiteHero (self, hero):
+    def setWhiteHero(self, hero):
         self.white_hero = hero
 
-    def getWhiteHero (self):
+    def getWhiteHero(self):
         return self.white_hero
 
-    def setBlackHero (self, hero):
+    def setBlackHero(self, hero):
         self.black_hero = hero
 
-    def getBlackHero (self):
+    def getBlackHero(self):
         return self.black_hero
 
     def setMode(self, md):
         self.mode = int(md)
 
-    def getMode (self):
+    def getMode(self):
         return self.mode
 
-    def setPlayer1 (self, player):
+    def setPlayer1(self, player):
         self.player1Flag = True
         self.player1 = player
 
-    def getPlayer1 (self):
+    def getPlayer1(self):
         return self.player1
 
-    def setPlayer2 (self, player):
+    def setPlayer2(self, player):
         self.player2Flag = True
         self.player2 = player
 
-    def getPlayer2 (self):
+    def getPlayer2(self):
         return self.player2
 
-    def setWhite (self, player):
+    def setWhite(self, player):
         self.white = player
 
-    def getWhite (self):
+    def getWhite(self):
         return self.white
 
-    def setBlack (self, player):
+    def setBlack(self, player):
         self.black = player
 
-    def getBlack (self):
+    def getBlack(self):
         return self.black
 
-    def setWhiteId (self, id):
+    def setWhiteId(self, id):
         self.white_id = id
 
-    def getWhiteId (self):
+    def getWhiteId(self):
         return self.white_id
 
-    def setBlackId (self, id):
+    def setBlackId(self, id):
         self.black_id = id
 
-    def getBlackId (self):
+    def getBlackId(self):
         return self.black_id
 
-    def getWhiteHand (self):
+    def getWhiteHand(self):
         return self.white_hand
 
-    def getBlackHand (self):
+    def getBlackHand(self):
         return self.black_hand
 
-    def allPlayersInit (self):
+    def allPlayersInit(self):
         bool = False
         if self.player1Flag == True and self.player2Flag == True:
             bool = True
@@ -236,8 +231,10 @@ class Game ():
         return bool
 
     def generateHeroesHealth(self):
-        self.whiteHealth = self.white_hero.hero.health #math.floor(self.whiteHero_lvl / 3)
-        self.blackHealth = self.black_hero.hero.health #math.floor(self.blackHero_lvl / 3)
+        # math.floor(self.whiteHero_lvl / 3)
+        self.whiteHealth = self.white_hero.hero.health
+        # math.floor(self.blackHero_lvl / 3)
+        self.blackHealth = self.black_hero.hero.health
 
     def generateHeroesUnits(self):
         self.whiteHeroUnit = HeroUnit(self.whiteHealth)
@@ -276,7 +273,7 @@ class Game ():
             card = self.lastWhiteCard
         return card
 
-    def configureLastCard (self, card):
+    def configureLastCard(self, card):
         self.lastCardinHand = card
         try:
             self.white_hand.index(card)
@@ -290,7 +287,7 @@ class Game ():
         except:
             pass
 
-    def generateMatchDecks (self):
+    def generateMatchDecks(self):
         self.white_match_deck = []
         self.black_match_deck = []
 
@@ -319,7 +316,7 @@ class Game ():
         card = deck[initiator]
         del deck[initiator]
         deck.insert(target, card)
-        logger.debug (self.getDeckData(whiteFlag))
+        logger.debug(self.getDeckData(whiteFlag))
         logger.debug(len(deck))
 
     def initializeAchieves(self):
@@ -348,11 +345,12 @@ class Game ():
     def getWhiteAchieves(self):
         response = []
         destroyAchieves = []
-        for  i in range(len(self.whiteAchieves)):
+        for i in range(len(self.whiteAchieves)):
             position = self.whiteAchieves[i].position
             valid = self.validateMode(position)
             if valid:
-                response.append ({'position':position, 'data':self.whiteAchieves[i].getData()})
+                response.append(
+                    {'position': position, 'data': self.whiteAchieves[i].getData()})
             else:
                 destroyAchieves.append(self.whiteAchieves[i])
 
@@ -366,16 +364,17 @@ class Game ():
     def getBlackAchieves(self):
         response = []
         destroyAchieves = []
-        for  i in range(len(self.blackAchieves)):
+        for i in range(len(self.blackAchieves)):
             position = self.blackAchieves[i].position
             valid = self.validateMode(position)
             if valid:
-                response.append ({'position':position, 'data':self.blackAchieves[i].getData()})
+                response.append(
+                    {'position': position, 'data': self.blackAchieves[i].getData()})
             else:
                 destroyAchieves.append(self.blackAchieves[i])
 
         for achieve in destroyAchieves:
-            index =self.blackAchieves.index(achieve)
+            index = self.blackAchieves.index(achieve)
             del self.blackAchieves[index]
 
         logger.debug(self.blackAchieves)
@@ -403,7 +402,7 @@ class Game ():
                     action['position'] = achieve.position
                     self.scenario.append(action)
 
-    def checkCommonAchieves (self, price, client, whiteFlag):
+    def checkCommonAchieves(self, price, client, whiteFlag):
         if whiteFlag:
             achieves = self.whiteAchieves
         else:
@@ -416,8 +415,6 @@ class Game ():
                     action['client'] = client
                     action['position'] = achieve.position
                     self.scenario.append(action)
-
-
 
     def disableAchieves(self, client, whiteFlag):
         if whiteFlag:
@@ -451,8 +448,9 @@ class Game ():
 
         achieve = self.getAchieve(position, whiteFlag)
 
-        self.spellTarget = self.getUnitByIndexAndAttachment(targetIndex, targetAttachment, whiteFlag)
-        valid = self.validateSpellTarget (achieve, whiteFlag)
+        self.spellTarget = self.getUnitByIndexAndAttachment(
+            targetIndex, targetAttachment, whiteFlag)
+        valid = self.validateSpellTarget(achieve, whiteFlag)
         if valid:
             if self.spellTarget.spellInvisible:
                 valid = False
@@ -465,7 +463,6 @@ class Game ():
             action['effect'] = True
             action['endAnimationFlag'] = False
             self.scenario.append(action)
-
 
     def activateAchieve(self, position, whiteFlag):
         achieve = self.getAchieve(position, whiteFlag)
@@ -505,7 +502,7 @@ class Game ():
             action['price'] = price
             action['overload'] = self.stepOverload
             action['endAnimationFlag'] = False
-            self.scenario.append (action)
+            self.scenario.append(action)
 
             action = {}
             action['type'] = Action.GLOW_CARDS
@@ -513,17 +510,7 @@ class Game ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-
-
-
-
-
-
-
-
-
-
-    def generateHand (self, index, whiteFlag):
+    def generateHand(self, index, whiteFlag):
         if whiteFlag:
             self.white_hand = self.white_match_deck[:index]
             self.white_match_deck[:index] = []
@@ -539,13 +526,10 @@ class Game ():
 
             return self.black_hand
 
-
-
-
-    def changePreflop (self, cards, whiteFlag):
+    def changePreflop(self, cards, whiteFlag):
         if whiteFlag:
             for item in cards:
-                card = Card.objects.get (id=int(item['id']))
+                card = Card.objects.get(id=int(item['id']))
                 cardData = self.getUnitCardData(card)
                 self.white_match_deck.append(cardData)
 
@@ -562,13 +546,11 @@ class Game ():
                 self.white_hand[index] = cardData
                 i += 1
 
-
             self.whitePreflopFlag = True
-
 
         else:
             for item in cards:
-                card = Card.objects.get (id=int(item['id']))
+                card = Card.objects.get(id=int(item['id']))
                 cardData = self.getUnitCardData(card)
                 self.black_match_deck.append(cardData)
 
@@ -584,8 +566,6 @@ class Game ():
                 self.black_hand[index] = cardData
                 i += 1
 
-
-
             self.blackPreflopFlag = True
 
         return response
@@ -595,9 +575,9 @@ class Game ():
             card = Card.objects.get(id=id)
         except Card.DoesNotExist:
             card = None
-        return  card
+        return card
 
-    def getUnitCardData (self, card):
+    def getUnitCardData(self, card):
         cardData = dict()
         cardData['title'] = card.title
         cardData['description'] = card.description
@@ -626,13 +606,13 @@ class Game ():
             pass
         dataEptitudes = []
         for eptitude in card.eptitudes:
-            dataEptitude = self.getEptitudeData (eptitude)
-            dataEptitudes.append (dataEptitude)
+            dataEptitude = self.getEptitudeData(eptitude)
+            dataEptitudes.append(dataEptitude)
         cardData['eptitudes'] = dataEptitudes
         return cardData
 
-    def getEptitudeData (self, eptitude):
-        eptitudeData = dict ()
+    def getEptitudeData(self, eptitude):
+        eptitudeData = dict()
         eptitudeData['type'] = eptitude.type
         eptitudeData['period'] = eptitude.period
         eptitudeData['level'] = eptitude.level
@@ -660,7 +640,8 @@ class Game ():
         eptitudeData['destroy'] = eptitude.destroy
         try:
             eptitudeData['weapon'] = eptitude.weapon.id
-        except: pass
+        except:
+            pass
         try:
             eptitudeData['dependency'] = eptitude.dependency.id
         except:
@@ -673,20 +654,23 @@ class Game ():
 
         try:
             eptitudeData['race'] = eptitude.race.id
-        except: pass
+        except:
+            pass
         try:
             eptitudeData['subrace'] = eptitude.subrace.id
-        except: pass
+        except:
+            pass
         try:
             eptitudeData['unit'] = eptitude.unit.id
-        except: pass
+        except:
+            pass
         try:
             eptitudeData['group'] = eptitude.group.id
         except:
             pass
         return eptitudeData
 
-    def isBlockEndPreflop (self):
+    def isBlockEndPreflop(self):
         return self.blockEndPreflop
 
     def isAllPlayersChangePreflop(self):
@@ -695,13 +679,12 @@ class Game ():
 
         return False
 
-
-    def runPreflopTimer (self):
+    def runPreflopTimer(self):
         self.preflop_timer = RenewableTimer(30, self.end_preflop_timer)
         self.preflop_timer.start()
 
     def end_preflop_timer(self):
-        
+
         if self.blockEndPreflop:
             return
 
@@ -722,10 +705,10 @@ class Game ():
         dump = json.dumps(response)
         self.black.write_message(dump)
 
-    def stopPreflopTimer (self) :
-         self.preflop_timer.cancel()
+    def stopPreflopTimer(self):
+        self.preflop_timer.cancel()
 
-    def runStepTimer (self):
+    def runStepTimer(self):
         try:
             self.step_timer.pause()
             del self.step_timer
@@ -738,7 +721,7 @@ class Game ():
         except:
             pass
 
-        logger.debug ('run_step_timer')
+        logger.debug('run_step_timer')
         self.step_timer = RenewableTimer(20, self.end_step_timer)
         self.step_timer.start()
 
@@ -756,8 +739,8 @@ class Game ():
         self.step_finish_timer.start()
         logger.debug('run step_finish_timer')
 
-    def end_step_finish_timer (self):
-        logger.debug ('end_step_finish_timer')
+    def end_step_finish_timer(self):
+        logger.debug('end_step_finish_timer')
 
         prevWhiteFlag = self.getStepFlag()
         scenario = self.endStep()
@@ -773,12 +756,14 @@ class Game ():
             row = self.whiteUnitRow
             client = self.getWhiteId()
 
-        if  self.selectMode:
+        if self.selectMode:
 
             cardData = self.selected_unit.cardData
-            hand.append (cardData)
-            selectAttachment = self.initAttachment (self.selected_unit, prevWhiteFlag)
-            selectIndex = self.initIndex (self.selected_unit, selectAttachment, prevWhiteFlag)
+            hand.append(cardData)
+            selectAttachment = self.initAttachment(
+                self.selected_unit, prevWhiteFlag)
+            selectIndex = self.initIndex(
+                self.selected_unit, selectAttachment, prevWhiteFlag)
             del row[selectIndex]
 
             action = {}
@@ -824,22 +809,21 @@ class Game ():
         action['opponentCardsCount'] = len(opponentDeck)
         scenario.append(action)
 
-
     def getCard(self, whiteFlag, appendFlag):
         if whiteFlag:
-             play_card = self.white_match_deck[:1][0]
-             self.white_match_deck[:1] = []
-             if appendFlag:
-                 self.play_card = play_card
-                 self.white_hand.append(self.play_card)
-                 self.play_card['whiteFlag'] = True
+            play_card = self.white_match_deck[:1][0]
+            self.white_match_deck[:1] = []
+            if appendFlag:
+                self.play_card = play_card
+                self.white_hand.append(self.play_card)
+                self.play_card['whiteFlag'] = True
         else:
-             play_card = self.black_match_deck[:1][0]
-             self.black_match_deck[:1] = []
-             if appendFlag:
-                 self.play_card = play_card
-                 self.black_hand.append(self.play_card)
-                 self.play_card['whiteFlag'] = False
+            play_card = self.black_match_deck[:1][0]
+            self.black_match_deck[:1] = []
+            if appendFlag:
+                self.play_card = play_card
+                self.black_hand.append(self.play_card)
+                self.play_card['whiteFlag'] = False
 
         return play_card
 
@@ -859,8 +843,7 @@ class Game ():
 
         return deckData
 
-
-    def getCardByIndex (self, index, whiteFlag):
+    def getCardByIndex(self, index, whiteFlag):
         if whiteFlag:
             deck = self.white_match_deck
         else:
@@ -868,11 +851,9 @@ class Game ():
         card = deck[index]
         card['whiteFlag'] = whiteFlag
         del deck[index]
-        return  card
+        return card
 
-
-
-    def getUnitCardsList (self, whiteFlag):
+    def getUnitCardsList(self, whiteFlag):
         cardsList = []
 
         if whiteFlag:
@@ -886,7 +867,7 @@ class Game ():
 
         return cardsList
 
-    def getUnitCardsHandList (self, whiteFlag):
+    def getUnitCardsHandList(self, whiteFlag):
         cardsList = []
 
         if whiteFlag:
@@ -900,9 +881,7 @@ class Game ():
 
         return cardsList
 
-
-
-    def incrementPrice (self, whiteFlag):
+    def incrementPrice(self, whiteFlag):
         if whiteFlag:
             if self.white_price < 10:
                 self.white_price += 1
@@ -916,24 +895,23 @@ class Game ():
         else:
             return self.black_price
 
-    def initStepPrice (self):
+    def initStepPrice(self):
         self.white_step_price = self.white_price
         self.black_step_price = self.black_price
 
-
-    def getStepPrice (self, whiteFlag):
+    def getStepPrice(self, whiteFlag):
         if whiteFlag:
             return self.white_step_price
         else:
             return self.black_step_price
 
-    def getRowLength (self, whiteFlag):
+    def getRowLength(self, whiteFlag):
         if whiteFlag:
             return len(self.whiteUnitRow)
         else:
             return len(self.blackUnitRow)
 
-    def deleteUnit (self, index, attachment, whiteFlag):
+    def deleteUnit(self, index, attachment, whiteFlag):
         if whiteFlag:
             row = self.whiteUnitRow
             opponentRow = self.blackUnitRow
@@ -945,7 +923,7 @@ class Game ():
             target = row[index]
             target.setIndex(index)
             target.setWhiteFlag(whiteFlag)
-            target.setRow (row)
+            target.setRow(row)
             del row[index]
         else:
             target = opponentRow[index]
@@ -988,13 +966,11 @@ class Game ():
         action['opponentWin'] = opponentWinFlag
         scenario.append(action)
 
-
-
     def start(self):
 
         self.incrementPrice(True)
-        self.initStepPrice ()
-        self.transitionProgress ()
+        self.initStepPrice()
+        self.transitionProgress()
 
         card = self.getCard(True, True)
         client = self.getWhiteId()
@@ -1008,7 +984,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         action = {}
         action['type'] = Action.SORT_DECK
@@ -1030,7 +1006,6 @@ class Game ():
             action['client'] = client
             action['attachment'] = EptitudeAttachment.ASSOCIATE
             self.scenario.append(action)
-
 
         self.calculateCards(client, self.scenario, True)
 
@@ -1060,12 +1035,10 @@ class Game ():
         controller.setClient(client)
         controller.new_card()
 
-        #self.runStepTimer()
+        # self.runStepTimer()
         return self.scenario
 
-
-
-    def endStep (self):
+    def endStep(self):
 
         self.scenario = []
 
@@ -1085,7 +1058,7 @@ class Game ():
         action = {}
         action['type'] = Action.END_STEP
         action['client'] = client
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         self.seriesFlag = False
         action = {}
@@ -1122,7 +1095,7 @@ class Game ():
 
         self.disableAchieves(client, whiteFlag)
 
-        self.transitionProgress ()
+        self.transitionProgress()
 
         whiteFlag = self.getStepFlag()
 
@@ -1143,18 +1116,18 @@ class Game ():
         self.activePlayer = hero
 
         if hero.freeze:
-             hero.freezeIndex -= 1
-             if hero.freezeIndex <= 0:
-                 hero.freezeIndex = 0
-                 hero.freeze = False
-                 self.destroyFreeze(hero, client, self.scenario)
+            hero.freezeIndex -= 1
+            if hero.freezeIndex <= 0:
+                hero.freezeIndex = 0
+                hero.freeze = False
+                self.destroyFreeze(hero, client, self.scenario)
 
         action = {}
         action['type'] = Action.STOP_STEP_TIMER
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         self.incrementPrice(whiteFlag)
-        self.initStepPrice ()
+        self.initStepPrice()
         price = self.getStepPrice(whiteFlag)
 
         if whiteFlag:
@@ -1168,10 +1141,10 @@ class Game ():
                 action['type'] = Action.CLEAR_OVERLOAD
                 action['client'] = client
                 action['endAnimationFlag'] = False
-                self.scenario.append (action)
+                self.scenario.append(action)
 
         else:
-             if self.blackOverload > 0:
+            if self.blackOverload > 0:
                 self.black_step_price -= self.blackOverload
                 price = self.black_step_price
                 self.stepOverload = self.blackOverload
@@ -1181,7 +1154,7 @@ class Game ():
                 action['type'] = Action.CLEAR_OVERLOAD
                 action['client'] = client
                 action['endAnimationFlag'] = False
-                self.scenario.append (action)
+                self.scenario.append(action)
 
         action = {}
         action['type'] = Action.STEP_PRICE
@@ -1189,7 +1162,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         action = {}
         action['type'] = Action.SORT_DECK
@@ -1310,7 +1283,7 @@ class Game ():
             if unit.canAttack and unit.attack > 0 and unit.freeze == False and unit.replaceFlag == False:
                 unit.stepAttackCount = 0
                 unit.stepAttack = unit.totalStepAttack
-                units.append (row.index(unit))
+                units.append(row.index(unit))
 
             if unit.replaceFlag:
                 unit.replaceFlag = False
@@ -1339,7 +1312,7 @@ class Game ():
         controller.setScenario(self.scenario)
         controller.setClient(client)
         controller.new_card()
-        #self.runStepTimer()
+        # self.runStepTimer()
 
         if hero.hasWeapon():
             action = {}
@@ -1355,7 +1328,7 @@ class Game ():
         else:
             return len(self.black_match_deck)
 
-    def attrition (self, client, whiteFlag, inverseFlag):
+    def attrition(self, client, whiteFlag, inverseFlag):
 
         if whiteFlag:
             hero = self.whiteHeroUnit
@@ -1371,8 +1344,8 @@ class Game ():
         else:
             attachmentFlag = whiteFlag
 
-        targetAttachment = self.initAttachment (hero, attachmentFlag)
-        targetIndex = self.initIndex (hero, targetAttachment, attachmentFlag)
+        targetAttachment = self.initAttachment(hero, attachmentFlag)
+        targetIndex = self.initIndex(hero, targetAttachment, attachmentFlag)
 
         action = {}
         action['type'] = Action.ATTRITION
@@ -1381,13 +1354,14 @@ class Game ():
 
         action = {}
         action['type'] = Action.DAMAGE
-        action['targets'] = [{'index':targetIndex, 'attachment':targetAttachment, 'damage':damage }]
+        action['targets'] = [{'index': targetIndex,
+                              'attachment': targetAttachment, 'damage': damage}]
         action['client'] = client
         self.scenario.append(action)
 
-        logger.debug ('whiteFlag:%s' % whiteFlag)
-        logger.debug ('index:%s' % targetIndex)
-        logger.debug ('attachment:%s' % targetAttachment)
+        logger.debug('whiteFlag:%s' % whiteFlag)
+        logger.debug('index:%s' % targetIndex)
+        logger.debug('attachment:%s' % targetAttachment)
 
         targetNewHealthValue = hero.getHealth() - damage
         hero.setHealth(targetNewHealthValue)
@@ -1398,7 +1372,7 @@ class Game ():
         action['endAnimationFlag'] = False
         action['targetIndex'] = targetIndex
         action['targetAttachment'] = targetAttachment
-        action["targetUnitHealth"] = hero.getHealth()
+        action['targetUnitHealth'] = hero.getHealth()
         self.scenario.append(action)
 
         controller = CardController()
@@ -1408,15 +1382,11 @@ class Game ():
         controller.setClient(client)
         controller.hero_wound(whiteFlag)
 
-        if hero.getHealth() <=0:
+        if hero.getHealth() <= 0:
             #logger.debug ('addAction::opponent_hero_death')
             self.endMatch(client, self.scenario, whiteFlag)
 
-
-
-
-
-    def copyCard (self, card):
+    def copyCard(self, card):
         cardData = dict()
         cardData['title'] = card['title']
         cardData['description'] = card['description']
@@ -1444,19 +1414,18 @@ class Game ():
         cardData['eptitudes'] = card['eptitudes']
         return cardData
 
-
-    def destroyFreeze (self, unit, client, scenario):
-        attachment = self.initAttachment (unit, unit.whiteFlag)
-        index = self.initIndex (unit, attachment, unit.whiteFlag)
+    def destroyFreeze(self, unit, client, scenario):
+        attachment = self.initAttachment(unit, unit.whiteFlag)
+        index = self.initIndex(unit, attachment, unit.whiteFlag)
         action = {}
         action['index'] = index
         action['attachment'] = attachment
         action['type'] = Action.DESTROY_FREEZE
         action['client'] = client
         action['endAnimationFlag'] = True
-        scenario.append (action)
+        scenario.append(action)
 
-    def playSpell (self, cardIndex, whiteFlag):
+    def playSpell(self, cardIndex, whiteFlag):
         self.scenario = []
 
         if whiteFlag:
@@ -1478,13 +1447,13 @@ class Game ():
             hero = self.blackHeroUnit
 
         if self.containsSelectEffectEptitude(cardData):
-            logger.debug ('Spell contains SELECT_EFFECT eptitude')
+            logger.debug('Spell contains SELECT_EFFECT eptitude')
             groupId = cardData['eptitudes'][0]['group']
             group = Group.objects.get(pk=groupId)
             cards = []
 
             for selectCard in group.cards:
-                selectCardData = self.getUnitCardData (selectCard)
+                selectCardData = self.getUnitCardData(selectCard)
                 selectCardData['whiteFlag'] = whiteFlag
                 cards.append(selectCardData)
 
@@ -1492,7 +1461,7 @@ class Game ():
             action['type'] = Action.SELECT_EFFECT
             action['client'] = client
             action['cards'] = cards
-            self.scenario.append (action)
+            self.scenario.append(action)
 
             self.effectCards = cards
             self.effectCardIndex = cardIndex
@@ -1512,7 +1481,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         action = {}
         action['type'] = Action.DESTROY_ACTUAL_CARD
@@ -1573,9 +1542,9 @@ class Game ():
         action['endAnimationFlag'] = False
         self.scenario.append(action)
 
-    def guise_selected (self, whiteFlag, index):
+    def guise_selected(self, whiteFlag, index):
         self.scenario = []
-        guiseCard =  self.guiseCards[index]
+        guiseCard = self.guiseCards[index]
         guiseUnit = Unit(guiseCard)
 
         if whiteFlag:
@@ -1583,27 +1552,23 @@ class Game ():
         else:
             client = self.getBlackId()
 
-
         self.controller = Controller()
-
-
 
         self.controller.setMatch(self)
         self.controller.setScenario(self.scenario)
         self.controller.setClient(client)
         self.controller.setWhiteFlag(whiteFlag)
 
-        self.controller.configureUnit (guiseUnit)
+        self.controller.configureUnit(guiseUnit)
 
         self.controller.unit = self.lastPlaced
         self.controller.copy_unit([guiseUnit], UnitEptitude())
 
         return self.scenario
 
-
-    def effect_selected (self, whiteFlag, index):
+    def effect_selected(self, whiteFlag, index):
         self.scenario = []
-        self.effectCard =  self.effectCards[index]
+        self.effectCard = self.effectCards[index]
 
         if whiteFlag:
             cardData = self.white_hand[self.effectCardIndex]
@@ -1623,14 +1588,13 @@ class Game ():
 
         if self.effectCard['type'] == CardType.SPELL_TO_TARGET:
 
-            """
-                Пробуем сгенерировать маску для способности
-            """
+            """Пробуем сгенерировать маску для способности."""
             hero.configureEptitudes(self.effectCard)
-            selectedEptitude = self.getSelectedEptitude (hero.eptitudes)
-            mask = self.generateSelectedMask (selectedEptitude, whiteFlag, hero)
+            selectedEptitude = self.getSelectedEptitude(hero.eptitudes)
+            mask = self.generateSelectedMask(selectedEptitude, whiteFlag, hero)
             if selectedEptitude.getCondition() > 0:
-                 mask =  self.filterMaskCondition (whiteFlag, selectedEptitude.getCondition(), mask)
+                mask = self.filterMaskCondition(
+                    whiteFlag, selectedEptitude.getCondition(), mask)
             hero.destroyEptitudes()
 
             action = {}
@@ -1654,7 +1618,7 @@ class Game ():
             action['price'] = price
             action['overload'] = self.stepOverload
             action['endAnimationFlag'] = False
-            self.scenario.append (action)
+            self.scenario.append(action)
 
             action = {}
             action['type'] = Action.DESTROY_ACTUAL_CARD
@@ -1715,11 +1679,9 @@ class Game ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-
         return self.scenario
 
-
-    def containsSelectEffectEptitude (self, cardData):
+    def containsSelectEffectEptitude(self, cardData):
         effect = False
         for eptitudeData in cardData['eptitudes']:
             if eptitudeData['type'] == EptitudeType.SELECT_EFFECT:
@@ -1743,8 +1705,8 @@ class Game ():
         self.spellInitiatorIndex = cardIndex
 
         hero.configureEptitudes(cardData)
-        selectedEptitude = self.getSelectedEptitude (hero.eptitudes)
-        mask = self.generateSelectedMask (selectedEptitude, whiteFlag, hero)
+        selectedEptitude = self.getSelectedEptitude(hero.eptitudes)
+        mask = self.generateSelectedMask(selectedEptitude, whiteFlag, hero)
         hero.destroyEptitudes()
 
         action = {}
@@ -1752,8 +1714,6 @@ class Game ():
         action['client'] = client
         action['mask'] = mask
         self.scenario.append(action)
-
-
 
         '''
         self.spellTarget = self.getUnitByIndexAndAttachment(targetIndex, targetAttachment, whiteFlag)
@@ -1770,12 +1730,13 @@ class Game ():
 
         '''
 
-    def spellToTargetInit (self, index, attachment, whiteFlag):
+    def spellToTargetInit(self, index, attachment, whiteFlag):
 
         self.scenario = []
         cardData = self.spellInitiator
         cardIndex = self.spellInitiatorIndex
-        self.spellTarget = self.getUnitByIndexAndAttachment(index, attachment, whiteFlag)
+        self.spellTarget = self.getUnitByIndexAndAttachment(
+            index, attachment, whiteFlag)
 
         if whiteFlag:
             client = self.getWhiteId()
@@ -1803,7 +1764,7 @@ class Game ():
         action['client'] = client
         action['price'] = price
         action['overload'] = self.stepOverload
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         action = {}
         action['type'] = Action.DESTROY_ACTUAL_CARD
@@ -1817,7 +1778,7 @@ class Game ():
         action['client'] = client
         self.scenario.append(action)
 
-        logger.debug ('hand length: %s' % len(hand))
+        logger.debug('hand length: %s' % len(hand))
 
         logger.debug('card title: %s' % cardData['title'])
 
@@ -1866,7 +1827,7 @@ class Game ():
         action['endAnimationFlag'] = False
         self.scenario.append(action)
 
-    def spellToTargetForEffect (self, targetIndex, targetAttachment, whiteFlag):
+    def spellToTargetForEffect(self, targetIndex, targetAttachment, whiteFlag):
 
         self.scenario = []
 
@@ -1892,10 +1853,11 @@ class Game ():
 
             hero = self.blackHeroUnit
 
-        self.spellTarget = self.getUnitByIndexAndAttachment(targetIndex, targetAttachment, whiteFlag)
+        self.spellTarget = self.getUnitByIndexAndAttachment(
+            targetIndex, targetAttachment, whiteFlag)
         hero.configureEptitudes(self.effectCard)
 
-        valid = self.validateSpellTarget (hero, whiteFlag)
+        valid = self.validateSpellTarget(hero, whiteFlag)
 
         if valid:
             if self.spellTarget.spellInvisible:
@@ -1915,7 +1877,7 @@ class Game ():
             action['price'] = price
             action['overload'] = self.stepOverload
             action['endAnimationFlag'] = False
-            self.scenario.append (action)
+            self.scenario.append(action)
 
             action = {}
             action['type'] = Action.DESTROY_ACTUAL_CARD
@@ -1931,7 +1893,7 @@ class Game ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-            logger.debug ('hand length: %s' % len(hand))
+            logger.debug('hand length: %s' % len(hand))
 
             logger.debug('card title: %s' % cardData['title'])
 
@@ -1990,12 +1952,9 @@ class Game ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-
-
         #logger.debug ('price:%s' % price)
 
-
-    def validateSpellTarget (self, unit, whiteFlag):
+    def validateSpellTarget(self, unit, whiteFlag):
         valid = False
         validFlags = []
         for eptitude in unit.eptitudes:
@@ -2018,7 +1977,7 @@ class Game ():
                 valid = False
         return valid
 
-    def getSpellTargets (self, eptitude, unit, whiteFlag):
+    def getSpellTargets(self, eptitude, unit, whiteFlag):
         targets = []
         if whiteFlag:
             hero = self.whiteHeroUnit
@@ -2040,14 +1999,14 @@ class Game ():
 
         if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
             for unit in row:
-                 if raceFlag:
+                if raceFlag:
                     try:
                         if unit.race.id == raceId:
                             targets.append(unit)
                     except:
-                         pass
-                 else:
-                     targets.append(unit)
+                        pass
+                else:
+                    targets.append(unit)
 
             if eptitude.attachHero:
                 targets.append(hero)
@@ -2059,9 +2018,9 @@ class Game ():
                         if unit.race.id == raceId:
                             targets.append(unit)
                     except:
-                         pass
+                        pass
                 else:
-                     targets.append(unit)
+                    targets.append(unit)
 
             if eptitude.attachHero:
                 targets.append(opponentHero)
@@ -2072,9 +2031,9 @@ class Game ():
                         if unit.race.id == raceId:
                             targets.append(unit)
                     except:
-                         pass
+                        pass
                 else:
-                     targets.append(unit)
+                    targets.append(unit)
             if eptitude.attachHero:
                 targets.append(hero)
 
@@ -2084,19 +2043,19 @@ class Game ():
                         if unit.race.id == raceId:
                             targets.append(unit)
                     except:
-                         pass
+                        pass
                 else:
-                     targets.append(unit)
+                    targets.append(unit)
             if eptitude.attachHero:
                 targets.append(opponentHero)
 
         # TODO getSpellCondition
-        logger.debug ('eptitude.spellCondition:%s' % eptitude.spellCondition)
+        logger.debug('eptitude.spellCondition:%s' % eptitude.spellCondition)
         if eptitude.spellCondition > 0:
-            targets = self.filterCondition (eptitude, eptitude.spellCondition, targets, unit)
+            targets = self.filterCondition(
+                eptitude, eptitude.spellCondition, targets, unit)
 
         return targets
-
 
     def blockActive(self, unit, whiteFlag):
         if whiteFlag:
@@ -2104,16 +2063,15 @@ class Game ():
         else:
             client = self.getBlackId()
 
-        attachment = self.initAttachment (unit, whiteFlag)
-        index = self.initIndex (unit, attachment, whiteFlag)
+        attachment = self.initAttachment(unit, whiteFlag)
+        index = self.initIndex(unit, attachment, whiteFlag)
 
         action = {}
         action['type'] = Action.BLOCK_ACTIVE
         action['client'] = client
         action['index'] = index
         action['attachment'] = attachment
-        self.scenario.append (action)
-
+        self.scenario.append(action)
 
     def decreaseManacost(self, manacost, whiteFlag):
         if whiteFlag:
@@ -2131,9 +2089,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        self.scenario.append (action)
-
-
+        self.scenario.append(action)
 
     def addUnit(self, index, position, whiteFlag):
         self.scenario = []
@@ -2145,13 +2101,13 @@ class Game ():
             unit.totalStepAttack = 1
             unit.stepAttackCount = 0
             unit.stepAttack = 1
-            self.whiteUnitRow.insert (position, unit)
+            self.whiteUnitRow.insert(position, unit)
             unit.row = self.whiteUnitRow
             client = self.getWhiteId()
             totalCardPrice = cardData['price'] + cardData['priceMixin']
             price = self.white_step_price - totalCardPrice
             self.white_step_price = price
-            rowLength = len (self.whiteUnitRow)
+            rowLength = len(self.whiteUnitRow)
             hero = self.whiteHeroUnit
         else:
             cardData = self.black_hand[index]
@@ -2160,27 +2116,26 @@ class Game ():
             unit.totalStepAttack = 1
             unit.stepAttackCount = 0
             unit.stepAttack = 1
-            self.blackUnitRow.insert (position, unit)
+            self.blackUnitRow.insert(position, unit)
             unit.row = self.blackUnitRow
             client = self.getBlackId()
             totalCardPrice = cardData['price'] + cardData['priceMixin']
             price = self.black_step_price - totalCardPrice
             self.black_step_price = price
-            rowLength = len (self.blackUnitRow)
+            rowLength = len(self.blackUnitRow)
             hero = self.blackHeroUnit
 
-        unit.setWhiteFlag (whiteFlag)
+        unit.setWhiteFlag(whiteFlag)
 
         list = []
         if whiteFlag:
             for item in self.whiteUnitRow:
-                list.append (item.getTitle())
+                list.append(item.getTitle())
         else:
             for item in self.blackUnitRow:
-                list.append (item.getTitle())
+                list.append(item.getTitle())
 
         #logger.debug ('row:%s' % list)
-
 
             # generateSelectedMask
             # checkMaskTargetsCount
@@ -2193,9 +2148,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        self.scenario.append (action)
-
-
+        self.scenario.append(action)
 
         '''
             Если у токена есть способность с уровнем применения SELECTED, то
@@ -2208,22 +2161,23 @@ class Game ():
 
         '''
 
-        if self.validateSelectedEptitudes (unit.eptitudes):
+        if self.validateSelectedEptitudes(unit.eptitudes):
 
             # уточнаем способность
-            selectedEptitude = self.getSelectedEptitude (unit.eptitudes)
+            selectedEptitude = self.getSelectedEptitude(unit.eptitudes)
 
-            mask = self.generateSelectedMask (selectedEptitude, whiteFlag, unit)
+            mask = self.generateSelectedMask(selectedEptitude, whiteFlag, unit)
             # проверяем есть ли в ней дополнительные условия
             # если есть фильтруем маску
 
             if selectedEptitude.getCondition() > 0:
-                mask =  self.filterMaskCondition (whiteFlag, selectedEptitude.getCondition(), mask)
+                mask = self.filterMaskCondition(
+                    whiteFlag, selectedEptitude.getCondition(), mask)
 
             if mask['count'] > 0:
                 self.selected_unit = unit
 
-                logger.debug ('initSelectedEptitudes')
+                logger.debug('initSelectedEptitudes')
 
                 self.selectMode = True
 
@@ -2270,7 +2224,7 @@ class Game ():
                 return
 
             else:
-               self.selectMask = False
+                self.selectMask = False
 
         action = {}
         action['type'] = Action.PLAY_CARD_UNIT
@@ -2291,7 +2245,7 @@ class Game ():
         action['type'] = Action.SET_ROW_LENGTH
         action['client'] = client
         action['length'] = rowLength
-        self.scenario.append (action)
+        self.scenario.append(action)
 
         action = {}
         action['type'] = Action.UNBLOCK_DECK
@@ -2305,14 +2259,14 @@ class Game ():
         self.controller.setClient(client)
         self.controller.setWhiteFlag(whiteFlag)
         self.controller.addUnit(unit)
-        self.controller.unitPlaced (unit)
+        self.controller.unitPlaced(unit)
 
         self.controller = Controller()
         self.controller.setMatch(self)
         self.controller.setScenario(self.scenario)
         self.controller.setClient(client)
         self.controller.setWhiteFlag(whiteFlag)
-        self.controller.playCard (unit)
+        self.controller.playCard(unit)
 
         controller = CardController()
         controller.setWhiteFlag(whiteFlag)
@@ -2337,11 +2291,10 @@ class Game ():
         action['endAnimationFlag'] = False
         self.scenario.append(action)
 
-
         try:
             unit.row.index(unit)
-            attachment = self.initAttachment (unit, whiteFlag)
-            index = self.initIndex (unit, attachment, whiteFlag)
+            attachment = self.initAttachment(unit, whiteFlag)
+            index = self.initIndex(unit, attachment, whiteFlag)
             action = {}
             action['type'] = Action.GLOW_UNIT
             action['client'] = client
@@ -2364,26 +2317,21 @@ class Game ():
         else:
             logger.debug('hasNoWeapon')
 
-
-
-
-
-
-    def continueAddUnit (self, selectData, whiteFlag):
+    def continueAddUnit(self, selectData, whiteFlag):
 
         self.selectMask = selectData
 
         if whiteFlag:
             client = self.getWhiteId()
-            rowLength = len (self.whiteUnitRow)
+            rowLength = len(self.whiteUnitRow)
         else:
             client = self.getBlackId()
-            rowLength = len (self.blackUnitRow)
+            rowLength = len(self.blackUnitRow)
 
         self.whiteFlag = whiteFlag
 
         self.scenario = []
-        self.scenario.append (self.selected_action)
+        self.scenario.append(self.selected_action)
 
         self.controller = Controller()
         self.controller.setMatch(self)
@@ -2392,8 +2340,8 @@ class Game ():
         self.controller.setWhiteFlag(whiteFlag)
 
         self.controller.addUnit(self.selected_unit)
-        self.controller.unitPlaced (self.selected_unit)
-        self.controller.playCard (self.selected_unit)
+        self.controller.unitPlaced(self.selected_unit)
+        self.controller.playCard(self.selected_unit)
 
         action = {}
         action['type'] = Action.UNBLOCK_DECK
@@ -2416,10 +2364,9 @@ class Game ():
 
         self.selectMode = False
 
-
         return self.scenario
 
-    def cancelSelect (self, whiteFlag):
+    def cancelSelect(self, whiteFlag):
 
         cardData = self.selected_unit.cardData
 
@@ -2442,10 +2389,11 @@ class Game ():
 
         cardData['price'] = cardData['defaultPrice']
         cardData['priceMixin'] = 0
-        hand.append (cardData)
+        hand.append(cardData)
 
-        selectAttachment = self.initAttachment (self.selected_unit, whiteFlag)
-        selectIndex = self.initIndex (self.selected_unit, selectAttachment, whiteFlag)
+        selectAttachment = self.initAttachment(self.selected_unit, whiteFlag)
+        selectIndex = self.initIndex(
+            self.selected_unit, selectAttachment, whiteFlag)
         del row[selectIndex]
 
         scenario = []
@@ -2457,7 +2405,7 @@ class Game ():
         action['client'] = client
         action['endAnimationFlag'] = True
         action['card'] = self.copyCard(cardData)
-        scenario.append (action)
+        scenario.append(action)
 
         self.lastCardinHand = cardData
 
@@ -2467,7 +2415,7 @@ class Game ():
         action['price'] = price
         action['overload'] = self.stepOverload
         action['endAnimationFlag'] = False
-        scenario.append (action)
+        scenario.append(action)
 
         action = {}
         action['type'] = Action.UNBLOCK_DECK
@@ -2495,16 +2443,13 @@ class Game ():
         self.selectMode = False
         return scenario
 
-
-
-
-    def getScenario (self):
+    def getScenario(self):
         return self.scenario
 
     def activateActive(self, initiatorIndex, whiteFlag):
         if whiteFlag:
             client = self.getWhiteId()
-            activeUnit =  self.whiteUnitRow[initiatorIndex]
+            activeUnit = self.whiteUnitRow[initiatorIndex]
         else:
             client = self.getBlackId()
             activeUnit = self.blackUnitRow[initiatorIndex]
@@ -2512,20 +2457,23 @@ class Game ():
         self.scenario = []
 
         # проверяем если у существа активная способность требующая выбора цели
-        if self.validateSelectActiveEptitudes (activeUnit.eptitudes):
+        if self.validateSelectActiveEptitudes(activeUnit.eptitudes):
 
             # уточнаем способность
-            activeEptitude = self.getSelectActiveEptitude (activeUnit.eptitudes)
+            activeEptitude = self.getSelectActiveEptitude(activeUnit.eptitudes)
 
             # создаем маску для целей
-            mask = self.generateSelectedMask (activeEptitude, whiteFlag, activeUnit)
+            mask = self.generateSelectedMask(
+                activeEptitude, whiteFlag, activeUnit)
 
             # проверяем есть ли в ней дополнительные условия
             # если есть фильтруем маску
             if activeEptitude.getCondition() > 0:
-                mask =  self.filterMaskCondition (whiteFlag, activeEptitude.getCondition(), mask)
+                mask = self.filterMaskCondition(
+                    whiteFlag, activeEptitude.getCondition(), mask)
 
-            # если маска не пустая отправляем клиенту запрос на идентификацию цели
+            # если маска не пустая отправляем клиенту запрос на идентификацию
+            # цели
             if mask['count'] > 0:
                 self.active_initiator_unit = activeUnit
                 action = {}
@@ -2534,7 +2482,8 @@ class Game ():
                 action['mask'] = mask
                 self.scenario.append(action)
             else:
-                # в ином случае прогоняем обычный сценарий но не активируем способность
+                # в ином случае прогоняем обычный сценарий но не активируем
+                # способность
                 action = {}
                 action['type'] = Action.GLOW_UNITS
                 action['client'] = client
@@ -2546,22 +2495,22 @@ class Game ():
                 self.scenario.append(action)
 
         else:
-                controller = Controller()
-                controller.setMatch(self)
-                controller.setScenario(self.scenario)
-                controller.setClient(client)
-                controller.setWhiteFlag(whiteFlag)
-                controller.activateActive(activeUnit)
+            controller = Controller()
+            controller.setMatch(self)
+            controller.setScenario(self.scenario)
+            controller.setClient(client)
+            controller.setWhiteFlag(whiteFlag)
+            controller.activateActive(activeUnit)
 
-                action = {}
-                action['type'] = Action.GLOW_UNITS
-                action['client'] = client
-                self.scenario.append(action)
+            action = {}
+            action['type'] = Action.GLOW_UNITS
+            action['client'] = client
+            self.scenario.append(action)
 
-                action = {}
-                action['type'] = Action.GLOW_CARDS
-                action['client'] = client
-                self.scenario.append(action)
+            action = {}
+            action['type'] = Action.GLOW_CARDS
+            action['client'] = client
+            self.scenario.append(action)
 
     def active_selected(self, whiteFlag, index, attachment):
         self.scenario = []
@@ -2600,16 +2549,11 @@ class Game ():
 
         return self.scenario
 
-
-
-
-
-
-    def classicAttack (self, initiatorIndex, targetIndex, whiteFlag):
+    def classicAttack(self, initiatorIndex, targetIndex, whiteFlag):
 
         if whiteFlag:
             client = self.getWhiteId()
-            attackUnit =  self.whiteUnitRow[initiatorIndex]
+            attackUnit = self.whiteUnitRow[initiatorIndex]
             if targetIndex >= 0:
                 targetUnit = self.blackUnitRow[targetIndex]
             else:
@@ -2626,10 +2570,9 @@ class Game ():
 
         heroDeath = False
 
-
         # checkProvocation
         if not attackUnit.fly:
-             if self.notValidProvocation(whiteFlag, targetUnit):
+            if self.notValidProvocation(whiteFlag, targetUnit):
                 action = {}
                 action['type'] = Action.PROVOCATION_EXCEPTION
                 action['client'] = client
@@ -2637,7 +2580,7 @@ class Game ():
                 self.scenario.append(action)
                 return self.scenario
 
-        #checkShadow
+        # checkShadow
         if targetUnit.shadow:
             action = {}
             action['type'] = Action.SHADOW_EXCEPTION
@@ -2680,8 +2623,8 @@ class Game ():
             action = {}
             action['type'] = Action.DESTROY_SHIELD
             action['client'] = client
-            attachment = self.initAttachment (targetUnit, whiteFlag)
-            index = self.initIndex (targetUnit, attachment, whiteFlag)
+            attachment = self.initAttachment(targetUnit, whiteFlag)
+            index = self.initIndex(targetUnit, attachment, whiteFlag)
             action['index'] = index
             action['attachment'] = attachment
             action['endAnimationFlag'] = False
@@ -2695,10 +2638,9 @@ class Game ():
             controller.setClient(client)
             controller.destroy_shield()
         else:
-             targetShieldActionFlag = False
-             targetNewHealthValue = targetHealthValue - attackValue
-             targetUnit.setHealth(targetNewHealthValue)
-
+            targetShieldActionFlag = False
+            targetNewHealthValue = targetHealthValue - attackValue
+            targetUnit.setHealth(targetNewHealthValue)
 
         attackValue = targetUnit.getTotalAttack()
         initiatorAttackValue = attackValue
@@ -2709,8 +2651,8 @@ class Game ():
             action = {}
             action['type'] = Action.DESTROY_SHIELD
             action['client'] = client
-            attachment = self.initAttachment (attackUnit, whiteFlag)
-            index = self.initIndex (attackUnit, attachment, whiteFlag)
+            attachment = self.initAttachment(attackUnit, whiteFlag)
+            index = self.initIndex(attackUnit, attachment, whiteFlag)
             action['index'] = index
             action['attachment'] = attachment
             action['endAnimationFlag'] = False
@@ -2728,8 +2670,8 @@ class Game ():
             initiatorNewHealthValue = initiatorHealthValue - attackValue
             attackUnit.setHealth(initiatorNewHealthValue)
 
-        targetAttachment = self.initAttachment (targetUnit, whiteFlag)
-        targetIndex = self.initIndex (targetUnit, targetAttachment, whiteFlag)
+        targetAttachment = self.initAttachment(targetUnit, whiteFlag)
+        targetIndex = self.initIndex(targetUnit, targetAttachment, whiteFlag)
 
         initiatorAttachment = self.initAttachment(attackUnit, whiteFlag)
 
@@ -2754,10 +2696,12 @@ class Game ():
         action['targets'] = damageTargets
 
         if not targetShieldActionFlag:
-             damageTargets.append({'index':targetIndex, 'attachment':targetAttachment, 'damage':targetAttackValue})
+            damageTargets.append(
+                {'index': targetIndex, 'attachment': targetAttachment, 'damage': targetAttackValue})
 
         if not initiatorShieldActionFlag and initiatorAttackValue > 0:
-                damageTargets.append({'index':initiatorIndex, 'attachment':initiatorAttachment, 'damage':initiatorAttackValue})
+            damageTargets.append(
+                {'index': initiatorIndex, 'attachment': initiatorAttachment, 'damage': initiatorAttackValue})
         self.scenario.append(action)
 
         action = {}
@@ -2768,18 +2712,18 @@ class Game ():
         action['initiatorAttachment'] = initiatorAttachment
         action['targetIndex'] = targetIndex
         action['targetAttachment'] = targetAttachment
-        action["attackUnitHealth"] = attackUnit.getHealth()
-        action["targetUnitHealth"] = targetUnit.getHealth()
+        action['attackUnitHealth'] = attackUnit.getHealth()
+        action['targetUnitHealth'] = targetUnit.getHealth()
         self.scenario.append(action)
 
         if targetShieldActionFlag:
-            self.scenario.append (targetShieldAction)
+            self.scenario.append(targetShieldAction)
 
         if initiatorShieldActionFlag:
-            self.scenario.append (initiatorShieldAction)
+            self.scenario.append(initiatorShieldAction)
 
         if targetNewHealthValue < targetHealthValue:
-            if isinstance (targetUnit, Unit):
+            if isinstance(targetUnit, Unit):
                 self.controller = Controller()
                 self.controller.setMatch(self)
                 self.controller.setScenario(self.scenario)
@@ -2795,10 +2739,8 @@ class Game ():
                 controller.setClient(client)
                 controller.hero_wound(targetUnit.whiteFlag)
 
-
-
         if initiatorNewHealthValue < initiatorHealthValue:
-            if isinstance (attackUnit, Unit):
+            if isinstance(attackUnit, Unit):
                 self.controller = Controller()
                 self.controller.setMatch(self)
                 self.controller.setScenario(self.scenario)
@@ -2822,52 +2764,109 @@ class Game ():
         controller.attack(attackUnit)
         controller.isAttacked(targetUnit)
 
-
-
         if attackUnit.getHealth() <= 0:
 
                 # кешируем существо в массив кладбища существ
-                self.buryMinion(attackUnit)
+            self.buryMinion(attackUnit)
 
-                attackUnitDieFlag = True
-                actionFlag = False
+            attackUnitDieFlag = True
+            actionFlag = False
 
-                if whiteFlag:
-                    attackUnit.setIndex(initiatorIndex)
-                    attackUnit.setRow(self.whiteUnitRow)
-                    try:
-                        self.whiteUnitRow.remove(attackUnit)
-                        actionFlag = True
-                    except:
-                        pass
+            if whiteFlag:
+                attackUnit.setIndex(initiatorIndex)
+                attackUnit.setRow(self.whiteUnitRow)
+                try:
+                    self.whiteUnitRow.remove(attackUnit)
+                    actionFlag = True
+                except:
+                    pass
 
-                else:
-                    attackUnit.setIndex(initiatorIndex)
-                    attackUnit.setRow(self.blackUnitRow)
-                    try:
-                        self.blackUnitRow.remove(attackUnit)
-                        actionFlag = True
-                    except:
-                        pass
+            else:
+                attackUnit.setIndex(initiatorIndex)
+                attackUnit.setRow(self.blackUnitRow)
+                try:
+                    self.blackUnitRow.remove(attackUnit)
+                    actionFlag = True
+                except:
+                    pass
 
-                if actionFlag:
+            if actionFlag:
 
-                    if attackUnit.hasSelfDieEptitude():
-                         action = {}
-                         action['type'] = Action.ACTIVATE_WIDGET
-                         action['client'] = client
-                         action['targetIndex'] = initiatorIndex
-                         action['targetAttachment'] = initiatorAttachment
-                         self.scenario.append(action)
-
-
-                    #logger.debug ('addAction::attack_token_death')
+                if attackUnit.hasSelfDieEptitude():
                     action = {}
-                    action['type'] = Action.ATTACK_TOKEN_DEATH
+                    action['type'] = Action.ACTIVATE_WIDGET
+                    action['client'] = client
+                    action['targetIndex'] = initiatorIndex
+                    action['targetAttachment'] = initiatorAttachment
+                    self.scenario.append(action)
+
+                #logger.debug ('addAction::attack_token_death')
+                action = {}
+                action['type'] = Action.ATTACK_TOKEN_DEATH
+                action['client'] = client
+                action['endAnimationFlag'] = True
+                action['initiatorIndex'] = initiatorIndex
+                action['initiatorAttachment'] = initiatorAttachment
+                self.scenario.append(action)
+
+                self.dieUnitsIndex += 1
+
+                self.controller = Controller()
+                self.controller.setMatch(self)
+                self.controller.setScenario(self.scenario)
+                self.controller.setClient(client)
+                self.controller.setWhiteFlag(whiteFlag)
+                self.controller.removeUnit(attackUnit)
+
+                controller = CardController()
+                controller.setWhiteFlag(whiteFlag)
+                controller.setMatch(self)
+                controller.setScenario(self.scenario)
+                controller.setClient(client)
+                controller.unit_die(targetUnit.whiteFlag)
+
+        else:
+            attackUnitDieFlag = False
+
+        if targetUnit.getHealth() <= 0:
+
+                # кешируем существо в массив кладбища существ
+            self.buryMinion(targetUnit)
+
+            if targetIndex >= 0:
+
+                try:
+                    if whiteFlag:
+                        targetUnit.setIndex(targetIndex)
+                        targetUnit.setRow(self.blackUnitRow)
+                        self.blackUnitRow.remove(targetUnit)
+                    else:
+                        targetUnit.setIndex(targetIndex)
+                        targetUnit.setRow(self.whiteUnitRow)
+                        self.whiteUnitRow.remove(targetUnit)
+
+                    aliveFlag = True
+                except:
+                    aliveFlag = False
+
+                # уточняем живо ли существо или умерло еще до завершения
+                # классической аттаки в резултате срабатывания способности
+                if aliveFlag:
+                    #logger.debug ('addAction::target_token_death')
+                    if targetUnit.hasSelfDieEptitude():
+                        action = {}
+                        action['type'] = Action.ACTIVATE_WIDGET
+                        action['client'] = client
+                        action['targetIndex'] = targetIndex
+                        action['targetAttachment'] = targetAttachment
+                        self.scenario.append(action)
+
+                    action = {}
+                    action['type'] = Action.TARGET_TOKEN_DEATH
                     action['client'] = client
                     action['endAnimationFlag'] = True
-                    action['initiatorIndex'] = initiatorIndex
-                    action['initiatorAttachment'] = initiatorAttachment
+                    action['targetIndex'] = targetIndex
+                    action['targetAttachment'] = targetAttachment
                     self.scenario.append(action)
 
                     self.dieUnitsIndex += 1
@@ -2877,7 +2876,7 @@ class Game ():
                     self.controller.setScenario(self.scenario)
                     self.controller.setClient(client)
                     self.controller.setWhiteFlag(whiteFlag)
-                    self.controller.removeUnit(attackUnit)
+                    self.controller.removeUnit(targetUnit)
 
                     controller = CardController()
                     controller.setWhiteFlag(whiteFlag)
@@ -2885,72 +2884,9 @@ class Game ():
                     controller.setScenario(self.scenario)
                     controller.setClient(client)
                     controller.unit_die(targetUnit.whiteFlag)
-
-
-        else:
-            attackUnitDieFlag = False
-
-        if targetUnit.getHealth() <=0:
-
-                 # кешируем существо в массив кладбища существ
-                self.buryMinion(targetUnit)
-
-                if targetIndex >= 0:
-
-                    try:
-                        if whiteFlag:
-                             targetUnit.setIndex(targetIndex)
-                             targetUnit.setRow(self.blackUnitRow)
-                             self.blackUnitRow.remove(targetUnit)
-                        else:
-                             targetUnit.setIndex(targetIndex)
-                             targetUnit.setRow(self.whiteUnitRow)
-                             self.whiteUnitRow.remove(targetUnit)
-
-                        aliveFlag = True
-                    except:
-                        aliveFlag = False
-
-                    # уточняем живо ли существо или умерло еще до завершения классической аттаки в резултате срабатывания способности
-                    if aliveFlag:
-                        #logger.debug ('addAction::target_token_death')
-                        if targetUnit.hasSelfDieEptitude():
-                             action = {}
-                             action['type'] = Action.ACTIVATE_WIDGET
-                             action['client'] = client
-                             action['targetIndex'] = targetIndex
-                             action['targetAttachment'] = targetAttachment
-                             self.scenario.append(action)
-
-
-                        action = {}
-                        action['type'] = Action.TARGET_TOKEN_DEATH
-                        action['client'] = client
-                        action['endAnimationFlag'] = True
-                        action['targetIndex'] = targetIndex
-                        action['targetAttachment'] = targetAttachment
-                        self.scenario.append(action)
-
-                        self.dieUnitsIndex += 1
-
-                        self.controller = Controller()
-                        self.controller.setMatch(self)
-                        self.controller.setScenario(self.scenario)
-                        self.controller.setClient(client)
-                        self.controller.setWhiteFlag(whiteFlag)
-                        self.controller.removeUnit(targetUnit)
-
-                        controller = CardController()
-                        controller.setWhiteFlag(whiteFlag)
-                        controller.setMatch(self)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(client)
-                        controller.unit_die(targetUnit.whiteFlag)
-                else:
-                    #logger.debug ('addAction::opponent_hero_death')
-                    heroDeath = True
-
-
+            else:
+                #logger.debug ('addAction::opponent_hero_death')
+                heroDeath = True
 
         if attackUnitDieFlag:
             pass
@@ -2960,12 +2896,12 @@ class Game ():
                 attackUnit.shadow = False
                 action['type'] = Action.DESTROY_SHADOW
                 action['client'] = client
-                attachment = self.initAttachment (attackUnit, whiteFlag)
-                index = self.initIndex (attackUnit, attachment, whiteFlag)
+                attachment = self.initAttachment(attackUnit, whiteFlag)
+                index = self.initIndex(attackUnit, attachment, whiteFlag)
                 action['index'] = index
                 action['attachment'] = attachment
                 action['endAnimationFlag'] = False
-                self.scenario.append (action)
+                self.scenario.append(action)
 
             attackUnit.stepAttackCount += 1
             attackUnit.stepAttack = attackUnit.totalStepAttack - attackUnit.stepAttackCount
@@ -2975,7 +2911,7 @@ class Game ():
                 action['client'] = client
                 action['endAnimationFlag'] = False
                 da_units = []
-                da_units.append (attackUnit.row.index(attackUnit))
+                da_units.append(attackUnit.row.index(attackUnit))
                 action['unitList'] = da_units
                 self.scenario.append(action)
 
@@ -2986,21 +2922,21 @@ class Game ():
                 self.scenario.append(action)
 
             if attackUnit.hasActiveEptitude():
-                attachment = self.initAttachment (attackUnit, whiteFlag)
-                index = self.initIndex (attackUnit, attachment, whiteFlag)
+                attachment = self.initAttachment(attackUnit, whiteFlag)
+                index = self.initIndex(attackUnit, attachment, whiteFlag)
 
                 action = {}
                 action['type'] = Action.GLOW_UNIT
                 action['client'] = client
                 action['index'] = index
                 action['attachment'] = attachment
-                logger.debug('attackUnit.stepAttack: %s' % attackUnit.stepAttack)
+                logger.debug('attackUnit.stepAttack: %s' %
+                             attackUnit.stepAttack)
                 if attackUnit.stepAttack > 0 and attackUnit.stepCount > 0:
                     action['canAttack'] = True
                 else:
                     action['canAttack'] = False
                 self.scenario.append(action)
-
 
         action = {}
         action['type'] = Action.GLOW_CARDS
@@ -3008,12 +2944,8 @@ class Game ():
         action['endAnimationFlag'] = False
         self.scenario.append(action)
 
-
-
         if heroDeath:
             self.endMatch(client, self.scenario, whiteFlag)
-
-
 
         '''
         list = []
@@ -3027,11 +2959,11 @@ class Game ():
 
         return self.scenario
 
-    def heroAttack (self, weaponIndex, targetIndex, whiteFlag):
+    def heroAttack(self, weaponIndex, targetIndex, whiteFlag):
 
         if whiteFlag:
             client = self.getWhiteId()
-            hero =  self.whiteHeroUnit
+            hero = self.whiteHeroUnit
 
             if targetIndex >= 0:
                 targetUnit = self.blackUnitRow[targetIndex]
@@ -3052,14 +2984,14 @@ class Game ():
 
         # checkProvocation
         if self.notValidProvocation(whiteFlag, targetUnit):
-                action = {}
-                action['type'] = Action.PROVOCATION_EXCEPTION
-                action['client'] = client
-                action['endAnimationFlag'] = False
-                self.scenario.append(action)
-                return self.scenario
+            action = {}
+            action['type'] = Action.PROVOCATION_EXCEPTION
+            action['client'] = client
+            action['endAnimationFlag'] = False
+            self.scenario.append(action)
+            return self.scenario
 
-        #checkShadow
+        # checkShadow
         if targetUnit.shadow:
             action = {}
             action['type'] = Action.SHADOW_EXCEPTION
@@ -3079,7 +3011,6 @@ class Game ():
         controller.setWhiteFlag(whiteFlag)
         controller.preAttack(attackUnit)
         '''
-
 
         '''
         for unit in opponentRow:
@@ -3109,8 +3040,8 @@ class Game ():
             action = {}
             action['type'] = Action.DESTROY_SHIELD
             action['client'] = client
-            attachment = self.initAttachment (targetUnit, whiteFlag)
-            index = self.initIndex (targetUnit, attachment, whiteFlag)
+            attachment = self.initAttachment(targetUnit, whiteFlag)
+            index = self.initIndex(targetUnit, attachment, whiteFlag)
             action['index'] = index
             action['attachment'] = attachment
             action['endAnimationFlag'] = False
@@ -3124,10 +3055,9 @@ class Game ():
             controller.setClient(client)
             controller.destroy_shield()
         else:
-             targetShieldActionFlag = False
-             targetNewHealthValue = targetHealthValue - attackValue
-             targetUnit.setHealth(targetNewHealthValue)
-
+            targetShieldActionFlag = False
+            targetNewHealthValue = targetHealthValue - attackValue
+            targetUnit.setHealth(targetNewHealthValue)
 
         attackValue = targetUnit.getTotalAttack()
         initiatorAttackValue = attackValue
@@ -3137,8 +3067,8 @@ class Game ():
         initiatorNewHealthValue = initiatorHealthValue - attackValue
         hero.setHealth(initiatorNewHealthValue)
 
-        targetAttachment = self.initAttachment (targetUnit, whiteFlag)
-        targetIndex = self.initIndex (targetUnit, targetAttachment, whiteFlag)
+        targetAttachment = self.initAttachment(targetUnit, whiteFlag)
+        targetIndex = self.initIndex(targetUnit, targetAttachment, whiteFlag)
 
         initiatorAttachment = self.initAttachment(hero, whiteFlag)
 
@@ -3168,10 +3098,12 @@ class Game ():
         action['targets'] = damageTargets
 
         if not targetShieldActionFlag:
-             damageTargets.append({'index':targetIndex, 'attachment':targetAttachment, 'damage':targetAttackValue})
+            damageTargets.append(
+                {'index': targetIndex, 'attachment': targetAttachment, 'damage': targetAttackValue})
 
         if initiatorAttackValue > 0:
-            damageTargets.append({'index':-1, 'attachment':initiatorAttachment, 'damage':initiatorAttackValue})
+            damageTargets.append(
+                {'index': -1, 'attachment': initiatorAttachment, 'damage': initiatorAttackValue})
         self.scenario.append(action)
 
         action = {}
@@ -3182,15 +3114,15 @@ class Game ():
         action['initiatorAttachment'] = initiatorAttachment
         action['targetIndex'] = targetIndex
         action['targetAttachment'] = targetAttachment
-        action["attackUnitHealth"] = hero.getHealth()
-        action["targetUnitHealth"] = targetUnit.getHealth()
+        action['attackUnitHealth'] = hero.getHealth()
+        action['targetUnitHealth'] = targetUnit.getHealth()
         self.scenario.append(action)
 
         if targetShieldActionFlag:
-            self.scenario.append (targetShieldAction)
+            self.scenario.append(targetShieldAction)
 
         if targetNewHealthValue < targetHealthValue:
-            if isinstance (targetUnit, Unit):
+            if isinstance(targetUnit, Unit):
                 self.controller = Controller()
                 self.controller.setMatch(self)
                 self.controller.setScenario(self.scenario)
@@ -3205,7 +3137,6 @@ class Game ():
                 controller.setScenario(self.scenario)
                 controller.setClient(client)
                 controller.hero_wound(targetUnit.whiteFlag)
-
 
         if initiatorNewHealthValue < initiatorHealthValue:
             controller = CardController()
@@ -3236,66 +3167,65 @@ class Game ():
         else:
             attackUnitDieFlag = False
 
-        if targetUnit.getHealth() <=0:
+        if targetUnit.getHealth() <= 0:
 
-                 # кешируем существо в массив кладбища существ
-                self.buryMinion(targetUnit)
+                # кешируем существо в массив кладбища существ
+            self.buryMinion(targetUnit)
 
-                if targetIndex >= 0:
+            if targetIndex >= 0:
 
-                    try:
-                        if whiteFlag:
-                             targetUnit.setIndex(targetIndex)
-                             targetUnit.setRow(self.blackUnitRow)
-                             self.blackUnitRow.remove(targetUnit)
-                        else:
-                             targetUnit.setIndex(targetIndex)
-                             targetUnit.setRow(self.whiteUnitRow)
-                             self.whiteUnitRow.remove(targetUnit)
+                try:
+                    if whiteFlag:
+                        targetUnit.setIndex(targetIndex)
+                        targetUnit.setRow(self.blackUnitRow)
+                        self.blackUnitRow.remove(targetUnit)
+                    else:
+                        targetUnit.setIndex(targetIndex)
+                        targetUnit.setRow(self.whiteUnitRow)
+                        self.whiteUnitRow.remove(targetUnit)
 
-                        aliveFlag = True
-                    except:
-                        aliveFlag = False
+                    aliveFlag = True
+                except:
+                    aliveFlag = False
 
-                    # уточняем живо ли существо или умерло еще до завершения классической аттаки в резултате срабатывания способности
-                    if aliveFlag:
-                        #logger.debug ('addAction::target_token_death')
-                        if targetUnit.hasSelfDieEptitude():
-                             action = {}
-                             action['type'] = Action.ACTIVATE_WIDGET
-                             action['client'] = client
-                             action['targetIndex'] = targetIndex
-                             action['targetAttachment'] = targetAttachment
-                             self.scenario.append(action)
-
+                # уточняем живо ли существо или умерло еще до завершения
+                # классической аттаки в резултате срабатывания способности
+                if aliveFlag:
+                    #logger.debug ('addAction::target_token_death')
+                    if targetUnit.hasSelfDieEptitude():
                         action = {}
-                        action['type'] = Action.TARGET_TOKEN_DEATH
+                        action['type'] = Action.ACTIVATE_WIDGET
                         action['client'] = client
-                        action['endAnimationFlag'] = True
                         action['targetIndex'] = targetIndex
                         action['targetAttachment'] = targetAttachment
                         self.scenario.append(action)
 
-                        self.dieUnitsIndex += 1
+                    action = {}
+                    action['type'] = Action.TARGET_TOKEN_DEATH
+                    action['client'] = client
+                    action['endAnimationFlag'] = True
+                    action['targetIndex'] = targetIndex
+                    action['targetAttachment'] = targetAttachment
+                    self.scenario.append(action)
 
-                        self.controller = Controller()
-                        self.controller.setMatch(self)
-                        self.controller.setScenario(self.scenario)
-                        self.controller.setClient(client)
-                        self.controller.setWhiteFlag(whiteFlag)
-                        self.controller.removeUnit(targetUnit)
+                    self.dieUnitsIndex += 1
 
-                        controller = CardController()
-                        controller.setWhiteFlag(whiteFlag)
-                        controller.setMatch(self)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(client)
-                        controller.unit_die(targetUnit.whiteFlag)
-                else:
-                    #logger.debug ('addAction::opponent_hero_death')
-                    opponentHeroDeath = True
+                    self.controller = Controller()
+                    self.controller.setMatch(self)
+                    self.controller.setScenario(self.scenario)
+                    self.controller.setClient(client)
+                    self.controller.setWhiteFlag(whiteFlag)
+                    self.controller.removeUnit(targetUnit)
 
-
+                    controller = CardController()
+                    controller.setWhiteFlag(whiteFlag)
+                    controller.setMatch(self)
+                    controller.setScenario(self.scenario)
+                    controller.setClient(client)
+                    controller.unit_die(targetUnit.whiteFlag)
+            else:
+                #logger.debug ('addAction::opponent_hero_death')
+                opponentHeroDeath = True
 
         if attackUnitDieFlag:
             pass
@@ -3324,7 +3254,6 @@ class Game ():
         action['strength'] = weapon.strength
         self.scenario.append(action)
 
-
         if weapon.strength == 0:
             action = {}
             action['type'] = Action.DESTROY_WEAPON
@@ -3337,8 +3266,6 @@ class Game ():
                 hero.rightHand = False
             else:
                 hero.leftHand = False
-
-
 
         action = {}
         action['type'] = Action.GLOW_CARDS
@@ -3362,8 +3289,7 @@ class Game ():
 
         return self.scenario
 
-
-    def setLastPlaced (self, unit):
+    def setLastPlaced(self, unit):
         self.lastPlaced = unit
 
     def getCardsFromHand(self, unit, eptitude, attachment, whiteFlag):
@@ -3381,24 +3307,22 @@ class Game ():
         for card in hand:
             targets.append(card)
 
-        self.filterCondition(eptitude,eptitude.condition,targets, unit)
+        self.filterCondition(eptitude, eptitude.condition, targets, unit)
 
-
-    def getLevelTargets (self, unit, eptitude, whiteFlag):
+    def getLevelTargets(self, unit, eptitude, whiteFlag):
 
         if whiteFlag:
-           row = self.whiteUnitRow
-           opponentRow = self.blackUnitRow
-           hero = self.whiteHeroUnit
-           opponentHero = self.blackHeroUnit
+            row = self.whiteUnitRow
+            opponentRow = self.blackUnitRow
+            hero = self.whiteHeroUnit
+            opponentHero = self.blackHeroUnit
         else:
-           row = self.blackUnitRow
-           opponentRow = self.whiteUnitRow
-           hero = self.blackHeroUnit
-           opponentHero = self.whiteHeroUnit
+            row = self.blackUnitRow
+            opponentRow = self.whiteUnitRow
+            hero = self.blackHeroUnit
+            opponentHero = self.whiteHeroUnit
 
         levelList = []
-
 
         if eptitude.level == EptitudeLevel.SELF:
             levelList.append(unit)
@@ -3412,7 +3336,7 @@ class Game ():
             else:
                 row = self.blackUnitRow
 
-            index = row.index (unit)
+            index = row.index(unit)
             leftNeighborIndex = index - 1
             if leftNeighborIndex >= 0:
                 leftNeighbor = row[leftNeighborIndex]
@@ -3424,23 +3348,21 @@ class Game ():
             except:
                 pass
 
-
         if eptitude.level == EptitudeLevel.SELECTED:
             try:
                 index = self.selectMask['index']
                 if self.selectMask['player']:
-                     if index < 0:
-                         levelList.append(hero)
-                     else:
-                         levelList.append(row[index])
+                    if index < 0:
+                        levelList.append(hero)
+                    else:
+                        levelList.append(row[index])
                 else:
-                     if index < 0:
-                         levelList.append(opponentHero)
-                     else:
-                         levelList.append(opponentRow[index])
+                    if index < 0:
+                        levelList.append(opponentHero)
+                    else:
+                        levelList.append(opponentRow[index])
             except:
                 pass
-
 
         if eptitude.level == EptitudeLevel.RANDOM:
 
@@ -3462,7 +3384,6 @@ class Game ():
             except:
                 raceFlag = False
 
-
             if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
                 for item in row:
                     if item != unit:
@@ -3473,7 +3394,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3486,7 +3407,7 @@ class Game ():
                                 levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (hero)
+                    levelList.append(hero)
 
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
                 for item in opponentRow:
@@ -3500,9 +3421,9 @@ class Game ():
                         levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (opponentHero)
+                    levelList.append(opponentHero)
             else:
-               for item in row:
+                for item in row:
                     if item != unit:
                         if raceFlag:
                             try:
@@ -3511,7 +3432,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3523,24 +3444,24 @@ class Game ():
                             else:
                                 levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (hero)
+                if eptitude.attachHero:
+                    levelList.append(hero)
 
-
-               for item in opponentRow:
+                for item in opponentRow:
                     if raceFlag:
                         if item.race.id == raceId:
                             levelList.append(item)
                     else:
                         levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (opponentHero)
+                if eptitude.attachHero:
+                    levelList.append(opponentHero)
 
             if eptitude.getCondition() > 0:
-                levelList = self.filterCondition (eptitude, eptitude.getCondition(), levelList, unit)
+                levelList = self.filterCondition(
+                    eptitude, eptitude.getCondition(), levelList, unit)
 
-            levelList = self.initRandom (levelList)
+            levelList = self.initRandom(levelList)
 
         if eptitude.level == EptitudeLevel.All:
 
@@ -3572,7 +3493,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3585,7 +3506,7 @@ class Game ():
                                 levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (hero)
+                    levelList.append(hero)
 
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
                 for item in opponentRow:
@@ -3599,9 +3520,9 @@ class Game ():
                         levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (opponentHero)
+                    levelList.append(opponentHero)
             else:
-               for item in row:
+                for item in row:
                     if item != unit:
                         if raceFlag:
                             try:
@@ -3610,7 +3531,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3622,20 +3543,18 @@ class Game ():
                             else:
                                 levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (hero)
+                if eptitude.attachHero:
+                    levelList.append(hero)
 
-
-               for item in opponentRow:
+                for item in opponentRow:
                     if raceFlag:
                         if item.race.id == raceId:
                             levelList.append(item)
                     else:
                         levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (opponentHero)
-
+                if eptitude.attachHero:
+                    levelList.append(opponentHero)
 
         if eptitude.level == EptitudeLevel.ALL_EXCEPT_ONE:
             if unit.whiteFlag:
@@ -3666,7 +3585,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3679,7 +3598,7 @@ class Game ():
                                 levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (hero)
+                    levelList.append(hero)
 
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
                 for item in opponentRow:
@@ -3693,9 +3612,9 @@ class Game ():
                         levelList.append(item)
 
                 if eptitude.attachHero:
-                    levelList.append (opponentHero)
+                    levelList.append(opponentHero)
             else:
-               for item in row:
+                for item in row:
                     if item != unit:
                         if raceFlag:
                             try:
@@ -3704,7 +3623,7 @@ class Game ():
                             except:
                                 pass
                         else:
-                             levelList.append(item)
+                            levelList.append(item)
                     else:
                         if eptitude.attachInitiator:
                             if raceFlag:
@@ -3716,24 +3635,21 @@ class Game ():
                             else:
                                 levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (hero)
+                if eptitude.attachHero:
+                    levelList.append(hero)
 
-
-               for item in opponentRow:
+                for item in opponentRow:
                     if raceFlag:
                         if item.race.id == raceId:
                             levelList.append(item)
                     else:
                         levelList.append(item)
 
-               if eptitude.attachHero:
-                    levelList.append (opponentHero)
+                if eptitude.attachHero:
+                    levelList.append(opponentHero)
 
-               index = random.randint(0, len(levelList) - 1)
-               del levelList[index]
-
-
+                index = random.randint(0, len(levelList) - 1)
+                del levelList[index]
 
         if eptitude.level == EptitudeLevel.UNIT_HERO:
             if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
@@ -3747,8 +3663,8 @@ class Game ():
                 else:
                     levelList.append(self.whiteHeroUnit)
             if eptitude.attachment == EptitudeAttachment.ALL:
-                levelList.append (self.whiteHeroUnit)
-                levelList.append (self.blackHeroUnit)
+                levelList.append(self.whiteHeroUnit)
+                levelList.append(self.blackHeroUnit)
 
         if eptitude.level == EptitudeLevel.HERO:
             if eptitude.attachment == EptitudeAttachment.ASSOCIATE:
@@ -3762,9 +3678,8 @@ class Game ():
                 else:
                     levelList.append(self.whiteHeroUnit)
             if eptitude.attachment == EptitudeAttachment.ALL:
-                levelList.append (self.whiteHeroUnit)
-                levelList.append (self.blackHeroUnit)
-
+                levelList.append(self.whiteHeroUnit)
+                levelList.append(self.blackHeroUnit)
 
         if eptitude.level == EptitudeLevel.LAST_PLACED:
             try:
@@ -3786,11 +3701,11 @@ class Game ():
         if eptitude.level == EptitudeLevel.ALL_CARDS_IN_HAND:
 
             if unit.whiteFlag:
-               playerHand = self.white_hand
-               opponentHand = self.black_hand
+                playerHand = self.white_hand
+                opponentHand = self.black_hand
             else:
-               playerHand = self.black_hand
-               opponentHand = self.white_hand
+                playerHand = self.black_hand
+                opponentHand = self.white_hand
 
             try:
                 raceId = eptitude.race
@@ -3809,7 +3724,6 @@ class Game ():
                             pass
                     else:
                         levelList.append(card)
-
 
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
                 for card in opponentHand:
@@ -3846,11 +3760,11 @@ class Game ():
         if eptitude.level == EptitudeLevel.RANDOM_CARD_IN_HAND:
 
             if unit.whiteFlag:
-               playerHand = self.white_hand
-               opponentHand = self.black_hand
+                playerHand = self.white_hand
+                opponentHand = self.black_hand
             else:
-               playerHand = self.black_hand
-               opponentHand = self.white_hand
+                playerHand = self.black_hand
+                opponentHand = self.white_hand
 
             try:
                 raceId = eptitude.race
@@ -3869,7 +3783,6 @@ class Game ():
                             pass
                     else:
                         levelList.append(card)
-
 
             elif eptitude.attachment == EptitudeAttachment.OPPONENT:
                 for card in opponentHand:
@@ -3903,7 +3816,7 @@ class Game ():
                     else:
                         levelList.append(card)
 
-            levelList = self.initRandom (levelList)
+            levelList = self.initRandom(levelList)
 
         if eptitude.level == EptitudeLevel.LAST_CARD_IN_HAND:
             try:
@@ -3960,7 +3873,7 @@ class Game ():
                 levelList.append(card)
 
         if eptitude.level == EptitudeLevel.LAST_ATTACKED:
-            if isinstance (self.lastAttacked, Unit):
+            if isinstance(self.lastAttacked, Unit):
                 if unit.whiteFlag:
                     row = self.whiteUnitRow
                     opponentRow = self.blackUnitRow
@@ -3994,7 +3907,6 @@ class Game ():
                 row = self.blackUnitRow
                 opponentRow = self.whiteUnitRow
 
-
             aliveFlag = False
             try:
                 row.index(self.lastAttackedUnit)
@@ -4016,16 +3928,14 @@ class Game ():
                 raceFlag = False
 
             if aliveFlag:
-                  if raceFlag:
-                      try:
-                           if self.lastAttackedUnit.race.id == raceId:
-                                levelList.append(self.lastAttackedUnit)
-                      except:
-                            pass
-                  else:
-                         levelList.append(self.lastAttackedUnit)
-
-
+                if raceFlag:
+                    try:
+                        if self.lastAttackedUnit.race.id == raceId:
+                            levelList.append(self.lastAttackedUnit)
+                    except:
+                        pass
+                else:
+                    levelList.append(self.lastAttackedUnit)
 
         if eptitude.level == EptitudeLevel.LAST_ATTACKING_UNIT:
             try:
@@ -4036,13 +3946,13 @@ class Game ():
                 raceFlag = False
 
             if raceFlag:
-                  try:
-                       if self.lastAttackingUnit.race.id == raceId:
-                            levelList.append(self.lastAttackingUnit)
-                  except:
-                        pass
+                try:
+                    if self.lastAttackingUnit.race.id == raceId:
+                        levelList.append(self.lastAttackingUnit)
+                except:
+                    pass
             else:
-                  levelList.append(self.lastAttackingUnit)
+                levelList.append(self.lastAttackingUnit)
 
         if eptitude.level == EptitudeLevel.ACTIVE_PLAYER:
             if whiteFlag:
@@ -4074,8 +3984,8 @@ class Game ():
         if eptitude.level == EptitudeLevel.SPELL_TARGET_NEIGHBORS:
             dieFlag = False
             try:
-                 index = self.whiteUnitRow.index(self.spellTarget)
-                 row = self.whiteUnitRow
+                index = self.whiteUnitRow.index(self.spellTarget)
+                row = self.whiteUnitRow
             except:
                 try:
                     index = self.blackUnitRow.index(self.spellTarget)
@@ -4084,7 +3994,6 @@ class Game ():
                     row = self.spellTarget.row
                     index = self.spellTarget.index
                     dieFlag = True
-
 
             try:
                 leftNeighborIndex = index - 1
@@ -4104,39 +4013,34 @@ class Game ():
             except:
                 pass
 
-
-
-
-
         if eptitude.getCondition() > 0:
-            levelList = self.filterCondition (eptitude, eptitude.getCondition(), levelList, unit)
+            levelList = self.filterCondition(
+                eptitude, eptitude.getCondition(), levelList, unit)
 
         return levelList
 
-    def initRandom (self, levellist):
+    def initRandom(self, levellist):
         finalList = []
         if len(levellist):
             try:
                 index = random.randint(0, len(levellist) - 1)
-                finalList.append (levellist[index])
+                finalList.append(levellist[index])
             except:
                 finalList.append[levellist[0]]
 
         return finalList
 
-
-
-    def filterCondition (self, eptitude, condition, levelList, unit):
+    def filterCondition(self, eptitude, condition, levelList, unit):
         finalList = []
-        logger.debug ('filterCondition: %s' % condition)
+        logger.debug('filterCondition: %s' % condition)
         for item in levelList:
             if condition == EptitudeCondition.HAS_SELF_DIE_EPTITUDE:
                 if item.hasEptitudeWithPeriod(EptitudePeriod.SELF_DIE):
-                   finalList.append(item)
+                    finalList.append(item)
 
             if condition == EptitudeCondition.LAST_PLACED_HAS_SELF_DIE_EPTITUDE:
                 if self.lastPlaced.hasEptitudeWithPeriod(EptitudePeriod.SELF_DIE):
-                   finalList.append(item)
+                    finalList.append(item)
 
             if condition == EptitudeCondition.ATTACK_MORE_THAN_6:
                 if item.getTotalAttack() > 6:
@@ -4246,7 +4150,7 @@ class Game ():
 
             if condition == EptitudeCondition.ANIMAL_CARD:
                 try:
-                    logger.debug ('raceId:%s' % item['raceId'])
+                    logger.debug('raceId:%s' % item['raceId'])
                     if item['raceId'] == 3:
                         finalList.append(item)
                 except:
@@ -4259,7 +4163,7 @@ class Game ():
             if condition == EptitudeCondition.FULL_MANA:
                 if unit.whiteFlag:
                     if self.white_price >= 10:
-                         finalList.append(item)
+                        finalList.append(item)
                 else:
                     if self.black_price >= 10:
                         finalList.append(item)
@@ -4279,60 +4183,55 @@ class Game ():
                 except:
                     finalList.append(item)
 
-
-
-
-
-                    #if unit.race
+                    # if unit.race
 
         return finalList
 
-    def filterMaskCondition (self, whiteFlag, condition, mask):
-       associate = []
-       opponent = []
-       mask['count'] = 0
+    def filterMaskCondition(self, whiteFlag, condition, mask):
+        associate = []
+        opponent = []
+        mask['count'] = 0
 
-       if whiteFlag:
-           playerRow = self.whiteUnitRow
-           opponentRow = self.blackUnitRow
-       else:
-           playerRow = self.blackUnitRow
-           opponentRow = self.whiteUnitRow
+        if whiteFlag:
+            playerRow = self.whiteUnitRow
+            opponentRow = self.blackUnitRow
+        else:
+            playerRow = self.blackUnitRow
+            opponentRow = self.whiteUnitRow
 
-       for index in mask['associate']:
-           unit = playerRow[index]
+        for index in mask['associate']:
+            unit = playerRow[index]
 
-           if condition == EptitudeCondition.ATTACK_MORE_THAN_6:
-               if unit.getTotalAttack() > 6:
-                    associate.append (index)
+            if condition == EptitudeCondition.ATTACK_MORE_THAN_6:
+                if unit.getTotalAttack() > 6:
+                    associate.append(index)
                     mask['count'] += 1
 
-       for index in mask['opponent']:
-           unit = opponentRow[index]
+        for index in mask['opponent']:
+            unit = opponentRow[index]
 
-           if condition == EptitudeCondition.ATTACK_MORE_THAN_6:
-               if unit.getTotalAttack() > 6:
-                    opponent.append (index)
+            if condition == EptitudeCondition.ATTACK_MORE_THAN_6:
+                if unit.getTotalAttack() > 6:
+                    opponent.append(index)
                     mask['count'] += 1
 
-       mask['associate'] = associate
-       mask['opponent'] = opponent
+        mask['associate'] = associate
+        mask['opponent'] = opponent
 
-       if mask['player_hero']:
-           mask['count'] += 1
+        if mask['player_hero']:
+            mask['count'] += 1
 
-       if mask['opponent_hero']:
-           mask['count'] += 1
+        if mask['opponent_hero']:
+            mask['count'] += 1
 
-       return mask
+        return mask
 
-
-    def getTargetsCoord(self, targets, whiteFlag ):
-        coords = list ()
+    def getTargetsCoord(self, targets, whiteFlag):
+        coords = list()
         for target in targets:
             attachment = self.initAttachment(target, whiteFlag)
             index = self.initIndex(target, attachment, whiteFlag)
-            coords.append({"index":index, "attachment":attachment})
+            coords.append({'index': index, 'attachment': attachment})
 
         return coords
 
@@ -4354,13 +4253,13 @@ class Game ():
         for target in targets:
             try:
                 index = self.whiteUnitRow.index(target)
-                indexes[0].append (index)
+                indexes[0].append(index)
             except:
                 pass
 
             try:
                 index = self.blackUnitRow.index(target)
-                indexes[1].append (index)
+                indexes[1].append(index)
             except:
                 pass
 
@@ -4370,8 +4269,6 @@ class Game ():
             if target == self.blackHeroUnit:
                 indexes[4] = True
 
-
-
         return indexes
 
     def notValidProvocation(self, whiteFlag, targetUnit):
@@ -4380,50 +4277,50 @@ class Game ():
         else:
             opponentRow = self.whiteUnitRow
 
-        if self.opponentRowContainsProvocators (opponentRow):
+        if self.opponentRowContainsProvocators(opponentRow):
             if targetUnit.isProvocator():
-               return False
+                return False
             else:
                 return True
         else:
             return False
 
-    def opponentRowContainsProvocators (self, row):
+    def opponentRowContainsProvocators(self, row):
         flag = False
         for item in row:
             if item.isProvocator() and item.shadow == False:
                 flag = True
         return flag
 
-    def validateSelectedEptitudes (self, eptitudes):
+    def validateSelectedEptitudes(self, eptitudes):
         selectedFlag = False
         for eptitude in eptitudes:
             if eptitude.level == EptitudeLevel.SELECTED:
                 selectedFlag = True
         return selectedFlag
 
-    def validateSelectActiveEptitudes (self, eptitudes):
+    def validateSelectActiveEptitudes(self, eptitudes):
         selectedFlag = False
         for eptitude in eptitudes:
             if eptitude.level == EptitudeLevel.ACTIVE_TARGET:
                 selectedFlag = True
         return selectedFlag
 
-    def getSelectActiveEptitude (self, eptitudes):
+    def getSelectActiveEptitude(self, eptitudes):
         selectedEptitude = False
         for eptitude in eptitudes:
             if eptitude.level == EptitudeLevel.ACTIVE_TARGET:
                 selectedEptitude = eptitude
         return selectedEptitude
 
-    def getSelectedEptitude (self, eptitudes):
+    def getSelectedEptitude(self, eptitudes):
         selectedEptitude = False
         for eptitude in eptitudes:
             if eptitude.level == EptitudeLevel.SELECTED or eptitude.level == EptitudeLevel.SPELL_TARGET:
                 selectedEptitude = eptitude
         return selectedEptitude
 
-    def generateSelectedMask (self, maskEptitude, whiteFlag, unit):
+    def generateSelectedMask(self, maskEptitude, whiteFlag, unit):
 
         mask = {}
         mask['associate'] = []
@@ -4462,7 +4359,7 @@ class Game ():
                 if rowUnit.shadow:
                     pass
                 else:
-                    mask['opponent'].append (opponentRow.index(rowUnit))
+                    mask['opponent'].append(opponentRow.index(rowUnit))
                     count = mask['count']
                     mask['count'] = count + 1
 
@@ -4484,13 +4381,12 @@ class Game ():
                         mask['count'] = count + 1
 
             for rowUnit in opponentRow:
-               if rowUnit.shadow:
+                if rowUnit.shadow:
                     pass
-               else:
-                    mask['opponent'].append (opponentRow.index(rowUnit))
+                else:
+                    mask['opponent'].append(opponentRow.index(rowUnit))
                     count = mask['count']
                     mask['count'] = count + 1
-
 
             if maskEptitude.attachHero:
                 mask['player_hero'] = True
@@ -4500,7 +4396,7 @@ class Game ():
 
         return mask
 
-    def initAttachment (self, unit, whiteFlag):
+    def initAttachment(self, unit, whiteFlag):
         attachment = - 1
         if unit == self.whiteHeroUnit:
             if whiteFlag:
@@ -4546,9 +4442,7 @@ class Game ():
 
         return attachment
 
-
-
-    def initIndex (self, unit, attachment, whiteFlag):
+    def initIndex(self, unit, attachment, whiteFlag):
         if attachment:
             if whiteFlag:
                 row = self.whiteUnitRow
@@ -4566,7 +4460,7 @@ class Game ():
         except ValueError:
             return - 1
 
-    def initCardAttachment (self, card, whiteFlag):
+    def initCardAttachment(self, card, whiteFlag):
         if card['whiteFlag'] == whiteFlag:
             attachment = 1
         else:
@@ -4582,24 +4476,24 @@ class Game ():
 
         return attachment, index
 
-    def getUnitByIndexAndAttachment (self, targetIndex, targetAttachment, whiteFlag):
+    def getUnitByIndexAndAttachment(self, targetIndex, targetAttachment, whiteFlag):
 
-         if whiteFlag:
+        if whiteFlag:
             if targetAttachment:
                 if targetIndex >= 0:
                     target = self.blackUnitRow[targetIndex]
                 else:
                     target = self.blackHeroUnit
             else:
-                 if targetIndex >= 0:
+                if targetIndex >= 0:
                     target = self.whiteUnitRow[targetIndex]
-                 else:
+                else:
                     target = self.whiteHeroUnit
-         else:
+        else:
             if targetAttachment:
-                 if targetIndex >= 0:
+                if targetIndex >= 0:
                     target = self.whiteUnitRow[targetIndex]
-                 else:
+                else:
                     target = self.whiteHeroUnit
             else:
                 if targetIndex >= 0:
@@ -4607,35 +4501,4 @@ class Game ():
                 else:
                     target = self.blackHeroUnit
 
-         return target
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return target

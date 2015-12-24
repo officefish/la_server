@@ -1,7 +1,7 @@
 __author__ = 'RIK'
 
 import logging
-logger =  logging.getLogger('game_handler')
+logger = logging.getLogger('game_handler')
 
 from game.logic.constants import EptitudePeriod, EptitudeCondition, EptitudeLevel, EptitudeAttachment, EptitudeType
 from game.logic.action import Action
@@ -9,13 +9,13 @@ from game.logic.action import Action
 
 class CardController ():
 
-    def setScenario (self, scenario):
+    def setScenario(self, scenario):
         self.scenario = scenario
 
-    def setMatch (self, match):
+    def setMatch(self, match):
         self.match = match
 
-    def setClient (self, client):
+    def setClient(self, client):
         self.client = client
 
     def setWhiteFlag(self, flag):
@@ -40,8 +40,6 @@ class CardController ():
 
         self.new_unit()
 
-
-
     def new_unit(self):
         for card in self.match.white_hand:
             self.card = card
@@ -65,12 +63,12 @@ class CardController ():
             self.activate(EptitudePeriod.CARD_MODE_UNIT_DIE)
 
     def freeze(self):
-       for card in self.match.white_hand:
+        for card in self.match.white_hand:
             self.card = card
             self.eptitudes = card['eptitudes'][:]
             self.activate(EptitudePeriod.CARD_MODE_FREEZE)
 
-       for card in self.match.black_hand:
+        for card in self.match.black_hand:
             self.card = card
             self.eptitudes = card['eptitudes'][:]
             self.activate(EptitudePeriod.CARD_MODE_FREEZE)
@@ -106,7 +104,6 @@ class CardController ():
             else:
                 self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
-
         for card in self.match.black_hand:
             self.card = card
             self.eptitudes = card['eptitudes'][:]
@@ -115,52 +112,52 @@ class CardController ():
             else:
                 self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
-
-
-
-    def activate (self, period):
+    def activate(self, period):
         if len(self.eptitudes):
             eptitude = self.eptitudes[0]
-            del  self.eptitudes[0]
+            del self.eptitudes[0]
 
             if period == eptitude['period']:
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_TOKENS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_TOKENS')
-                   self.decrease_price_depends_on_tokens()
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_TOKENS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_TOKENS')
+                    self.decrease_price_depends_on_tokens()
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS')
-                   self.decrease_price_depends_on_race_tokens(eptitude)
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS')
+                    self.decrease_price_depends_on_race_tokens(eptitude)
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS')
-                   self.decrease_price_depends_on_shield_tokens(eptitude)
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS')
+                    self.decrease_price_depends_on_shield_tokens(eptitude)
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS')
-                   self.decrease_price_depends_on_player_cards()
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS')
+                    self.decrease_price_depends_on_player_cards()
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS')
-                   self.decrease_price_depends_on_opponent_cards()
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS')
+                    self.decrease_price_depends_on_opponent_cards()
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH')
-                   self.decrease_price_depends_on_hero_health()
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH')
+                    self.decrease_price_depends_on_hero_health()
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_DIE_UNITS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
-                   self.decrease_price_depends_on_die_units(eptitude)
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_DIE_UNITS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
+                    self.decrease_price_depends_on_die_units(eptitude)
 
-               if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_FROZEN_TOKENS:
-                   logger.debug ('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
-                   self.decrease_price_depends_on_freeze_tokens(eptitude)
-
-
-
-
-
+                if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_FROZEN_TOKENS:
+                    logger.debug(
+                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
+                    self.decrease_price_depends_on_freeze_tokens(eptitude)
 
             self.activate(period)
 
@@ -211,7 +208,6 @@ class CardController ():
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
 
-
         # оповещаем клиент
         action = {}
         action['type'] = Action.CHANGE_CARD_PRICE
@@ -244,7 +240,6 @@ class CardController ():
         if value > card['defaultPrice']:
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
-
 
         # оповещаем клиент
         action = {}
@@ -284,7 +279,6 @@ class CardController ():
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
 
-
         # оповещаем клиент
         action = {}
         action['type'] = Action.CHANGE_CARD_PRICE
@@ -317,7 +311,7 @@ class CardController ():
                 value += 1
 
         for unit in self.match.blackUnitRow:
-             if unit.race.id == eptitude['race']:
+            if unit.race.id == eptitude['race']:
                 value += 1
 
         value *= eptitude['power']
@@ -326,7 +320,6 @@ class CardController ():
         if value > card['defaultPrice']:
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
-
 
         # оповещаем клиент
         action = {}
@@ -360,7 +353,7 @@ class CardController ():
                 value += 1
 
         for unit in self.match.blackUnitRow:
-             if unit.shield:
+            if unit.shield:
                 value += 1
 
         value *= eptitude['power']
@@ -369,7 +362,6 @@ class CardController ():
         if value > card['defaultPrice']:
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
-
 
         # оповещаем клиент
         action = {}
@@ -403,7 +395,7 @@ class CardController ():
                 value += 1
 
         for unit in self.match.blackUnitRow:
-             if unit.freeze:
+            if unit.freeze:
                 value += 1
 
         if self.match.whiteHeroUnit.freeze:
@@ -418,7 +410,6 @@ class CardController ():
         if value > card['defaultPrice']:
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
-
 
         # оповещаем клиент
         action = {}
@@ -446,7 +437,6 @@ class CardController ():
         card = self.card
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
-
         value = self.match.dieUnitsIndex
         value *= eptitude['power']
 
@@ -454,7 +444,6 @@ class CardController ():
         if value > card['defaultPrice']:
             value = card['defaultPrice']
         card['price'] = card['defaultPrice'] - value
-
 
         # оповещаем клиент
         action = {}
@@ -477,8 +466,3 @@ class CardController ():
             action['client'] = self.client
             action['endAnimationFlag'] = False
             self.scenario.append(action)
-
-
-
-
-

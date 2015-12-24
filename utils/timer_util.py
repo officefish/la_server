@@ -2,6 +2,7 @@ __author__ = 'inozemcev'
 from threading import Timer
 import time
 
+
 class RenewableTimer():
 
     def __init__(self, timeout, callback):
@@ -33,10 +34,5 @@ class RenewableTimer():
         self.timer.start()
         return self.timeout
 
-    def get_actual_time (self):
+    def get_actual_time(self):
         return self.timeout - (self.cancel_time - self.start_time)
-
-
-
-
-

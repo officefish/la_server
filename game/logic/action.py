@@ -1,4 +1,6 @@
 __author__ = 'RIK'
+
+
 class Action ():
 
     STEP_PRICE = 'step_price'
@@ -52,7 +54,7 @@ class Action ():
     FREEZE = 'freeze'
     ENTICE_UNIT = 'entice_unit'
     CHANGE_UNIT = 'change_unit'
-    ACTIVATE_WIDGET='activate_widget'
+    ACTIVATE_WIDGET = 'activate_widget'
     DESTROY_ACTUAL_CARD = 'destroy_actual_card'
     SPELL_TARGET_WARNING = 'spell_target_warning'
     INCREASE_SPELL = 'increase_spell'
@@ -105,11 +107,3 @@ class Action ():
     DESTROY_WEAPON = 'destroy_weapon'
     CARDS_FROM_GRAVEYARD = 'cards_from_graveyard'
     MINION_FROM_GRAVEYEARD = 'minion_from_graveyard'
-
-
-
-
-
-
-
-

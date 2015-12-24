@@ -15,10 +15,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserAchieveItem',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
+                ('id', models.AutoField(verbose_name='ID',
+                                        primary_key=True, auto_created=True, serialize=False)),
                 ('position', models.IntegerField()),
                 ('achieve', models.ForeignKey(to='achieve.Achieve')),
-                ('owner', models.ForeignKey(related_name='achieves', to='hero.UserHero')),
+                ('owner', models.ForeignKey(
+                    related_name='achieves', to='hero.UserHero')),
             ],
             options={
             },

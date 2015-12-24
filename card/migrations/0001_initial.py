@@ -19,7 +19,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Card',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('title', models.CharField(max_length=80)),
                 ('attack', models.IntegerField(default=1)),
                 ('health', models.IntegerField(default=1)),
@@ -39,7 +40,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CardEptitude',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('period', models.IntegerField(default=0)),
                 ('level', models.IntegerField(default=0)),
                 ('type', models.IntegerField(default=0)),
@@ -57,10 +59,13 @@ class Migration(migrations.Migration):
                 ('count', models.IntegerField(default=0)),
                 ('max_power', models.IntegerField(default=0)),
                 ('probability', models.IntegerField(default=100)),
-                ('achieve', models.ForeignKey(to='achieve.Achieve', blank=True, null=True)),
-                ('attach_eptitude', models.ForeignKey(to='card.CardEptitude', related_name='attach_eptitudes', blank=True, null=True)),
+                ('achieve', models.ForeignKey(
+                    to='achieve.Achieve', blank=True, null=True)),
+                ('attach_eptitude', models.ForeignKey(to='card.CardEptitude',
+                                                      related_name='attach_eptitudes', blank=True, null=True)),
                 ('card', models.ForeignKey(to='card.Card', blank=True, null=True)),
-                ('dependency', models.ForeignKey(to='card.CardEptitude', blank=True, null=True)),
+                ('dependency', models.ForeignKey(
+                    to='card.CardEptitude', blank=True, null=True)),
                 ('group', models.ForeignKey(to='group.Group', blank=True, null=True)),
             ],
             options={
@@ -70,7 +75,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Collection',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
             ],
             options={
             },
@@ -79,7 +85,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CollectionCollector',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('collection', models.ForeignKey(to='card.Collection')),
             ],
             options={
@@ -89,12 +96,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CollectionItem',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('golden', models.BooleanField(default=False)),
                 ('count', models.IntegerField(default=0)),
                 ('level', models.IntegerField(default=1)),
                 ('card', models.ForeignKey(to='card.Card')),
-                ('owner', models.ForeignKey(related_name='collectionCards', to=settings.AUTH_USER_MODEL)),
+                ('owner', models.ForeignKey(
+                    related_name='collectionCards', to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },
@@ -103,7 +112,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Deck',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('title', models.CharField(max_length=80)),
                 ('complicated', models.BooleanField(default=False)),
             ],
@@ -114,7 +124,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DeckCollector',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('deck', models.ForeignKey(to='card.Deck')),
             ],
             options={
@@ -124,7 +135,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DeckItem',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('golden', models.BooleanField(default=False)),
                 ('collectionItem', models.ForeignKey(to='card.CollectionItem')),
             ],
@@ -135,7 +147,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Race',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('title', models.CharField(max_length=70)),
                 ('description', models.CharField(max_length=200)),
             ],
@@ -146,7 +159,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SubRace',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('title', models.CharField(max_length=70)),
                 ('description', models.CharField(max_length=200)),
                 ('race', models.ForeignKey(to='card.Race')),
@@ -164,37 +178,43 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='deck',
             name='items',
-            field=models.ManyToManyField(through='card.DeckCollector', to='card.DeckItem'),
+            field=models.ManyToManyField(
+                through='card.DeckCollector', to='card.DeckItem'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='deck',
             name='owner',
-            field=models.ForeignKey(related_name='decks', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                related_name='decks', to=settings.AUTH_USER_MODEL),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='deck',
             name='userHero',
-            field=models.ForeignKey(related_name='decks', blank=True, to='hero.UserHero'),
+            field=models.ForeignKey(
+                related_name='decks', blank=True, to='hero.UserHero'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='collectioncollector',
             name='item',
-            field=models.ForeignKey(related_name='collection_item', to='card.CollectionItem'),
+            field=models.ForeignKey(
+                related_name='collection_item', to='card.CollectionItem'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='collection',
             name='items',
-            field=models.ManyToManyField(through='card.CollectionCollector', to='card.CollectionItem'),
+            field=models.ManyToManyField(
+                through='card.CollectionCollector', to='card.CollectionItem'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='collection',
             name='owner',
-            field=models.ForeignKey(related_name='collections', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                related_name='collections', to=settings.AUTH_USER_MODEL),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -212,7 +232,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cardeptitude',
             name='unit',
-            field=models.ForeignKey(to='card.Card', related_name='unit', blank=True, null=True),
+            field=models.ForeignKey(
+                to='card.Card', related_name='unit', blank=True, null=True),
             preserve_default=True,
         ),
         migrations.AddField(

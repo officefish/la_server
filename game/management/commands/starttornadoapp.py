@@ -15,17 +15,18 @@ logger = logging.getLogger('tornado_commander')
 from game.tornado.lobby import MainHandler, LobbyHandler, GrahhHandler, GrahhApiHandler
 from game.tornado.match import MatchHandler
 
+
 class Command(BaseCommand):
 
     args = '[port_number]'
     help = 'Starts the Tornado application for message handling.'
 
     def sig_handler(self, sig, frame):
-        """Catch signal and init callback"""
+        """Catch signal and init callback."""
         tornado.ioloop.IOLoop.instance().add_callback(self.shutdown)
 
     def shutdown(self):
-        """Stop server and add callback to stop i/o loop"""
+        """Stop server and add callback to stop i/o loop."""
         self.http_server.stop()
 
         msg = 'Tornado Launcher. IOLoop.instance stop'
@@ -47,17 +48,15 @@ class Command(BaseCommand):
         app = tornado.web.Application(urls)
 
         port = 8003
-        address =  "127.0.0.1"
+        address = '127.0.0.1'
 
         self.http_server = tornado.httpserver.HTTPServer(app)
         self.http_server.listen(port, address=address)
 
-
         #pool = tornadoredis.ConnectionPool(host=address, port=8003)
         #c = tornadoredis.Client(connection_pool=pool)
-        #c.connect()
+        # c.connect()
         #c.psubscribe("*", lambda msg: c.listen(ThreadHandler.pubsub_message))
-
 
         # Init signals handler
         signal.signal(signal.SIGTERM, self.sig_handler)
@@ -65,12 +64,6 @@ class Command(BaseCommand):
         # This will also catch KeyboardInterrupt exception
         signal.signal(signal.SIGINT, self.sig_handler)
 
-
         msg = 'Tornado Launcher. IOLoop.instance start'
         logger.debug(msg)
         loop.IOLoop.instance().start()
-
-
-
-
-

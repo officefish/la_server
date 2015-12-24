@@ -1,19 +1,22 @@
 __author__ = 'RIK'
 import logging
-logger =  logging.getLogger('game_handler')
+logger = logging.getLogger('game_handler')
 
 from card.models import Race, SubRace
 from game.logic.constants import EptitudePeriod
 
+
 class Weapon ():
-      def __init__(self):
-          self.power = 0
-          self.strength = 0
-          self.id = 0
+
+    def __init__(self):
+        self.power = 0
+        self.strength = 0
+        self.id = 0
+
 
 class HeroUnit ():
 
-     def __init__(self, health):
+    def __init__(self, health):
         self.health = health
         self.defaultHealth = health
         self.maxHealth = self.health
@@ -34,144 +37,143 @@ class HeroUnit ():
         self.rightHand = None
         self.leftHand = None
 
-
-     def takeUpWeapon(self, weaponData):
-        weapon = Weapon ()
-        weapon.id =weaponData.id
+    def takeUpWeapon(self, weaponData):
+        weapon = Weapon()
+        weapon.id = weaponData.id
         weapon.power = weaponData.power
         weapon.strength = weaponData.strength
 
         weaponIndex = 1
 
         if isinstance(self.rightHand, Weapon):
-            logger.debug ('rightHand is Weapon')
-            logger.debug ('weaponIndex: %s' % weaponIndex)
+            logger.debug('rightHand is Weapon')
+            logger.debug('weaponIndex: %s' % weaponIndex)
             self.leftHand = weapon
         else:
             if isinstance(self.leftHand, Weapon):
                 weaponIndex = 2
                 self.rightHand = weapon
-                logger.debug ('leftHand is Weapon')
-                logger.debug ('weaponIndex: %s' % weaponIndex)
+                logger.debug('leftHand is Weapon')
+                logger.debug('weaponIndex: %s' % weaponIndex)
             else:
                 self.leftHand = weapon
-                logger.debug ('leftHand is not Weapon')
-                logger.debug ('weaponIndex: %s' % weaponIndex)
+                logger.debug('leftHand is not Weapon')
+                logger.debug('weaponIndex: %s' % weaponIndex)
 
         return weaponIndex
 
-     def hasWeapon (self):
-         bool = False
-         if isinstance(self.leftHand, Weapon) or isinstance(self.rightHand, Weapon):
-             bool = True
-         return bool
+    def hasWeapon(self):
+        bool = False
+        if isinstance(self.leftHand, Weapon) or isinstance(self.rightHand, Weapon):
+            bool = True
+        return bool
 
+    def destroyEptitudes(self):
+        self.eptitudes = []
 
-
-     def destroyEptitudes(self):
-         self.eptitudes = []
-
-     def hasSelfDieEptitude (self):
+    def hasSelfDieEptitude(self):
         flag = False
         for eptitude in self.eptitudes:
-           if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
+            if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
                 flag = True
         return flag
 
+    def configureEptitudes(self, cardData):
+        logger.debug('HeroUnit::configureEptitudes : %s' %
+                     len(cardData['eptitudes']))
+        for eptitudeData in cardData['eptitudes']:
+            eptitude = UnitEptitude()
+            eptitude.setType(eptitudeData['type'])
+            eptitude.setPower(eptitudeData['power'])
+            eptitude.max_power = eptitudeData['max_power']
+            eptitude.count = eptitudeData['count']
+            eptitude.setLevel(eptitudeData['level'])
+            eptitude.setPeriod(eptitudeData['period'])
+            eptitude.setLifecycle(eptitudeData['lifecycle'])
+            eptitude.setAttachHero(eptitudeData['attach_hero'])
+            eptitude.setAttachInitiator(eptitudeData['attach_initiator'])
+            eptitude.setAttachment(eptitudeData['attachment'])
+            eptitude.setDynamic(eptitudeData['dynamic'])
+            eptitude.setCondition((eptitudeData['condition']))
+            eptitude.spellCondition = eptitudeData['spellCondition']
+            eptitude.id = eptitudeData['id']
+            eptitude.battlecry = eptitudeData['battlecry']
+            eptitude.dependency = eptitudeData['dependency']
+            eptitude.attach_eptitude = eptitudeData['attach_eptitude']
+            eptitude.price = eptitudeData['price']
+            eptitude.probability = eptitudeData['probability']
+            eptitude.spellSensibility = eptitudeData['spellSensibility']
+            eptitude.activate_widget = eptitudeData['activate_widget']
+            eptitude.animation = eptitudeData['animation']
+            eptitude.manacost = eptitudeData['manacost']
+            eptitude.widget = eptitudeData['widget']
+            eptitude.destroy = eptitudeData['destroy']
+            try:
+                eptitude.weapon(eptitudeData['weapon'])
+            except:
+                pass
+            try:
+                eptitude.setRace(eptitudeData['race'])
+            except:
+                pass
+            try:
+                eptitude.setSubrace(eptitudeData['subrace'])
+            except:
+                pass
+            try:
+                eptitude.setUnit(eptitudeData['unit'])
+            except:
+                pass
+            try:
+                eptitude.group = eptitudeData['group']
+            except:
+                pass
 
-     def configureEptitudes (self, cardData):
-         logger.debug('HeroUnit::configureEptitudes : %s' % len(cardData['eptitudes']))
-         for eptitudeData in cardData['eptitudes']:
-               eptitude = UnitEptitude ()
-               eptitude.setType(eptitudeData['type'])
-               eptitude.setPower(eptitudeData['power'])
-               eptitude.max_power = eptitudeData['max_power']
-               eptitude.count = eptitudeData['count']
-               eptitude.setLevel(eptitudeData['level'])
-               eptitude.setPeriod(eptitudeData['period'])
-               eptitude.setLifecycle(eptitudeData['lifecycle'])
-               eptitude.setAttachHero (eptitudeData['attach_hero'])
-               eptitude.setAttachInitiator(eptitudeData['attach_initiator'])
-               eptitude.setAttachment(eptitudeData['attachment'])
-               eptitude.setDynamic(eptitudeData['dynamic'])
-               eptitude.setCondition((eptitudeData['condition']))
-               eptitude.spellCondition = eptitudeData['spellCondition']
-               eptitude.id = eptitudeData['id']
-               eptitude.battlecry = eptitudeData['battlecry']
-               eptitude.dependency = eptitudeData['dependency']
-               eptitude.attach_eptitude = eptitudeData['attach_eptitude']
-               eptitude.price = eptitudeData['price']
-               eptitude.probability = eptitudeData['probability']
-               eptitude.spellSensibility = eptitudeData['spellSensibility']
-               eptitude.activate_widget = eptitudeData['activate_widget']
-               eptitude.animation = eptitudeData['animation']
-               eptitude.manacost = eptitudeData['manacost']
-               eptitude.widget = eptitudeData['widget']
-               eptitude.destroy = eptitudeData['destroy']
-               try:
-                   eptitude.weapon(eptitudeData['weapon'])
-               except: pass
-               try:
-                   eptitude.setRace(eptitudeData['race'])
-               except: pass
-               try:
-                   eptitude.setSubrace(eptitudeData['subrace'])
-               except: pass
-               try:
-                   eptitude.setUnit(eptitudeData['unit'])
-               except: pass
-               try:
-                   eptitude.group = eptitudeData['group']
-               except:
-                   pass
+            self.eptitudes.append(eptitude)
 
-               self.eptitudes.append (eptitude)
-
-
-
-     def treatment (self, value):
+    def treatment(self, value):
         self.health += value
         if self.health > self.maxHealth:
             self.health = self.maxHealth
 
-     def setHealth (self, health):
+    def setHealth(self, health):
         self.health = health
 
-     def getHealth (self):
+    def getHealth(self):
         return self.health
 
-     def getMaxHealth (self):
+    def getMaxHealth(self):
         return self.maxHealth
 
-     def getAttack (self):
-         return 0
+    def getAttack(self):
+        return 0
 
-     def getTitle (self):
-         return 'hero'
+    def getTitle(self):
+        return 'hero'
 
-     def getTotalAttack(self):
-         return self.getAttack()
+    def getTotalAttack(self):
+        return self.getAttack()
 
-     def isProvocator(self):
-         return False
+    def isProvocator(self):
+        return False
 
-     def getDefaultAttack (self):
+    def getDefaultAttack(self):
         return self.defaultAttack
 
-     def getWhiteFlag (self):
+    def getWhiteFlag(self):
         return self.whiteFlag
 
-     def hasEptitudeWithPeriod (self, period):
+    def hasEptitudeWithPeriod(self, period):
         flag = False
-        logger.debug ('period: %s' % period)
+        logger.debug('period: %s' % period)
         for eptitude in self.eptitudes:
-            logger.debug ('getPeriod(): %s' % eptitude.getPeriod())
-            logger.debug ('title: %s' % self.title)
+            logger.debug('getPeriod(): %s' % eptitude.getPeriod())
+            logger.debug('title: %s' % self.title)
             if eptitude.getPeriod() == period:
                 flag = True
         return flag
 
-     def getEptitudeById (self, id):
+    def getEptitudeById(self, id):
         resultEptitude = False
         for eptitude in self.eptitudes:
             if eptitude.id == id:
@@ -179,15 +181,14 @@ class HeroUnit ():
 
         return resultEptitude
 
-     def appendTempEptitude (self, eptitude):
-         self.tempEptitudes.append(eptitude)
+    def appendTempEptitude(self, eptitude):
+        self.tempEptitudes.append(eptitude)
 
-     def containsTempEptitudes (self):
-         if len(self.tempEptitudes) > 0:
-             return True
-         else:
-             return False
-
+    def containsTempEptitudes(self):
+        if len(self.tempEptitudes) > 0:
+            return True
+        else:
+            return False
 
 
 class Unit ():
@@ -241,11 +242,11 @@ class Unit ():
         except KeyError:
             pass
 
-        logger.debug ('Unit constructor')
+        logger.debug('Unit constructor')
 
         for eptitudeData in cardData['eptitudes']:
             eptitude = self.getEpritudeByData(eptitudeData)
-            self.eptitudes.append (eptitude)
+            self.eptitudes.append(eptitude)
             logger.debug('unit eptitude: %s' % eptitude.getData())
 
         #logger.debug ('attack: %s' % self.attack)
@@ -264,8 +265,8 @@ class Unit ():
         index = self.eptitudes.index(eptitude)
         del self.eptitudes[index]
 
-    def getEpritudeByData (self ,eptitudeData):
-        eptitude = UnitEptitude ()
+    def getEpritudeByData(self, eptitudeData):
+        eptitude = UnitEptitude()
         eptitude.setType(eptitudeData['type'])
         eptitude.setPower(eptitudeData['power'])
         eptitude.max_power = eptitudeData['max_power']
@@ -273,7 +274,7 @@ class Unit ():
         eptitude.setLevel(eptitudeData['level'])
         eptitude.setPeriod(eptitudeData['period'])
         eptitude.setLifecycle(eptitudeData['lifecycle'])
-        eptitude.setAttachHero (eptitudeData['attach_hero'])
+        eptitude.setAttachHero(eptitudeData['attach_hero'])
         eptitude.setAttachInitiator(eptitudeData['attach_initiator'])
         eptitude.setAttachment(eptitudeData['attachment'])
         eptitude.setDynamic(eptitudeData['dynamic'])
@@ -293,25 +294,29 @@ class Unit ():
         eptitude.destroy = eptitudeData['destroy']
         try:
             eptitude.weapon = eptitudeData['weapon']
-        except: pass
+        except:
+            pass
         try:
             eptitude.setRace(eptitudeData['race'])
-        except: pass
+        except:
+            pass
         try:
             eptitude.setSubrace(eptitudeData['subrace'])
-        except: pass
+        except:
+            pass
         try:
             eptitude.setUnit(eptitudeData['unit'])
-        except: pass
+        except:
+            pass
         try:
             eptitude.group = eptitudeData['group']
         except:
             pass
         return eptitude
 
-    def attachEptitude (self, eptitude):
+    def attachEptitude(self, eptitude):
         eptitude.attached = True
-        self.eptitudes.append (eptitude)
+        self.eptitudes.append(eptitude)
         logger.debug('attached eptitude: %s' % eptitude.getData())
 
     def containsTempEptitudes(self):
@@ -319,79 +324,77 @@ class Unit ():
             return True
         return False
 
-    def treatment (self, value):
+    def treatment(self, value):
         self.health += value
         if self.health > self.maxHealth:
             self.health = self.maxHealth
 
-    def getDefaultAttack (self):
+    def getDefaultAttack(self):
         return self.defaultAttack
 
-
-    def setIndex (self, value):
+    def setIndex(self, value):
         self.index = value
 
-    def setRow (self, value):
+    def setRow(self, value):
         self.row = value
 
-    def setWhiteFlag (self, value):
+    def setWhiteFlag(self, value):
         self.whiteFlag = value
 
-    def getWhiteFlag (self):
+    def getWhiteFlag(self):
         return self.whiteFlag
 
-    def getTitle (self):
+    def getTitle(self):
         return self.title
 
     def setAttack(self, attack):
         self.attack = attack
 
-    def getAttack (self):
+    def getAttack(self):
         return self.attack
 
-    def setDynamicAttack (self, attack):
+    def setDynamicAttack(self, attack):
         self.dynamicAttack = attack
 
-    def getDynamicAttack (self):
+    def getDynamicAttack(self):
         return self.dynamicAttack
 
-    def setHealth (self, health):
+    def setHealth(self, health):
         self.health = health
 
-    def getHealth (self):
+    def getHealth(self):
         return self.health
 
-    def setMaxHealth (self, health):
+    def setMaxHealth(self, health):
         self.maxHealth = health
 
-    def getMaxHealth (self):
+    def getMaxHealth(self):
         return self.maxHealth
 
-    def setStepAttack (self, attack):
+    def setStepAttack(self, attack):
         self.stepAttack = attack
-
 
     def isProvocator(self):
         return self.provocation
 
-    def getCardData (self):
+    def getCardData(self):
         return self.cardData
 
-    def getTotalAttack (self):
+    def getTotalAttack(self):
         return self.attack + self.dynamicAttack + self.extraAttack
 
     def setRace(self, value):
         self.race = value
 
-    def setSubrace (self, value):
+    def setSubrace(self, value):
         self.subrace = value
 
-    def hasEptitudeWithPeriod (self, period):
+    def hasEptitudeWithPeriod(self, period):
         flag = False
-        logger.debug ('period: %s' % period)
+        logger.debug('period: %s' % period)
         for eptitude in self.eptitudes:
-            logger.debug ('getPeriod(): %s' % eptitude.getPeriod())
-            logger.debug ('title: %s' % self.title)
+            logger.debug('getPeriod(): %s' % eptitude.getPeriod())
+            logger.debug('title: %s' % self.title)
             if eptitude.getPeriod() == period:
                 flag = True
         return flag
@@ -403,22 +406,20 @@ class Unit ():
                 flag = True
         return flag
 
-
-    def hasSelfDieEptitude (self):
+    def hasSelfDieEptitude(self):
         flag = False
         for eptitude in self.eptitudes:
-           if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
+            if eptitude.getPeriod() == EptitudePeriod.SELF_DIE and eptitude.activate_widget:
                 flag = True
         return flag
 
-    def getEptitudeById (self, id):
+    def getEptitudeById(self, id):
         resultEptitude = False
         for eptitude in self.eptitudes:
             if eptitude.id == id:
                 resultEptitude = eptitude
 
         return resultEptitude
-
 
 
 class UnitEptitude ():
@@ -443,8 +444,6 @@ class UnitEptitude ():
         self.manacost = 0
         self.widget = 0
         self.destroy = False
-
-
 
     def clone(self):
         eptitude = UnitEptitude()
@@ -532,18 +531,21 @@ class UnitEptitude ():
             pass
         return eptitude
 
-    def setPeriod (self, value):
+    def setPeriod(self, value):
         self.period = value
-    def getPeriod (self):
+
+    def getPeriod(self):
         return self.period
 
-    def setLevel (self, value):
+    def setLevel(self, value):
         self.level = value
-    def getLevel (self):
+
+    def getLevel(self):
         return self.level
 
-    def setType (self, value):
+    def setType(self, value):
         self.type = value
+
     def getType(self):
         return self.type
 
@@ -556,10 +558,10 @@ class UnitEptitude ():
     def setSubrace(self, value):
         self.subrace = value
 
-    def getSubrace (self):
+    def getSubrace(self):
         return self.subrace
 
-    def setUnit (self, value):
+    def setUnit(self, value):
         self.unit = value
 
     def getUnit(self):
@@ -567,83 +569,98 @@ class UnitEptitude ():
 
     def setPower(self, value):
         self.power = value
+
     def getPower(self):
         return self.power
 
     def setLifecycle(self, value):
         self.lifecycle = value
+
     def getLifecycle(self):
         return self.lifecycle
 
     def setAttachment(self, value):
         self.attachment = value
+
     def getAttachment(self):
         return self.attachment
 
     def setAttachHero(self, value):
         self.attachHero = value
+
     def getAttachHero(self):
         return attachHero
 
     def setAttachInitiator(self, value):
         self.attachInitiator = value
+
     def getAttachInitator(self):
         return self.attachInitiator
 
-    def setDynamic (self, value):
+    def setDynamic(self, value):
         self.dynamic = value
 
-    def setCondition (self, value):
+    def setCondition(self, value):
         self.condition = value
 
-    def getCondition (self):
+    def getCondition(self):
         return self.condition
-
 
     def getData(self):
         self.data = {}
         try:
             self.data['level'] = self.level
-        except: pass
+        except:
+            pass
         try:
             self.data['period'] = self.period
-        except: pass
+        except:
+            pass
         try:
             self.data['type'] = self.type
-        except: pass
+        except:
+            pass
         try:
             self.data['power'] = self.power
-        except: pass
+        except:
+            pass
         try:
             self.data['lifecycle'] = self.lifecycle
-        except: pass
+        except:
+            pass
 
         self.data['attachment'] = self.attachment
         self.data['attachHero'] = self.attachHero
 
         try:
             self.data['attachInitiator'] = self.attachInitiator
-        except: pass
+        except:
+            pass
         try:
             self.data['subrace'] = self.subrace
-        except: pass
+        except:
+            pass
         try:
             self.data['race'] = self.race
-        except: pass
+        except:
+            pass
         try:
             self.data['unit'] = self.unit
-        except: pass
+        except:
+            pass
         try:
             self.data['dynamic'] = self.dynamic
-        except: pass
+        except:
+            pass
         try:
             self.data['condition'] = self.condition
-        except: pass
+        except:
+            pass
         self.data['animation'] = self.animation
         try:
             self.data['manacost'] = self.manacost
-        except: pass
+        except:
+            pass
         self.data['widget'] = self.widget
 
         return self.data
-

@@ -11,9 +11,9 @@ from achieve.models import Achieve
 from weapon.models import Weapon
 
 
-def cards_list (
+def cards_list(
         request,
-        template_name = 'card/cards_list.html'):
+        template_name='card/cards_list.html'):
 
     _cards = Card.objects.all().order_by('price')
 
@@ -24,22 +24,21 @@ def cards_list (
     return TemplateResponse(request, template_name, context)
 
 
-def create_card (request,
-         template_name='card/create_card.html',
-         card_form=CardForm,
-         current_app=None,
-         extra_context=None):
+def create_card(request,
+                template_name='card/create_card.html',
+                card_form=CardForm,
+                current_app=None,
+                extra_context=None):
 
-    redirect_to = "/cards"
+    redirect_to = '/cards'
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = card_form(request.POST)
         if form.is_valid():
             card = createCardByRequest(request)
 
-
             if 'create_eptitude' in request.POST:
-                redirect_to = "/cards/create_eptitude/%s" % card.id
+                redirect_to = '/cards/create_eptitude/%s' % card.id
 
             if 'create_race' in request.POST:
                 redirect_to = '/cards/create_race/%s' % card.id
@@ -53,7 +52,7 @@ def create_card (request,
             return HttpResponseRedirect(redirect_to)
 
     else:
-        data = {"type":2}
+        data = {'type': 2}
         form = card_form(data)
 
     context = {
@@ -65,28 +64,24 @@ def create_card (request,
                             current_app=current_app)
 
 
+def edit_card(request, card_id,
+              template_name='card/edit_card.html',
+              card_form=CardForm,
+              current_app=None,
+              extra_context=None):
 
-
-
-
-def edit_card (request,card_id,
-         template_name='card/edit_card.html',
-         card_form=CardForm,
-         current_app=None,
-         extra_context=None):
-
-    redirect_to = "/cards"
+    redirect_to = '/cards'
 
     card = get_object_or_404(Card, pk=card_id)
     data = getCardData(card)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = card_form(request.POST)
         if form.is_valid():
             editCardByRequest(request, card)
 
             if 'create_eptitude' in request.POST:
-                redirect_to = "/cards/create_eptitude/%s" % card.id
+                redirect_to = '/cards/create_eptitude/%s' % card.id
 
             if 'create_race' in request.POST:
                 redirect_to = '/cards/create_race/%s' % card.id
@@ -97,14 +92,13 @@ def edit_card (request,card_id,
             if 'create_group' in request.POST:
                 redirect_to = '/groups/create_group/%s' % card.id
 
-
             return HttpResponseRedirect(redirect_to)
     else:
         form = card_form(data)
 
     context = {
         'form': form,
-        'card':card,
+        'card': card,
         'eptitudes': card.eptitudes,
     }
     if extra_context is not None:
@@ -114,10 +108,10 @@ def edit_card (request,card_id,
 
 
 def delete_card(
-        request,card_id,
-        ):
+        request, card_id,
+):
 
-    redirect_to = "/cards"
+    redirect_to = '/cards'
 
     card = get_object_or_404(Card, pk=card_id)
     card_title = card.title
@@ -129,16 +123,17 @@ def delete_card(
 
     return HttpResponseRedirect(redirect_to)
 
-def create_eptitude (
-       request,card_id,
-       eptitude_form = EptitudeForm,
-       template_name='card/create_eptitude.html'):
+
+def create_eptitude(
+        request, card_id,
+        eptitude_form=EptitudeForm,
+        template_name='card/create_eptitude.html'):
 
     card = get_object_or_404(Card, pk=card_id)
 
-    redirect_to = "/cards/edit/%s" % card_id
+    redirect_to = '/cards/edit/%s' % card_id
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(card, request.POST)
         if form.is_valid():
             eptitude = createEptitudeByRequest(request)
@@ -147,8 +142,6 @@ def create_eptitude (
             return HttpResponseRedirect(redirect_to)
     else:
         form = eptitude_form(card)
-
-
 
     current_site = get_current_site(request)
 
@@ -159,155 +152,158 @@ def create_eptitude (
         'site_name': current_site.name,
     }
 
-
     return TemplateResponse(request, template_name, context)
 
-def edit_eptitude (
+
+def edit_eptitude(
         request, card_id, eptitude_id,
-        eptitude_form = EptitudeForm,
+        eptitude_form=EptitudeForm,
         template_name='card/edit_eptitude.html'):
 
-     card = get_object_or_404(Card, pk=card_id)
+    card = get_object_or_404(Card, pk=card_id)
 
-     redirect_to = "/cards/edit/%s" % card_id
+    redirect_to = '/cards/edit/%s' % card_id
 
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
 
-     if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(card, request.POST)
         if form.is_valid():
             editEptitudeByRequest(request, eptitude)
             return HttpResponseRedirect(redirect_to)
 
-     else:
+    else:
         data = self.getEptitudeData(eptitude, card)
         form = eptitude_form(card, data)
 
-     current_site = get_current_site(request)
+    current_site = get_current_site(request)
 
-     context = {
-            'form': form,
-            'card': card,
-            'site': current_site,
-            'site_name': current_site.name,
-        }
+    context = {
+        'form': form,
+        'card': card,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+
+    return TemplateResponse(request, template_name, context)
 
 
-     return TemplateResponse(request, template_name, context)
+def delete_eptitude(request, card_id, eptitude_id):
 
-def delete_eptitude (request, card_id, eptitude_id):
+    redirect_to = '/cards/edit/%s' % card_id
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude.delete()
 
-     redirect_to = "/cards/edit/%s" % card_id
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
-     eptitude.delete()
+    return HttpResponseRedirect(redirect_to)
 
-     return HttpResponseRedirect(redirect_to)
 
-def create_race (request,
-                 card_id,
-                 race_form = RaceForm,
-                 template_name = 'card/create_race.html'
-):
+def create_race(request,
+                card_id,
+                race_form=RaceForm,
+                template_name='card/create_race.html'
+                ):
 
-     card = get_object_or_404(Card, pk=card_id)
+    card = get_object_or_404(Card, pk=card_id)
 
-     redirect_to = "/cards/edit/%s" % card_id
+    redirect_to = '/cards/edit/%s' % card_id
 
-     if request.method == "POST":
+    if request.method == 'POST':
         form = race_form(request.POST)
         if form.is_valid():
             title = request.POST['title']
-            description = request.POST["description"]
+            description = request.POST['description']
 
             Race.objects.create(title=title, description=description)
 
             return HttpResponseRedirect(redirect_to)
-     else:
+    else:
         form = race_form()
 
-     current_site = get_current_site(request)
+    current_site = get_current_site(request)
 
-     context = {
-            'form': form,
-            'site': current_site,
-            'site_name': current_site.name,
-        }
+    context = {
+        'form': form,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+
+    return TemplateResponse(request, template_name, context)
 
 
-     return TemplateResponse(request, template_name, context)
+def create_subrace(request,
+                   card_id,
+                   subrace_form=SubRaceForm,
+                   template_name='card/create_subrace.html'
+                   ):
 
-def create_subrace (request,
-                 card_id,
-                 subrace_form = SubRaceForm,
-                 template_name = 'card/create_subrace.html'
-):
+    card = get_object_or_404(Card, pk=card_id)
 
-     card = get_object_or_404(Card, pk=card_id)
+    redirect_to = '/cards/edit/%s' % card_id
 
-     redirect_to = "/cards/edit/%s" % card_id
-
-     if request.method == "POST":
+    if request.method == 'POST':
         form = subrace_form(request.POST)
         if form.is_valid():
             title = request.POST['title']
-            description = request.POST["description"]
+            description = request.POST['description']
             race_id = request.POST['race']
             race = Race.objects.get(pk=race_id)
 
-            SubRace.objects.create(title=title, description=description, race=race)
+            SubRace.objects.create(
+                title=title, description=description, race=race)
 
             return HttpResponseRedirect(redirect_to)
-     else:
+    else:
         form = subrace_form()
 
-     current_site = get_current_site(request)
+    current_site = get_current_site(request)
 
-     context = {
-            'form': form,
-            'site': current_site,
-            'site_name': current_site.name,
-        }
+    context = {
+        'form': form,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+
+    return TemplateResponse(request, template_name, context)
 
 
-     return TemplateResponse(request, template_name, context)
+def edit_race(request, race_id,
+              book_form=RaceForm,
+              template_name='card/edit_race.html'
+              ):
 
-def edit_race (request, race_id,
-                 book_form = RaceForm,
-                 template_name = 'card/edit_race.html'
-                 ):
+    race = get_object_or_404(Race, pk=race_id)
 
-     race = get_object_or_404(Race, pk=race_id)
+    data = {
+        'title': race.title,
+        'description': race.description
+    }
 
-     data = {
-         "title":race.title,
-         "description":race.description
-     }
+    redirect_to = '/cards/races'
 
-     redirect_to = "/cards/races"
-
-     if request.method == "POST":
+    if request.method == 'POST':
         form = book_form(request.POST)
         if form.is_valid():
             title = request.POST['title']
             description = request.POST['description']
-            race.title=title
+            race.title = title
             race.description = description
             race.save()
             return HttpResponseRedirect(redirect_to)
-     else:
+    else:
         form = book_form(data)
 
-     context = {
-            'form': form,
-            'race':race,
+    context = {
+        'form': form,
+        'race': race,
 
-     }
+    }
 
-     return TemplateResponse(request, template_name, context)
+    return TemplateResponse(request, template_name, context)
 
-def races_list (
+
+def races_list(
         request,
-        template_name = 'card/races_list.html'):
+        template_name='card/races_list.html'):
 
     races = Race.objects.all()
 
@@ -319,12 +315,13 @@ def races_list (
 
 # book functions
 
+
 def delete_card_for_book(
-        request,card_id, book_id
-        ):
+        request, card_id, book_id
+):
 
     get_object_or_404(Book, pk=book_id)
-    redirect_to = "/books/book/%s" % book_id
+    redirect_to = '/books/book/%s' % book_id
 
     card = get_object_or_404(Card, pk=card_id)
     card.delete()
@@ -332,24 +329,25 @@ def delete_card_for_book(
     return HttpResponseRedirect(redirect_to)
 
 
-def create_card_for_book (request, book_id,
-         template_name='card/create_card.html',
-         card_form=CardForm,
-         current_app=None,
-         extra_context=None):
+def create_card_for_book(request, book_id,
+                         template_name='card/create_card.html',
+                         card_form=CardForm,
+                         current_app=None,
+                         extra_context=None):
 
     book = get_object_or_404(Book, pk=book_id)
 
-    redirect_to = "/books/book/%s" % book_id
+    redirect_to = '/books/book/%s' % book_id
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = card_form(request.POST)
         if form.is_valid():
 
             card = createCardByRequest(request)
 
             if 'create_eptitude' in request.POST:
-                redirect_to = "/cards/create_eptitude_for_book_card/%s/%s" % (card.id, book.id)
+                redirect_to = '/cards/create_eptitude_for_book_card/%s/%s' % (
+                    card.id, book.id)
 
             if 'create_race' in request.POST:
                 redirect_to = '/cards/create_race/%s' % card.id
@@ -363,9 +361,9 @@ def create_card_for_book (request, book_id,
             return HttpResponseRedirect(redirect_to)
 
     else:
-        data = {"type":2,
-               "book":book.id,
-        }
+        data = {'type': 2,
+                'book': book.id,
+                }
         form = card_form(data)
 
     current_site = get_current_site(request)
@@ -380,25 +378,27 @@ def create_card_for_book (request, book_id,
     return TemplateResponse(request, template_name, context,
                             current_app=current_app)
 
-def edit_card_for_book (request,card_id, book_id,
-         template_name='card/edit_card_for_book.html',
-         card_form=CardForm,
-         current_app=None,
-         extra_context=None):
+
+def edit_card_for_book(request, card_id, book_id,
+                       template_name='card/edit_card_for_book.html',
+                       card_form=CardForm,
+                       current_app=None,
+                       extra_context=None):
 
     card = get_object_or_404(Card, pk=card_id)
     book = get_object_or_404(Book, pk=book_id)
-    redirect_to = "/books/book/%s" % book_id
+    redirect_to = '/books/book/%s' % book_id
 
     data = getCardData(card)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = card_form(request.POST)
         if form.is_valid():
             editCardByRequest(request, card)
 
             if 'create_eptitude' in request.POST:
-                redirect_to = "/cards/create_eptitude_for_book_card/%s/%s" % (card.id, book.id)
+                redirect_to = '/cards/create_eptitude_for_book_card/%s/%s' % (
+                    card.id, book.id)
 
             if 'create_race' in request.POST:
                 redirect_to = '/cards/create_race/%s' % card.id
@@ -409,16 +409,15 @@ def edit_card_for_book (request,card_id, book_id,
             if 'create_group' in request.POST:
                 redirect_to = '/groups/create_group/%s' % card.id
 
-
             return HttpResponseRedirect(redirect_to)
     else:
         form = card_form(data)
 
     context = {
         'form': form,
-        'card':card,
+        'card': card,
         'eptitudes': card.eptitudes,
-        'book':book,
+        'book': book,
     }
     if extra_context is not None:
         context.update(extra_context)
@@ -426,17 +425,16 @@ def edit_card_for_book (request,card_id, book_id,
                             current_app=current_app)
 
 
-
-def create_eptitude_for_book_card (
-       request,card_id, book_id,
-       eptitude_form = EptitudeForm,
-       template_name='card/create_eptitude.html'):
+def create_eptitude_for_book_card(
+        request, card_id, book_id,
+        eptitude_form=EptitudeForm,
+        template_name='card/create_eptitude.html'):
 
     card = get_object_or_404(Card, pk=card_id)
     get_object_or_404(Book, pk=book_id)
-    redirect_to = "/cards/edit_card_for_book/%s/%s" % (card_id, book_id)
+    redirect_to = '/cards/edit_card_for_book/%s/%s' % (card_id, book_id)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(card, request.POST)
         if form.is_valid():
             eptitude = createEptitudeByRequest(request)
@@ -456,59 +454,60 @@ def create_eptitude_for_book_card (
     }
     return TemplateResponse(request, template_name, context)
 
-def edit_eptitude_for_book_card (
+
+def edit_eptitude_for_book_card(
         request, card_id, eptitude_id, book_id,
-        eptitude_form = EptitudeForm,
+        eptitude_form=EptitudeForm,
         template_name='card/edit_eptitude.html'):
 
-     card = get_object_or_404(Card, pk=card_id)
-     get_object_or_404(Book, pk=book_id)
-     redirect_to = "/cards/edit_card_for_book/%s/%s" % (card_id, book_id)
+    card = get_object_or_404(Card, pk=card_id)
+    get_object_or_404(Book, pk=book_id)
+    redirect_to = '/cards/edit_card_for_book/%s/%s' % (card_id, book_id)
 
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
 
-     if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(card, request.POST)
         if form.is_valid():
             editEptitudeByRequest(request, eptitude)
             return HttpResponseRedirect(redirect_to)
 
-     else:
+    else:
 
         data = getEptitudeData(eptitude, card)
         form = eptitude_form(card, data)
 
-     current_site = get_current_site(request)
+    current_site = get_current_site(request)
 
-     context = {
-            'form': form,
-            'card': card,
-            'site': current_site,
-            'site_name': current_site.name,
-        }
+    context = {
+        'form': form,
+        'card': card,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
 
-
-     return TemplateResponse(request, template_name, context)
-
-def delete_eptitude_for_book_card (request, card_id, eptitude_id, book_id):
-
-     get_object_or_404(Book, pk=book_id)
-     redirect_to = "/cards/edit_card_for_book/%s/%s" % (card_id, book_id)
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
-     eptitude.delete()
-
-     return HttpResponseRedirect(redirect_to)
+    return TemplateResponse(request, template_name, context)
 
 
-def create_eptitude_for_achieve (
-       request,achieve_id,
-       eptitude_form = EptitudeForm,
-       template_name='card/create_eptitude.html'):
+def delete_eptitude_for_book_card(request, card_id, eptitude_id, book_id):
+
+    get_object_or_404(Book, pk=book_id)
+    redirect_to = '/cards/edit_card_for_book/%s/%s' % (card_id, book_id)
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude.delete()
+
+    return HttpResponseRedirect(redirect_to)
+
+
+def create_eptitude_for_achieve(
+        request, achieve_id,
+        eptitude_form=EptitudeForm,
+        template_name='card/create_eptitude.html'):
 
     achieve = get_object_or_404(Achieve, pk=achieve_id)
-    redirect_to = "/achieves/edit_achieve/%s" % (achieve_id)
+    redirect_to = '/achieves/edit_achieve/%s' % (achieve_id)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(achieve, request.POST)
         if form.is_valid():
             eptitude = createEptitudeByRequest(request)
@@ -528,47 +527,47 @@ def create_eptitude_for_achieve (
     }
     return TemplateResponse(request, template_name, context)
 
-def edit_eptitude_for_achieve (
+
+def edit_eptitude_for_achieve(
         request, achieve_id, eptitude_id,
-        eptitude_form = EptitudeForm,
+        eptitude_form=EptitudeForm,
         template_name='card/edit_eptitude.html'):
 
-     achieve = get_object_or_404(Achieve, pk=achieve_id)
-     redirect_to = "/achieves/edit_achieve/%s" % (achieve_id)
+    achieve = get_object_or_404(Achieve, pk=achieve_id)
+    redirect_to = '/achieves/edit_achieve/%s' % (achieve_id)
 
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
 
-     if request.method == "POST":
+    if request.method == 'POST':
         form = eptitude_form(achieve, request.POST)
         if form.is_valid():
             editEptitudeByRequest(request, eptitude)
             return HttpResponseRedirect(redirect_to)
 
-     else:
+    else:
         data = getEptitudeData(eptitude, None)
         form = eptitude_form(achieve, data)
 
-     current_site = get_current_site(request)
+    current_site = get_current_site(request)
 
-     context = {
-            'form': form,
-            'achieve': achieve,
-            'site': current_site,
-            'site_name': current_site.name,
-        }
+    context = {
+        'form': form,
+        'achieve': achieve,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+
+    return TemplateResponse(request, template_name, context)
 
 
-     return TemplateResponse(request, template_name, context)
+def delete_eptitude_for_achieve(request, achieve_id, eptitude_id):
 
+    get_object_or_404(Achieve, pk=achieve_id)
+    redirect_to = '/achieves/edit_achieve/%s' % (achieve_id)
+    eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
+    eptitude.delete()
 
-def delete_eptitude_for_achieve (request, achieve_id, eptitude_id):
-
-     get_object_or_404(Achieve, pk=achieve_id)
-     redirect_to = "/achieves/edit_achieve/%s" % (achieve_id)
-     eptitude = get_object_or_404(CardEptitude, pk=eptitude_id)
-     eptitude.delete()
-
-     return HttpResponseRedirect(redirect_to)
+    return HttpResponseRedirect(redirect_to)
 
 
 def createCardByRequest(request):
@@ -577,15 +576,14 @@ def createCardByRequest(request):
     attack = request.POST['attack']
     health = request.POST['health']
     price = request.POST['price']
-    description = request.POST["description"]
-    type = int(request.POST["type"])
-    auxiliary = bool(int(request.POST["auxiliary"]))
-    has_weapon = bool(int(request.POST["has_weapon"]))
+    description = request.POST['description']
+    type = int(request.POST['type'])
+    auxiliary = bool(int(request.POST['auxiliary']))
+    has_weapon = bool(int(request.POST['has_weapon']))
     widget = int(request.POST['widget'])
 
-
     race_id = request.POST['race']
-    try :
+    try:
         race = Race.objects.get(pk=race_id)
     except Race.DoesNotExist:
         race = None
@@ -597,7 +595,7 @@ def createCardByRequest(request):
         subrace = None
 
     group_id = request.POST['group']
-    try :
+    try:
         group = Group.objects.get(pk=group_id)
     except Group.DoesNotExist:
         group = None
@@ -613,18 +611,19 @@ def createCardByRequest(request):
         attack=attack,
         health=health,
         price=price,
-        description = description,
-        type = type,
-        race = race,
-        subrace = subrace,
-        group = group,
-        auxiliary = auxiliary,
-        has_weapon = has_weapon,
-        widget = widget,
-        book = book
+        description=description,
+        type=type,
+        race=race,
+        subrace=subrace,
+        group=group,
+        auxiliary=auxiliary,
+        has_weapon=has_weapon,
+        widget=widget,
+        book=book
     )
 
     return card
+
 
 def editCardByRequest(request, card):
 
@@ -632,14 +631,14 @@ def editCardByRequest(request, card):
     attack = request.POST['attack']
     health = request.POST['health']
     price = request.POST['price']
-    description = request.POST["description"]
-    type = int(request.POST["type"])
+    description = request.POST['description']
+    type = int(request.POST['type'])
     book_id = request.POST['book']
-    has_weapon = bool(int(request.POST["has_weapon"]))
+    has_weapon = bool(int(request.POST['has_weapon']))
     widget = int(request.POST['widget'])
 
     race_id = request.POST['race']
-    try :
+    try:
         race = Race.objects.get(pk=race_id)
     except Race.DoesNotExist:
         race = None
@@ -651,11 +650,10 @@ def editCardByRequest(request, card):
         subrace = None
 
     group_id = request.POST['group']
-    try :
+    try:
         group = Group.objects.get(pk=group_id)
     except Group.DoesNotExist:
         group = None
-
 
     try:
         book = Book.objects.get(pk=book_id)
@@ -671,69 +669,69 @@ def editCardByRequest(request, card):
     card.race = race
     card.subrace = subrace
     card.group = group
-    card.auxiliary = bool(int(request.POST["auxiliary"]))
+    card.auxiliary = bool(int(request.POST['auxiliary']))
     card.book = book
     card.has_weapon = has_weapon
     card.widget = widget
     card.save()
 
+
 def getCardData(card):
     try:
-        race_id =Race.objects.get (pk=card.race.id).id
+        race_id = Race.objects.get(pk=card.race.id).id
     except ValueError:
         race_id = -1
     except AttributeError:
         race_id = -1
 
     try:
-        subrace_id =SubRace.objects.get (pk=card.subrace.id).id
+        subrace_id = SubRace.objects.get(pk=card.subrace.id).id
     except ValueError:
         subrace_id = -1
     except AttributeError:
         subrace_id = -1
 
     try:
-        book_id = Book.objects.get (pk=card.book.id).id
+        book_id = Book.objects.get(pk=card.book.id).id
     except ValueError:
         book_id = -1
     except AttributeError:
         book_id = -1
 
     try:
-        group_id = Group.objects.get (pk=card.group.id).id
+        group_id = Group.objects.get(pk=card.group.id).id
     except ValueError:
         group_id = -1
     except AttributeError:
         group_id = -1
-
-
 
     data = {
-        "title":card.title,
-        "attack":card.attack,
-        "health":card.health,
-        "price":card.price,
-        "description":card.description,
-        "type":int(card.type),
-        "auxiliary":int(card.auxiliary),
-        "race": race_id,
-        "book":book_id,
-        "group":group_id,
-        "subrace":subrace_id,
-        "has_weapon":int(card.has_weapon),
-        "widget":int(card.widget),
+        'title': card.title,
+        'attack': card.attack,
+        'health': card.health,
+        'price': card.price,
+        'description': card.description,
+        'type': int(card.type),
+        'auxiliary': int(card.auxiliary),
+        'race': race_id,
+        'book': book_id,
+        'group': group_id,
+        'subrace': subrace_id,
+        'has_weapon': int(card.has_weapon),
+        'widget': int(card.widget),
 
     }
     return data
 
-def createEptitudeByRequest (request):
+
+def createEptitudeByRequest(request):
 
     period = request.POST['period']
     level = request.POST['level']
     type = request.POST['type']
-    power = request.POST["power"]
-    max_power = request.POST["max_power"]
-    count = request.POST["count"]
+    power = request.POST['power']
+    max_power = request.POST['max_power']
+    count = request.POST['count']
     lifecycle = request.POST['lifecycle']
     condition = request.POST['condition']
     spellCondition = request.POST['spellCondition']
@@ -745,42 +743,42 @@ def createEptitudeByRequest (request):
     widget = request.POST['widget']
 
     try:
-        destroy = bool(int(request.POST["destroy"]))
+        destroy = bool(int(request.POST['destroy']))
     except:
         destroy = False
 
     try:
-        battlecry = bool(int(request.POST["battlecry"]))
+        battlecry = bool(int(request.POST['battlecry']))
     except:
         battlecry = False
 
     try:
-        spellSensibility = bool(int(request.POST["spellSensibility"]))
+        spellSensibility = bool(int(request.POST['spellSensibility']))
     except:
         spellSensibility = False
 
     try:
-        dynamic = bool(int(request.POST["dynamic"]))
+        dynamic = bool(int(request.POST['dynamic']))
     except:
         dynamic = False
 
     try:
-        attach_hero = bool(int(request.POST["attach_hero"]))
+        attach_hero = bool(int(request.POST['attach_hero']))
     except:
         attach_hero = False
 
     try:
-        attach_initiator = bool(int(request.POST["attach_initiator"]))
+        attach_initiator = bool(int(request.POST['attach_initiator']))
     except:
         attach_initiator = False
 
     try:
-        activate_widget =  bool(int(request.POST['activate_widget']))
+        activate_widget = bool(int(request.POST['activate_widget']))
     except:
         activate_widget = False
 
     race_id = request.POST['race']
-    try :
+    try:
         race = Race.objects.get(pk=race_id)
     except Race.DoesNotExist:
         race = None
@@ -792,20 +790,19 @@ def createEptitudeByRequest (request):
         subrace = None
 
     unit_id = request.POST['unit']
-    try :
+    try:
         unit = Card.objects.get(pk=unit_id)
     except Card.DoesNotExist:
         unit = None
 
     group_id = request.POST['group']
-    try :
+    try:
         group = Group.objects.get(pk=group_id)
     except Group.DoesNotExist:
         group = None
 
-
     dependency_id = request.POST['dependency']
-    try :
+    try:
         dependency = CardEptitude.objects.get(pk=int(dependency_id))
     except CardEptitude.DoesNotExist:
         dependency = None
@@ -817,206 +814,206 @@ def createEptitudeByRequest (request):
         attach_eptitude = None
 
     weapon_id = request.POST['weapon']
-    try :
+    try:
         weapon = Weapon.objects.get(pk=weapon_id)
     except Weapon.DoesNotExist:
         weapon = None
 
     eptitude = CardEptitude.objects.create(
-        period = period,
-        level = level,
-        type = type,
-        power = power,
-        max_power = max_power,
-        count = count,
-        lifecycle = lifecycle,
-        race = race,
-        weapon = weapon,
-        subrace = subrace,
-        unit = unit,
-        group = group,
-        dependency = dependency,
-        attach_eptitude = attach_eptitude,
-        condition = condition,
-        spellCondition = spellCondition,
-        dynamic = dynamic,
-        attachment = attachment,
-        attach_hero = attach_hero,
-        attach_initiator = attach_initiator,
-        battlecry = battlecry,
-        price = price,
-        probability = probability,
-        spellSensibility = spellSensibility,
-        activate_widget = activate_widget,
-        animation = animation,
-        manacost = manacost,
-        widget = widget,
-        destroy = destroy
+        period=period,
+        level=level,
+        type=type,
+        power=power,
+        max_power=max_power,
+        count=count,
+        lifecycle=lifecycle,
+        race=race,
+        weapon=weapon,
+        subrace=subrace,
+        unit=unit,
+        group=group,
+        dependency=dependency,
+        attach_eptitude=attach_eptitude,
+        condition=condition,
+        spellCondition=spellCondition,
+        dynamic=dynamic,
+        attachment=attachment,
+        attach_hero=attach_hero,
+        attach_initiator=attach_initiator,
+        battlecry=battlecry,
+        price=price,
+        probability=probability,
+        spellSensibility=spellSensibility,
+        activate_widget=activate_widget,
+        animation=animation,
+        manacost=manacost,
+        widget=widget,
+        destroy=destroy
     )
 
     return eptitude
 
+
 def editEptitudeByRequest(request, eptitude):
 
-        period = request.POST['period']
-        level = request.POST['level']
-        type = request.POST['type']
-        power = request.POST["power"]
-        max_power = request.POST["max_power"]
-        count = request.POST["count"]
-        attachment = request.POST["attachment"]
-        condition = request.POST['condition']
-        spellCondition = request.POST['spellCondition']
-        lifecycle = request.POST['lifecycle']
-        price = request.POST['price']
-        probability = request.POST['probability']
-        animation = request.POST['animation']
-        manacost = request.POST['manacost']
-        widget = request.POST['widget']
+    period = request.POST['period']
+    level = request.POST['level']
+    type = request.POST['type']
+    power = request.POST['power']
+    max_power = request.POST['max_power']
+    count = request.POST['count']
+    attachment = request.POST['attachment']
+    condition = request.POST['condition']
+    spellCondition = request.POST['spellCondition']
+    lifecycle = request.POST['lifecycle']
+    price = request.POST['price']
+    probability = request.POST['probability']
+    animation = request.POST['animation']
+    manacost = request.POST['manacost']
+    widget = request.POST['widget']
 
-        try:
-            destroy = bool(int(request.POST["destroy"]))
-        except:
-            destroy = False
+    try:
+        destroy = bool(int(request.POST['destroy']))
+    except:
+        destroy = False
 
-        try:
-            dynamic = bool(int(request.POST["dynamic"]))
-        except:
-            dynamic = 0
+    try:
+        dynamic = bool(int(request.POST['dynamic']))
+    except:
+        dynamic = 0
 
-        try:
-            battlecry = bool(int(request.POST["battlecry"]))
-        except:
-            battlecry = 0
+    try:
+        battlecry = bool(int(request.POST['battlecry']))
+    except:
+        battlecry = 0
 
-        try:
-            spellSensibility = bool(int(request.POST["spellSensibility"]))
-        except:
-            spellSensibility = 0
+    try:
+        spellSensibility = bool(int(request.POST['spellSensibility']))
+    except:
+        spellSensibility = 0
 
+    try:
+        attach_hero = bool(int(request.POST['attach_hero']))
+    except:
+        attach_hero = 0
 
-        try:
-            attach_hero = bool(int(request.POST["attach_hero"]))
-        except:
-            attach_hero = 0
+    try:
+        attach_initiator = bool(int(request.POST['attach_initiator']))
+    except:
+        attach_initiator = 0
 
-        try:
-            attach_initiator = bool(int(request.POST["attach_initiator"]))
-        except:
-            attach_initiator = 0
+    try:
+        activate_widget = bool(int(request.POST['activate_widget']))
+    except:
+        activate_widget = 0
 
-        try:
-            activate_widget =  bool(int(request.POST['activate_widget']))
-        except:
-            activate_widget = 0
+    race_id = request.POST['race']
+    try:
+        race = Race.objects.get(pk=race_id)
+    except Race.DoesNotExist:
+        race = None
 
-        race_id = request.POST['race']
-        try :
-            race = Race.objects.get(pk=race_id)
-        except Race.DoesNotExist:
-            race = None
+    subrace_id = request.POST['subrace']
+    try:
+        subrace = SubRace.objects.get(pk=subrace_id)
+    except SubRace.DoesNotExist:
+        subrace = None
 
-        subrace_id = request.POST['subrace']
-        try:
-            subrace = SubRace.objects.get(pk=subrace_id)
-        except SubRace.DoesNotExist:
-            subrace = None
+    unit_id = request.POST['unit']
+    try:
+        unit = Card.objects.get(pk=unit_id)
+    except Card.DoesNotExist:
+        unit = None
 
-        unit_id = request.POST['unit']
-        try :
-            unit = Card.objects.get(pk=unit_id)
-        except Card.DoesNotExist:
-            unit = None
+    dependency_id = request.POST['dependency']
+    try:
+        dependency = CardEptitude.objects.get(pk=int(dependency_id))
+    except CardEptitude.DoesNotExist:
+        dependency = None
 
-        dependency_id = request.POST['dependency']
-        try :
-            dependency = CardEptitude.objects.get(pk=int(dependency_id))
-        except CardEptitude.DoesNotExist:
-            dependency = None
+    attach_eptitude_id = request.POST['attach_eptitude']
+    try:
+        attach_eptitude = CardEptitude.objects.get(pk=int(attach_eptitude_id))
+    except CardEptitude.DoesNotExist:
+        attach_eptitude = None
 
-        attach_eptitude_id = request.POST['attach_eptitude']
-        try:
-            attach_eptitude = CardEptitude.objects.get(pk=int(attach_eptitude_id))
-        except CardEptitude.DoesNotExist:
-            attach_eptitude = None
+    group_id = request.POST['group']
+    try:
+        group = Group.objects.get(pk=group_id)
+    except Group.DoesNotExist:
+        group = None
 
-        group_id = request.POST['group']
-        try :
-            group = Group.objects.get(pk=group_id)
-        except Group.DoesNotExist:
-            group = None
+    weapon_id = request.POST['weapon']
+    try:
+        weapon = Weapon.objects.get(pk=weapon_id)
+    except Weapon.DoesNotExist:
+        weapon = None
 
-        weapon_id = request.POST['weapon']
-        try :
-            weapon = Weapon.objects.get(pk=weapon_id)
-        except Weapon.DoesNotExist:
-            weapon = None
+    eptitude.period = period
+    eptitude.level = level
+    eptitude.type = type
+    eptitude.power = power
+    eptitude.max_power = max_power
+    eptitude.count = count
+    eptitude.lifecycle = lifecycle
+    eptitude.condition = condition
+    eptitude.spellCondition = spellCondition
+    eptitude.race = race
+    eptitude.subrace = subrace
+    eptitude.unit = unit
+    eptitude.group = group
+    eptitude.dependency = dependency
+    eptitude.attach_eptitude = attach_eptitude
+    eptitude.dynamic = dynamic
+    eptitude.attach_hero = attach_hero
+    eptitude.attach_initiator = attach_initiator
+    eptitude.attachment = attachment
+    eptitude.battlecry = battlecry
+    eptitude.price = price
+    eptitude.probability = probability
+    eptitude.spellSensibility = spellSensibility
+    eptitude.activate_widget = activate_widget
+    eptitude.animation = animation
+    eptitude.manacost = manacost
+    eptitude.widget = widget
+    eptitude.destroy = destroy
+    eptitude.weapon = weapon
+    eptitude.save()
 
-
-        eptitude.period = period
-        eptitude.level = level
-        eptitude.type = type
-        eptitude.power = power
-        eptitude.max_power = max_power
-        eptitude.count = count
-        eptitude.lifecycle = lifecycle
-        eptitude.condition = condition
-        eptitude.spellCondition = spellCondition
-        eptitude.race = race
-        eptitude.subrace = subrace
-        eptitude.unit = unit
-        eptitude.group = group
-        eptitude.dependency = dependency
-        eptitude.attach_eptitude = attach_eptitude
-        eptitude.dynamic = dynamic
-        eptitude.attach_hero = attach_hero
-        eptitude.attach_initiator = attach_initiator
-        eptitude.attachment = attachment
-        eptitude.battlecry = battlecry
-        eptitude.price = price
-        eptitude.probability = probability
-        eptitude.spellSensibility = spellSensibility
-        eptitude.activate_widget = activate_widget
-        eptitude.animation = animation
-        eptitude.manacost = manacost
-        eptitude.widget = widget
-        eptitude.destroy = destroy
-        eptitude.weapon = weapon
-        eptitude.save()
 
 def getEptitudeData(eptitude, card):
 
     try:
-            race_id =Race.objects.get (pk=eptitude.race.id).id
+        race_id = Race.objects.get(pk=eptitude.race.id).id
     except ValueError:
-            race_id = -1
+        race_id = -1
     except AttributeError:
-            race_id = -1
+        race_id = -1
 
     try:
-            weapon_id =Weapon.objects.get (pk=eptitude.weapon.id).id
+        weapon_id = Weapon.objects.get(pk=eptitude.weapon.id).id
     except ValueError:
-            weapon_id = -1
+        weapon_id = -1
     except AttributeError:
-            weapon_id = -1
+        weapon_id = -1
 
     try:
-          subrace_id =SubRace.objects.get (pk=eptitude.subrace.id).id
+        subrace_id = SubRace.objects.get(pk=eptitude.subrace.id).id
     except ValueError:
-          subrace_id = -1
+        subrace_id = -1
     except AttributeError:
-          subrace_id = -1
+        subrace_id = -1
 
     try:
-          unit_id =Card.objects.get (pk=eptitude.unit.id).id
+        unit_id = Card.objects.get(pk=eptitude.unit.id).id
     except ValueError:
-          unit_id = -1
+        unit_id = -1
     except AttributeError:
-          unit_id = -1
+        unit_id = -1
 
     if card:
         try:
-            group_id = Group.objects.get (pk=card.group.id).id
+            group_id = Group.objects.get(pk=card.group.id).id
         except ValueError:
             group_id = -1
         except AttributeError:
@@ -1024,15 +1021,14 @@ def getEptitudeData(eptitude, card):
     else:
         group_id = -1
 
-
-    try :
+    try:
         dependency_id = eptitude.dependency.id
     except ValueError:
         dependency_id = -1
     except AttributeError:
         dependency_id = -1
 
-    try :
+    try:
         attach_eptitude_id = eptitude.attach_eptitude.id
     except ValueError:
         attach_eptitude_id = -1
@@ -1040,47 +1036,35 @@ def getEptitudeData(eptitude, card):
         attach_eptitude_id = -1
 
     data = {
-        "period":eptitude.period,
-        "level":eptitude.level,
-        "type":eptitude.type,
-        "power":eptitude.power,
-        "max_power":eptitude.max_power,
-        "count":eptitude.count,
-        "race":race_id,
-        "subrace":subrace_id,
-        "unit":unit_id,
-        "group":group_id,
-        "dependency":dependency_id,
-        "attach_eptitude":attach_eptitude_id,
-        "lifecycle":eptitude.lifecycle,
-        "condition":eptitude.condition,
-        "spellCondition":eptitude.spellCondition,
-        "dynamic":int(eptitude.dynamic),
-        'attachment':eptitude.attachment,
-        'attach_hero':int(eptitude.attach_hero),
-        'attach_initiator':int(eptitude.attach_initiator),
-        'battlecry':int(eptitude.battlecry),
-        'price':int(eptitude.price),
-        'probability':int(eptitude.probability),
-        'spellSensibility':int(eptitude.spellSensibility),
-        'activate_widget':int(eptitude.activate_widget),
-        'animation':int(eptitude.animation),
-        'manacost':int(eptitude.manacost),
-        'widget':int(eptitude.widget),
-        'destroy':int(eptitude.destroy),
-        "weapon":weapon_id
+        'period': eptitude.period,
+        'level': eptitude.level,
+        'type': eptitude.type,
+        'power': eptitude.power,
+        'max_power': eptitude.max_power,
+        'count': eptitude.count,
+        'race': race_id,
+        'subrace': subrace_id,
+        'unit': unit_id,
+        'group': group_id,
+        'dependency': dependency_id,
+        'attach_eptitude': attach_eptitude_id,
+        'lifecycle': eptitude.lifecycle,
+        'condition': eptitude.condition,
+        'spellCondition': eptitude.spellCondition,
+        'dynamic': int(eptitude.dynamic),
+        'attachment': eptitude.attachment,
+        'attach_hero': int(eptitude.attach_hero),
+        'attach_initiator': int(eptitude.attach_initiator),
+        'battlecry': int(eptitude.battlecry),
+        'price': int(eptitude.price),
+        'probability': int(eptitude.probability),
+        'spellSensibility': int(eptitude.spellSensibility),
+        'activate_widget': int(eptitude.activate_widget),
+        'animation': int(eptitude.animation),
+        'manacost': int(eptitude.manacost),
+        'widget': int(eptitude.widget),
+        'destroy': int(eptitude.destroy),
+        'weapon': weapon_id
 
     }
     return data
-
-
-
-
-
-
-
-
-
-
-
-

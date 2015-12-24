@@ -1,10 +1,12 @@
 __author__ = 'RIK'
 
+
 class CardType():
-    SPELL  = 0
+    SPELL = 0
     SECRET = 1
     UNIT = 2
     SPELL_TO_TARGET = 3
+
 
 class EptitudeCondition():
     NO_CONDITION = 0
@@ -41,6 +43,7 @@ class EptitudeAttachment():
     OPPONENT = 1
     ALL = 2
 
+
 class EptitudeLevel():
     SELF = 0
     All = 1
@@ -72,6 +75,7 @@ class EptitudeLevel():
     ALL_EXCEPT_ONE = 27
     UNIT_HERO = 28
     ACTIVE_TARGET = 29
+
 
 class EptitudeType():
     JERK = 1
@@ -235,4 +239,3 @@ class EptitudePeriod ():
 
     ACTIVATE_ACHIEVE = 54
     ACTIVATE_ACTIVE = 55
-

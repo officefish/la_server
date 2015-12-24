@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Achieve',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(serialize=False,
+                                        verbose_name='ID', primary_key=True, auto_created=True)),
                 ('title', models.CharField(max_length=70)),
                 ('description', models.CharField(max_length=200)),
                 ('price', models.IntegerField(default=0)),
@@ -28,9 +29,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AchieveCollector',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(serialize=False,
+                                        verbose_name='ID', primary_key=True, auto_created=True)),
                 ('achieve', models.ForeignKey(to='achieve.Achieve')),
-                ('owner', models.ForeignKey(related_name='achieve_owner', to='hero.Hero')),
+                ('owner', models.ForeignKey(
+                    related_name='achieve_owner', to='hero.Hero')),
             ],
             options={
             },
@@ -39,7 +42,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AchieveMask',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(serialize=False,
+                                        verbose_name='ID', primary_key=True, auto_created=True)),
                 ('rarity', models.IntegerField(default=0)),
                 ('buy_cost', models.IntegerField(default=40)),
                 ('sale_cost', models.IntegerField(default=10)),
@@ -52,7 +56,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='achieve',
             name='owners',
-            field=models.ManyToManyField(to='hero.Hero', through='achieve.AchieveCollector'),
+            field=models.ManyToManyField(
+                to='hero.Hero', through='achieve.AchieveCollector'),
             preserve_default=True,
         ),
     ]

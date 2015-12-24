@@ -1,5 +1,4 @@
-"""
-WSGI config for last_argument project.
+"""WSGI config for last_argument project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -19,7 +18,7 @@ import os
 # if running multiple sites in the same mod_wsgi process. To fix this, use
 # mod_wsgi daemon mode with each site in its own daemon process, or use
 # os.environ["DJANGO_SETTINGS_MODULE"] = "last_argument.settings"
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "last_argument.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'last_argument.settings')
 #!/usr/bin/env python
 
 

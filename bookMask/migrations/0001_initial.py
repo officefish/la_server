@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BookMask',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('book', models.OneToOneField(to='book.Book')),
             ],
             options={
@@ -25,7 +26,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MaskCollector',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
             ],
             options={
             },
@@ -34,7 +36,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MaskItem',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False,
+                                        auto_created=True, primary_key=True, verbose_name='ID')),
                 ('rarity', models.IntegerField(default=0)),
                 ('buy_cost', models.IntegerField(default=40)),
                 ('sale_cost', models.IntegerField(default=10)),
@@ -52,7 +55,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='maskcollector',
             name='item',
-            field=models.ForeignKey(related_name='mask_item', to='bookMask.MaskItem'),
+            field=models.ForeignKey(
+                related_name='mask_item', to='bookMask.MaskItem'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -64,7 +68,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bookmask',
             name='items',
-            field=models.ManyToManyField(to='bookMask.MaskItem', through='bookMask.MaskCollector'),
+            field=models.ManyToManyField(
+                to='bookMask.MaskItem', through='bookMask.MaskCollector'),
             preserve_default=True,
         ),
     ]

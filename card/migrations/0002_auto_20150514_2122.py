@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AchieveCollection',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True,
+                                        verbose_name='ID', auto_created=True, serialize=False)),
             ],
             options={
             },
@@ -26,9 +27,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AchieveCollectionItem',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True,
+                                        verbose_name='ID', auto_created=True, serialize=False)),
                 ('achieve', models.ForeignKey(to='achieve.Achieve')),
-                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='collectionAchieves')),
+                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL,
+                                            related_name='collectionAchieves')),
             ],
             options={
             },
@@ -37,9 +40,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AchieveCollector',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True,
+                                        verbose_name='ID', auto_created=True, serialize=False)),
                 ('collection', models.ForeignKey(to='card.AchieveCollection')),
-                ('item', models.ForeignKey(to='card.AchieveCollectionItem', related_name='achieve_collection_item')),
+                ('item', models.ForeignKey(to='card.AchieveCollectionItem',
+                                           related_name='achieve_collection_item')),
             ],
             options={
             },
@@ -48,13 +53,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='achievecollection',
             name='items',
-            field=models.ManyToManyField(to='card.AchieveCollectionItem', through='card.AchieveCollector'),
+            field=models.ManyToManyField(
+                to='card.AchieveCollectionItem', through='card.AchieveCollector'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='achievecollection',
             name='owner',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='achieve_collections'),
+            field=models.ForeignKey(
+                to=settings.AUTH_USER_MODEL, related_name='achieve_collections'),
             preserve_default=True,
         ),
     ]
