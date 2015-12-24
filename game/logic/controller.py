@@ -1576,12 +1576,7 @@ class Controller ():
             else:
                 self.clone().newOpponentCard(unit)
 
-        controller = CardController()
-        controller.setWhiteFlag(self.whiteFlag)
-        controller.setMatch(self.match)
-        controller.setScenario(self.scenario)
-        controller.setClient(self.client)
-        controller.new_card()
+        CardController(self).new_card()
 
     def copyCardFromHand(self, targets, eptitude):
         if len(targets):
@@ -1649,12 +1644,7 @@ class Controller ():
             else:
                 self.clone().newOpponentCard(unit)
 
-        controller = CardController()
-        controller.setWhiteFlag(self.whiteFlag)
-        controller.setMatch(self.match)
-        controller.setScenario(self.scenario)
-        controller.setClient(self.client)
-        controller.new_card()
+        CardController(self).new_card()
 
     def copyCardFromDeck(self, targets, eptitude):
 
@@ -1725,12 +1715,7 @@ class Controller ():
                 else:
                     self.clone().newOpponentCard(unit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_card()
+            CardController(self).new_card()
 
     def overload(self, targets, eptitude):
         if len(targets):
@@ -2040,12 +2025,7 @@ class Controller ():
 
             self.clone().unitPlaced(targetUnit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_unit()
+            CardController(self).new_unit()
 
     def unit_convertion(self, targets, eptitude):
         for target in targets:
@@ -2414,12 +2394,7 @@ class Controller ():
 
                         self.clone().unitPlaced(targetUnit)
 
-                        controller = CardController()
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.new_unit()
+                        CardController(self).new_unit()
 
             if eptitude.attachment == EptitudeAttachment.OPPONENT:
                 if len(opponentRow) < 7:
@@ -2452,12 +2427,7 @@ class Controller ():
 
                         self.clone().unitPlaced(targetUnit)
 
-                        controller = CardController()
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.new_unit()
+                        CardController(self).new_unit()
 
             if eptitude.attachment == EptitudeAttachment.ALL:
                 if len(playerRow) < 7:
@@ -2492,12 +2462,7 @@ class Controller ():
 
                         self.clone().unitPlaced(targetUnit)
 
-                        controller = CardController()
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.new_unit()
+                        CardController(self).new_unit()
 
                 if len(opponentRow) < 7:
                     cards = self.match.getUnitCardsHandList(not self.whiteFlag)
@@ -2529,12 +2494,7 @@ class Controller ():
 
                         self.clone().unitPlaced(targetUnit)
 
-                        controller = CardController()
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.new_unit()
+                        CardController(self).new_unit()
 
     def cardFromGraveYard(self, targets, eptitude):
 
@@ -2609,12 +2569,7 @@ class Controller ():
                 else:
                     self.clone().newOpponentCard(unit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_card()
+            CardController(self).new_card()
 
         if len(graveCards):
             action = {}
@@ -2701,12 +2656,7 @@ class Controller ():
 
             self.clone().unitPlaced(targetUnit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_unit()
+            CardController(self).new_unit()
 
     def beckCardToHand(self, targets, eptitude):
 
@@ -2767,12 +2717,7 @@ class Controller ():
                 else:
                     self.clone().newOpponentCard(unit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_card()
+            CardController(self).new_card()
 
             if target.whiteFlag == self.whiteFlag:
                 action = {}
@@ -2894,23 +2839,13 @@ class Controller ():
                 else:
                     self.clone().newOpponentCard(unit)
 
-            controller = CardController()
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.new_card()
+            CardController(self).new_card()
 
         # события уничтоженных юнитов
         for targetUnit in destroyCards:
             self.clone().removeUnit(targetUnit)
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.unit_die(targetUnit.whiteFlag)
+            CardController(self).unit_die(targetUnit.whiteFlag)
 
     def copyUnitCardsToHand(self, targets, eptitude):
         if len(targets):
@@ -3051,13 +2986,8 @@ class Controller ():
             targetUnit.spellUp = False
             targetUnit.spellInvisible = False
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.destroy_shield()
-            controller.freeze()
+            CardController(self).destroy_shield()
+            CardController(self).freeze()
 
             # деактивируем динамическую аттаку если есть таковая в способностях
             if self.containsDynamicEptitudes(targetUnit):
@@ -3240,12 +3170,7 @@ class Controller ():
 
                 self.clone().removeUnit(targetUnit)
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.unit_die(targetUnit.whiteFlag)
+                CardController(self).unit_die(targetUnit.whiteFlag)
 
             else:
                 #logger.debug ('addAction::opponent_hero_death')
@@ -3323,12 +3248,7 @@ class Controller ():
 
                 self.clone().removeUnit(targetUnit)
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.unit_die(targetUnit.whiteFlag)
+                CardController(self).unit_die(targetUnit.whiteFlag)
 
     def passive_attack_series(self, unit, eptitude):
         count = eptitude.power
@@ -3365,12 +3285,7 @@ class Controller ():
                 shieldActionFlag = True
                 shieldAction = action
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.destroy_shield()
+                CardController(self).destroy_shield()
 
             else:
                 shieldActionFlag = False
@@ -3426,12 +3341,7 @@ class Controller ():
                     self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.hero_wound(targetUnit.whiteFlag)
+                    CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 if targetIndex >= 0:
@@ -3460,12 +3370,7 @@ class Controller ():
 
                     self.clone().removeUnit(targetUnit)
 
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unit_die(targetUnit.whiteFlag)
+                    CardController(self).unit_die(targetUnit.whiteFlag)
 
                 else:
                     #logger.debug ('addAction::opponent_hero_death')
@@ -3526,12 +3431,7 @@ class Controller ():
                 shieldActionFlag = True
                 shieldAction = action
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.destroy_shield()
+                CardController(self).destroy_shield()
 
             else:
                 shieldActionFlag = False
@@ -3591,12 +3491,7 @@ class Controller ():
                     self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.hero_wound(targetUnit.whiteFlag)
+                    CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 if targetIndex >= 0:
@@ -3625,12 +3520,7 @@ class Controller ():
 
                     self.clone().removeUnit(targetUnit)
 
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unit_die(targetUnit.whiteFlag)
+                    CardController(self).unit_die(targetUnit.whiteFlag)
 
                 else:
                     #logger.debug ('addAction::opponent_hero_death')
@@ -3724,12 +3614,7 @@ class Controller ():
                 shieldActionFlag = True
                 shieldAction = action
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.destroy_shield()
+                CardController(self).destroy_shield()
 
             else:
 
@@ -3767,12 +3652,7 @@ class Controller ():
                     self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.hero_wound(targetUnit.whiteFlag)
+                    CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 if targetIndex >= 0:
@@ -3801,12 +3681,7 @@ class Controller ():
 
                     self.clone().removeUnit(targetUnit)
 
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unit_die(targetUnit.whiteFlag)
+                    CardController(self).unit_die(targetUnit.whiteFlag)
 
                 else:
                     action = {}
@@ -3854,12 +3729,7 @@ class Controller ():
                 shieldActionFlag = True
                 shieldAction = action
 
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.destroy_shield()
+                CardController(self).destroy_shield()
 
             else:
                 shieldActionFlag = False
@@ -3869,12 +3739,7 @@ class Controller ():
             targetUnit.freeze = True
             targetUnit.freezeIndex = 2
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.freeze()
+            CardController(self).freeze()
 
             initiatorAttachment = self.match.initAttachment(
                 unit, self.whiteFlag)
@@ -3932,12 +3797,7 @@ class Controller ():
                     self.clone().woundUnit(targetUnit)
 
                 if isinstance(targetUnit, HeroUnit):
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.hero_wound(targetUnit.whiteFlag)
+                    CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 if targetIndex >= 0:
@@ -3966,12 +3826,7 @@ class Controller ():
 
                     self.clone().removeUnit(targetUnit)
 
-                    controller = CardController()
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.unit_die(targetUnit.whiteFlag)
+                    CardController(self).unit_die(targetUnit.whiteFlag)
 
                 else:
                     #logger.debug ('addAction::opponent_hero_death')
@@ -4001,12 +3856,7 @@ class Controller ():
             targetUnit.freeze = True
             targetUnit.freezeIndex = 2
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.freeze()
+            CardController(self).freeze()
 
             targetAttachment = self.match.initAttachment(
                 targetUnit, self.whiteFlag)
@@ -4093,12 +3943,7 @@ class Controller ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.destroy_shield()
+            CardController(self).destroy_shield()
 
         scenarioTargets = []
         deathUnits = []
@@ -4110,12 +3955,7 @@ class Controller ():
                 self.clone().woundUnit(targetUnit)
 
             if isinstance(targetUnit, HeroUnit):
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.hero_wound(targetUnit.whiteFlag)
+                CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 attachment = self.match.initAttachment(
@@ -4150,12 +3990,7 @@ class Controller ():
         for targetUnit in deathUnits:
             self.clone().removeUnit(targetUnit)
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.unit_die(targetUnit.whiteFlag)
+            CardController(self).unit_die(targetUnit.whiteFlag)
 
         if self.whiteFlag:
             rowLength = len(self.match.whiteUnitRow)
@@ -4227,12 +4062,7 @@ class Controller ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.destroy_shield()
+            CardController(self).destroy_shield()
 
         scenarioTargets = []
         deathUnits = []
@@ -4242,12 +4072,7 @@ class Controller ():
                 self.clone().woundUnit(targetUnit)
 
             if isinstance(targetUnit, HeroUnit):
-                controller = CardController()
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.hero_wound(targetUnit.whiteFlag)
+                CardController(self).hero_wound(targetUnit.whiteFlag)
 
             if targetUnit.getHealth() <= 0:
                 attachment = self.match.initAttachment(
@@ -4287,12 +4112,7 @@ class Controller ():
             self.match.buryMinion(targetUnit)
             self.clone().removeUnit(targetUnit)
 
-            controller = CardController()
-            controller.setMatch(self.match)
-            controller.setScenario(self.scenario)
-            controller.setClient(self.client)
-            controller.setWhiteFlag(self.whiteFlag)
-            controller.unit_die(targetUnit.whiteFlag)
+            CardController(self).unit_die(targetUnit.whiteFlag)
 
         if self.whiteFlag:
             rowLength = len(self.match.whiteUnitRow)
@@ -4404,12 +4224,7 @@ class Controller ():
                         else:
                             self.clone().newOpponentCard(unit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_card()
+                    CardController(self).new_card()
 
             elif attachment == EptitudeAttachment.OPPONENT:
                 if self.match.deckLength(not unitFlag):
@@ -4479,12 +4294,7 @@ class Controller ():
                         else:
                             self.clone().newOpponentCard(unit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_card()
+                    CardController(self).new_card()
 
             elif attachment == EptitudeAttachment.ALL:
 
@@ -4563,12 +4373,7 @@ class Controller ():
                         else:
                             self.clone().newOpponentCard(unit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_card()
+                    CardController(self).new_card()
 
                 pickFlag = False
                 if self.match.deckLength(not unitFlag):
@@ -4638,12 +4443,7 @@ class Controller ():
                         else:
                             self.clone().newOpponentCard(unit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_card()
+                    CardController(self).new_card()
 
     def pick_card_till(self, targets, eptitude):
         for target in targets:
@@ -4733,12 +4533,7 @@ class Controller ():
                             else:
                                 self.clone().newOpponentCard(unit)
 
-                        controller = CardController()
-                        controller.setWhiteFlag(self.whiteFlag)
-                        controller.setMatch(self.match)
-                        controller.setScenario(self.scenario)
-                        controller.setClient(self.client)
-                        controller.new_card()
+                        CardController(self).new_card()
 
     def pick_card_depends_on_wound_units(self, targets, eptitude):
         if len(targets):
@@ -4847,12 +4642,7 @@ class Controller ():
                     else:
                         self.clone().newOpponentCard(unit)
 
-                controller = CardController()
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.new_card()
+                CardController(self).new_card()
 
     def pick_card_depends_on_opponent_cards_count(self, targets, eptitude):
         if len(targets):
@@ -4946,12 +4736,7 @@ class Controller ():
                     else:
                         self.clone().newOpponentCard(unit)
 
-                controller = CardController()
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.new_card()
+                CardController(self).new_card()
 
     def rebirth(self, targets, eptitude):
         if len(targets):
@@ -4998,12 +4783,7 @@ class Controller ():
 
                     self.clone().unitPlaced(targetUnit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_unit()
+                    CardController(self).new_unit()
 
                 if eptitude.attachment == EptitudeAttachment.OPPONENT and len(opponentRow) < 7:
 
@@ -5028,12 +4808,7 @@ class Controller ():
 
                     self.clone().unitPlaced(targetUnit)
 
-                    controller = CardController()
-                    controller.setWhiteFlag(self.whiteFlag)
-                    controller.setMatch(self.match)
-                    controller.setScenario(self.scenario)
-                    controller.setClient(self.client)
-                    controller.new_unit()
+                    CardController(self).new_unit()
 
     def new_unit(self, unit, targets, eptitude):
 
@@ -5192,12 +4967,7 @@ class Controller ():
 
                 self.clone().unitPlaced(targetUnit)
 
-                controller = CardController()
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.new_unit()
+                CardController(self).new_unit()
 
         if self.whiteFlag:
             rowLength = len(self.match.whiteUnitRow)
@@ -5544,12 +5314,7 @@ class Controller ():
 
                 self.clone().unitPlaced(targetUnit)
 
-                controller = CardController()
-                controller.setWhiteFlag(self.whiteFlag)
-                controller.setMatch(self.match)
-                controller.setScenario(self.scenario)
-                controller.setClient(self.client)
-                controller.new_unit()
+                CardController(self).new_unit()
 
     def increase_card_price(self, unit, targets, eptitude):
         value = eptitude.power

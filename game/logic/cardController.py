@@ -3,26 +3,37 @@ __author__ = 'RIK'
 import logging
 logger = logging.getLogger('game_handler')
 
+import random
+
 from game.logic.constants import EptitudePeriod, EptitudeCondition, EptitudeLevel, EptitudeAttachment, EptitudeType
 from game.logic.action import Action
 
 
 class CardController ():
 
-    def __init__(self):
+    def __init__(self, controller=None):
         self.id = random.randint(0, 10000)
+        if controller:
+            self.setMatch(self.match)
+            self.setScenario(self.scenario)
+            self.setClient(self.client)
+            self.setWhiteFlag(self.whiteFlag)
 
     def setScenario(self, scenario):
         self.scenario = scenario
+        return self
 
     def setMatch(self, match):
         self.match = match
+        return self
 
     def setClient(self, client):
         self.client = client
+        return self
 
     def setWhiteFlag(self, flag):
         self.whiteFlag = flag
+        return self
 
     def new_card(self):
         for card in self.match.white_hand:
