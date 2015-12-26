@@ -35,16 +35,20 @@ class CardController ():
         self.whiteFlag = flag
         return self
 
-    def new_card(self):
+    def activate_both_hands(self, eptitude_period):
+        """Активировать все карты в руках определенным периодом"""
         for card in self.match.white_hand:
             self.card = card
             self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_NEW_CARD)
+            self.activate(eptitude_period)
 
         for card in self.match.black_hand:
             self.card = card
             self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_NEW_CARD)
+            self.activate(eptitude_period)
+
+    def new_card(self):
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_NEW_CARD)
 
         if self.match.whiteHeroUnit.getHealth() < self.match.whiteHeroUnit.defaultHealth:
             self.hero_wound(True)
@@ -55,76 +59,25 @@ class CardController ():
         self.new_unit()
 
     def new_unit(self):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_NEW_UNIT)
-
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_NEW_UNIT)
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_NEW_UNIT)
 
     def unit_die(self, whiteFlag):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_UNIT_DIE)
-
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_UNIT_DIE)
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_UNIT_DIE)
 
     def freeze(self):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_FREEZE)
-
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_FREEZE)
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_FREEZE)
 
     def destroy_shield(self):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_DESTROY_SHIELD)
-
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_DESTROY_SHIELD)
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_DESTROY_SHIELD)
 
     def play_card(self):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_PLAY_CARD)
+        self.activate_both_hands(EptitudePeriod.CARD_MODE_PLAY_CARD)
 
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(EptitudePeriod.CARD_MODE_PLAY_CARD)
-
-    def hero_wound(self, heroWhiteFlag):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            if heroWhiteFlag == card['whiteFlag']:
-                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
-            else:
-                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
-
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            if heroWhiteFlag == card['whiteFlag']:
-                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
-            else:
-                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
+    def hero_wound(self, hero_white_flag):
+        if hero_white_flag == card['whiteFlag']:
+            self.activate_both_hands(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
+        else:
+            self.activate_both_hands(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
     def activate(self, period):
         if len(self.eptitudes):
