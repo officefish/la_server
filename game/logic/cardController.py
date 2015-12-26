@@ -74,10 +74,21 @@ class CardController ():
         self.activate_both_hands(EptitudePeriod.CARD_MODE_PLAY_CARD)
 
     def hero_wound(self, hero_white_flag):
-        if hero_white_flag == card['whiteFlag']:
-            self.activate_both_hands(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
-        else:
-            self.activate_both_hands(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
+        for card in self.match.white_hand:
+            self.card = card
+            self.eptitudes = card['eptitudes'][:]
+            if heroWhiteFlag == card['whiteFlag']:
+                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
+            else:
+                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
+
+        for card in self.match.black_hand:
+            self.card = card
+            self.eptitudes = card['eptitudes'][:]
+            if heroWhiteFlag == card['whiteFlag']:
+                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
+            else:
+                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
     def activate(self, period):
         if len(self.eptitudes):
