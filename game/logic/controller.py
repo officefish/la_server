@@ -20,10 +20,10 @@ class Controller ():
     def __init__(self, controller=None):
         self.id = random.randint(0, 10000)
         if controller:
-            self.setMatch(self.match)
-            self.setScenario(self.scenario)
-            self.setClient(self.client)
-            self.setWhiteFlag(self.whiteFlag)
+            self.setMatch(controller.match)
+            self.setScenario(controller.scenario)
+            self.setClient(controller.client)
+            self.setWhiteFlag(controller.whiteFlag)
 
     def setScenario(self, scenario):
         self.scenario = scenario
