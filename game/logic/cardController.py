@@ -81,7 +81,7 @@ class CardController ():
         eptitudes = card['eptitudes'][:]
         while len(eptitudes):
             eptitude = eptitudes[0]
-            del self.eptitudes[0]
+            del eptitudes[0]
 
             if period == eptitude['period']:
 
