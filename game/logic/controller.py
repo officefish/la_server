@@ -43,102 +43,63 @@ class Controller ():
 
     def spellToTarget(self, unit):
         logger.debug('Controller::spellToTarget')
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        logger.debug(self.eptitudes)
-        self.activate(EptitudePeriod.ACTIVATE_SPELL_TO_TARGET)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ACTIVATE_SPELL_TO_TARGET)
 
     def spell(self, unit):
         logger.debug('Controller::spell')
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ACTIVATE_SPELL)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ACTIVATE_SPELL)
 
     def activateAchieve(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ACTIVATE_ACHIEVE)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ACTIVATE_ACHIEVE)
 
     def activateActive(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ACTIVATE_ACTIVE)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ACTIVATE_ACTIVE)
 
     def preAttack(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.PRE_ATTACK)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.PRE_ATTACK)
 
     def opponentPreAttack(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.OPPONENT_PRE_ATTACK)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.OPPONENT_PRE_ATTACK)
 
     def enticeAssociate(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ASSOCIATE_ENTICE)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ASSOCIATE_ENTICE)
 
     def enticeOpponent(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.OPPONENT_ENTICE)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.OPPONENT_ENTICE)
 
     def addUnit(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.SELF_PLACED)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.SELF_PLACED)
 
     def activateEptitude(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ACTIVATED)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ACTIVATED)
 
     def attack(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ATTACK)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ATTACK)
 
     def isAttacked(self, unit):
-        self.unit = unit
         if isinstance(unit, Unit):
-            self.eptitudes = unit.eptitudes[:]
-            self.activate(EptitudePeriod.IS_ATTACKED)
+            self.activate_unit_eptitudes(unit, EptitudePeriod.IS_ATTACKED)
 
     def associateSpell(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ASSOCIATE_SPELL)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ASSOCIATE_SPELL)
 
     def opponentSpell(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.OPPONENT_SPELL)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.OPPONENT_SPELL)
 
     def allSpell(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.ALL_SPELL)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.ALL_SPELL)
 
     def endStep(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.END_STEP)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.END_STEP)
 
     def opponentEndStep(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.OPPONENT_END_STEP)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.OPPONENT_END_STEP)
 
     def startStep(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.START_STEP)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.START_STEP)
 
     def opponentStartStep(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.OPPONENT_START_STEP)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.OPPONENT_START_STEP)
 
     def unitPlaced(self, unit):
         self.match.setLastPlaced(unit)
@@ -154,48 +115,30 @@ class Controller ():
         # активируем (EptitudePeriod.ASSOCIATE_PLACED)
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ASSOCIATE_PLACED)
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ASSOCIATE_RACE_PLACED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_PLACED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_RACE_PLACED)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.OPPONENT_PLACED)
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.OPPONENT_RACE_PLACED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_PLACED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_RACE_PLACED)
 
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ALL_PLACED)
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ALL_RACE_PLACED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ALL_PLACED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ALL_RACE_PLACED)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_PLACED)
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_RACE_PLACED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_PLACED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_RACE_PLACED)
 
     def newCard(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.NEW_CARD_IN_HAND)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.NEW_CARD_IN_HAND)
 
     def newPlayerCard(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.NEW_PLAYER_CARD_IN_HAND)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.NEW_PLAYER_CARD_IN_HAND)
 
     def newOpponentCard(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.NEW_OPPONENT_CARD_IN_HAND)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.NEW_OPPONENT_CARD_IN_HAND)
 
     def configureUnit(self, unit):
         self.unit = unit
@@ -216,30 +159,20 @@ class Controller ():
         # активируем (EptitudePeriod.ASSOCIATE_PLACED)
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ASSOCIATE_PLAY_CARD)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_PLAY_CARD)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.OPPONENT_PLAY_CARD)
+            self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_PLAY_CARD)
 
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ALL_PLAY_CARD)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ALL_PLAY_CARD)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_PLAY_CARD)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_PLAY_CARD)
 
     def woundUnit(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.SELF_WOUND)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.SELF_WOUND)
 
         try:
             self.match.whiteUnitRow.index(unit)
@@ -252,39 +185,23 @@ class Controller ():
         # активируем (EptitudePeriod.ASSOCIATE_PLACED)
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ASSOCIATE_WOUND)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_WOUND)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.OPPONENT_WOUND)
+            self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_WOUND)
 
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ALL_WOUND)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ALL_WOUND)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_WOUND)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_WOUND)
 
     def fullHealthUnit(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        self.activate(EptitudePeriod.SELF_FULL_HEALTH)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.SELF_FULL_HEALTH)
 
     def removeUnit(self, unit):
-        self.unit = unit
-        self.eptitudes = unit.eptitudes[:]
-        logger.debug('die unit eptitudes len: %s' % len(self.eptitudes))
-        for eptitude in self.eptitudes:
-            logger.debug('type:%s , period:%s' %
-                         (eptitude.type, eptitude.period))
-        self.activate(EptitudePeriod.SELF_DIE)
+        self.activate_unit_eptitudes(unit, EptitudePeriod.SELF_DIE)
 
         if self.containsDynamicEptitudes(unit):
             self.deactivateDynamic(unit)
@@ -300,31 +217,23 @@ class Controller ():
         # активируем (EptitudePeriod.ASSOCIATE_PLACED)
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
                 if unit.whiteFlag == item.whiteFlag:
-                    self.activate(EptitudePeriod.ASSOCIATE_DIE)
+                    self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_DIE)
                 else:
-                    self.activate(EptitudePeriod.OPPONENT_DIE)
+                    self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_DIE)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
             if unit.whiteFlag == item.whiteFlag:
-                self.activate(EptitudePeriod.ASSOCIATE_DIE)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_DIE)
             else:
-                self.activate(EptitudePeriod.OPPONENT_DIE)
+                self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_DIE)
 
         for item in playerRow:
             if item != unit:
-                self.unit = item
-                self.eptitudes = item.eptitudes[:]
-                self.activate(EptitudePeriod.ALL_DIE)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ALL_DIE)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_DIE)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_DIE)
 
     def containsDynamicEptitudes(self, unit):
         flag = False
@@ -334,9 +243,7 @@ class Controller ():
         return flag
 
     def deactivateDynamic(self, unit):
-
         for eptitude in unit.eptitudes:
-
             if eptitude.dynamic:
                 targets = self.match.getLevelTargets(
                     unit, eptitude, unit.whiteFlag)
@@ -559,6 +466,11 @@ class Controller ():
                     target.provocation = True
 
             self.configure()
+
+    def activate_unit_eptitudes(self, unit, period):
+        self.unit = unit
+        self.eptitudes = unit.eptitudes[:]
+        self.activate(period)
 
     def activate(self, period):
         #logger.debug ('Controller_%s::activate period %s' % (self.id, period))
@@ -3089,46 +3001,32 @@ class Controller ():
 
     def treatHero(self, row, playerFlag):
         for item in row:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
             if playerFlag:
-                self.activate(EptitudePeriod.ASSOCIATE_HERO_TREATED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_HERO_TREATED)
             else:
-                self.activate(EptitudePeriod.OPPONENT_HERO_TREATED)
+                self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_HERO_TREATED)
 
     def treatHeroes(self, playerRow, opponentRow):
         for item in playerRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_HEROES_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_HEROES_TREATED)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_HEROES_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_HEROES_TREATED)
 
     def treatAssociate(self, row):
         for item in row:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ASSOCIATE_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ASSOCIATE_TREATED)
 
     def treatOpponent(self, row):
         for item in row:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.OPPONENT_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.OPPONENT_TREATED)
 
     def treatAll(self, playerRow, opponentRow):
         for item in playerRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_TREATED)
 
         for item in opponentRow:
-            self.unit = item
-            self.eptitudes = item.eptitudes[:]
-            self.activate(EptitudePeriod.ALL_TREATED)
+            self.activate_unit_eptitudes(item, EptitudePeriod.ALL_TREATED)
 
     def kill(self, unit, targets, eptitude):
         if len(targets):
