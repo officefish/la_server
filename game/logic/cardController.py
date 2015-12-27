@@ -71,13 +71,12 @@ class CardController ():
 
     def hero_wound(self, hero_white_flag):
         for card in self.match.white_hand + self.match.black_hand:
-            if heroWhiteFlag == card['whiteFlag']:
+            if hero_white_flag == card['whiteFlag']:
                 self.activate(card, EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
             else:
                 self.activate(card, EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
     def activate(self, card, period):
-        card = card
         eptitudes = card['eptitudes'][:]
         while len(eptitudes):
             eptitude = eptitudes[0]
@@ -86,43 +85,35 @@ class CardController ():
             if period == eptitude['period']:
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_TOKENS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_TOKENS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_TOKENS')
                     self.decrease_price_depends_on_tokens(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS')
+                    logger.debug( 'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS')
                     self.decrease_price_depends_on_race_tokens(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS')
                     self.decrease_price_depends_on_shield_tokens(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS')
                     self.decrease_price_depends_on_player_cards(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS')
                     self.decrease_price_depends_on_opponent_cards(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH')
+                    logger.debug( 'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH')
                     self.decrease_price_depends_on_hero_health(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_DIE_UNITS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
                     self.decrease_price_depends_on_die_units(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_FROZEN_TOKENS:
-                    logger.debug(
-                        'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
+                    logger.debug('CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
                     self.decrease_price_depends_on_freeze_tokens(card, eptitude)
 
     def decrease_price(self, card, value, attachment, index):
