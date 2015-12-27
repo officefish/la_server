@@ -38,14 +38,10 @@ class CardController ():
     def activate_both_hands(self, eptitude_period):
         """Активировать все карты в руках определенным периодом"""
         for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(eptitude_period)
+            self.activate(card, eptitude_period)
 
         for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            self.activate(eptitude_period)
+            self.activate(card, eptitude_period)
 
     def new_card(self):
         self.activate_both_hands(EptitudePeriod.CARD_MODE_NEW_CARD)
@@ -74,25 +70,17 @@ class CardController ():
         self.activate_both_hands(EptitudePeriod.CARD_MODE_PLAY_CARD)
 
     def hero_wound(self, hero_white_flag):
-        for card in self.match.white_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
+        for card in self.match.white_hand + self.match.black_hand:
             if heroWhiteFlag == card['whiteFlag']:
-                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
+                self.activate(card, EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
             else:
-                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
+                self.activate(card, EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
 
-        for card in self.match.black_hand:
-            self.card = card
-            self.eptitudes = card['eptitudes'][:]
-            if heroWhiteFlag == card['whiteFlag']:
-                self.activate(EptitudePeriod.CARD_MODE_PLAYER_HERO_WOUND)
-            else:
-                self.activate(EptitudePeriod.CARD_MODE_OPPONENT_HERO_WOUND)
-
-    def activate(self, period):
-        if len(self.eptitudes):
-            eptitude = self.eptitudes[0]
+    def activate(self, card, period):
+        card = card
+        eptitudes = card['eptitudes'][:]
+        while len(eptitudes):
+            eptitude = eptitudes[0]
             del self.eptitudes[0]
 
             if period == eptitude['period']:
@@ -100,52 +88,45 @@ class CardController ():
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_TOKENS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_TOKENS')
-                    self.decrease_price_depends_on_tokens()
+                    self.decrease_price_depends_on_tokens(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_RACE_TOKENS')
-                    self.decrease_price_depends_on_race_tokens(eptitude)
+                    self.decrease_price_depends_on_race_tokens(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_SHIELD_TOKENS')
-                    self.decrease_price_depends_on_shield_tokens(eptitude)
+                    self.decrease_price_depends_on_shield_tokens(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_PLAYER_CARDS')
-                    self.decrease_price_depends_on_player_cards()
+                    self.decrease_price_depends_on_player_cards(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_OPPONENT_CARDS')
-                    self.decrease_price_depends_on_opponent_cards()
+                    self.decrease_price_depends_on_opponent_cards(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_HERO_HEALTH')
-                    self.decrease_price_depends_on_hero_health()
+                    self.decrease_price_depends_on_hero_health(card)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_DIE_UNITS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
-                    self.decrease_price_depends_on_die_units(eptitude)
+                    self.decrease_price_depends_on_die_units(card, eptitude)
 
                 if eptitude['type'] == EptitudeType.DECREASE_PRICE_DEPENDS_ON_FROZEN_TOKENS:
                     logger.debug(
                         'CardController activate: eptitude.type: DECREASE_PRICE_DEPENDS_ON_DIE_UNITS')
-                    self.decrease_price_depends_on_freeze_tokens(eptitude)
+                    self.decrease_price_depends_on_freeze_tokens(card, eptitude)
 
-            self.activate(period)
-
-    def decrease_price_depends_on_player_cards(self):
-        card = self.card
-        attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
-        if card['whiteFlag']:
-            value = len(self.match.white_hand)
-        else:
-            value = len(self.match.black_hand)
+    def decrease_price(self, card, value, attachment, index):
+        """Вспомогательная функция для функций decrease_price_depends_on_*"""
         # меняем цену в самой карте
         if value > card['defaultPrice']:
             value = card['defaultPrice']
@@ -173,76 +154,33 @@ class CardController ():
             action['endAnimationFlag'] = False
             self.scenario.append(action)
 
-    def decrease_price_depends_on_opponent_cards(self):
-        card = self.card
+    def decrease_price_depends_on_player_cards(self, card):
+        attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
+        if card['whiteFlag']:
+            value = len(self.match.white_hand)
+        else:
+            value = len(self.match.black_hand)
+
+        self.decrease_price(card, value, attachment, index)
+
+    def decrease_price_depends_on_opponent_cards(self, card):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         if card['whiteFlag']:
             value = len(self.match.black_hand)
         else:
             value = len(self.match.white_hand)
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
+        self.decrease_price(card, value, attachment, index)
 
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_tokens(self):
-        card = self.card
+    def decrease_price_depends_on_tokens(self, card):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         value = len(self.match.whiteUnitRow) + len(self.match.blackUnitRow)
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
+        self.decrease_price(card, value, attachment, index)
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_hero_health(self):
-        card = self.card
+    def decrease_price_depends_on_hero_health(self, card):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         if card['whiteFlag']:
@@ -252,35 +190,9 @@ class CardController ():
 
         value = hero.defaultHealth - hero.getHealth()
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
+        self.decrease_price(card, value, attachment, index)
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_race_tokens(self, eptitude):
-        card = self.card
+    def decrease_price_depends_on_race_tokens(self, card, eptitude):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         value = 0
@@ -294,35 +206,9 @@ class CardController ():
 
         value *= eptitude['power']
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
+        self.decrease_price(card, value, attachment, index)
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_shield_tokens(self, eptitude):
-        card = self.card
+    def decrease_price_depends_on_shield_tokens(self, card, eptitude):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         value = 0
@@ -336,35 +222,9 @@ class CardController ():
 
         value *= eptitude['power']
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
+        self.decrease_price(card, value, attachment, index)
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_freeze_tokens(self, eptitude):
-        card = self.card
+    def decrease_price_depends_on_freeze_tokens(self, card, eptitude):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         value = 0
@@ -384,63 +244,12 @@ class CardController ():
 
         value *= eptitude['power']
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
+        self.decrease_price(card, value, attachment, index)
 
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
-
-    def decrease_price_depends_on_die_units(self, eptitude):
-        card = self.card
+    def decrease_price_depends_on_die_units(self, card, eptitude):
         attachment, index = self.match.initCardAttachment(card, self.whiteFlag)
 
         value = self.match.dieUnitsIndex
         value *= eptitude['power']
 
-        # меняем цену в самой карте
-        if value > card['defaultPrice']:
-            value = card['defaultPrice']
-        card['price'] = card['defaultPrice'] - value
-
-        # оповещаем клиент
-        action = {}
-        action['type'] = Action.CHANGE_CARD_PRICE
-        action['client'] = self.client
-        action['endAnimationFlag'] = True
-        action['attachment'] = attachment
-        action['index'] = index
-        action['price'] = card['price'] + card['priceMixin']
-        self.scenario.append(action)
-
-        if self.whiteFlag:
-            row = self.match.whiteUnitRow
-        else:
-            row = self.match.blackUnitRow
-
-        if len(row) < 7:
-            action = {}
-            action['type'] = Action.GLOW_CARDS
-            action['client'] = self.client
-            action['endAnimationFlag'] = False
-            self.scenario.append(action)
+        self.decrease_price(card, value, attachment, index)
